@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Karl;
+  src: url('../public/fonts/Karl-Regular.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Helvetica Neue Bold';
+  src: url('/public/fonts/helveticaneue/HelveticaNeue\ Bold.tff') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica Neue Medium';
+  src: url('/public/fonts/helveticaneue/HelveticaNeue\ Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica Neue Light';
+  src: url('/public/fonts/helveticaneue/HelveticaNeue\ Light.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica Neue Light Italic';
+  src: url('/public/fonts/helveticaneue/HelveticaNeueIt.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth bg-main bg-cover bg-fixed bg-custom-black text-custom-white font-primary;
+  }
+  h1 {
+    @apply font-primary;
+  }
+  h2 {
+    @apply font-primary uppercase text-5xl md:text-[64px];
+  }
+  h3 {
+    @apply font-primary uppercase text-4xl md:text-[54px];
+  }
+  h4 {
+    @apply font-primary uppercase text-2xl md:text-3xl;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+/* Wallet Adapter */
+
+.wallet-adapter-modal-wrapper { 
+  @apply !rounded-sm !bg-opacity-90 !uppercase;
+}
+.wallet-adapter-modal-wrapper h1{ 
+  @apply !text-white;
+}
+.wallet-adapter-button { 
+  @apply hover:!bg-opacity-100;
+}
+.wallet-adapter-modal-button-close{
+  @apply !bg-transparent;
+}
+
+/*  Layout  */
+
+.row-centered {
+  @apply flex items-center justify-center;
+}
+.row-between {
+  @apply flex items-center justify-between;
+}
+.row-start {
+  @apply flex items-start justify-start;
+}
+.row-evenly {
+  @apply flex items-center justify-evenly;
+}
+.row-around {
+  @apply flex items-center justify-around;
+}
+.col-centered {
+  @apply flex flex-col items-center justify-center;
+}
+.col-start {
+  @apply flex flex-col items-start justify-start;
+}
+.col-evenly {
+  @apply flex flex-col items-center justify-evenly;
+}
+.col-around {
+  @apply flex flex-col items-center justify-around;
+}
+
+/* Animations */
+.transition-1000{
+  @apply transition-all duration-1000;
+}
+.transition-500{
+  @apply transition-all duration-500;
+}
+.transition-300{
+  @apply transition-all duration-300;
+}
+.transition-200{
+  @apply transition-all duration-300;
+}
