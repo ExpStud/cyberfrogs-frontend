@@ -14,7 +14,7 @@ const YouTubeIcon: FC<Props> = (props: Props) => {
         viewBox="0 0 27 20"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="transition-200 opacity-[.35] hover:opacity-80"
+        className="icon-opacity"
       >
         <path
           fillRule="evenodd"

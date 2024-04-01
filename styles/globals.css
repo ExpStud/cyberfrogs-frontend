@@ -127,3 +127,8 @@ html {
 .transition-200{
   @apply transition-all duration-300;
 }
+
+/* Custom */
+.icon-opacity {
+  @apply transition-200 opacity-35 hover:opacity-90;
+} 
