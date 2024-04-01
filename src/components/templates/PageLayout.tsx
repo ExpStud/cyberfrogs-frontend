@@ -6,8 +6,9 @@ import {
   SplashScreen,
   ImageModal,
 } from "@components";
-import { enterAnimation, ViewContext } from "@constants";
+import { enterAnimation } from "@constants";
 import { AnimatePresence, motion } from "framer-motion";
+import { ViewContext } from "@contexts";
 
 interface Props {
   children: ReactNode;
@@ -30,27 +31,27 @@ const PageLayout: FC<Props> = (props: Props) => {
 
   //context for splash screen & modals
   const [showView, setShowView] = useState<boolean>(false);
-  const [ImageModalId, setImageModalId] = useState<number>(-1);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const value = {
     showView,
     setShowView,
-    ImageModalId,
-    setImageModalId,
+    showModal,
+    setShowModal,
   };
 
   return (
-    <div
-      className={`flex flex-col min-h-[100svh] h-full justify-between overflow-none ${
-        fixed ? "fixed inset-0" : absolute ? "absolute inset-0" : "relative"
-      }`}
-    >
-      <PageHead
-        title="Name"
-        description="Description"
-        url="https://addurl.xyz" // no backslash at the end
-        twitter="twitterhandle"
-      />
-      <ViewContext.Provider value={value}>
+    <ViewContext.Provider value={value}>
+      <div
+        className={`flex flex-col min-h-[100svh] h-full justify-between overflow-none ${
+          fixed ? "fixed inset-0" : absolute ? "absolute inset-0" : "relative"
+        }`}
+      >
+        <PageHead
+          title="Name"
+          description="Description"
+          url="https://addurl.xyz" // no backslash at the end
+          twitter="twitterhandle"
+        />
         {/* header */}
         <Header type={headerType} />
 
@@ -65,19 +66,21 @@ const PageLayout: FC<Props> = (props: Props) => {
         {/* footer */}
         {footer && <Footer />}
 
-        {/* modals */}
+        {/* load screen */}
         {assets && <SplashScreen assets={assets} />}
+
+        {/* modals */}
         <AnimatePresence mode="wait">
-          {ImageModalId !== -1 && (
+          {showModal && (
             <ImageModal
-              key="gallery-modal"
-              imageId={ImageModalId}
-              setImageId={setImageModalId}
+              key="image-modal"
+              show={showModal}
+              close={() => setShowModal(false)}
             />
           )}
         </AnimatePresence>
-      </ViewContext.Provider>
-    </div>
+      </div>
+    </ViewContext.Provider>
   );
 };
 export default PageLayout;

@@ -10,22 +10,15 @@ const MenuIcon = dynamic(() => import("./@icons/MenuIcon"));
 const CloseIcon = dynamic(() => import("./@icons/CloseIcon"));
 const DownloadIcon = dynamic(() => import("./@icons/DownloadIcon"));
 //atoms
-const DropdownButton = dynamic(() => import("./atoms/DropdownButton"));
-const DropdownItem = dynamic(() => import("./atoms/DropdownItem"));
 const NumberInput = dynamic(() => import("./atoms/NumberInput"));
 const TextInput = dynamic(() => import("./atoms/TextInput"));
-const Button = dynamic(() => import("./atoms/Button"));
 const CheckBox = dynamic(() => import("./atoms/CheckBox"));
-const LoadAnimation = dynamic(() => import("./atoms/LoadAnimation"));
-const LoadCircle = dynamic(() => import("./atoms/LoadCircle"));
-const TabBarItem = dynamic(() => import("./atoms/TabBarItem"));
+const LoadCircle = dynamic(() => import("./atoms/LoadSpinner"));
 const ImageShimmer = dynamic(() => import("./atoms/ImageShimmer"));
 const Logo = dynamic(() => import("./atoms/Logo"));
 //molecules
 const PageHead = dynamic(() => import("./molecules/PageHead"));
-const Dropdown = dynamic(() => import("./molecules/Dropdown"));
 const NavItem = dynamic(() => import("./molecules/NavItem"));
-const TabBar = dynamic(() => import("./molecules/TabBar"));
 const Modal = dynamic(() => import("./molecules/Modal"));
 const IconBar = dynamic(() => import("./molecules/IconBar"));
 const SplashScreen = dynamic(() => import("./molecules/SplashScreen"));
@@ -33,8 +26,8 @@ const HeaderContent = dynamic(() => import("./molecules/HeaderContent"));
 //organisms
 const Header = dynamic(() => import("./organisms/Header"));
 const Footer = dynamic(() => import("./organisms/Footer"));
-const ImageModal = dynamic(() => import("./organisms/ImageModal"));
 const Menu = dynamic(() => import("./organisms/Menu"));
+const ImageModal = dynamic(() => import("./organisms/ImageModal"));
 //templates
 const PageLayout = dynamic(() => import("./templates/PageLayout"));
 const LandingView = dynamic(() => import("./templates/LandingView"));
@@ -46,23 +39,16 @@ export {
   Header,
   Footer,
   PageLayout,
-  Dropdown,
-  DropdownButton,
   ArrowIcon,
-  DropdownItem,
   NumberInput,
   TextInput,
   CheckBox,
-  Button,
-  LoadAnimation,
   TwitterIcon,
   DiscordIcon,
   LoadCircle,
   ExpIcon,
   MenuIcon,
   NavItem,
-  TabBarItem,
-  TabBar,
   ExchangeIcon,
   CloseIcon,
   Modal,
@@ -72,7 +58,7 @@ export {
   SplashScreen,
   LandingView,
   ImageShimmer,
-  ImageModal,
   HeaderContent,
-  AboutView
+  AboutView,
+  ImageModal
 }

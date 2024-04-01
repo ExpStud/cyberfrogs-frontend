@@ -1,24 +1,17 @@
-import { Dispatch, SetStateAction, FC, useContext } from "react";
+import { FC } from "react";
 import { Modal } from "@components";
-import { ViewContext } from "@constants";
 
 interface Props {
-  imageId: number;
-  setImageId: Dispatch<SetStateAction<number>>;
+  show: boolean;
+  close: () => void;
 }
 
 const ImageModal: FC<Props> = (props: Props) => {
-  const { imageId, setImageId } = props;
-  const { ImageModalId } = useContext(ViewContext);
+  const { show, close } = props;
 
   return (
-    <Modal
-      show={ImageModalId !== -1}
-      onClick={() => {
-        setImageId(-1);
-      }}
-    >
-      <div className=""></div>
+    <Modal show={show} onClick={() => close()}>
+      <div>Add content</div>
     </Modal>
   );
 };

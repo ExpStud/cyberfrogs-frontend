@@ -12,16 +12,6 @@ const IconBar: FC<Props> = (props: Props) => {
     <div className={`flex items-center justify-center gap-4 ${className}`}>
       <DiscordIcon url={""} />
       <TwitterIcon url={""} />
-      {/* {showExchange && (
-        <a
-          href={""}
-          rel="noreferrer"
-          target="_blank"
-          className="cursor-pointer"
-        >
-          <ExpIcon />
-        </a>
-      )} */}
     </div>
   );
 };

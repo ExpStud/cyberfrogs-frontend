@@ -1,6 +1,6 @@
 import { PageLayout, AboutView } from "@components";
 import { NextPage } from "next";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const About: NextPage = () => {
   const [assets, setAssets] = useState<boolean[]>([false, false]);

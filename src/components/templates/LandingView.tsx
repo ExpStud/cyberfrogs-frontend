@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { Dispatch, SetStateAction, FC, useContext } from "react";
-import { ViewContext, slideDown } from "@constants";
+import { slideDown } from "@constants";
 import { IconBar } from "@components";
 import { handleAssetLoad } from "@utils";
 import Image from "next/image";
+import { ViewContext } from "@contexts";
 
 interface Props {
   setAssets: Dispatch<SetStateAction<boolean[]>>;

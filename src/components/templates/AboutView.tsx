@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Dispatch, SetStateAction, FC, useContext } from "react";
-import { ViewContext, slideLeft, slideRight } from "@constants";
+import { slideLeft, slideRight } from "@constants";
 import { handleAssetLoad } from "@utils";
+import { ViewContext } from "@contexts";
 import Image from "next/image";
 
 interface Props {

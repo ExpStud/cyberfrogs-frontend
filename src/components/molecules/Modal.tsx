@@ -5,16 +5,9 @@ import Image from "next/image";
 interface Props extends HTMLAttributes<HTMLDivElement> {
   show: boolean;
   children: ReactNode;
-  contentLoaded?: boolean;
 }
 const Modal: FC<Props> = (props: Props) => {
-  const {
-    show,
-    children,
-    contentLoaded = true,
-    className,
-    ...componentProps
-  } = props;
+  const { show, children, className, ...componentProps } = props;
 
   //stop page scroll (when modal or menu open)
   useEffect(() => {

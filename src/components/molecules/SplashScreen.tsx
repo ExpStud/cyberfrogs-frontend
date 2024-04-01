@@ -1,7 +1,6 @@
 import { FC, useCallback, useContext, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { fastExitAnimation, ViewContext } from "@constants";
-import { ExpIcon } from "@components";
+import { ViewContext } from "@contexts";
 import debounce from "lodash.debounce";
 
 interface Props {
