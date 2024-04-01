@@ -1,30 +1,26 @@
 import { FC, SVGProps } from "react";
-import Image from "next/image";
+
 interface Props extends SVGProps<SVGSVGElement> {
-  color?: string;
-  size?: number;
-  url?: string;
+  url: string;
 }
 
 const TwitterIcon: FC<Props> = (props: Props) => {
-  const {
-    color = "white",
-    size = 35,
-    url = "https://twitter.com/expstudio_",
-  } = props;
+  const { url } = props;
   return (
-    <a
-      href={url}
-      rel="noreferrer"
-      target="_blank"
-      className="transition-all duration-300 opacity-80 hover:opacity-100"
-    >
-      <Image
-        src="/images/icons/twitter.svg"
-        width={size}
-        height={size}
-        alt="Twitter"
-      />
+    <a href={url} rel="noreferrer" target="_blank">
+      <svg
+        width="23"
+        height="20"
+        viewBox="0 0 23 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="transition-200 opacity-[.35] hover:opacity-80"
+      >
+        <path
+          d="M20.3651 5.43403C20.3788 5.6304 20.3788 5.82859 20.3788 6.02678C20.3788 12.0943 15.7604 19.09 7.31553 19.09C4.81881 19.0936 2.37392 18.3778 0.273438 17.0281C0.635498 17.0712 0.999772 17.0931 1.36439 17.0936C3.43225 17.096 5.44076 16.4024 7.06643 15.1244C6.10824 15.1068 5.17956 14.7899 4.41043 14.2182C3.6413 13.6465 3.07022 12.8485 2.77717 11.9361C3.46499 12.069 4.17413 12.0422 4.84998 11.8579C3.81105 11.6479 2.87669 11.0852 2.2053 10.265C1.53391 9.44479 1.1668 8.41767 1.1662 7.35774V7.29955C1.80481 7.655 2.51938 7.85204 3.24992 7.87412C2.27844 7.22434 1.59104 6.22884 1.32757 5.09018C1.0641 3.95152 1.24436 2.75525 1.83168 1.74479C2.9844 3.16312 4.4225 4.32319 6.05263 5.14969C7.68276 5.97619 9.46848 6.45064 11.2939 6.54225C11.0656 5.55806 11.168 4.52606 11.5852 3.60592C12.0025 2.68578 12.7113 1.92878 13.6021 1.45203C14.4928 0.975284 15.5159 0.805363 16.513 0.968557C17.51 1.13175 18.4255 1.61896 19.1178 2.35482C20.1457 2.15198 21.1315 1.77503 22.0325 1.24023C21.6899 2.30336 20.9726 3.20576 20.0142 3.77942C20.9241 3.67184 21.8128 3.42853 22.6507 3.05757C22.0356 3.97887 21.2617 4.78353 20.3651 5.43403Z"
+          fill="white"
+        />
+      </svg>
     </a>
   );
 };

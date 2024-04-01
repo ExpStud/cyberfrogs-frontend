@@ -1,14 +1,14 @@
 import dynamic from "next/dynamic";
 
 //icons
-const ArrowIcon = dynamic(() => import("./@icons/ArrowIcon"));
-const TwitterIcon = dynamic(() => import("./@icons/TwitterIcon"));
-const DiscordIcon = dynamic(() => import("./@icons/DiscordIcon"));
 const ExpIcon = dynamic(() => import("./@icons/ExpIcon"));
-const ExchangeIcon = dynamic(() => import("./@icons/ExchangeIcon"));
 const MenuIcon = dynamic(() => import("./@icons/MenuIcon"));
 const CloseIcon = dynamic(() => import("./@icons/CloseIcon"));
-const DownloadIcon = dynamic(() => import("./@icons/DownloadIcon"));
+const DiscordIcon = dynamic(() => import("./@icons/DiscordIcon"));
+const MagicEdenIcon = dynamic(() => import("./@icons/MagicEdenIcon"));
+const TensorIcon = dynamic(() => import("./@icons/TensorIcon"));
+const TwitterIcon = dynamic(() => import("./@icons/TwitterIcon"));
+const YouTubeIcon = dynamic(() => import("./@icons/YouTubeIcon"));
 //atoms
 const NumberInput = dynamic(() => import("./atoms/NumberInput"));
 const TextInput = dynamic(() => import("./atoms/TextInput"));
@@ -31,7 +31,6 @@ const ImageModal = dynamic(() => import("./organisms/ImageModal"));
 //templates
 const PageLayout = dynamic(() => import("./templates/PageLayout"));
 const LandingView = dynamic(() => import("./templates/LandingView"));
-const AboutView = dynamic(() => import("./templates/AboutView"));
 
 export {
   PageHead,
@@ -39,26 +38,25 @@ export {
   Header,
   Footer,
   PageLayout,
-  ArrowIcon,
   NumberInput,
   TextInput,
   CheckBox,
-  TwitterIcon,
+  MagicEdenIcon,
   DiscordIcon,
   LoadCircle,
   ExpIcon,
   MenuIcon,
   NavItem,
-  ExchangeIcon,
   CloseIcon,
   Modal,
   Menu,
-  DownloadIcon,
   IconBar,
   SplashScreen,
   LandingView,
   ImageShimmer,
   HeaderContent,
-  AboutView,
-  ImageModal
+  ImageModal,
+  TensorIcon,
+  TwitterIcon,
+  YouTubeIcon,
 }

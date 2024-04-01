@@ -64,8 +64,8 @@ const Menu: FC<Props> = (props: Props) => {
             exit="closed"
           >
             <div className="absolute left-1/2 top-[45%] transform -translate-x-1/2 -translate-y-1/2  flex flex-col items-center justify-start text-4xl sm:text-6xl gap-2">
-              <NavItem href="/about">About</NavItem>
-              <NavItem href="/more">More</NavItem>
+              {/* <NavItem href="/about">About</NavItem> */}
+              {/* <NavItem href="/more">More</NavItem> */}
             </div>
             <IconBar className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 bottom-3" />
           </motion.div>
