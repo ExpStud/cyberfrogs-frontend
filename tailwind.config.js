@@ -10,13 +10,13 @@ module.exports = {
         "white-gradient": `linear-gradient(360.58deg, #FFFFFF 43.76%, rgba(255, 255, 255, 0) 106.82%)`,
       },
       fontFamily: {
-        primary: ["Karl"],
-        karl: ["Karl"],
-        "helvetica-neue": "Helvetica Neue",
+        rajdhani: ["Rajdhani-Medium"],
       },
       fontWeight: {
-        light: 400, //font-helvetica-neue font-light
-        medium: 400,
+        light: 300,
+        regular: 400,
+        medium: 500,
+        semibold: 600,
         bold: 700,
       },
       fontStyle: {
