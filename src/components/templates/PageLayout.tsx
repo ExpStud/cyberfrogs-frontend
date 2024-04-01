@@ -53,7 +53,7 @@ const PageLayout: FC<Props> = (props: Props) => {
           twitter="twitterhandle"
         />
         {/* header */}
-        <Header type={headerType} />
+        {/* <Header type={headerType} /> */}
 
         {/* body */}
         <motion.main

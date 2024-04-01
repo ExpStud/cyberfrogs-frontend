@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Dispatch, SetStateAction, FC, useContext } from "react";
-import { slideDown } from "@constants";
-import { IconBar } from "@components";
+import { fadeAnimation } from "@constants";
 import { handleAssetLoad } from "@utils";
 import Image from "next/image";
 import { ViewContext } from "@contexts";
@@ -16,15 +15,21 @@ const LandingView: FC<Props> = (props: Props) => {
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
-      <motion.div {...slideDown(showView)}>
+      <motion.div {...fadeAnimation(showView)}>
         <Image
-          src="/images/logo.png"
-          alt="EXP"
-          width={400}
-          height={400}
+          src="/images/logo-lg.png"
+          alt="Cyber Frogs"
+          width={640}
+          height={507.65}
           className="px-2 lg:px-20 2xl:px-0"
           onLoadingComplete={() => handleAssetLoad(0, setAssets)}
         />
+      </motion.div>
+      <motion.div
+        className="pt-4 uppercase font-rajdhani-bold text-xl "
+        {...fadeAnimation(showView, 1)}
+      >
+        Presented by slimes studio
       </motion.div>
     </div>
   );

@@ -1,5 +1,15 @@
 import { Variants } from "framer-motion";
 
+//custom
+
+export const fadeAnimation = (animate: boolean, delay?: number) => ({
+  initial: { opacity: 0 },
+  animate: { opacity: animate ? 1 : 0 },
+  exit: { opacity: 0 },
+  transition: { duration: 1.5, ease: "easeInOut", delay: delay ?? 0 },
+})
+
+
 //click animations
 export const largeClickAnimation = {
   whileHover: { scale: 1.1 },

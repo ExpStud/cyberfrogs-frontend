@@ -11,6 +11,8 @@ module.exports = {
       },
       fontFamily: {
         rajdhani: ["Rajdhani-Medium"],
+        "rajdhani-semibold": ["Rajdhani-SemiBold"],
+        "rajdhani-bold": ["Rajdhani-Bold"],
       },
       fontWeight: {
         light: 300,
