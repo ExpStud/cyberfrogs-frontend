@@ -14,20 +14,15 @@ import {
 } from "@solana/wallet-adapter-wallets";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { useMemo } from "react";
+import { Toaster } from "react-hot-toast";
+
 // Default styles that can be overridden by your app
 require("@solana/wallet-adapter-react-ui/styles.css");
 
 const App = ({ Component, pageProps }: AppProps) => {
-  // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
   const network = WalletAdapterNetwork.Mainnet;
-
-  // You can also provide a custom RPC endpoint.
-  // const endpoint = useMemo(() => clusterApiUrl(network), [network]);
-
   const endpoint =
-    "https://bold-cosmological-daylight.solana-mainnet.discover.quiknode.pro/d6b580eb3a983f95fece05b014d36fe7708d9dea/";
-
-  // const endpoint = "https://api.devnet.solana.com";
+    "https://mainnet.helius-rpc.com/?api-key=fd98bcfd-5344-4cc0-8ac1-db7ba9603613";
 
   const wallets = useMemo(
     () => [
@@ -35,7 +30,6 @@ const App = ({ Component, pageProps }: AppProps) => {
       new SolflareWalletAdapter({ network }),
       new LedgerWalletAdapter(),
     ],
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [network]
   );
 
@@ -44,6 +38,21 @@ const App = ({ Component, pageProps }: AppProps) => {
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
           <Component {...pageProps} />
+          <Toaster
+            position="bottom-right"
+            toastOptions={{
+              style: {
+                border: "2px solid #0D864C",
+                padding: "16px",
+                color: "#fff",
+                backgroundColor: "#020202",
+              },
+              iconTheme: {
+                primary: "#0D864C",
+                secondary: "#454545",
+              },
+            }}
+          />
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
