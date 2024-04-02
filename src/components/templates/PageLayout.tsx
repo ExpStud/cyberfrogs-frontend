@@ -47,10 +47,10 @@ const PageLayout: FC<Props> = (props: Props) => {
         }`}
       >
         <PageHead
-          title="Name"
-          description="Description"
-          url="https://addurl.xyz" // no backslash at the end
-          twitter="twitterhandle"
+          title="Cyber Frogs"
+          description="Cyber Frogs NFT. Community, Utility, Innovation and Development services."
+          url="https://cyberfrogs.io" // no backslash at the end
+          twitter="CyberFrogsNFT"
         />
         {/* header */}
         {/* <Header type={headerType} /> */}
