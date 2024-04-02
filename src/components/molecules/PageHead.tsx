@@ -21,7 +21,7 @@ const PageHead: FC<Props> = (props: Props) => {
       <meta name="twitter:site" content={`@${twitter}`} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={`${url}/meta.jpg`} />
+      <meta name="twitter:image" content={`/meta.jpg`} />
       <meta property="twitter:url" content={url} />
       {/* <!-- Open Graph / Facebook --> */}
       <meta property="og:type" content="website" />
