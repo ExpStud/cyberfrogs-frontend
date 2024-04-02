@@ -22,7 +22,7 @@ const LandingView: FC<Props> = (props: Props) => {
           width={640}
           height={507.65}
           className="px-8 lg:px-20 2xl:px-0"
-          onLoadingComplete={() => handleAssetLoad(0, setAssets)}
+          onLoad={() => handleAssetLoad(0, setAssets)}
         />
       </motion.div>
       <motion.div

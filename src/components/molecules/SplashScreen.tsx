@@ -7,13 +7,13 @@ interface Props {
   assets?: boolean[];
 }
 
-const SplashScreen: FC<Props> = (props: Props) => {
-  const { assets = [] } = props;
+const SplashScreen: FC<Props> = ({ assets = [] }: Props) => {
   const { setShowView } = useContext(ViewContext);
+
   //splash screen animation
   const [showAnimation, setShowAnimation] = useState<boolean>(true); // shows/hides SplashScreen animation
   const animationDelay = 750;
-  const animationTransition = 250;
+  const animationTransition = 500;
 
   const debouncer = debounce(
     (value) => setShowAnimation(value),
@@ -50,7 +50,7 @@ const SplashScreen: FC<Props> = (props: Props) => {
     <AnimatePresence mode="wait">
       {showAnimation && (
         <motion.div
-          className={`backdrop-blur-2xl bg-custom-black bg-opacity-80 flex items-center justify-center  ${
+          className={`backdrop-blur-2xl bg-[#081F17] bg-opacity-50 flex items-center justify-center  ${
             showAnimation ? "fixed z-50 inset-0" : "hidden -z-50"
           }`}
           initial={{ opacity: 1 }}
@@ -60,9 +60,7 @@ const SplashScreen: FC<Props> = (props: Props) => {
             duration: animationTransition / 1000,
             ease: "easeInOut",
           }}
-        >
-          {/* Loading */}
-        </motion.div>
+        ></motion.div>
       )}
     </AnimatePresence>
   );

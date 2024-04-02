@@ -82,7 +82,7 @@ const ImageShimmer: FC<Props> = (props: Props) => {
             style={{ objectFit: objectFit }}
             alt={alt}
             className={`rounded ${imageClass}`}
-            onLoadingComplete={() => setImageLoaded(true)}
+            onLoad={() => setImageLoaded(true)}
           />
         )}
         {width && height && (
@@ -92,7 +92,7 @@ const ImageShimmer: FC<Props> = (props: Props) => {
             height={height}
             alt={alt}
             className={`rounded ${imageClass}`}
-            onLoadingComplete={() => setImageLoaded(true)}
+            onLoad={() => setImageLoaded(true)}
           />
         )}
       </motion.div>
