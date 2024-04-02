@@ -94,11 +94,12 @@ const PageLayout: FC<Props> = (props: Props) => {
           fill
           alt="Texture"
           className="object-cover"
+          priority
         />
       </div>
       {/* <div className="-z-[15] light-top absolute left-1/2 -translate-x-1/2 top-[15svh] w-[80vw] h-[15svh]" /> */}
       <div className="-z-[15] light-top absolute left-1/2 -translate-x-1/2 -top-[55svh] overflow-clip w-screen h-[75svh]" />
-      <div className="-z-[12] absolute left-1/2 -translate-x-1/2 top-0 w-screen h-[33svh]" />
+      <div className="-z-[10] gradient-top absolute left-1/2 -translate-x-1/2 top-0 w-screen h-[33svh]" />
     </ViewContext.Provider>
   );
 };
