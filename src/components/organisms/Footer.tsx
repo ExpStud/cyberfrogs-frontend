@@ -1,6 +1,5 @@
-import { FC, HTMLAttributes, useContext, useState } from "react";
+import { FC, useContext } from "react";
 import { Copyright, IconBar, LegacyWebsiteButton } from "@components";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeAnimation } from "src/constants";
 import { ViewContext } from "@contexts";

@@ -12,7 +12,6 @@ const YouTubeIcon = dynamic(() => import("./@icons/YouTubeIcon"));
 //atoms
 const NumberInput = dynamic(() => import("./atoms/NumberInput"));
 const TextInput = dynamic(() => import("./atoms/TextInput"));
-const CheckBox = dynamic(() => import("./atoms/CheckBox"));
 const LoadCircle = dynamic(() => import("./atoms/LoadSpinner"));
 const ImageShimmer = dynamic(() => import("./atoms/ImageShimmer"));
 const Logo = dynamic(() => import("./atoms/Logo"));
@@ -42,7 +41,6 @@ export {
   PageLayout,
   NumberInput,
   TextInput,
-  CheckBox,
   MagicEdenIcon,
   DiscordIcon,
   LoadCircle,
