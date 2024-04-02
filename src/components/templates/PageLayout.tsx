@@ -84,6 +84,7 @@ const PageLayout: FC<Props> = (props: Props) => {
         src="/images/backgrounds/texture.png"
         fill
         alt="Texture"
+        priority
         className="-z-10 object-cover"
       />
       <div className="-z-[5] relative w-screen h-[36.9vh]">
@@ -91,8 +92,8 @@ const PageLayout: FC<Props> = (props: Props) => {
           src="/images/backgrounds/grid.png"
           fill
           alt="Texture"
-          className="object-cover"
           priority
+          className="object-cover"
         />
       </div>
       <div className="-z-[15] light-top absolute left-1/2 -translate-x-1/2 -top-[55svh] overflow-clip w-screen h-[75svh]" />
