@@ -9,7 +9,7 @@ import {
 import { enterAnimation } from "@constants";
 import { AnimatePresence, motion } from "framer-motion";
 import { ViewContext } from "@contexts";
-
+import Image from "next/image";
 interface Props {
   children: ReactNode;
   footer?: boolean;
@@ -57,7 +57,7 @@ const PageLayout: FC<Props> = (props: Props) => {
 
         {/* body */}
         <motion.main
-          className={`flex flex-col h-full w-full overflow-x-clip`}
+          className={`flex flex-col h-full w-full overflow-x-clip `}
           {...enterAnimation}
         >
           {children}
@@ -80,6 +80,25 @@ const PageLayout: FC<Props> = (props: Props) => {
           )}
         </AnimatePresence>
       </div>
+
+      {/* backgrounds */}
+      <Image
+        src="/images/backgrounds/texture.png"
+        fill
+        alt="Texture"
+        className="-z-10 object-cover"
+      />
+      <div className="-z-[5] relative w-screen h-[36.9vh]">
+        <Image
+          src="/images/backgrounds/grid.png"
+          fill
+          alt="Texture"
+          className="object-cover"
+        />
+      </div>
+      {/* <div className="-z-[15] light-top absolute left-1/2 -translate-x-1/2 top-[15svh] w-[80vw] h-[15svh]" /> */}
+      <div className="-z-[15] light-top absolute left-1/2 -translate-x-1/2 -top-[55svh] overflow-clip w-screen h-[75svh]" />
+      <div className="-z-[12] absolute left-1/2 -translate-x-1/2 top-0 w-screen h-[33svh]" />
     </ViewContext.Provider>
   );
 };

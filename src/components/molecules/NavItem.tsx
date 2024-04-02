@@ -53,7 +53,7 @@ const Item: FC<ItemProps> = (props: ItemProps) => {
         className={` transition-bg duration-300 my-5 p-0 ${
           isCurrent
             ? "text-red-600"
-            : " text-gray-400 hover:text-white cursor-pointer"
+            : " text-gray-400 hover:text-custom-white cursor-pointer"
         }`}
       >
         {children}

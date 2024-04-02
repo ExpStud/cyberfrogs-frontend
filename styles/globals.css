@@ -75,7 +75,7 @@ html {
   @apply !rounded-sm !bg-opacity-90 !uppercase;
 }
 .wallet-adapter-modal-wrapper h1{ 
-  @apply !text-white;
+  @apply !text-custom-white;
 }
 .wallet-adapter-button { 
   @apply hover:!bg-opacity-100;
@@ -132,3 +132,11 @@ html {
 .icon-opacity {
   @apply transition-200 opacity-35 hover:opacity-90;
 } 
+.light-top {
+  border-radius: 1920px;
+  background: rgba(225, 181, 61, 0.25);
+  filter: blur(500px);
+}
+.gradient-top {
+  background: linear-gradient(180deg, rgba(5, 17, 13, 0.75) 0%, rgba(12, 44, 33, 0.00) 100%);
+}

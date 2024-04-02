@@ -18,15 +18,15 @@ const Footer: FC<Props> = (props: Props) => {
 
   return (
     <motion.footer
-      className="p-10 w-screen flex flex-col-reverse md:flex-row md:justify-center items-center gap-12 md:gap-0"
+      className="p-6 lg:p-10 w-screen flex flex-col-reverse md:flex-row md:justify-center items-center gap-10 md:gap-0"
       key="footer"
       {...(router.pathname === "/" ? fadeAnimation(showView, 2) : {})}
     >
-      <div className="flex justify-center md:justify-start items-center text-white text-opacity-35 uppercase w-full md:w-1/3 text-sm md:pl-[6vw] font-rajdhani-semibold">
+      <div className="flex justify-center md:justify-start items-center text-custom-white text-opacity-35 uppercase w-full md:w-1/3 text-sm md:pl-[6vw] font-rajdhani-semibold">
         ©{getYear()} cyber frogs™
       </div>
       <IconBar className="hidden md:!flex w-1/3  " />
-      <div className="flex justify-center md:justify-end items-center text-white text-opacity-35 uppercase w-full md:w-1/3  md:pr-[6vw]">
+      <div className="flex justify-center md:justify-end items-center text-custom-white text-opacity-35 uppercase w-full md:w-1/3  md:pr-[6vw]">
         <a
           href="https://cyberfrogs.io/"
           rel="noopener noreferrer"

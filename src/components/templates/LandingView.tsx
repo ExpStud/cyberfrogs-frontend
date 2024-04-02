@@ -21,12 +21,12 @@ const LandingView: FC<Props> = (props: Props) => {
           alt="Cyber Frogs"
           width={640}
           height={507.65}
-          className="px-2 lg:px-20 2xl:px-0"
+          className="px-8 lg:px-20 2xl:px-0"
           onLoadingComplete={() => handleAssetLoad(0, setAssets)}
         />
       </motion.div>
       <motion.div
-        className="pt-4 uppercase font-rajdhani-bold text-xl "
+        className="pt-4 uppercase font-rajdhani-bold text-xl text-center"
         {...fadeAnimation(showView, 1)}
       >
         Presented by slimes studio
