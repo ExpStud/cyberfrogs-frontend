@@ -25,9 +25,21 @@ module.exports = {
         italic: "italic", // Add "italic" style to the font family
       },
       colors: {
-        "custom-orange": "#E62E05",
-        "custom-green": "#0B2D21",
-        "custom-white": "#FFFEF3",
+        "cf-orange": {
+          DEFAULT: "#E62E05",
+          light: "#FA3D13",
+          dark: "#E62E05",
+        },
+        "cf-white": {
+          DEFAULT: "#FFFEF3",
+          light: "#FFFEF3",
+          dark: "#FEE1DB",
+        },
+        "cf-green": {
+          DEFAULT: "#0B2D21",
+          light: "#196349",
+          dark: "#124835",
+        },
         //template
         "custom-black": "#121212",
         "custom-yellow": "#FFBA21",

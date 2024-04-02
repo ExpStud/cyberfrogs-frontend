@@ -15,6 +15,7 @@ import {
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { useMemo } from "react";
 import { Toaster } from "react-hot-toast";
+import { AppProvider } from "@contexts";
 
 // Default styles that can be overridden by your app
 require("@solana/wallet-adapter-react-ui/styles.css");
@@ -37,22 +38,24 @@ const App = ({ Component, pageProps }: AppProps) => {
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
-          <Component {...pageProps} />
-          <Toaster
-            position="bottom-right"
-            toastOptions={{
-              style: {
-                border: "2px solid #0D864C",
-                padding: "16px",
-                color: "#fff",
-                backgroundColor: "#020202",
-              },
-              iconTheme: {
-                primary: "#0D864C",
-                secondary: "#454545",
-              },
-            }}
-          />
+          <AppProvider>
+            <Component {...pageProps} />
+            <Toaster
+              position="bottom-right"
+              toastOptions={{
+                style: {
+                  border: "2px solid #a40227",
+                  padding: "10px",
+                  color: "#888888",
+                  backgroundColor: "#101010",
+                },
+                iconTheme: {
+                  primary: "#a40227",
+                  secondary: "#302D2E",
+                },
+              }}
+            />
+          </AppProvider>
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>

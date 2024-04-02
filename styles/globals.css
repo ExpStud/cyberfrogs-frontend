@@ -45,7 +45,7 @@ a {
 
 @layer base {
   html {
-    @apply scroll-smooth bg-custom-green text-custom-white font-rajdhani;
+    @apply scroll-smooth bg-cf-green text-cf-white font-rajdhani;
   }
   h1 {
     @apply font-rajdhani;
@@ -75,7 +75,7 @@ html {
   @apply !rounded-sm !bg-opacity-90 !uppercase;
 }
 .wallet-adapter-modal-wrapper h1{ 
-  @apply !text-custom-white;
+  @apply !text-cf-white;
 }
 .wallet-adapter-button { 
   @apply hover:!bg-opacity-100;

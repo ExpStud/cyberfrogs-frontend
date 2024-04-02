@@ -17,11 +17,11 @@ const LandingView: FC<Props> = (props: Props) => {
     <div className="w-full h-full flex flex-col items-center justify-center">
       <motion.div {...fadeAnimation(showView, 0.75)}>
         <Image
-          src="/images/logo-lg.png"
+          src="/images/logo.svg"
           alt="Cyber Frogs"
           width={640}
           height={507.65}
-          className="px-8 lg:px-20 2xl:px-0"
+          className="px-10 2xl:px-0"
           onLoad={() => handleAssetLoad(0, setAssets)}
         />
       </motion.div>

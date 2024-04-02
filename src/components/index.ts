@@ -16,6 +16,7 @@ const CheckBox = dynamic(() => import("./atoms/CheckBox"));
 const LoadCircle = dynamic(() => import("./atoms/LoadSpinner"));
 const ImageShimmer = dynamic(() => import("./atoms/ImageShimmer"));
 const Logo = dynamic(() => import("./atoms/Logo"));
+const Copyright = dynamic(() => import("./atoms/Copyright"));
 //molecules
 const PageHead = dynamic(() => import("./molecules/PageHead"));
 const NavItem = dynamic(() => import("./molecules/NavItem"));
@@ -23,6 +24,7 @@ const Modal = dynamic(() => import("./molecules/Modal"));
 const IconBar = dynamic(() => import("./molecules/IconBar"));
 const SplashScreen = dynamic(() => import("./molecules/SplashScreen"));
 const HeaderContent = dynamic(() => import("./molecules/HeaderContent"));
+const LegacyWebsiteButton = dynamic(() => import("./molecules/LegacyWebsiteButton"));
 //organisms
 const Header = dynamic(() => import("./organisms/Header"));
 const Footer = dynamic(() => import("./organisms/Footer"));
@@ -59,4 +61,6 @@ export {
   TensorIcon,
   TwitterIcon,
   YouTubeIcon,
+  LegacyWebsiteButton,
+  Copyright
 }
