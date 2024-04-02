@@ -97,10 +97,8 @@ const PageLayout: FC<Props> = (props: Props) => {
           priority
         />
       </div>
-      {/* <div className="-z-[15] light-top absolute left-1/2 -translate-x-1/2 top-[15svh] w-[80vw] h-[15svh]" /> */}
       <div className="-z-[15] light-top absolute left-1/2 -translate-x-1/2 -top-[55svh] overflow-clip w-screen h-[75svh]" />
-      {/*       <div className="-z-[10] gradient-top absolute left-1/2 -translate-x-1/2 top-0 w-screen h-[350px]" /> */}
-      <div className="-z-[10] gradient-top absolute left-1/2 -translate-x-1/2 top-0 w-screen h-[40svh]" />
+      <div className="-z-[10] gradient-top absolute left-1/2 -translate-x-1/2 top-0 w-screen h-[200px] sm:h-[40svh]" />
     </ViewContext.Provider>
   );
 };
