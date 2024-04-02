@@ -15,7 +15,7 @@ const LandingView: FC<Props> = (props: Props) => {
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
-      <motion.div {...fadeAnimation(showView, 0.5)}>
+      <motion.div {...fadeAnimation(showView, 0.75)}>
         <Image
           src="/images/logo-lg.png"
           alt="Cyber Frogs"
@@ -27,7 +27,7 @@ const LandingView: FC<Props> = (props: Props) => {
       </motion.div>
       <motion.div
         className="pt-4 uppercase font-rajdhani-bold text-xl text-center"
-        {...fadeAnimation(showView, 1.5)}
+        {...fadeAnimation(showView, 1.75)}
       >
         Presented by slimes studio
       </motion.div>
