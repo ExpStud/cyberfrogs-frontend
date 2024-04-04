@@ -8,7 +8,7 @@ const LegacyWebsiteButton: FC<Props> = ({ className }) => {
   return (
     <div className={className}>
       <a
-        href="https://cyberfrogs.io/"
+        href="https://legacy.cyberfrogs.io/"
         rel="noopener noreferrer"
         target="_blank"
         onMouseEnter={() => setHover(true)}
