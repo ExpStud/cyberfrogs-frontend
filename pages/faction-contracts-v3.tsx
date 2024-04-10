@@ -1,4 +1,5 @@
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, NextPage } from "next";
+import { PageLayout } from "src/components";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { res } = context;
@@ -12,3 +13,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // You should return an object from getServerSideProps
   return { props: {} };
 };
+
+const FactionContracts: NextPage = () => {
+  return (
+    <PageLayout>
+      <></>
+    </PageLayout>
+  );
+};
+export default FactionContracts;
