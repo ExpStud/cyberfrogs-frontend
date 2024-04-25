@@ -12,6 +12,7 @@ import { ViewContext } from "@contexts";
 import Image from "next/image";
 interface Props {
   children: ReactNode;
+  header?: boolean;
   footer?: boolean;
   fixed?: boolean; //prevents scroll
   absolute?: boolean; //allows scroll
@@ -21,6 +22,7 @@ interface Props {
 
 const PageLayout: FC<Props> = (props: Props) => {
   const {
+    header = true,
     footer = true,
     fixed = false,
     absolute = false,
@@ -53,7 +55,7 @@ const PageLayout: FC<Props> = (props: Props) => {
           twitter="CyberFrogsNFT"
         />
         {/* header */}
-        {/* <Header type={headerType} /> */}
+        {header && <Header type={headerType} />}
 
         {/* body */}
         <motion.main

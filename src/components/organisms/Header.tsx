@@ -6,6 +6,7 @@ import {
   Variants,
 } from "framer-motion";
 import { HeaderContent } from "@components";
+
 interface Props {
   showHeader?: boolean;
   type?: string;
