@@ -5,7 +5,7 @@ import {
   useScroll,
   Variants,
 } from "framer-motion";
-import { HeaderContent } from "@components";
+import { Navigation } from "@components";
 
 interface Props {
   showHeader?: boolean;
@@ -84,14 +84,14 @@ const Header: FC<Props> = (props: Props) => {
       } `}
     >
       {type !== "scroll" ? (
-        <HeaderContent />
+        <Navigation />
       ) : (
         <motion.div
           variants={headerVariants}
           initial={showHeader ? "show" : "hidden"}
           animate={animateHeader ? "show" : "hidden"}
         >
-          <HeaderContent />
+          <Navigation />
         </motion.div>
       )}
     </header>

@@ -1,14 +1,21 @@
 import { FC, useState } from "react";
-import { CloseIcon, Logo, Menu, MenuIcon } from "@components";
+import { CloseIcon, Logo, Menu, MenuIcon, NavigationItem } from "@components";
 import { AnimatePresence, motion } from "framer-motion";
-import { midExitAnimation } from "@constants";
+import { midExitAnimation, navigationData } from "@constants";
 
-const HeaderContent: FC = () => {
+const Navigation: FC = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   return (
-    <div className="w-screen flex items-center justify-between px-6 lg:px-[8vw] py-3 lg:py-6  z-20">
+    <div className="nav-px py-3 lg:py-6 w-screen flex items-center justify-between z-20 ">
       <Logo />
+
       {/* desktop nav */}
+      <div className="flex gap-10">
+        {navigationData.map((nav, index) => (
+          <NavigationItem key={index} item={nav} />
+        ))}
+      </div>
+
       {/* mobile nav */}
       <AnimatePresence mode="wait">
         {!openMenu ? (
@@ -36,4 +43,4 @@ const HeaderContent: FC = () => {
     </div>
   );
 };
-export default HeaderContent;
+export default Navigation;

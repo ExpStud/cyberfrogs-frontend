@@ -1,26 +1,20 @@
 import { FC } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { enterAnimation } from "@constants";
 import Link from "next/link";
 
 const Logo: FC = () => {
   return (
-    <motion.div
-      className="my-0 flex items-center gap-2 cursor-pointer"
-      {...enterAnimation}
-    >
+    <div className="my-0 flex items-center gap-2 cursor-pointer">
       <Link href="/">
         <Image
-          src="/images/logo.png"
+          src="/images/logo.svg"
           height={80}
           width={101}
           alt="Logo"
           priority
-          className="transition-all duration-300 opacity-80 hover:opacity-100"
         />
       </Link>
-    </motion.div>
+    </div>
   );
 };
 export default Logo;

@@ -1,6 +1,6 @@
 import { Dispatch, FC, SetStateAction, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { IconBar, NavItem } from "@components";
+import { IconBar, NavigationItem } from "@components";
 import Link from "next/link";
 import { useWindowSize } from "@hooks";
 import { fadeVariants } from "@constants";
@@ -64,8 +64,8 @@ const Menu: FC<Props> = (props: Props) => {
             exit="closed"
           >
             <div className="absolute left-1/2 top-[45%] transform -translate-x-1/2 -translate-y-1/2  flex flex-col items-center justify-start text-4xl sm:text-6xl gap-2">
-              {/* <NavItem href="/about">About</NavItem> */}
-              {/* <NavItem href="/more">More</NavItem> */}
+              {/* <NavigationItem href="/about">About</NavigationItem> */}
+              {/* <NavigationItem href="/more">More</NavigationItem> */}
             </div>
             <IconBar className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 bottom-3" />
           </motion.div>

@@ -5,3 +5,12 @@ export type SocialIcon = {
   url: string;
   component: ComponentType<any>;
 };
+
+export type Navigation = {
+  name: string;
+  href?: string;
+};
+
+export type NavigationData = Navigation & {
+  dropdown?: Navigation[];
+};

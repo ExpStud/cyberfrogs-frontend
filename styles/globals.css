@@ -115,22 +115,22 @@ html {
 }
 
 /* Animations */
-.transition-1000{
+.transition-1000 {
   @apply transition-all duration-1000;
 }
-.transition-500{
+.transition-500 {
   @apply transition-all duration-500;
 }
-.transition-300{
+.transition-300 {
   @apply transition-all duration-300;
 }
-.transition-200{
+.transition-200 {
   @apply transition-all duration-300;
 }
 
 /* Custom */
 .icon-opacity {
-  @apply transition-200 opacity-35 hover:opacity-90;
+  @apply transition-200 opacity-35 hover:opacity-100;
 } 
 .light-top {
   border-radius: 1920px;
@@ -139,4 +139,20 @@ html {
 }
 .gradient-top {
   background: linear-gradient(180deg, rgba(5, 17, 13, 0.75) 0%, rgba(12, 44, 33, 0.00) 100%);
+}
+.nav-px {
+  @apply  px-6 md:px-10 lg:px-[8vw] 2xl:px-0 2xl:max-w-[1520px] 3xl:max-w-[1750px];
+}
+
+.text-highlight {
+  color: #FFF79E;
+  text-shadow: 0px 0px 48.51px rgba(255, 247, 158, 0.50), 0px 0px 13.86px rgba(255, 247, 158, 0.50), 0px 0px 6.93px rgba(255, 247, 158, 0.50);
+
+}
+.svg-highlight {
+  width: 168px;
+  height: 8px;
+  flex-shrink: 0;
+  fill: #FFF79E;
+  filter: drop-shadow(0px 0px 16.2px #FFF79E) drop-shadow(0px 0px 32.4px #FFF79E) drop-shadow(0px 0px 113.4px #FFF79E);
 }

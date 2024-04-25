@@ -18,11 +18,11 @@ const Logo = dynamic(() => import("./atoms/Logo"));
 const Copyright = dynamic(() => import("./atoms/Copyright"));
 //molecules
 const PageHead = dynamic(() => import("./molecules/PageHead"));
-const NavItem = dynamic(() => import("./molecules/NavItem"));
+const NavigationItem = dynamic(() => import("./molecules/NavigationItem"));
 const Modal = dynamic(() => import("./molecules/Modal"));
 const IconBar = dynamic(() => import("./molecules/IconBar"));
 const SplashScreen = dynamic(() => import("./molecules/SplashScreen"));
-const HeaderContent = dynamic(() => import("./molecules/HeaderContent"));
+const Navigation = dynamic(() => import("./organisms/Navigation"));
 const LegacyWebsiteButton = dynamic(() => import("./molecules/LegacyWebsiteButton"));
 //organisms
 const Header = dynamic(() => import("./organisms/Header"));
@@ -46,7 +46,7 @@ export {
   LoadCircle,
   ExpIcon,
   MenuIcon,
-  NavItem,
+  NavigationItem,
   CloseIcon,
   Modal,
   Menu,
@@ -54,7 +54,7 @@ export {
   SplashScreen,
   LandingView,
   ImageShimmer,
-  HeaderContent,
+  Navigation,
   ImageModal,
   TensorIcon,
   TwitterIcon,

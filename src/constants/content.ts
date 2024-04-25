@@ -1,4 +1,4 @@
-import { SocialIcon } from "@types";
+import { NavigationData, SocialIcon } from "@types";
 import { MagicEdenIcon, TensorIcon, TwitterIcon, DiscordIcon, YouTubeIcon } from "@components";
 
 export const socialIcons: SocialIcon[] = [
@@ -26,5 +26,32 @@ export const socialIcons: SocialIcon[] = [
     name: "YouTube",
     url: "https://www.youtube.com/@cyberfrogsnft",
     component: YouTubeIcon,
+  },
+];
+
+
+export const navigationData: NavigationData[] = [
+  {
+    name: "About",
+    href: "/about",
+  },
+  {
+    name: "Explorer",
+    href: "/explorer",
+  },
+  {
+    name: "My Cyber Frogs",
+    dropdown: [
+      { name: "CF1", href: "/" },
+      { name: "CF2", href: "/" },
+    ],
+  },
+  {
+    name: "Buy",
+
+    dropdown: [
+      { name: "B1", href: "/" },
+      { name: "B2", href: "/" },
+    ],
   },
 ];
