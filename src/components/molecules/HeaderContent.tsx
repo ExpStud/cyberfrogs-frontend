@@ -1,28 +1,34 @@
 import { FC, useState } from "react";
 import { CloseIcon, Logo, Menu, MenuIcon } from "@components";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { midExitAnimation } from "@constants";
 
 const HeaderContent: FC = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   return (
-    <div className="w-screen flex items-center justify-between px-4 md:px-6 py-4 z-20">
+    <div className="w-screen flex items-center justify-between px-6 lg:px-[8vw] py-3 lg:py-6  z-20">
       <Logo />
+      {/* desktop nav */}
+      {/* mobile nav */}
       <AnimatePresence mode="wait">
         {!openMenu ? (
-          <div
+          <motion.div
             key="menu-icon"
             onClick={() => setOpenMenu(true)}
-            className="cursor-pointer"
+            className="cursor-pointer lg:hidden"
+            {...midExitAnimation}
           >
             <MenuIcon />
-          </div>
+          </motion.div>
         ) : (
-          <div
+          <motion.div
+            key="clise-icon"
             onClick={() => setOpenMenu(false)}
-            className="cursor-pointer z-[100]"
+            className="cursor-pointer z-[100] lg:hidden"
+            {...midExitAnimation}
           >
             <CloseIcon />
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
 

@@ -79,20 +79,20 @@ const Header: FC<Props> = (props: Props) => {
 
   return (
     <header
-      className={`top-0 z-10 transition-all duration-500 ${
+      className={`top-0 z-10 h-0 transition-all duration-500 ${
         type === "scroll" ? "fixed" : type
       } `}
     >
       {type !== "scroll" ? (
         <HeaderContent />
       ) : (
-        <motion.aside
+        <motion.div
           variants={headerVariants}
           initial={showHeader ? "show" : "hidden"}
           animate={animateHeader ? "show" : "hidden"}
         >
           <HeaderContent />
-        </motion.aside>
+        </motion.div>
       )}
     </header>
   );
