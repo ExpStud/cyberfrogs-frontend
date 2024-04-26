@@ -18,12 +18,6 @@ const NavigationItem: FC<NavigationItemProps> = (
   const active = item?.href && router.asPath === item?.href;
 
   const handleClick = () => {
-    //connect wallet
-    // if (item?.connectWallet) {
-    //   if (publicKey) setVisible(true);
-    //   else setVisible(true);
-    // }
-
     if (callback) {
       callback();
       return;
@@ -37,7 +31,7 @@ const NavigationItem: FC<NavigationItemProps> = (
 
   return (
     <div
-      className="hidden lg:flex relative cursor-pointer flex-col gap-1 w-[168px]"
+      className="flex relative cursor-pointer flex-col gap-1 w-min w-[168px]"
       onClick={handleClick}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
@@ -56,7 +50,7 @@ const NavigationItem: FC<NavigationItemProps> = (
 
       {/* bottom border */}
       {active ? (
-        <GoldBorderSVG className="absolute -z-10 -left-[115px] -top-[59px] cursor-default" />
+        <GoldBorderSVG className="absolute -z-10 -left-[115px] -top-[59px] cursor-default s" />
       ) : (
         <GreenBorderSVG hover={hover} />
       )}

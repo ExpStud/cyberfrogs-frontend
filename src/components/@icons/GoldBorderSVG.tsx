@@ -1,15 +1,20 @@
 import { FC, SVGProps } from "react";
 
-interface Props extends SVGProps<SVGSVGElement> {}
+interface Props extends SVGProps<SVGSVGElement> {
+  hover?: boolean;
+  minX?: number;
+}
 
 const GoldBorderSVG: FC<Props> = (props: Props) => {
-  const { ...componentProps } = props;
+  const { hover = false, minX = 0, ...componentProps } = props;
+
+  const width = 396 - minX;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="396"
+      width={width}
       height="206"
-      viewBox="0 0 396 206"
+      viewBox={`${minX} 0 396 206`}
       fill="none"
       className={componentProps.className}
     >

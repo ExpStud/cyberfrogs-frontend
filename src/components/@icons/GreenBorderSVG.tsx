@@ -2,16 +2,19 @@ import { FC, SVGProps } from "react";
 
 interface Props extends SVGProps<SVGSVGElement> {
   hover?: boolean;
+  minX?: number;
 }
 
 const GreenBorderSVG: FC<Props> = (props: Props) => {
-  const { hover = false } = props;
+  const { hover = false, minX = 0 } = props;
+
+  const width = 168 - minX;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="168"
+      width={width}
       height="11"
-      viewBox="0 0 168 11"
+      viewBox={`${minX} 0 168 11`}
       className={`transition-200 ${
         hover ? "fill-cf-green-light" : "fill-cf-green-dark "
       }`}
