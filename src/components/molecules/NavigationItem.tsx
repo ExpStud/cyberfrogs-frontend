@@ -2,31 +2,31 @@ import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { NavigationData } from "@types";
 import { GreenBorderSVG, GoldBorderSVG } from "@components";
-import { useWalletModal } from "@solana/wallet-adapter-react-ui";
-import { useWallet } from "@solana/wallet-adapter-react";
-import { truncatePubKey } from "@utils";
 
 interface NavigationItemProps {
   item: NavigationData;
+  callback?: () => void;
 }
 const NavigationItem: FC<NavigationItemProps> = (
   props: NavigationItemProps
 ) => {
-  const { item } = props;
+  const { item, callback } = props;
 
   const [hover, setHover] = useState<boolean>(false);
 
   const router = useRouter();
   const active = item?.href && router.asPath === item?.href;
 
-  const { setVisible } = useWalletModal();
-  const { publicKey } = useWallet();
-
   const handleClick = () => {
     //connect wallet
-    if (item?.connectWallet) {
-      if (publicKey) setVisible(true);
-      else setVisible(true);
+    // if (item?.connectWallet) {
+    //   if (publicKey) setVisible(true);
+    //   else setVisible(true);
+    // }
+
+    if (callback) {
+      callback();
+      return;
     }
 
     //internal link
@@ -51,9 +51,7 @@ const NavigationItem: FC<NavigationItemProps> = (
             : "text-cf-white text-opacity-75"
         }`}
       >
-        {item?.connectWallet && publicKey
-          ? truncatePubKey(publicKey)
-          : item.name}
+        {item.name}
       </p>
 
       {/* bottom border */}

@@ -9,7 +9,7 @@ export type SocialIcon = {
 export type Navigation = {
   name: string;
   href?: string;
-  connectWallet?: boolean
+  component?: ComponentType<any>;
 };
 
 export type NavigationData = Navigation & {

@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, Fragment, useState } from "react";
 import { CloseIcon, Logo, Menu, MenuIcon, NavigationItem } from "@components";
 import { AnimatePresence, motion } from "framer-motion";
 import { midExitAnimation, navigationData } from "@constants";
@@ -13,12 +13,14 @@ const Navigation: FC = () => {
       {/* desktop nav */}
       <div className="flex gap-3 xl:gap-10">
         {navigationData.map((nav, index) => (
-          <NavigationItem key={index} item={nav} />
+          <Fragment key={index}>
+            {nav?.component ? <nav.component /> : <NavigationItem item={nav} />}
+          </Fragment>
         ))}
       </div>
 
       {/* mobile nav */}
-      <AnimatePresence mode="wait">
+      {/* <AnimatePresence mode="wait">
         {!openMenu ? (
           <motion.div
             key="menu-icon"
@@ -40,7 +42,7 @@ const Navigation: FC = () => {
         )}
       </AnimatePresence>
 
-      <Menu toggleMenu={setOpenMenu} open={openMenu} />
+      <Menu toggleMenu={setOpenMenu} open={openMenu} /> */}
     </div>
   );
 };

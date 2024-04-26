@@ -18,6 +18,7 @@ const LoadCircle = dynamic(() => import("./atoms/LoadSpinner"));
 const ImageShimmer = dynamic(() => import("./atoms/ImageShimmer"));
 const Logo = dynamic(() => import("./atoms/Logo"));
 const Copyright = dynamic(() => import("./atoms/Copyright"));
+const ConnectWalletButton = dynamic(() => import("./atoms/ConnectWalletButton"));
 //molecules
 const PageHead = dynamic(() => import("./molecules/PageHead"));
 const NavigationItem = dynamic(() => import("./molecules/NavigationItem"));
@@ -64,5 +65,6 @@ export {
   LegacyWebsiteButton,
   Copyright,
   GreenBorderSVG,
-  GoldBorderSVG
+  GoldBorderSVG,
+  ConnectWalletButton
 }

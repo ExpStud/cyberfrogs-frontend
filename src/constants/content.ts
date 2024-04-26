@@ -1,5 +1,5 @@
 import { NavigationData, SocialIcon } from "@types";
-import { MagicEdenIcon, TensorIcon, TwitterIcon, DiscordIcon, YouTubeIcon } from "@components";
+import { MagicEdenIcon, TensorIcon, TwitterIcon, DiscordIcon, YouTubeIcon, ConnectWalletButton } from "@components";
 
 export const socialIcons: SocialIcon[] = [
   {
@@ -55,6 +55,6 @@ export const navigationData: NavigationData[] = [
   },
   {
     name: "Connect",
-    connectWallet: true,
+    component: ConnectWalletButton,
   }
 ];

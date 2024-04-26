@@ -109,21 +109,23 @@ export const backgroundAnimations = {
 
 //dropdown
 export const dropdownAnimations: Variants = {
-  hidden: { y: -25, opacity: 0 },
+  hidden: { y: -15, opacity: 0, zIndex: -10 },
   show: {
     y: 0,
     opacity: 1,
+    zIndex: -10,
     transition: {
-      duration: 0.5,
+      duration: 0.3,
       // delay: 0.5,
       staggerChildren: 0.1,
       ease: "easeInOut",
-    },
+    }
   },
+  exit: { y: -10, opacity: 0, transition: { duration: 0.2 }},
 };
 export const dropdownItemsAnimations = {
-  hidden: { opacity: 1 },
-  show: { opacity: 1 },
+  closed: { opacity: 1 },
+  open: { opacity: 1 },
   transition: {
     duration: 0.4,
     ease: "easeInOut",
@@ -132,6 +134,7 @@ export const dropdownItemsAnimations = {
     damping: 24,
   },
 };
+
 
 export const fadeVariants = {
   closed: {

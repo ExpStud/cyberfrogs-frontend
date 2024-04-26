@@ -69,20 +69,25 @@ html {
   }
 }
 
-/* Wallet Adapter */
-
-.wallet-adapter-modal-wrapper { 
-  @apply !rounded-sm !bg-opacity-90 !uppercase;
+/* wallet adapter modal */
+.wallet-adapter-modal-wrapper {
+  @apply !bg-cf-green;
 }
-.wallet-adapter-modal-wrapper h1{ 
-  @apply !text-cf-white;
+.wallet-adapter-modal-button-close {
+  @apply !bg-cf-green transition-200 hover:!bg-cf-green-dark;
 }
-.wallet-adapter-button { 
-  @apply hover:!bg-opacity-100;
+.wallet-adapter-modal-title {
+  @apply !text-xl !mt-16 !mx-12 !mb-12 !p-0 !opacity-75 !font-rajdhani-semibold;
 }
-.wallet-adapter-modal-button-close{
-  @apply !bg-transparent;
+.wallet-adapter-modal-list-more {
+  @apply !opacity-50;
 }
+.wallet-adapter-button {
+  @apply transition-200 hover:!bg-cf-green-dark !text-opacity-50 font-semibold;
+}
+   /*.wallet-adapter-button-start-icon {
+  @apply opacity-90;
+} */
 
 /*  Layout  */
 
