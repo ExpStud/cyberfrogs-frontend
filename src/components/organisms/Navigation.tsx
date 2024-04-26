@@ -5,12 +5,13 @@ import { midExitAnimation, navigationData } from "@constants";
 
 const Navigation: FC = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
+
   return (
     <div className="nav-px py-3 lg:py-6 w-screen flex items-center justify-between z-20 ">
       <Logo />
 
       {/* desktop nav */}
-      <div className="flex gap-10">
+      <div className="flex gap-3 xl:gap-10">
         {navigationData.map((nav, index) => (
           <NavigationItem key={index} item={nav} />
         ))}

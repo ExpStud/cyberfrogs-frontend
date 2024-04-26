@@ -9,6 +9,8 @@ const MagicEdenIcon = dynamic(() => import("./@icons/MagicEdenIcon"));
 const TensorIcon = dynamic(() => import("./@icons/TensorIcon"));
 const TwitterIcon = dynamic(() => import("./@icons/TwitterIcon"));
 const YouTubeIcon = dynamic(() => import("./@icons/YouTubeIcon"));
+const GreenBorderSVG = dynamic(() => import("./@icons/GreenBorderSVG"));
+const GoldBorderSVG = dynamic(() => import("./@icons/GoldBorderSVG"));
 //atoms
 const NumberInput = dynamic(() => import("./atoms/NumberInput"));
 const TextInput = dynamic(() => import("./atoms/TextInput"));
@@ -60,5 +62,7 @@ export {
   TwitterIcon,
   YouTubeIcon,
   LegacyWebsiteButton,
-  Copyright
+  Copyright,
+  GreenBorderSVG,
+  GoldBorderSVG
 }

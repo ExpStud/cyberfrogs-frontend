@@ -48,10 +48,13 @@ export const navigationData: NavigationData[] = [
   },
   {
     name: "Buy",
-
     dropdown: [
       { name: "B1", href: "/" },
       { name: "B2", href: "/" },
     ],
   },
+  {
+    name: "Connect",
+    connectWallet: true,
+  }
 ];

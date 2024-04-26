@@ -1,6 +1,10 @@
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
-import { NavigationData } from "src/types";
+import { NavigationData } from "@types";
+import { GreenBorderSVG, GoldBorderSVG } from "@components";
+import { useWalletModal } from "@solana/wallet-adapter-react-ui";
+import { useWallet } from "@solana/wallet-adapter-react";
+import { truncatePubKey } from "@utils";
 
 interface NavigationItemProps {
   item: NavigationData;
@@ -15,7 +19,17 @@ const NavigationItem: FC<NavigationItemProps> = (
   const router = useRouter();
   const active = item?.href && router.asPath === item?.href;
 
+  const { setVisible } = useWalletModal();
+  const { publicKey } = useWallet();
+
   const handleClick = () => {
+    //connect wallet
+    if (item?.connectWallet) {
+      if (publicKey) setVisible(true);
+      else setVisible(true);
+    }
+
+    //internal link
     if (item?.href) {
       router.push(item.href);
     }
@@ -23,7 +37,7 @@ const NavigationItem: FC<NavigationItemProps> = (
 
   return (
     <div
-      className="relative cursor-pointer flex flex-col gap-1 w-[168px]"
+      className="hidden lg:flex relative cursor-pointer flex-col gap-1 w-[168px]"
       onClick={handleClick}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
@@ -37,107 +51,16 @@ const NavigationItem: FC<NavigationItemProps> = (
             : "text-cf-white text-opacity-75"
         }`}
       >
-        {item.name}
+        {item?.connectWallet && publicKey
+          ? truncatePubKey(publicKey)
+          : item.name}
       </p>
-      {/* bottom border svg */}
+
+      {/* bottom border */}
       {active ? (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="396"
-          height="206"
-          viewBox="0 0 396 206"
-          fill="none"
-          className="absolute -z-10 -left-[115px] -top-[59px] cursor-default"
-        >
-          <g filter="url(#filter0_ddd_496_560)">
-            <path d="M114 84H282V88H184L180 92H114V84Z" fill="#FFF79E" />
-          </g>
-          <defs>
-            <filter
-              id="filter0_ddd_496_560"
-              x="0.599998"
-              y="-29.4"
-              width="394.8"
-              height="234.8"
-              filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
-            >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feColorMatrix
-                in="SourceAlpha"
-                type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                result="hardAlpha"
-              />
-              <feOffset />
-              <feGaussianBlur stdDeviation="8.1" />
-              <feColorMatrix
-                type="matrix"
-                values="0 0 0 0 1 0 0 0 0 0.968627 0 0 0 0 0.619608 0 0 0 1 0"
-              />
-              <feBlend
-                mode="normal"
-                in2="BackgroundImageFix"
-                result="effect1_dropShadow_496_560"
-              />
-              <feColorMatrix
-                in="SourceAlpha"
-                type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                result="hardAlpha"
-              />
-              <feOffset />
-              <feGaussianBlur stdDeviation="16.2" />
-              <feColorMatrix
-                type="matrix"
-                values="0 0 0 0 1 0 0 0 0 0.968627 0 0 0 0 0.619608 0 0 0 1 0"
-              />
-              <feBlend
-                mode="normal"
-                in2="effect1_dropShadow_496_560"
-                result="effect2_dropShadow_496_560"
-              />
-              <feColorMatrix
-                in="SourceAlpha"
-                type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                result="hardAlpha"
-              />
-              <feOffset />
-              <feGaussianBlur stdDeviation="56.7" />
-              <feColorMatrix
-                type="matrix"
-                values="0 0 0 0 1 0 0 0 0 0.968627 0 0 0 0 0.619608 0 0 0 1 0"
-              />
-              <feBlend
-                mode="normal"
-                in2="effect2_dropShadow_496_560"
-                result="effect3_dropShadow_496_560"
-              />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="effect3_dropShadow_496_560"
-                result="shape"
-              />
-            </filter>
-          </defs>
-        </svg>
+        <GoldBorderSVG className="absolute -z-10 -left-[115px] -top-[59px] cursor-default" />
       ) : (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="168"
-          height="11"
-          viewBox="0 0 168 11"
-          className={`transition-200 ${
-            hover ? "fill-cf-green-light" : "fill-cf-green-dark "
-          }`}
-        >
-          <rect width="168" height="4" />
-          <rect x="165" y="8" width="3" height="3" />
-          <rect x="160" y="8" width="3" height="3" />
-          <rect x="155" y="8" width="3" height="3" />
-        </svg>
+        <GreenBorderSVG hover={hover} />
       )}
     </div>
   );
