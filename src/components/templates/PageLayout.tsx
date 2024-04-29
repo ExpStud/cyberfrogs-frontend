@@ -17,6 +17,7 @@ interface Props {
   fixed?: boolean; //prevents scroll
   absolute?: boolean; //allows scroll
   headerType?: string;
+  footerType?: "absolute" | "relative";
   assets?: boolean[];
 }
 
@@ -26,7 +27,8 @@ const PageLayout: FC<Props> = (props: Props) => {
     footer = true,
     fixed = false,
     absolute = false,
-    headerType = "absolute",
+    headerType = "relative",
+    footerType = "absolute",
     children,
     assets = [],
   } = props;
@@ -55,18 +57,18 @@ const PageLayout: FC<Props> = (props: Props) => {
           twitter="CyberFrogsNFT"
         />
         {/* header */}
-        {header && <Header type={headerType} />}
+        {header && <Header />}
 
         {/* body */}
         <motion.main
-          className={`flex flex-col h-full w-full overflow-x-clip `}
+          className={`flex flex-col h-full w-full overflow-x-clip`}
           {...enterAnimation}
         >
           {children}
         </motion.main>
 
         {/* footer */}
-        {footer && <Footer />}
+        {footer && <Footer footerType={footerType} />}
 
         {/* modals */}
         <AnimatePresence mode="wait">

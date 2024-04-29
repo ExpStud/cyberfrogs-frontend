@@ -8,6 +8,7 @@
       "@hooks": ["src/hooks/"],
       "@utils": ["src/utils"],
       "@contexts": ["src/contexts"],
+      "@explorer-components": ["apps/explorer/components/"],
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
