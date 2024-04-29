@@ -137,6 +137,9 @@ html {
 .icon-opacity {
   @apply transition-200 opacity-35 hover:opacity-100;
 } 
+.icon-opacity-60 {
+  @apply transition-200 opacity-60 hover:opacity-100;
+} 
 .light-top {
   border-radius: 1920px;
   background: rgba(124, 225, 61, 0.2);

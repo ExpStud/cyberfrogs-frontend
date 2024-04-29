@@ -28,7 +28,9 @@ export const socialIcons: SocialIcon[] = [
     component: YouTubeIcon,
   },
 ];
-
+export const getSocialIconByName = (name: string): SocialIcon | undefined => {
+  return socialIcons.find(icon => icon.name === name);
+};
 
 export const navigationData: NavigationData[] = [
   {

@@ -11,6 +11,9 @@ const TwitterIcon = dynamic(() => import("./@icons/TwitterIcon"));
 const YouTubeIcon = dynamic(() => import("./@icons/YouTubeIcon"));
 const GreenBorderSVG = dynamic(() => import("./@icons/GreenBorderSVG"));
 const GoldBorderSVG = dynamic(() => import("./@icons/GoldBorderSVG"));
+const ThorGreenIcon = dynamic(() => import("./@icons/ThorGreenIcon"));
+const TwitterGreenIcon = dynamic(() => import("./@icons/TwitterGreenIcon"));
+const DiscordGreenIcon = dynamic(() => import("./@icons/DiscordGreenIcon"));
 //atoms
 const NumberInput = dynamic(() => import("./atoms/NumberInput"));
 const TextInput = dynamic(() => import("./atoms/TextInput"));
@@ -66,5 +69,8 @@ export {
   Copyright,
   GreenBorderSVG,
   GoldBorderSVG,
-  ConnectWalletButton
+  ConnectWalletButton,
+  ThorGreenIcon,
+  TwitterGreenIcon,
+  DiscordGreenIcon,
 }

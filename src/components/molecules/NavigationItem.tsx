@@ -31,7 +31,7 @@ const NavigationItem: FC<NavigationItemProps> = (
 
   return (
     <div
-      className="flex relative cursor-pointer flex-col gap-1 w-min w-[168px]"
+      className="flex relative cursor-pointer flex-col gap-1 w-[168px]"
       onClick={handleClick}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
