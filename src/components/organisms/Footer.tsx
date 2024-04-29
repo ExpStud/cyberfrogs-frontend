@@ -1,17 +1,13 @@
 import { FC } from "react";
 import { Copyright, IconBar, LegacyWebsiteButton } from "@components";
 
-interface Props {
-  footerType?: "absolute" | "relative";
-}
+interface Props {}
 const Footer: FC<Props> = (props: Props) => {
-  const { footerType = "relative" } = props;
+  const {} = props;
 
   return (
     <footer
-      className={`nav-px py-6 lg:py-8  w-screen flex flex-col-reverse md:flex-row md:justify-center items-center gap-6 md:gap-0 ${
-        footerType === "absolute" ? "absolute inset-x-0 bottom-0" : "relative"
-      }`}
+      className="nav-px py-6 lg:py-8  w-screen flex flex-col-reverse md:flex-row md:justify-center items-center gap-6 md:gap-0"
       key="footer"
     >
       <Copyright className="w-full md:w-1/3" />

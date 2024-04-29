@@ -16,8 +16,6 @@ interface Props {
   footer?: boolean;
   fixed?: boolean; //prevents scroll
   absolute?: boolean; //allows scroll
-  headerType?: string;
-  footerType?: "absolute" | "relative";
   assets?: boolean[];
 }
 
@@ -27,8 +25,6 @@ const PageLayout: FC<Props> = (props: Props) => {
     footer = true,
     fixed = false,
     absolute = false,
-    headerType = "relative",
-    footerType = "absolute",
     children,
     assets = [],
   } = props;
@@ -68,7 +64,7 @@ const PageLayout: FC<Props> = (props: Props) => {
         </motion.main>
 
         {/* footer */}
-        {footer && <Footer footerType={footerType} />}
+        {footer && <Footer />}
 
         {/* modals */}
         <AnimatePresence mode="wait">
