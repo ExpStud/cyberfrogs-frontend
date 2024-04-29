@@ -50,7 +50,7 @@ const NavigationItem: FC<NavigationItemProps> = (
 
       {/* bottom border */}
       {active ? (
-        <GoldBorderSVG className="absolute -z-10 -left-[115px] -top-[59px] cursor-default s" />
+        <GoldBorderSVG className="absolute -z-10 -left-[115px] -top-[60px] cursor-default" />
       ) : (
         <GreenBorderSVG hover={hover} />
       )}

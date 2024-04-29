@@ -30,6 +30,7 @@ const IconBar = dynamic(() => import("./molecules/IconBar"));
 const SplashScreen = dynamic(() => import("./molecules/SplashScreen"));
 const Navigation = dynamic(() => import("./organisms/Navigation"));
 const LegacyWebsiteButton = dynamic(() => import("./molecules/LegacyWebsiteButton"));
+const HeaderIcons = dynamic(() => import("./molecules/HeaderIcons"));
 //organisms
 const Header = dynamic(() => import("./organisms/Header"));
 const Footer = dynamic(() => import("./organisms/Footer"));
@@ -73,4 +74,5 @@ export {
   ThorGreenIcon,
   TwitterGreenIcon,
   DiscordGreenIcon,
+  HeaderIcons
 }
