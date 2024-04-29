@@ -1,7 +1,7 @@
 import { NavigationItem } from "@components";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { useWalletMultiButton } from "@solana/wallet-adapter-base-ui";
-
+import Image from "next/image";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { truncatePubKey } from "@utils";
 import {
@@ -209,6 +209,14 @@ const WalletDropdown: FC<{
           </filter>
         </defs>
       </svg>
+      <Image
+        src="/images/icons/threedots.svg"
+        width={82}
+        height={33}
+        alt="dots"
+        className="absolute -bottom-7 right-6"
+      />
+      {/* </motion.div> */}
     </motion.div>
   );
 };
