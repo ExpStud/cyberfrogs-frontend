@@ -11,7 +11,7 @@ const LandingView: FC<Props> = (props: Props) => {
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
-      <div className="relative w-[130vw] xl:w-[75vw] h-[75vh] ">
+      <div className="relative w-[130vw] xl:w-[75vw] h-[50vh] md:h-[60vh] xl:h-[75vh] ">
         <Image
           src="/images/graphics/landing.png"
           alt="Cyber Frogs"
