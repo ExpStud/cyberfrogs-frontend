@@ -1,10 +1,4 @@
-import {
-  Dispatch,
-  FC,
-  Fragment,
-  SetStateAction,
-  useEffect,
-} from "react";
+import { Dispatch, FC, Fragment, SetStateAction, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { HeaderIcons, NavigationItem } from "@components";
 import { useWindowSize } from "@hooks";
@@ -34,17 +28,15 @@ const Menu: FC<Props> = (props: Props) => {
       {open && (
         <motion.div
           key="main-menu"
-          // onMouseLeave={() => toggleMenu(false)}
           initial={{ width: 0, opacity: 0 }}
-          animate={{ width: isTablet ? winWidth - 15 : 669, opacity: 1 }}
+          animate={{ width: isTablet ? winWidth - 15 : 720, opacity: 1 }}
           exit={{
             width: 0,
             transition: { duration: 0.5 },
             opacity: 1,
           }}
           transition={{ duration: 0.7 }}
-          className=" bg-cf-green fixed top-0 right-0 z-50xw"
-          // onClick={() => toggleMenu(false)}
+          className=" bg-cf-green fixed top-0 right-0 z-50"
         >
           <motion.div
             className={`px-4 sm:px-6 lg:px-10 py-6 h-screen relative`}
@@ -53,20 +45,20 @@ const Menu: FC<Props> = (props: Props) => {
             animate="open"
             exit="closed"
           >
-            <div className="absolute left-1/2 top-[20vh] transform -translate-x-1/2 ">
-              <div className="flex flex-col gap-12 sm:gap-14 scale-110">
+            <div className="absolute left-1/2  top-[20vh] transform -translate-x-1/2 z-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 scale-110 sm:scale-125">
                 {navigationData.map((nav, index) => (
-                  <Fragment key={index}>
+                  <div key={index} className="w-[185px] px-4">
                     {nav?.component ? (
                       <nav.component />
                     ) : (
                       <NavigationItem item={nav} />
                     )}
-                  </Fragment>
+                  </div>
                 ))}
               </div>
             </div>
-            <HeaderIcons className="block absolute left-1/2 transform -translate-x-1/2 bottom-10" />
+            <HeaderIcons className="block absolute left-1/2 transform -translate-x-1/2 bottom-10 z-0" />
           </motion.div>
         </motion.div>
       )}

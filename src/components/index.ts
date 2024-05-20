@@ -14,6 +14,7 @@ const GoldBorderSVG = dynamic(() => import("./@icons/GoldBorderSVG"));
 const ThorGreenIcon = dynamic(() => import("./@icons/ThorGreenIcon"));
 const TwitterGreenIcon = dynamic(() => import("./@icons/TwitterGreenIcon"));
 const DiscordGreenIcon = dynamic(() => import("./@icons/DiscordGreenIcon"));
+const ArrowIcon = dynamic(() => import("./@icons/ArrowIcon"));
 //atoms
 const NumberInput = dynamic(() => import("./atoms/NumberInput"));
 const TextInput = dynamic(() => import("./atoms/TextInput"));
@@ -21,7 +22,6 @@ const LoadCircle = dynamic(() => import("./atoms/LoadSpinner"));
 const ImageShimmer = dynamic(() => import("./atoms/ImageShimmer"));
 const Logo = dynamic(() => import("./atoms/Logo"));
 const Copyright = dynamic(() => import("./atoms/Copyright"));
-const ConnectWalletButton = dynamic(() => import("./atoms/ConnectWalletButton"));
 //molecules
 const PageHead = dynamic(() => import("./molecules/PageHead"));
 const NavigationItem = dynamic(() => import("./molecules/NavigationItem"));
@@ -31,6 +31,9 @@ const SplashScreen = dynamic(() => import("./molecules/SplashScreen"));
 const Navigation = dynamic(() => import("./organisms/Navigation"));
 const LegacyWebsiteButton = dynamic(() => import("./molecules/LegacyWebsiteButton"));
 const HeaderIcons = dynamic(() => import("./molecules/HeaderIcons"));
+const ConnectWalletButton = dynamic(() => import("./molecules/ConnectWalletButton"));
+const DropdownItem = dynamic(() => import("./molecules/DropdownItem"));
+const Dropdown = dynamic(() => import("./molecules/Dropdown"));
 //organisms
 const Header = dynamic(() => import("./organisms/Header"));
 const Footer = dynamic(() => import("./organisms/Footer"));
@@ -74,5 +77,8 @@ export {
   ThorGreenIcon,
   TwitterGreenIcon,
   DiscordGreenIcon,
-  HeaderIcons
+  HeaderIcons,
+  ArrowIcon,
+  DropdownItem,
+  Dropdown
 }

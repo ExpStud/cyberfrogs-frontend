@@ -121,7 +121,7 @@ export const dropdownAnimations: Variants = {
       ease: "easeInOut",
     }
   },
-  exit: { y: -10, opacity: 0, transition: { duration: 0.2 }},
+  exit: { y: -10, opacity: 0, transition: { duration: 0.1 }},
 };
 export const dropdownItemsAnimations = {
   closed: { opacity: 1 },

@@ -28,6 +28,7 @@ export const socialIcons: SocialIcon[] = [
     component: YouTubeIcon,
   },
 ];
+
 export const getSocialIconByName = (name: string): SocialIcon | undefined => {
   return socialIcons.find(icon => icon.name === name);
 };
@@ -44,15 +45,24 @@ export const navigationData: NavigationData[] = [
   {
     name: "My Cyber Frogs",
     dropdown: [
-      { name: "CF1", href: "/" },
-      { name: "CF2", href: "/" },
+      { name: "Dashboard", href: "/dashboard" },
+      { name: "Staking", href: "/staking" },
+      { name: "Trait Marketplace", href: "/trait-market" },
+      { name: "Auto Thor", href: "/faction-contracts-v3" },
+      { name: "Thor", href: "/thor" },
+      { name: "Thordinals", href: "/thor-btc" },
+      { name: "Rarity", href: "/rarity" },
+      { name: "Faction Missions", href: "/mission" },
+      { name: "Dressing Room", href: "/dressing-room" },
+      { name: "Raffle House", href: "/raffles" },
     ],
   },
   {
     name: "Buy",
     dropdown: [
-      { name: "B1", href: "/" },
-      { name: "B2", href: "/" },
+      { name: "Tensor", href: "https://www.tensor.trade/trade/cyber_frogs" },
+      { name: "Magic Eden - SOL", href: "https://magiceden.io/marketplace/cyber_frogs" },
+      { name: "Magic Eden - BTC", href: "https://magiceden.io/ordinals/marketplace/thordinals" },
     ],
   },
   {
