@@ -1,21 +1,31 @@
 import Image from "next/image";
-import { FC, ReactNode } from "react";
+import { FC, HTMLAttributes, ReactNode } from "react";
 import { motion } from "framer-motion";
 import { dropdownAnimations } from "@constants";
 
-const Dropdown: FC<{
+interface Props extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
-}> = ({ children }) => {
+  grid?: boolean;
+}
+const Dropdown: FC<Props> = ({ children, grid = false }) => {
   return (
     <motion.div
-      className="absolute top-[25px] h-[168px] w-[168px] cursor-default z-50"
+      className={`absolute top-[25px] h-[168px] w-[168px] cursor-default z-50 ${
+        grid ? "-left-20" : ""
+      }`}
       variants={dropdownAnimations}
       initial="hidden"
       animate="show"
       exit="exit"
       key="wallet-dropdown"
     >
-      <div className="z-10 flex flex-col items-center gap-2 pt-4 text-sm uppercase">
+      <div
+        className={`z-10  gap-2 pt-4 text-sm uppercase ${
+          grid
+            ? "grid grid-cols-2 gap-2 w-[305px] ml-1 mt-6"
+            : "flex flex-col items-center"
+        }`}
+      >
         {children}
       </div>
       {/* bg image */}
@@ -25,7 +35,9 @@ const Dropdown: FC<{
         height="231"
         viewBox="0 0 202 231"
         fill="none"
-        className="absolute top-0 -left-[16px] -z-10"
+        className={`absolute top-0 -left-[16px] -z-10 ${
+          grid ? "top-[102px] left-14 scale-[1.9]" : ""
+        }`}
       >
         <g filter="url(#filter0_dddd_2116_102)">
           <path
@@ -128,7 +140,9 @@ const Dropdown: FC<{
         width={82}
         height={33}
         alt="dots"
-        className="absolute -bottom-7 right-6 -z-10"
+        className={`absolute  -z-10 ${
+          grid ? "-right-[54px] -bottom-[182px]" : "-bottom-7 right-6"
+        }`}
       />
     </motion.div>
   );

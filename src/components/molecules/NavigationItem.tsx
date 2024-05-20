@@ -73,7 +73,7 @@ const NavigationItem: FC<NavigationItemProps> = (
         <p
           className={`text-sm tracking-wide transition-200 font-rajdhani-bold uppercase  ${
             active
-              ? "text-highlight"
+              ? "text-highlight mb-5 xl:mb-0"
               : hover
               ? "text-cf-white text-opacity-100"
               : "text-cf-white text-opacity-75"
@@ -92,9 +92,10 @@ const NavigationItem: FC<NavigationItemProps> = (
         <GreenBorderSVG hover={hover} />
       )}
 
+      {/* dropdown */}
       <AnimatePresence>
         {item?.dropdown && showDropdown && (
-          <Dropdown>
+          <Dropdown grid={item.dropdown.length > 3}>
             {item.dropdown.map((data, index) => (
               <DropdownItem
                 key={index}
