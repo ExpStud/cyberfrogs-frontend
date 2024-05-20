@@ -42,7 +42,7 @@ const Navigation: FC = () => {
             </motion.div>
           ) : (
             <motion.div
-              key="clise-icon"
+              key="close-icon"
               onClick={() => setOpenMenu(false)}
               className="cursor-pointer z-[100] "
               {...midExitAnimation}
