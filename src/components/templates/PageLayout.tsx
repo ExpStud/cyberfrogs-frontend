@@ -14,8 +14,8 @@ interface Props {
   children: ReactNode;
   header?: boolean;
   footer?: boolean;
-  fixed?: boolean; //prevents scroll
-  absolute?: boolean; //allows scroll
+  fixed?: boolean;
+  absolute?: boolean;
   assets?: boolean[];
 }
 

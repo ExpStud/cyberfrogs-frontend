@@ -4,11 +4,9 @@ import {
   Fragment,
   SetStateAction,
   useEffect,
-  useRef,
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { HeaderIcons, IconBar, NavigationItem } from "@components";
-import Link from "next/link";
+import { HeaderIcons, NavigationItem } from "@components";
 import { useWindowSize } from "@hooks";
 import { fadeVariants, midExitAnimation, navigationData } from "@constants";
 
