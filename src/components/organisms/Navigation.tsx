@@ -14,7 +14,7 @@ const Navigation: FC = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   return (
-    <div className="nav-px py-3 lg:py-6 w-screen flex items-center justify-between gap-8 z-20">
+    <div className="page-spacing py-3 lg:py-6 w-screen flex items-center justify-between gap-8 z-20">
       <Logo />
 
       {/* desktop nav */}

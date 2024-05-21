@@ -15,3 +15,12 @@ export type Navigation = {
 export type NavigationData = Navigation & {
   dropdown?: Navigation[];
 };
+
+
+export type HeadingType = {
+  path: string;
+  name: string;
+  image: string;
+  imageWidth: number;
+  imageHeight: number;
+};

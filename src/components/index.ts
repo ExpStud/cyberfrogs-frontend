@@ -34,6 +34,8 @@ const HeaderIcons = dynamic(() => import("./molecules/HeaderIcons"));
 const ConnectWalletButton = dynamic(() => import("./molecules/ConnectWalletButton"));
 const DropdownItem = dynamic(() => import("./molecules/DropdownItem"));
 const Dropdown = dynamic(() => import("./molecules/Dropdown"));
+const Heading = dynamic(() => import("./molecules/Heading"));
+
 //organisms
 const Header = dynamic(() => import("./organisms/Header"));
 const Footer = dynamic(() => import("./organisms/Footer"));
@@ -80,5 +82,6 @@ export {
   HeaderIcons,
   ArrowIcon,
   DropdownItem,
-  Dropdown
+  Dropdown,
+  Heading
 }

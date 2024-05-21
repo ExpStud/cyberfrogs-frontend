@@ -1,4 +1,4 @@
-import { NavigationData, SocialIcon } from "@types";
+import { HeadingType, NavigationData, SocialIcon } from "@types";
 import { MagicEdenIcon, TensorIcon, TwitterIcon, DiscordIcon, YouTubeIcon, ConnectWalletButton } from "@components";
 
 export const socialIcons: SocialIcon[] = [
@@ -69,4 +69,29 @@ export const navigationData: NavigationData[] = [
     name: "Connect",
     component: ConnectWalletButton,
   }
+];
+
+
+export const HeadingData: Heading[] = [
+  {
+    path: "/explorer",
+    name: "Explorer",
+    image: "/images/heading/explorer.png",
+    imageWidth: 228,
+    imageHeight: 62,
+  },
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    image: "/images/heading/dashboard.png",
+    imageWidth: 504,
+    imageHeight: 46,
+  },
+  {
+    path: "/raffles",
+    name: "Raffles",
+    image: "/images/heading/raffles.png",
+    imageWidth: 216,
+    imageHeight: 46,
+  },
 ];

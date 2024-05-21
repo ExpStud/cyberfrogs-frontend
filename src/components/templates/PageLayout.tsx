@@ -57,7 +57,7 @@ const PageLayout: FC<Props> = (props: Props) => {
 
         {/* body */}
         <motion.main
-          className={`flex flex-col h-full w-full overflow-x-clip`}
+          className={`page-spacing flex flex-col h-full w-full mt-10`}
           {...enterAnimation}
         >
           {children}
@@ -87,7 +87,7 @@ const PageLayout: FC<Props> = (props: Props) => {
         priority
         className="-z-10 object-cover"
       />
-      <div className="-z-[5] relative w-screen h-[36.9vh]">
+      <div className="-z-[5] absolute top-0 inset-x-0 w-screen h-[36.9vh]">
         <Image
           src="/images/backgrounds/grid.png"
           fill
