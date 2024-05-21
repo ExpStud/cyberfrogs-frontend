@@ -72,7 +72,7 @@ export const navigationData: NavigationData[] = [
 ];
 
 
-export const HeadingData: Heading[] = [
+export const HeadingData: HeadingType[] = [
   {
     path: "/explorer",
     name: "Explorer",
