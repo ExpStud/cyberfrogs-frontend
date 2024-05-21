@@ -61,9 +61,9 @@ const NavigationItem: FC<NavigationItemProps> = (
 
   return (
     <div
-      className={`flex relative cursor-pointer flex-col gap-1 w-[168px] ${
+      className={`flex relative  flex-col gap-1 w-[168px] ${
         showDropdown ? "z-50" : ""
-      }`}
+      } ${active ? "cursor-default" : "cursor-pointer"}`}
       onClick={handleClick}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}

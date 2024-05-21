@@ -5,7 +5,7 @@ import { dropdownAnimations } from "@constants";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
-  grid?: boolean;
+  grid?: boolean; //used for more than 1 column
 }
 const Dropdown: FC<Props> = ({ children, grid = false }) => {
   return (
@@ -20,10 +20,10 @@ const Dropdown: FC<Props> = ({ children, grid = false }) => {
       key="wallet-dropdown"
     >
       <div
-        className={`z-10  gap-2 pt-4 text-sm uppercase ${
+        className={`z-10 pt-4 text-sm uppercase ${
           grid
-            ? "grid grid-cols-2 gap-2 w-[305px] ml-1 mt-6"
-            : "flex flex-col items-center"
+            ? "grid grid-cols-2 gap-3.5 w-[305px] ml-1 mt-6"
+            : "flex flex-col items-center gap-2"
         }`}
       >
         {children}
@@ -141,7 +141,7 @@ const Dropdown: FC<Props> = ({ children, grid = false }) => {
         height={33}
         alt="dots"
         className={`absolute  -z-10 ${
-          grid ? "-right-[54px] -bottom-[182px]" : "-bottom-7 right-6"
+          grid ? "-right-[54px] -bottom-[180px]" : "-bottom-7 right-[20px]"
         }`}
       />
     </motion.div>
