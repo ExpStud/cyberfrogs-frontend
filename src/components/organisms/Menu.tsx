@@ -13,7 +13,7 @@ const Menu: FC<Props> = (props: Props) => {
   const { toggleMenu, open } = props;
   const [winWidth, winHeight] = useWindowSize();
 
-  const isTablet: boolean = winWidth < 900;
+  const isMobile: boolean = winWidth < 730;
   //stop page scroll (when modal or menu open)
   useEffect(() => {
     if (open) document.body.style.overflow = "hidden";
@@ -29,7 +29,7 @@ const Menu: FC<Props> = (props: Props) => {
         <motion.div
           key="main-menu"
           initial={{ width: 0, opacity: 0 }}
-          animate={{ width: isTablet ? winWidth - 15 : 720, opacity: 1 }}
+          animate={{ width: isMobile ? winWidth - 15 : 720, opacity: 1 }}
           exit={{
             width: 0,
             transition: { duration: 0.5 },
@@ -45,10 +45,10 @@ const Menu: FC<Props> = (props: Props) => {
             animate="open"
             exit="closed"
           >
-            <div className="absolute left-1/2  top-[20vh] transform -translate-x-1/2 z-10">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 scale-110 sm:scale-125">
+            <div className="absolute left-1/2 sm:left-[48%]  top-[20vh] transform -translate-x-1/2 z-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 scale-110 sm:scale-125 mr-5">
                 {navigationData.map((nav, index) => (
-                  <div key={index} className="w-[185px] px-4">
+                  <div key={index} className="w-[185px] sm:w-[210px] px-4">
                     {nav?.component ? (
                       <nav.component />
                     ) : (
@@ -64,7 +64,7 @@ const Menu: FC<Props> = (props: Props) => {
       )}
       {open && (
         <motion.div
-          className="-z-10 fixed inset-0 bg-black bg-opacity-60 "
+          className="-z-10 fixed inset-0 bg-black bg-opacity-60 cursor-pointer"
           onClick={() => toggleMenu(false)}
           {...midExitAnimation}
         />

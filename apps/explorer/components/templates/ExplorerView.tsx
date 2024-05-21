@@ -1,9 +1,18 @@
-import { Dispatch, SetStateAction, FC, useEffect, useState, use } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  FC,
+  useEffect,
+  useState,
+  use,
+  useCallback,
+} from "react";
 import Image from "next/image";
 import { Heading } from "@components";
 import { ListingData, TextToggle } from "@explorer-components";
-import { handleAssetLoad } from "@utils";
+import { getAssetsByAuthority, handleAssetLoad } from "@utils";
 import { NftDataType } from "@explorer-types";
+import { NFT } from "src/types";
 
 interface Props {
   setAssets: Dispatch<SetStateAction<boolean[]>>;
@@ -27,6 +36,15 @@ const ExplorerView: FC<Props> = (props: Props) => {
     setListingData(NftData);
   }, []);
 
+  //fetch nft metadata
+  const fetchNftMetadata = useCallback(async () => {
+    const frogs: NFT[] = await getAssetsByAuthority();
+  }, []);
+
+  useEffect(() => {
+    fetchNftMetadata();
+  }, [fetchNftMetadata]);
+
   return (
     <div className="w-full flex flex-col items-start justify-start">
       {/* heading & image */}
@@ -41,6 +59,7 @@ const ExplorerView: FC<Props> = (props: Props) => {
           onLoad={() => handleAssetLoad(0, setAssets)}
         />
       </div>
+
       {/* toggle & data */}
       <div className="w-full flex flex-col lg:flex-row justify-between mt-10 lg:-mt-10 z-0">
         <TextToggle
@@ -49,6 +68,8 @@ const ExplorerView: FC<Props> = (props: Props) => {
         />
         <ListingData data={listingData} />
       </div>
+
+      {/* e */}
     </div>
   );
 };
