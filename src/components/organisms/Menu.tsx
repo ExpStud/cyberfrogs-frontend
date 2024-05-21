@@ -36,7 +36,7 @@ const Menu: FC<Props> = (props: Props) => {
             opacity: 1,
           }}
           transition={{ duration: 0.7 }}
-          className=" bg-cf-green fixed top-0 right-0 z-50"
+          className=" bg-cf-green-900 fixed top-0 right-0 z-50"
         >
           <motion.div
             className={`px-4 sm:px-6 lg:px-10 py-6 h-screen relative`}

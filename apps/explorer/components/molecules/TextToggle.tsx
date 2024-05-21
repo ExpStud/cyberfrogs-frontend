@@ -1,6 +1,4 @@
-import { Dispatch, SetStateAction, FC, useEffect, useState } from "react";
-import Image from "next/image";
-import { Heading } from "@components";
+import { Dispatch, SetStateAction, FC } from "react";
 
 interface Props {
   overviewToggle: boolean;
@@ -11,7 +9,7 @@ const TextToggle: FC<Props> = (props: Props) => {
   const { overviewToggle, setOverviewToggle } = props;
 
   return (
-    <div className="flex gap-10 text-xl text-cf-white/50 font-rajdhani-bold uppercase ">
+    <div className="flex gap-10 text-xl text-cf-white/50 font-rajdhani-bold uppercase">
       <p
         className={`transition-200 ${
           overviewToggle

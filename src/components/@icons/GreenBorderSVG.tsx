@@ -16,7 +16,7 @@ const GreenBorderSVG: FC<Props> = (props: Props) => {
       height="11"
       viewBox={`${minX} 0 168 11`}
       className={`transition-200 ${
-        hover ? "fill-cf-green-light" : "fill-cf-green-dark "
+        hover ? "fill-cf-green" : "fill-cf-green-800 "
       }`}
     >
       <rect width="168" height="4" />

@@ -9,13 +9,16 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      boxShadow: {
+        explorerData:
+          "0px 3px 6px rgba(23, 23, 23, 0.10), 0px 11px 11px rgba(23, 23, 23, 0.09), 0px 24px 14px rgba(23, 23, 23, 0.05), 0px 43px 17px rgba(23, 23, 23, 0.01), 0px 67px 19px rgba(23, 23, 23, 0.00)",
+      },
       backgroundColor: {
         "custom-grey": "rgba(217, 217, 217, 0.08)",
         "custom-grey-light": "rgba(217, 217, 217, 0.16)",
       },
       backgroundImage: {
-        main: "url('/images/background.png')",
-        "white-gradient": `linear-gradient(360.58deg, #FFFFFF 43.76%, rgba(255, 255, 255, 0) 106.82%)`,
+        explorerData: "url('/images/explorer/data-bg.svg')",
       },
       fontFamily: {
         rajdhani: ["Rajdhani-Medium"],
@@ -44,9 +47,14 @@ module.exports = {
           dark: "#FEE1DB",
         },
         "cf-green": {
-          DEFAULT: "#0B2D21",
-          light: "#196349",
-          dark: "#124835",
+          DEFAULT: "#196349",
+          500: "#196349",
+          800: "#124835",
+          900: "#0B2D21",
+          950: "#081F17",
+        },
+        "cf-gold": {
+          DEFAULT: "#FFF79E",
         },
         //template
         "custom-black": "#121212",

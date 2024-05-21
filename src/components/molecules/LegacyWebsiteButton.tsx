@@ -43,7 +43,7 @@ const LegacyWebsiteButton: FC<Props> = ({ className }) => {
             <path
               d="M0 0H14L10 4H0V0Z"
               className={`transition-200  ${
-                hover ? "fill-cf-green-light" : "fill-cf-green-dark"
+                hover ? "fill-cf-green" : "fill-cf-green-800"
               }`}
             />
           </g>

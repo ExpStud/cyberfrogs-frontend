@@ -9,6 +9,8 @@
       "@utils": ["src/utils"],
       "@contexts": ["src/contexts"],
       "@explorer-components": ["apps/explorer/components/"],
+      "@explorer-types": ["apps/explorer/types/"],
+      "@explorer-constants": ["apps/explorer/constants/"],
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

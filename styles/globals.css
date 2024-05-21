@@ -45,7 +45,7 @@ a {
 
 @layer base {
   html {
-    @apply scroll-smooth bg-cf-green text-cf-white font-rajdhani;
+    @apply scroll-smooth bg-cf-green-900 text-cf-white font-rajdhani;
   }
   h1 {
     @apply font-rajdhani uppercase text-5xl md:text-[64px];
@@ -74,7 +74,7 @@ html {
   @apply !bg-cf-green;
 }
 .wallet-adapter-modal-button-close {
-  @apply !bg-cf-green transition-200 hover:!bg-cf-green-dark;
+  @apply !bg-cf-green-900 transition-200 hover:!bg-cf-green-800;
 }
 .wallet-adapter-modal-title {
   @apply !text-xl !mt-16 !mx-12 !mb-12 !p-0 !opacity-75 !font-rajdhani-semibold;
@@ -83,7 +83,7 @@ html {
   @apply !opacity-50;
 }
 .wallet-adapter-button {
-  @apply transition-200 hover:!bg-cf-green-dark !text-opacity-50 font-semibold;
+  @apply transition-200 hover:!bg-cf-green-800 !text-opacity-50 font-semibold;
 }
    /*.wallet-adapter-button-start-icon {
   @apply opacity-90;
@@ -164,3 +164,4 @@ html {
   fill: #FFF79E;
   filter: drop-shadow(0px 0px 16.2px #FFF79E) drop-shadow(0px 0px 32.4px #FFF79E) drop-shadow(0px 0px 113.4px #FFF79E);
 }
+
