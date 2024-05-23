@@ -46,9 +46,9 @@ const ExplorerView: FC<Props> = (props: Props) => {
   }, [fetchNftMetadata]);
 
   return (
-    <div className="w-full flex flex-col items-start justify-start">
+    <div className="w-full flex flex-col items-center xl:items-start justify-start px-3 md:px-12 2xl:px-0 my-10 ">
       {/* heading & image */}
-      <div className="w-full flex flex-col lg:flex-row justify-between">
+      <div className="w-full flex flex-col lg:flex-row justify-between px-3 sm:px-0">
         <Heading />
         <Image
           src="/images/explorer/intro.png"
@@ -69,105 +69,43 @@ const ExplorerView: FC<Props> = (props: Props) => {
         <ListingData data={listingData} />
       </div>
 
-      {/* e */}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="1554"
-        height="1005"
-        viewBox="0 0 1554 1005"
-        fill="none"
-      >
-        <g filter="url(#filter0_dddd_475_206)">
-          <path d="M17 3H533L543 13.0412H1537V1094H17V3Z" fill="#081F17" />
-        </g>
-        <defs>
-          <filter
-            id="filter0_dddd_475_206"
-            x="0"
-            y="0"
-            width="1554"
-            height="1154"
-            filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
-          >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
-            <feOffset dy="3" />
-            <feGaussianBlur stdDeviation="3" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0.0901961 0 0 0 0 0.0901961 0 0 0 0 0.0901961 0 0 0 0.1 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow_475_206"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
-            <feOffset dy="11" />
-            <feGaussianBlur stdDeviation="5.5" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0.0901961 0 0 0 0 0.0901961 0 0 0 0 0.0901961 0 0 0 0.09 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="effect1_dropShadow_475_206"
-              result="effect2_dropShadow_475_206"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
-            <feOffset dy="24" />
-            <feGaussianBlur stdDeviation="7" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0.0901961 0 0 0 0 0.0901961 0 0 0 0 0.0901961 0 0 0 0.05 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="effect2_dropShadow_475_206"
-              result="effect3_dropShadow_475_206"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
-            <feOffset dy="43" />
-            <feGaussianBlur stdDeviation="8.5" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0.0901961 0 0 0 0 0.0901961 0 0 0 0 0.0901961 0 0 0 0.01 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="effect3_dropShadow_475_206"
-              result="effect4_dropShadow_475_206"
-            />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="effect4_dropShadow_475_206"
-              result="shape"
-            />
-          </filter>
-        </defs>
-      </svg>
+      {/* explorer */}
+      <div className="flex self-center 2xl:self-start relative min-w-[300px] w-full 2xl:w-[1554px] min-h-[800px] 2xl:h-[1005px] bg-cf-green-950 2xl:bg-transparent mt-2 2xl:-mt-1 ">
+        {/* left */}
+        <div className="absolute top-1 -left-16 2xl:-left-[52px] hidden md:flex flex-col">
+          <Image
+            src="/images/explorer/grid-left.svg"
+            width={61}
+            height={586}
+            alt="Grid L"
+          />
+        </div>
+        {/* body */}
+        <Image
+          src="/images/explorer/grid-bg.svg"
+          width={1554}
+          height={1005}
+          alt="Grid"
+          className="hidden 2xl:block"
+        />
+
+        {/* right */}
+        <div className="hidden md:block absolute top-10 -right-2 2xl:right-[7px]">
+          <Image
+            src="/images/explorer/grid-right-1.svg"
+            width={10}
+            height={120}
+            alt="Grid R1"
+          />
+          <Image
+            src="/images/explorer/grid-right-2.svg"
+            width={8}
+            height={426}
+            alt="Grid R2"
+            className="-mt-1"
+          />
+        </div>
+      </div>
     </div>
   );
 };

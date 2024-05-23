@@ -4,8 +4,8 @@ import { NftDataType } from "@explorer-types";
 const ListingData: FC<{ data: NftDataType | null }> = ({ data }) => {
   return (
     <div
-      className="relative bg-cf-green-950 shadow-explorerData xl:shadow-lg xl:bg-transparent xl:bg-explorerData flex flex-wrap items-center justify-around -ml-6 md:ml-0 lg:ml-12 mt-3 px-4 xl:pl-8 pt-1 text-sm md:text-base
-      w-screen md:w-full min-h-[48px] xl:w-[1015px] uppercase"
+      className="relative bg-cf-green-950 shadow-explorerData xl:shadow-lg xl:bg-transparent xl:bg-explorerData flex flex-wrap items-center justify-around  md:ml-0 lg:ml-12 mt-3 px-4 xl:pl-8 pt-1 text-sm md:text-base
+      w-full min-h-[48px] xl:w-[1015px] uppercase"
     >
       <div className="flex gap-3">
         floor{" "}
