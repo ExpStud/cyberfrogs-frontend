@@ -2,27 +2,33 @@ import { FC, InputHTMLAttributes, useEffect } from "react";
 import debounce from "lodash.debounce";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
-  supply: number;
+  max?: number;
   handleInput: (number: number) => void;
 }
 
 const NumberInput: FC<Props> = (props: Props) => {
-  const { supply, handleInput, className, ...componentProps } = props;
+  const { max = 10000, handleInput, className, ...componentProps } = props;
+
+  //search after 1 second of using the input
   const debouncer = debounce((value) => handleInput(value), 1000);
 
-  const styles: string = "w-56 h-10 bg-dark text-xs";
-
   //prevent keys
-  const onKeyPress = (event: React.KeyboardEvent): void => {
-    if (!/[0-9]/.test(event.key)) {
+  const onKeyDown = (event: React.KeyboardEvent): void => {
+    if (
+      !/[0-9]/.test(event.key) &&
+      event.key !== "ArrowUp" &&
+      event.key !== "ArrowDown" &&
+      event.key !== "Backspace" &&
+      event.key !== "Delete"
+    ) {
       event.preventDefault();
     }
   };
 
   //add max length check
   const onInput = (event: React.FormEvent<HTMLInputElement>): void => {
-    if (Number((event.target as HTMLInputElement).value) > supply) {
-      (event.target as HTMLInputElement).value = supply.toString();
+    if (Number((event.target as HTMLInputElement).value) > max) {
+      (event.target as HTMLInputElement).value = max.toString();
     } else {
       debouncer(Number((event.target as HTMLInputElement).value));
     }
@@ -35,20 +41,16 @@ const NumberInput: FC<Props> = (props: Props) => {
   }, [debouncer]);
 
   return (
-    <div>
-      <input
-        className={`${className} relative flex justify-between ${styles} transition-all duration-500 border border-dark hover:border-orange-300 focus:border-red-400 active:outline-none focus:outline-none rounded items-center p-2 ${
-          componentProps.disabled ? "cursor-not-allowed" : ""
-        }`}
-        onKeyPress={(e) => onKeyPress(e)}
-        onInput={(e) => onInput(e)}
-        placeholder="Enter ID"
-        type="number"
-        min={1}
-        max={supply}
-        disabled={componentProps.disabled}
-      />
-    </div>
+    <input
+      className="hide-spinner z-[1] bg-cf-green-999 border border-cf-green-800 text-cf-white/50 w-full h-[40px] text-base uppercase pl-4 pr-12 active:outline-none focus:outline-none focus:ring-0 focus:border-cf-gold"
+      onKeyDown={(e) => onKeyDown(e)}
+      onInput={(e) => onInput(e)}
+      placeholder={componentProps.placeholder}
+      type="number"
+      min={1}
+      max={max}
+      disabled={componentProps.disabled}
+    />
   );
 };
 

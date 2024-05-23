@@ -2,8 +2,8 @@ import dynamic from "next/dynamic";
 
 //icons
 
-//atoms
-
+//atoms  
+const ToggleOption = dynamic(() => import("./atoms/ToggleOption"));
 //molecules 
 const TextToggle = dynamic(() => import("./molecules/TextToggle"));
 const ExplorerBackground = dynamic(() => import("./molecules/ExplorerBackground"));
@@ -23,5 +23,6 @@ export {
   ListingData,
   ExplorerBackground,
   Explorer,
-  ExplorerToggle
+  ExplorerToggle,
+  ToggleOption,
 };

@@ -69,6 +69,17 @@ html {
   }
 }
 
+/* Hide the spinner controls in number inputs */
+.hide-spinner::-webkit-inner-spin-button,
+.hide-spinner::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.hide-spinner {
+  -moz-appearance: textfield;
+}
+
 /* wallet adapter modal */
 .wallet-adapter-modal-wrapper {
   @apply !bg-cf-green;
