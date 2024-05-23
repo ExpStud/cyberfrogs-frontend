@@ -9,7 +9,7 @@ const TextToggle: FC<Props> = (props: Props) => {
   const { overviewToggle, setOverviewToggle } = props;
 
   return (
-    <div className="flex gap-10 text-xl text-cf-white/50 font-rajdhani-bold uppercase">
+    <div className="flex gap-10 text-xl text-cf-white/50 font-rajdhani-bold uppercase 2xl:ml-5">
       <p
         className={`transition-200 ${
           overviewToggle
