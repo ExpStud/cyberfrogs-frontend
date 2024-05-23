@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 //molecules 
 const TextToggle = dynamic(() => import("./molecules/TextToggle"));
 const ExplorerBackground = dynamic(() => import("./molecules/ExplorerBackground"));
+const ExplorerToggle = dynamic(() => import("./molecules/ExplorerToggle"));
 
 //organisms
 const ListingData = dynamic(() => import("./organisms/ListingData"));
@@ -21,5 +22,6 @@ export {
   TextToggle,
   ListingData,
   ExplorerBackground,
-  Explorer
+  Explorer,
+  ExplorerToggle
 };

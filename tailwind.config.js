@@ -19,6 +19,8 @@ module.exports = {
       },
       backgroundImage: {
         explorerData: "url('/images/explorer/data-bg.svg')",
+        explorerToggleBg: "url('/images/explorer/toggle-bg.svg')",
+        explorerToggleActiveBg: "url('/images/explorer/toggle-active-bg.svg')",
       },
       fontFamily: {
         rajdhani: ["Rajdhani-Medium"],

@@ -9,12 +9,7 @@ import {
 } from "react";
 import Image from "next/image";
 import { Heading } from "@components";
-import {
-  Explorer,
-  ExplorerBackground,
-  ListingData,
-  TextToggle,
-} from "@explorer-components";
+import { Explorer, ListingData, TextToggle } from "@explorer-components";
 import { getAssetsByAuthority, handleAssetLoad } from "@utils";
 import { NftDataType } from "@explorer-types";
 import { NFT } from "src/types";
@@ -67,7 +62,7 @@ const ExplorerView: FC<Props> = (props: Props) => {
       </div>
 
       {/* toggle & data */}
-      <div className="w-full flex flex-col lg:flex-row justify-between mt-10 lg:-mt-10 z-0 2xl:ml-4">
+      <div className="w-full flex flex-col lg:flex-row justify-between mt-10 lg:-mt-10 z-0 2xl:ml-0">
         <TextToggle
           overviewToggle={overviewToggle}
           setOverviewToggle={setOverviewToggle}

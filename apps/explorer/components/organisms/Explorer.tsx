@@ -11,6 +11,7 @@ import Image from "next/image";
 import { Heading } from "@components";
 import {
   ExplorerBackground,
+  ExplorerToggle,
   ListingData,
   TextToggle,
 } from "@explorer-components";
@@ -25,10 +26,22 @@ interface Props {
 const Explorer: FC<Props> = (props: Props) => {
   const { data } = props;
 
+  const [toggle, setToggle] = useState<"solana" | "bitcoin">("solana");
+
+  //TODO: handle toggle change
+  useEffect(() => {
+    if (toggle === "solana") {
+    }
+    if (toggle === "bitcoin") {
+    }
+  }, [toggle]);
+
   return (
-    <div className="flex gap-2 relative min-w-[300px] w-full 2xl:w-[1554px] min-h-[800px] 2xl:h-[1005px] bg-cf-green-950 2xl:bg-transparent mt-2 2xl:-mt-0.5">
+    <div className="flex gap-2 relative min-w-[300px] w-full 2xl:w-[1554px] min-h-[800px] 2xl:h-[1005px] bg-cf-green-950 2xl:bg-transparent mt-2 2xl:-mt-0.5 p-4">
       {/* sort & filter */}
-      <div className="flex flex-col gap-3 lg:w-[200px] 2xl:w-[276px]"></div>
+      <div className="flex flex-col gap-3 lg:w-[200px] 2xl:w-[276px]">
+        <ExplorerToggle toggle={toggle} setToggle={setToggle} />
+      </div>
       {/* tags & grid */}
       <div className="flex flex-col gap-3"></div>
       <ExplorerBackground />

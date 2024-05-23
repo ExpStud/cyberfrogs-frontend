@@ -5,7 +5,7 @@ const ExplorerBackground: FC = () => {
   return (
     <>
       {/* left */}
-      <div className="absolute top-1 -left-16 2xl:-left-[36px] hidden md:flex flex-col">
+      <div className="absolute -z-[1] top-1 -left-16 2xl:-left-[52px] hidden md:flex flex-col">
         <Image
           src="/images/explorer/grid-left.svg"
           width={61}
@@ -19,11 +19,11 @@ const ExplorerBackground: FC = () => {
         width={1554}
         height={1005}
         alt="Grid"
-        className="hidden 2xl:block"
+        className="hidden 2xl:block absolute -z-[1] -inset-0"
       />
 
       {/* right */}
-      <div className="hidden md:block absolute top-10 -right-2 ">
+      <div className="hidden md:block absolute -z-[1] top-10 -right-2 2xl:right-[7px]">
         <Image
           src="/images/explorer/grid-right-1.svg"
           width={10}
