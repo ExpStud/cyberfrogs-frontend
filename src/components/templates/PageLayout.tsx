@@ -12,22 +12,13 @@ import { ViewContext } from "@contexts";
 import Image from "next/image";
 interface Props {
   children: ReactNode;
-  header?: boolean;
-  footer?: boolean;
   fixed?: boolean;
   absolute?: boolean;
   assets?: boolean[];
 }
 
 const PageLayout: FC<Props> = (props: Props) => {
-  const {
-    header = true,
-    footer = true,
-    fixed = false,
-    absolute = false,
-    children,
-    assets = [],
-  } = props;
+  const { fixed = false, absolute = false, children, assets = [] } = props;
 
   //context for splash screen & modals
   const [showView, setShowView] = useState<boolean>(false);
@@ -52,19 +43,15 @@ const PageLayout: FC<Props> = (props: Props) => {
           url="https://cyberfrogs.io" // no backslash at the end
           twitter="CyberFrogsNFT"
         />
-        {/* header */}
-        {header && <Header />}
 
-        {/* body */}
+        <Header />
         <motion.main
-          className={`page-spacing flex flex-col h-full w-full mt-10`}
+          className={`main-spacing flex flex-col h-full w-full mt-10 `}
           {...enterAnimation}
         >
           {children}
         </motion.main>
-
-        {/* footer */}
-        {footer && <Footer />}
+        <Footer />
 
         {/* modals */}
         <AnimatePresence mode="wait">
@@ -85,9 +72,9 @@ const PageLayout: FC<Props> = (props: Props) => {
         fill
         alt="Texture"
         priority
-        className="-z-10 object-cover"
+        className="-z-10 object-cover "
       />
-      <div className="-z-[5] absolute top-0 inset-x-0 w-screen h-[36.9vh]">
+      <div className="-z-[5] absolute top-0 inset-x-0 w-[99vw h-[36.9vh]">
         <Image
           src="/images/backgrounds/grid.png"
           fill
@@ -96,8 +83,8 @@ const PageLayout: FC<Props> = (props: Props) => {
           className="object-cover"
         />
       </div>
-      <div className="-z-[15] light-top absolute left-1/2 -translate-x-1/2 -top-[55svh] overflow-clip w-screen h-[75svh]" />
-      <div className="-z-[10] gradient-top absolute left-1/2 -translate-x-1/2 top-0 w-screen h-[200px] sm:h-[40svh]" />
+      <div className="-z-[15] light-top absolute left-1/2 -translate-x-1/2 -top-[55svh] w-[99vw] h-[75svh] overflow-hidden" />
+      <div className="-z-[10] gradient-top absolute left-1/2 -translate-x-1/2 top-0 w-[99vw] h-[200px] sm:h-[40svh]  overflow-hidden" />
     </ViewContext.Provider>
   );
 };
