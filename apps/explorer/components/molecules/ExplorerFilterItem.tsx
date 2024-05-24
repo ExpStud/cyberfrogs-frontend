@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { dropdownParent, expandHeight } from "@constants";
@@ -8,14 +8,14 @@ import { DropdownItem } from "@explorer-components";
 interface ExplorerFilterItemProps {
   filter: ExplorerFilter;
   index: number;
+  handleFilter: (text: string) => void;
 }
 const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
   props: ExplorerFilterItemProps
 ) => {
-  const { filter, index } = props;
+  const { filter, index, handleFilter } = props;
 
   const [openDropdown, setOpenDropdown] = useState<boolean>(false);
-  const [mounted, setMounted] = useState<boolean>(false);
   const isDropdown = filter?.dropdown ? true : false;
 
   const handleClick = () => {
@@ -24,15 +24,9 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
     }
   };
 
+  //used to calculate duration/delay of dropdown
   const heightDuration = (length: number): number => length * 0.1 + 0.2;
   const heightDelay = (length: number): number => length * 0.03;
-
-  //
-  useEffect(() => {
-    if (!mounted) {
-      setMounted(true);
-    }
-  }, [mounted]);
 
   return (
     <div className="flex flex-col ">
@@ -56,37 +50,37 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
             <p className="text-lg leading-none">{openDropdown ? "-" : "+"}</p>
           )}
         </div>
-        {mounted && (
-          <motion.div
-            {...expandHeight(
-              openDropdown,
-              heightDuration(filter?.dropdown?.length ?? 0),
-              heightDelay(filter?.dropdown?.length ?? 0)
-            )}
-          >
-            {isDropdown && (
-              <AnimatePresence>
-                {openDropdown && (
-                  <motion.div
-                    className="flex flex-col py-3 gap-1"
-                    variants={dropdownParent}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                  >
-                    {filter.dropdown?.map((item, i) => (
-                      <DropdownItem
-                        item={item}
-                        key={i}
-                        isDropdown={isDropdown}
-                      />
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            )}
-          </motion.div>
-        )}
+        {/* TODO: animate height on open and cascade children */}
+        <motion.div
+          {...expandHeight(
+            openDropdown,
+            heightDuration(filter?.dropdown?.length ?? 0),
+            heightDelay(filter?.dropdown?.length ?? 0)
+          )}
+        >
+          {isDropdown && (
+            <AnimatePresence>
+              {openDropdown && (
+                <motion.div
+                  className="flex flex-col py-3 gap-1"
+                  variants={dropdownParent}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                >
+                  {filter.dropdown?.map((item, i) => (
+                    <DropdownItem
+                      item={item}
+                      key={i}
+                      isDropdown={isDropdown}
+                      handleFilter={handleFilter}
+                    />
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          )}
+        </motion.div>
       </div>
       <Image
         src="/images/explorer/filter-divider.svg"

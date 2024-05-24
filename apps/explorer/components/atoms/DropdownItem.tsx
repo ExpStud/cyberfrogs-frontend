@@ -1,15 +1,21 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { dropdownChild } from "@constants";
 
 interface DropdownItemProps {
   item: string;
   isDropdown: boolean;
+  handleFilter: (text: string) => void;
 }
 const DropdownItem: FC<DropdownItemProps> = (props: DropdownItemProps) => {
-  const { item, isDropdown } = props;
+  const { item, isDropdown, handleFilter } = props;
 
   const [selected, setSelected] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isDropdown) handleFilter(item);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selected]);
 
   return (
     <motion.div
