@@ -4,3 +4,9 @@ export type NftDataType = {
   supply: number;
   owners: number;
 };
+
+export type ExplorerFilter = {
+  name: string;
+  switch?: boolean;
+  dropdown?: string[];
+};

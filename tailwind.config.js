@@ -26,6 +26,7 @@ module.exports = {
         rajdhani: ["Rajdhani-Medium"],
         "rajdhani-semibold": ["Rajdhani-SemiBold"],
         "rajdhani-bold": ["Rajdhani-Bold"],
+        inter: ["Inter", "Monospace"],
       },
       fontWeight: {
         light: 300,
@@ -58,6 +59,7 @@ module.exports = {
         },
         "cf-gold": {
           DEFAULT: "#FFF79E",
+          500: "#E1B53D",
         },
         //template
         "custom-black": "#121212",

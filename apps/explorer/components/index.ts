@@ -4,10 +4,12 @@ import dynamic from "next/dynamic";
 
 //atoms  
 const ToggleOption = dynamic(() => import("./atoms/ToggleOption"));
+const DropdownItem = dynamic(() => import("./atoms/DropdownItem"));
 //molecules 
 const TextToggle = dynamic(() => import("./molecules/TextToggle"));
 const ExplorerBackground = dynamic(() => import("./molecules/ExplorerBackground"));
 const ExplorerToggle = dynamic(() => import("./molecules/ExplorerToggle"));
+const ExplorerFilterItem = dynamic(() => import("./molecules/ExplorerFilterItem"));
 
 //organisms
 const ListingData = dynamic(() => import("./organisms/ListingData"));
@@ -25,4 +27,6 @@ export {
   Explorer,
   ExplorerToggle,
   ToggleOption,
+  ExplorerFilterItem,
+  DropdownItem
 };

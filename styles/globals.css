@@ -34,6 +34,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Inter';
+  src: url('../public/fonts/inter/Inter-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -78,6 +85,54 @@ html {
 
 .hide-spinner {
   -moz-appearance: textfield;
+}
+
+.hide-scroll {
+  overflow: auto; /* Enable scrolling if needed */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.hide-scroll::-webkit-scrollbar { /* Chrome, Safari and Opera */
+  display: none;
+}
+
+
+input[type="checkbox"]:checked {
+  background-color: #E1B53D;
+}
+
+.custom-scroll {
+  /* Enable scrolling if needed */
+  overflow: auto;
+
+  /* For Webkit browsers (Chrome, Safari) */
+  &::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #0B2D21; /* Color of the track */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #081F17; /* Color of the scroll thumb */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scroll thumb on hover */
+  }
+
+  /* For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #081F17 #0B2D21;
+}
+
+/* For IE and Edge */
+@supports (-ms-overflow-style: none) {
+  .custom-scroll {
+    -ms-overflow-style: none;
+  }
 }
 
 /* wallet adapter modal */
