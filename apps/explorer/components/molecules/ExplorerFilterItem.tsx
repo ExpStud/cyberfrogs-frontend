@@ -1,9 +1,10 @@
 import { FC, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { dropdownParent, expandHeight } from "@constants";
+import { dropdownChild, dropdownParent, expandHeight } from "@constants";
 import { ExplorerFilter } from "@explorer-types";
 import { DropdownItem } from "@explorer-components";
+import { TextInput } from "@components";
 
 interface ExplorerFilterItemProps {
   filter: ExplorerFilter;
@@ -27,6 +28,10 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
   //used to calculate duration/delay of dropdown
   const heightDuration = (length: number): number => length * 0.1 + 0.2;
   const heightDelay = (length: number): number => length * 0.03;
+
+  const handleSearch = (input: string) => {
+    //TODO: handle search
+  };
 
   return (
     <div className="flex flex-col ">
@@ -68,6 +73,16 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
                   animate="visible"
                   exit="exit"
                 >
+                  <motion.div
+                    className="w-auto flex items-center pt-1 pb-3"
+                    variants={dropdownChild}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <TextInput
+                      handleInput={handleSearch}
+                      placeholder="Search Attribute"
+                    />
+                  </motion.div>
                   {filter.dropdown?.map((item, i) => (
                     <DropdownItem
                       item={item}

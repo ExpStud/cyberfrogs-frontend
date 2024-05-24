@@ -35,8 +35,9 @@ const DropdownItem: FC<DropdownItemProps> = (props: DropdownItemProps) => {
           <p className="font-inter text-lg">✓</p>
         </div>
       )}
-      <p className="px-4" onClick={() => setSelected(!selected)}>
-        {item}
+      <p className="px-4 text-sm" onClick={() => setSelected(!selected)}>
+        {item}{" "}
+        {isDropdown && <span className="pl-1 text-cf-white/50"> (12)</span>}
       </p>
     </motion.div>
   );

@@ -5,12 +5,11 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const NumberInput: FC<Props> = (props: Props) => {
-  const { handleInput, className, ...componentProps } = props;
+  const { handleInput, ...componentProps } = props;
 
   const [value, setValue] = useState<string>();
 
   const charLim: number = 30;
-  const styles: string = "w-56 h-10 bg-dark text-[9px]";
 
   //add max length check
   const onInput = (event: React.FormEvent<HTMLInputElement>): void => {
@@ -21,15 +20,10 @@ const NumberInput: FC<Props> = (props: Props) => {
 
   return (
     <input
-      className={`${className} relative flex justify-between ${styles} transition-all duration-500 border  rounded items-center p-2 ${
-        value && value.length >= charLim ? "text-red-500" : ""
-      } ${
-        componentProps.disabled
-          ? "cursor-not-allowed bg-custom-dark-gray border-custom-dark-gray"
-          : "hover:border-orange-300 focus:border-red-400 active:outline-none focus:outline-none border-dark"
-      }`}
+      className={`hide-spinner z-[1] bg-cf-green-950 border border-cf-green-800 text-cf-white/50 w-full h-[40px] text-base uppercase pl-4 pr-12 
+    active:outline-none focus:outline-none focus:ring-0 focus:border-cf-gold ${componentProps.className}`}
       onInput={(e) => onInput(e)}
-      placeholder="Add Text"
+      placeholder={componentProps.placeholder}
       type="text"
       maxLength={charLim}
       disabled={componentProps.disabled}
