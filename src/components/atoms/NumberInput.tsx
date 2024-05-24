@@ -7,7 +7,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const NumberInput: FC<Props> = (props: Props) => {
-  const { max = 10000, handleInput, className, ...componentProps } = props;
+  const { max = 10000, handleInput, ...componentProps } = props;
 
   //search after 1 second of using the input
   const debouncer = debounce((value) => handleInput(value), 1000);
@@ -42,7 +42,8 @@ const NumberInput: FC<Props> = (props: Props) => {
 
   return (
     <input
-      className="hide-spinner z-[1] bg-cf-green-999 border border-cf-green-800 text-cf-white/50 w-full h-[40px] text-base uppercase pl-4 pr-12 active:outline-none focus:outline-none focus:ring-0 focus:border-cf-gold"
+      className={`hide-spinner z-[1] bg-cf-green-999 border border-cf-green-800 text-cf-white/50 w-full h-[40px] text-base uppercase pl-4 pr-12 
+        active:outline-none focus:outline-none focus:ring-0 focus:border-cf-gold ${componentProps.className}`}
       onKeyDown={(e) => onKeyDown(e)}
       onInput={(e) => onInput(e)}
       placeholder={componentProps.placeholder}
