@@ -4,7 +4,13 @@ import { NumberInput } from "@components";
 import { ExplorerBackground, ExplorerToggle } from "@explorer-components";
 import { NFT } from "src/types";
 import { AnimatePresence, motion } from "framer-motion";
-import { dropdownAnimations } from "src/constants";
+import {
+  dropdownAnimations,
+  dropdownChild,
+  dropdownItemsAnimations,
+  dropdownParent,
+  expandHeight,
+} from "src/constants";
 
 interface Props {
   data: NFT[];
@@ -24,9 +30,32 @@ const filters: ExplorerFilter[] = [
     dropdown: ["Background 1", "Background 2", "Background 3"],
   },
   { name: "Beta", dropdown: ["Beta 1", "Beta 2", "Beta 3"] },
-  { name: "Eyes", dropdown: ["Eyes 1", "Eyes 2", "Eyes 3"] },
+  {
+    name: "Eyes",
+    dropdown: [
+      "Eyes 1",
+      "Eyes 2",
+      "Eyes 3",
+      "Eyes 4",
+      "Eyes 5",
+      "Eyes 6",
+      "Eyes 7",
+      "Eyes 8",
+      "Eyes 9",
+    ],
+  },
   { name: "Faction", dropdown: ["Faction 1", "Faction 2", "Faction 3"] },
-  { name: "Headware", dropdown: ["Headware 1", "Headware 2", "Headware 3"] },
+  {
+    name: "Headware",
+    dropdown: [
+      "Headware 1",
+      "Headware 2",
+      "Headware 3",
+      "Headware 4",
+      "Headware 5",
+      "Headware 6",
+    ],
+  },
   { name: "Item", dropdown: ["Item 1", "Item 2", "Item 3"] },
   { name: "Mouth", dropdown: ["Mouth 1", "Mouth 2", "Mouth 3"] },
   { name: "Outfit", dropdown: ["Outfit 1", "Outfit 2", "Outfit 3"] },
@@ -87,6 +116,9 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
     }
   };
 
+  const heightDuration = (length: number): number => length * 0.1 + 0.2;
+  const heightDelay = (length: number): number => length * 0.03;
+
   return (
     <div className="flex flex-col ">
       {index === 0 && (
@@ -98,7 +130,7 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
         />
       )}
       <div
-        className={`flex flex-col gap-2 pl-5 py-4 uppercase ${
+        className={`flex flex-col pl-5 py-4 uppercase ${
           isDropdown ? " cursor-pointer" : ""
         }`}
         onClick={handleClick}
@@ -110,25 +142,33 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
           )}
         </div>
         {/* TODO: animate height on open and cascade children */}
-        {isDropdown && (
-          <AnimatePresence>
-            {openDropdown && (
-              <motion.div
-                className="flex flex-col"
-                initial={{ opacity: 0, y: -10 }} // Initial state of the dropdown
-                animate={{ opacity: 1, y: 0 }} // Final state of the dropdown
-                exit={{ opacity: 0, y: -10 }} // State of the dropdown when it's being removed
-                transition={{ duration: 0.2 }} // Optional: Add a transition effect
-              >
-                {filter.dropdown?.map((item, i) => (
-                  <div className="" key={i}>
-                    {item}
-                  </div>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        )}
+        <motion.div
+          {...expandHeight(
+            openDropdown,
+            heightDuration(filter?.dropdown?.length ?? 0),
+            heightDelay(filter?.dropdown?.length ?? 0)
+          )}
+        >
+          {isDropdown && (
+            <AnimatePresence>
+              {openDropdown && (
+                <motion.div
+                  className="flex flex-col"
+                  variants={dropdownParent}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                >
+                  {filter.dropdown?.map((item, i) => (
+                    <motion.div className="" key={i} variants={dropdownChild}>
+                      {item}
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          )}
+        </motion.div>
       </div>
       <Image
         src="/images/explorer/filter-divider.svg"

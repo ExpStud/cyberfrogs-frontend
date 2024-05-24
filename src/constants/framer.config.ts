@@ -1,6 +1,39 @@
 import { Variants } from "framer-motion";
 
 //custom
+export const dropdownParent = {
+  hidden: { opacity: 0, y: -10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { staggerChildren: 0.14, ease: "easeInOut" },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      // delay: 1,
+      duration: 0.5,
+      staggerChildren: 0.1, // This will reverse the order of the stagger on exit
+      staggerDirection: -1,
+    },
+  },
+};
+
+export const dropdownChild = {
+  hidden: { opacity: 0, y: -5 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.1 },
+  },
+  exit: { opacity: 0, y: -5, transition: { duration: 0.1 }}, 
+};
+
+export const expandHeight = (animate: boolean, duration?: number, delay?: number) => ({
+  initial: { height: 0 },
+  animate: {  height: animate ? "auto" : 0, },
+  transition: {  duration: duration && !animate ? duration * 0.5 : duration ?? 0.3, ease: "easeOut", delay: animate ? 0 : delay ?? 0, },
+})
 
 export const fadeAnimation = (animate: boolean, delay?: number) => ({
   initial: { opacity: 0 },
