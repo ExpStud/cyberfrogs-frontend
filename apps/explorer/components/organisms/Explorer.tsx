@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, use, useEffect, useRef, useState } from "react";
 import { NumberInput } from "@components";
 import {
   ExplorerBackground,
@@ -10,6 +10,7 @@ import { filters } from "@explorer-constants";
 import Image from "next/image";
 import { fastExitAnimation, midExitAnimation } from "src/constants";
 import { AnimatePresence, motion } from "framer-motion";
+import { SelectedFilter } from "@explorer-types";
 
 interface Props {
   data: NFT[];
@@ -19,7 +20,7 @@ const Explorer: FC<Props> = (props: Props) => {
   const { data } = props;
 
   const [toggle, setToggle] = useState<"solana" | "bitcoin">("solana");
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [selectedFilters, setSelectedFilters] = useState<SelectedFilter[]>([]);
   const [firstRender, setFirstRender] = useState<boolean>(true);
 
   useEffect(() => {
@@ -34,12 +35,21 @@ const Explorer: FC<Props> = (props: Props) => {
     //TODO: filter data based on search
   };
 
-  const handleFilter = (text: string) => {
+  const handleFilter = (selectedFilter: SelectedFilter) => {
     setSelectedFilters((prev) => {
-      if (prev.includes(text)) {
-        return prev.filter((item) => item !== text);
+      const filterExists = prev.some(
+        (filter) =>
+          filter.category === selectedFilter.category &&
+          filter.filter === selectedFilter.filter
+      );
+      if (filterExists) {
+        return prev.filter(
+          (filter) =>
+            filter.category !== selectedFilter.category ||
+            filter.filter !== selectedFilter.filter
+        );
       }
-      return [...prev, text];
+      return [...prev, selectedFilter];
     });
   };
 
@@ -56,40 +66,53 @@ const Explorer: FC<Props> = (props: Props) => {
         <div className="flex flex-col custom-scroll overflow-y-auto overflow-x-hidden pr-5">
           {filters.map((filter, index) => (
             <ExplorerFilterItem
-              key={index}
+              key={filter.name}
               filter={filter}
               index={index}
               handleFilter={handleFilter}
               firstRender={firstRender}
               setFirstRender={setFirstRender}
-              clearFilters={selectedFilters.length === 0}
+              selectedFilters={selectedFilters}
             />
           ))}
         </div>
       </div>
       {/* tags & grid */}
       <div className="flex flex-col gap-3">
-        <div className="">
-          <AnimatePresence mode="wait">
-            {selectedFilters.length > 0 ? (
-              <motion.div className="" {...fastExitAnimation} key="tags">
-                <div
-                  onClick={() => setSelectedFilters([])}
-                  className="cursor-pointer"
-                >
-                  <Image
-                    src="/images/buttons/clear-all.svg"
-                    width={99}
-                    height={30}
-                    alt="Clear All"
-                  />
-                </div>
-              </motion.div>
-            ) : (
-              <></>
-            )}
-          </AnimatePresence>
-        </div>
+        <AnimatePresence mode="wait">
+          {selectedFilters.length > 0 && (
+            <motion.div
+              className="flex gap-3"
+              {...fastExitAnimation}
+              key="tags"
+            >
+              <div
+                onClick={() => setSelectedFilters([])}
+                className="cursor-pointer"
+                key="clear-all"
+              >
+                <Image
+                  src="/images/buttons/clear-all.svg"
+                  width={99}
+                  height={30}
+                  alt="Clear All"
+                />
+              </div>
+              <div className="flex gap-3 overflow-y-auto">
+                {selectedFilters.map((filter, index) => (
+                  <motion.div
+                    key={filter.filter}
+                    className="row-centered px-2 border border-cf-green-800 cursor-pointer"
+                    {...fastExitAnimation}
+                    onClick={() => handleFilter(filter)}
+                  >
+                    {filter.filter}
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
       <ExplorerBackground />
     </div>

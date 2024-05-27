@@ -1,26 +1,23 @@
 import { FC, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { dropdownChild } from "@constants";
+import { SelectedFilter } from "@explorer-types";
 
 interface DropdownItemProps {
+  category: string;
   item: string;
   isDropdown: boolean;
-  handleFilter: (text: string) => void;
-  clearFilters: boolean;
+  handleFilter: (filter: SelectedFilter) => void;
+  isSelected?: boolean;
 }
 const DropdownItem: FC<DropdownItemProps> = (props: DropdownItemProps) => {
-  const { item, isDropdown, handleFilter, clearFilters } = props;
+  const { category, item, isDropdown, handleFilter, isSelected } = props;
 
-  const [selected, setSelected] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (isDropdown) handleFilter(item);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selected]);
-
-  useEffect(() => {
-    if (clearFilters) setSelected(false);
-  }, [clearFilters]);
+  const handleSelect = () => {
+    if (isDropdown) {
+      handleFilter({ category, filter: item });
+    }
+  };
 
   return (
     <motion.div
@@ -31,16 +28,16 @@ const DropdownItem: FC<DropdownItemProps> = (props: DropdownItemProps) => {
       {isDropdown && (
         <div
           className={`h-4 w-4 cursor-pointer transition-300 border text-cf-green-950 col-centered \ ${
-            selected
+            isSelected
               ? "bg-cf-gold-500 border-cf-gold-500"
               : "bg-cf-green-950 hover:bg-cf-green-900 border-cf-green-500  "
           }`}
-          onClick={() => setSelected(!selected)}
+          onClick={() => handleSelect()}
         >
           <p className="font-inter text-lg">✓</p>
         </div>
       )}
-      <p className="px-4 text-sm" onClick={() => setSelected(!selected)}>
+      <p className="px-4 text-sm" onClick={() => handleSelect()}>
         {item}{" "}
         {isDropdown && <span className="pl-1 text-cf-white/50"> (12)</span>}
       </p>

@@ -10,3 +10,8 @@ export type ExplorerFilter = {
   switch?: boolean;
   dropdown?: string[];
 };
+
+export type SelectedFilter = {
+  category: string;
+  filter: string;
+}

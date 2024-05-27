@@ -8,17 +8,17 @@ import {
   dropdownParentFirstRender,
   expandHeight,
 } from "@constants";
-import { ExplorerFilter } from "@explorer-types";
+import { ExplorerFilter, SelectedFilter } from "@explorer-types";
 import { DropdownItem, FilterToggle } from "@explorer-components";
 import { TextInput } from "@components";
 
 interface ExplorerFilterItemProps {
   filter: ExplorerFilter;
   index: number;
-  handleFilter: (text: string) => void;
+  handleFilter: (filter: SelectedFilter) => void;
   firstRender: boolean; //disables animation on first render due to initial load
   setFirstRender: (firstRender: boolean) => void;
-  clearFilters: boolean;
+  selectedFilters: SelectedFilter[];
 }
 const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
   props: ExplorerFilterItemProps
@@ -29,7 +29,7 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
     handleFilter,
     firstRender,
     setFirstRender,
-    clearFilters,
+    selectedFilters,
   } = props;
 
   const [openDropdown, setOpenDropdown] = useState<boolean>(false);
@@ -44,6 +44,10 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
   //used to calculate duration/delay of dropdown
   const heightDuration = (length: number): number => length * 0.1 + 0.2;
   const heightDelay = (length: number): number => length * 0.03;
+
+  const isSelected = (filterName: string) => {
+    return selectedFilters.some((filter) => filter.filter === filterName);
+  };
 
   const handleSearch = (input: string) => {
     //TODO: handle search
@@ -118,11 +122,12 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
                   </motion.div>
                   {filter.dropdown?.map((item, i) => (
                     <DropdownItem
+                      category={filter.name}
                       item={item}
                       key={i}
                       isDropdown={isDropdown}
                       handleFilter={handleFilter}
-                      clearFilters={clearFilters}
+                      isSelected={isSelected(item)}
                     />
                   ))}
                 </motion.div>
