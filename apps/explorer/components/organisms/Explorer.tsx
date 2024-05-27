@@ -7,6 +7,9 @@ import {
 } from "@explorer-components";
 import { NFT } from "@types";
 import { filters } from "@explorer-constants";
+import Image from "next/image";
+import { fastExitAnimation, midExitAnimation } from "src/constants";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface Props {
   data: NFT[];
@@ -59,12 +62,35 @@ const Explorer: FC<Props> = (props: Props) => {
               handleFilter={handleFilter}
               firstRender={firstRender}
               setFirstRender={setFirstRender}
+              clearFilters={selectedFilters.length === 0}
             />
           ))}
         </div>
       </div>
       {/* tags & grid */}
-      <div className="flex flex-col gap-3"></div>
+      <div className="flex flex-col gap-3">
+        <div className="">
+          <AnimatePresence mode="wait">
+            {selectedFilters.length > 0 ? (
+              <motion.div className="" {...fastExitAnimation} key="tags">
+                <div
+                  onClick={() => setSelectedFilters([])}
+                  className="cursor-pointer"
+                >
+                  <Image
+                    src="/images/buttons/clear-all.svg"
+                    width={99}
+                    height={30}
+                    alt="Clear All"
+                  />
+                </div>
+              </motion.div>
+            ) : (
+              <></>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
       <ExplorerBackground />
     </div>
   );

@@ -6,9 +6,10 @@ interface DropdownItemProps {
   item: string;
   isDropdown: boolean;
   handleFilter: (text: string) => void;
+  clearFilters: boolean;
 }
 const DropdownItem: FC<DropdownItemProps> = (props: DropdownItemProps) => {
-  const { item, isDropdown, handleFilter } = props;
+  const { item, isDropdown, handleFilter, clearFilters } = props;
 
   const [selected, setSelected] = useState<boolean>(false);
 
@@ -16,6 +17,10 @@ const DropdownItem: FC<DropdownItemProps> = (props: DropdownItemProps) => {
     if (isDropdown) handleFilter(item);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected]);
+
+  useEffect(() => {
+    if (clearFilters) setSelected(false);
+  }, [clearFilters]);
 
   return (
     <motion.div

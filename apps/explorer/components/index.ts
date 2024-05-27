@@ -10,6 +10,7 @@ const TextToggle = dynamic(() => import("./molecules/TextToggle"));
 const ExplorerBackground = dynamic(() => import("./molecules/ExplorerBackground"));
 const ExplorerToggle = dynamic(() => import("./molecules/ExplorerToggle"));
 const ExplorerFilterItem = dynamic(() => import("./molecules/ExplorerFilterItem"));
+const FilterToggle = dynamic(() => import("./molecules/FilterToggle"));
 
 //organisms
 const ListingData = dynamic(() => import("./organisms/ListingData"));
@@ -28,5 +29,6 @@ export {
   ExplorerToggle,
   ToggleOption,
   ExplorerFilterItem,
-  DropdownItem
+  DropdownItem,
+  FilterToggle
 };
