@@ -6,16 +6,26 @@ export const dropdownParent = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { staggerChildren: 0.14, ease: "easeInOut" },
+    transition: { staggerChildren: 0.1, ease: "easeInOut" },
   },
   exit: {
     opacity: 0,
     transition: {
-      // delay: 1,
       duration: 0.5,
-      staggerChildren: 0.1, // This will reverse the order of the stagger on exit
+      staggerChildren: 0.08, 
       staggerDirection: -1,
     },
+  },
+};
+export const dropdownParentFirstRender = {
+  hidden: { opacity: 0  },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.14, ease: "easeInOut" },
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 0.5 },
   },
 };
 
@@ -24,9 +34,17 @@ export const dropdownChild = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.1 },
+    transition: { duration: 0.08 },
   },
-  exit: { opacity: 0, y: -5, transition: { duration: 0.1 }}, 
+  exit: { opacity: 0, y: -5, transition: { duration: 0.08 }}, 
+};
+export const dropdownChildFirstReneer = {
+  hidden: { opacity: 0},
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.5 },
+  },
+  exit: { opacity: 0, transition: { duration: 0.1 }}, 
 };
 
 export const expandHeight = (animate: boolean, duration?: number, delay?: number) => ({

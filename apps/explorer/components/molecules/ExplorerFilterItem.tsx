@@ -1,7 +1,14 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useCycle } from "framer-motion";
-import { dropdownChild, dropdownParent, expandHeight } from "@constants";
+import {
+  dropdownChild,
+  dropdownChildFirstReneer,
+  dropdownParent,
+  dropdownParentFirstRender,
+  enterAnimation,
+  expandHeight,
+} from "@constants";
 import { ExplorerFilter } from "@explorer-types";
 import { DropdownItem } from "@explorer-components";
 import { TextInput } from "@components";
@@ -10,11 +17,13 @@ interface ExplorerFilterItemProps {
   filter: ExplorerFilter;
   index: number;
   handleFilter: (text: string) => void;
+  firstRender: boolean; //disables animation on first render due to initial load
+  setFirstRender: (firstRender: boolean) => void;
 }
 const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
   props: ExplorerFilterItemProps
 ) => {
-  const { filter, index, handleFilter } = props;
+  const { filter, index, handleFilter, firstRender, setFirstRender } = props;
 
   const [openDropdown, setOpenDropdown] = useState<boolean>(false);
   const isDropdown = filter?.dropdown ? true : false;
@@ -36,6 +45,10 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
     //TODO: handle toggle
   };
 
+  useEffect(() => {
+    if (firstRender && openDropdown) setFirstRender(false);
+  }, [firstRender, openDropdown, setFirstRender]);
+
   return (
     <div className="flex flex-col ">
       {index === 0 && (
@@ -46,6 +59,7 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
           alt="Divider"
         />
       )}
+
       <div
         className={`flex flex-col pl-5 py-4 uppercase ${
           isDropdown ? " cursor-pointer" : ""
@@ -60,27 +74,34 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
             <FilterToggle handleToggle={handleToggle} />
           )}
         </div>
-        {/* TODO: animate height on open and cascade children */}
+
         <motion.div
-          {...expandHeight(
-            openDropdown,
-            heightDuration(filter?.dropdown?.length ?? 0),
-            heightDelay(filter?.dropdown?.length ?? 0)
-          )}
+          key={index}
+          {...(firstRender
+            ? { enterAnimation }
+            : expandHeight(
+                openDropdown,
+                heightDuration(filter?.dropdown?.length ?? 0),
+                heightDelay(filter?.dropdown?.length ?? 0)
+              ))}
         >
           {isDropdown && (
             <AnimatePresence>
               {openDropdown && (
                 <motion.div
                   className="flex flex-col py-3 gap-1"
-                  variants={dropdownParent}
+                  variants={
+                    firstRender ? dropdownParentFirstRender : dropdownParent
+                  }
                   initial="hidden"
                   animate="visible"
                   exit="exit"
                 >
                   <motion.div
                     className="w-auto flex items-center pt-1 pb-3"
-                    variants={dropdownChild}
+                    variants={
+                      firstRender ? dropdownChildFirstReneer : dropdownChild
+                    }
                     onClick={(e) => e.stopPropagation()}
                   >
                     <TextInput
@@ -102,6 +123,7 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
           )}
         </motion.div>
       </div>
+
       <Image
         src="/images/explorer/filter-divider.svg"
         width={276}

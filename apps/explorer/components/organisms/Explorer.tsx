@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { NumberInput } from "@components";
 import {
   ExplorerBackground,
@@ -17,6 +17,7 @@ const Explorer: FC<Props> = (props: Props) => {
 
   const [toggle, setToggle] = useState<"solana" | "bitcoin">("solana");
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [firstRender, setFirstRender] = useState<boolean>(true);
 
   useEffect(() => {
     //TODO: handle toggle change
@@ -56,6 +57,8 @@ const Explorer: FC<Props> = (props: Props) => {
               filter={filter}
               index={index}
               handleFilter={handleFilter}
+              firstRender={firstRender}
+              setFirstRender={setFirstRender}
             />
           ))}
         </div>
