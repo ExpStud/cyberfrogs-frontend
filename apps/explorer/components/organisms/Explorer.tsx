@@ -11,6 +11,7 @@ import { NFT } from "@types";
 import { filters } from "@explorer-constants";
 import { SelectedFilter } from "@explorer-types";
 import { useWindowSize } from "@hooks";
+import Image from "next/image";
 
 interface Props {
   data: NFT[];
@@ -62,7 +63,7 @@ const Explorer: FC<Props> = (props: Props) => {
   }, [winWidth]);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-4 lg:gap-2 relative w-full 2xl:w-[1554px] h-[1000px] 2xl:h-[1005px] bg-cf-green-950 2xl:bg-transparent mt-2 2xl:-mt-0.5 p-3 lg:p-5 2xl:pl-8">
+    <div className="flex flex-col lg:flex-row gap-4 lg:gap-2 relative w-full 2xl:w-[1554px] h-[1000px] 2xl:h-[1005px] bg-cf-green-950 2xl:bg-transparent mt-2 2xl:-mt-0.5 pl-3 lg:pl-5 2xl:pl-8 py-3 lg:py-5">
       {/* sort, search, filter */}
       <div className="flex flex-col-reverse  sm:flex-row lg:flex-col sm:items-center lg:items-start  gap-4 lg:gap-6 w-full lg:w-auto h-[100px] sm:h-[40px] lg:h-auto">
         <ExplorerToggle toggle={toggle} setToggle={setToggle} />
@@ -75,7 +76,7 @@ const Explorer: FC<Props> = (props: Props) => {
           <FilterIcon className="lg:hidden" onClick={() => setOpenMenu(true)} />
         </div>
 
-        <div className="hidden lg:flex flex-col custom-scroll overflow-y-auto overflow-x-hidden pr-5">
+        <div className="hidden lg:flex flex-col explorer-scroll overflow-y-auto overflow-x-hidden pr-5">
           {filters.map((filter, index) => (
             <ExplorerFilterItem
               key={filter.name}
@@ -90,12 +91,48 @@ const Explorer: FC<Props> = (props: Props) => {
         </div>
       </div>
       {/* tags & grid */}
-      <div className="z-[1] flex flex-col md:gap-3">
+      <div className="z-[1] flex flex-col md:mx-4 lg:mx-7 overflow-hidden">
         <FilterTags
           selectedFilters={selectedFilters}
           setSelectedFilters={setSelectedFilters}
           handleFilter={handleFilter}
         />
+        <div
+          className={`z-[1] grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4  gap-4 lg:gap-8 pr-2 explorer-scroll ${
+            selectedFilters.length > 0
+              ? "pt-4 lg:pt-[26px]"
+              : "pt-4 lg:pt-[56px]"
+          }`}
+        >
+          {data.map((nft: NFT, index) => (
+            <div className="flex flex-col relative" key={index}>
+              <Image
+                src={nft.content.links.image}
+                width={356}
+                height={356}
+                alt={index.toString()}
+              />
+              <div className="relative">
+                <Image
+                  src="/images/explorer/card-bg.svg"
+                  width={356}
+                  height={69}
+                  alt={index.toString()}
+                />{" "}
+                <div className="flex flex-col gap-0 uppercase absolute left-3 top-[25%] xs:top-[15%] sm:top-[20%] md:top-[15%] lg:top-[20%]">
+                  <p>
+                    Cyber Frog{" "}
+                    <span className="ml-1 text-cf-gold-500">
+                      {nft.content.metadata.name.slice(5).replace("#", "NO ")}
+                    </span>
+                  </p>
+                  {/* TODO: add rank */}
+                  <p className="text-cf-white/50 text-sm">Rank 69</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       <MobileFilters
         toggleMenu={setOpenMenu}

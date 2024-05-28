@@ -102,7 +102,7 @@ input[type="checkbox"]:checked {
   background-color: #E1B53D;
 }
 
-.custom-scroll {
+.explorer-scroll {
   /* Enable scrolling if needed */
   overflow: auto;
 
@@ -111,13 +111,6 @@ input[type="checkbox"]:checked {
     width: 5px; /* Width of the scrollbar */
   }
 
-  &::-webkit-scrollbar-track {
-    background: #0B2D21; /* Color of the track */
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #081F17; /* Color of the scroll thumb */
-  }
 
   &::-webkit-scrollbar-thumb:hover {
     background: #555; /* Color of the scroll thumb on hover */
@@ -125,7 +118,7 @@ input[type="checkbox"]:checked {
 
   /* For Firefox */
   scrollbar-width: thin;
-  scrollbar-color: #081F17 #0B2D21;
+  scrollbar-color: #0B2D21 #081F17 ;
 }
 
 /* For IE and Edge */

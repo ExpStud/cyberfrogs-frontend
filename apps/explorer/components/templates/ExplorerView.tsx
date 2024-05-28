@@ -40,6 +40,7 @@ const ExplorerView: FC<Props> = (props: Props) => {
   //fetch nft metadata
   const fetchNftMetadata = useCallback(async () => {
     const frogs: NFT[] = await getAssetsByAuthority();
+    setNftData(frogs);
   }, []);
 
   useEffect(() => {

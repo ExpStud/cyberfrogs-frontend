@@ -14,7 +14,7 @@ const FilterTags: FC<Props> = (props: Props) => {
   const { selectedFilters, setSelectedFilters, handleFilter } = props;
 
   return (
-    <div className="flex md:gap-3">
+    <div className="flex md:gap-3 mt-2.5">
       {selectedFilters.length > 0 && (
         <motion.div
           onClick={() => setSelectedFilters([])}
