@@ -1,5 +1,5 @@
 import { FC, use, useEffect, useRef, useState } from "react";
-import { NumberInput } from "@components";
+import { FilterIcon, NumberInput } from "@components";
 import {
   ExplorerBackground,
   ExplorerFilterItem,
@@ -55,15 +55,19 @@ const Explorer: FC<Props> = (props: Props) => {
 
   return (
     <div className="flex gap-2 relative w-full 2xl:w-[1554px] h-[1000px] 2xl:h-[1005px] bg-cf-green-950 2xl:bg-transparent mt-2 2xl:-mt-0.5 p-3 lg:p-5 2xl:pl-8">
-      {/* filter, search, sort */}
-      <div className=" flex flex-col gap-4 lg:gap-6 w-auto ">
+      {/* sort, search, filter */}
+      <div className="flex flex-col sm:flex-row lg:flex-col items-center lg:items-start gap-2 md:gap-4 lg:gap-6 w-full lg:w-auto h-[100px] sm:h-[40px] lg:h-auto">
         <ExplorerToggle toggle={toggle} setToggle={setToggle} />
-        <NumberInput
-          placeholder="search id"
-          handleInput={handleSearch}
-          className="w-[276px]"
-        />
-        <div className="flex flex-col custom-scroll overflow-y-auto overflow-x-hidden pr-5">
+        <div className="flex gap-4 items-center justify-between sm:w-full">
+          <NumberInput
+            placeholder="search id"
+            handleInput={handleSearch}
+            className="w-[230px] sm:w-[169px] md:!w-[276px] min-h-[40px]"
+          />
+          <FilterIcon className="lg:hidden" />
+        </div>
+
+        <div className="hidden lg:flex flex-col custom-scroll overflow-y-auto overflow-x-hidden pr-5">
           {filters.map((filter, index) => (
             <ExplorerFilterItem
               key={filter.name}
@@ -79,17 +83,14 @@ const Explorer: FC<Props> = (props: Props) => {
       </div>
       {/* tags & grid */}
       <div className="flex flex-col gap-3">
-        <AnimatePresence mode="wait">
-          {selectedFilters.length > 0 && (
-            <motion.div
-              className="flex gap-3"
-              {...fastExitAnimation}
-              key="tags"
-            >
-              <div
+        <div className="flex gap-3">
+          <AnimatePresence mode="wait">
+            {selectedFilters.length > 1 && (
+              <motion.div
                 onClick={() => setSelectedFilters([])}
                 className="cursor-pointer"
                 key="clear-all"
+                {...fastExitAnimation}
               >
                 <Image
                   src="/images/buttons/clear-all.svg"
@@ -97,22 +98,22 @@ const Explorer: FC<Props> = (props: Props) => {
                   height={30}
                   alt="Clear All"
                 />
-              </div>
-              <div className="flex gap-3 overflow-y-auto">
-                {selectedFilters.map((filter, index) => (
-                  <motion.div
-                    key={filter.filter}
-                    className="row-centered px-2 border border-cf-green-800 cursor-pointer"
-                    {...fastExitAnimation}
-                    onClick={() => handleFilter(filter)}
-                  >
-                    {filter.filter}
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <div className="flex flex-wrap gap-3 ">
+            {selectedFilters.map((filter, index) => (
+              <motion.div
+                key={filter.filter}
+                className="row-centered px-2 border border-cf-green-800 cursor-pointer"
+                {...fastExitAnimation}
+                onClick={() => handleFilter(filter)}
+              >
+                {filter.filter}
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
       <ExplorerBackground />
     </div>

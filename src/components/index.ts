@@ -15,6 +15,7 @@ const ThorGreenIcon = dynamic(() => import("./@icons/ThorGreenIcon"));
 const TwitterGreenIcon = dynamic(() => import("./@icons/TwitterGreenIcon"));
 const DiscordGreenIcon = dynamic(() => import("./@icons/DiscordGreenIcon"));
 const ArrowIcon = dynamic(() => import("./@icons/ArrowIcon"));
+const FilterIcon = dynamic(() => import("./@icons/FilterIcon"));
 //atoms
 const NumberInput = dynamic(() => import("./atoms/NumberInput"));
 const TextInput = dynamic(() => import("./atoms/TextInput"));
@@ -83,5 +84,6 @@ export {
   ArrowIcon,
   DropdownItem,
   Dropdown,
-  Heading
+  Heading,
+  FilterIcon
 }
