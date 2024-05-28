@@ -11,11 +11,11 @@ const ExplorerBackground = dynamic(() => import("./molecules/ExplorerBackground"
 const ExplorerToggle = dynamic(() => import("./molecules/ExplorerToggle"));
 const ExplorerFilterItem = dynamic(() => import("./molecules/ExplorerFilterItem"));
 const FilterToggle = dynamic(() => import("./molecules/FilterToggle"));
-
+const FilterTags = dynamic(() => import("./molecules/FilterTags"));
 //organisms
 const ListingData = dynamic(() => import("./organisms/ListingData"));
 const Explorer = dynamic(() => import("./organisms/Explorer"));
-
+const MobileFilters = dynamic(() => import("./organisms/MobileFilters"));
 //templates
 const ExplorerView = dynamic(() => import("./templates/ExplorerView"));
 
@@ -30,5 +30,7 @@ export {
   ToggleOption,
   ExplorerFilterItem,
   DropdownItem,
-  FilterToggle
+  FilterToggle,
+  FilterTags,
+  MobileFilters
 };

@@ -5,7 +5,7 @@ interface Props extends SVGProps<SVGSVGElement> {
 }
 
 const CloseIcon: FC<Props> = (props: Props) => {
-  const { size = 50, className } = props;
+  const { size = 42, className } = props;
   return (
     <svg
       width={size}
@@ -14,6 +14,7 @@ const CloseIcon: FC<Props> = (props: Props) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={`stroke-white icon-opacity ${className}`}
+      onClick={props.onClick}
     >
       <path
         d="M18 6L6 18M6 6L18 18"
