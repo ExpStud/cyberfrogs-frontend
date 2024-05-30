@@ -13,6 +13,7 @@ import { Explorer, ListingData, TextToggle } from "@explorer-components";
 import { getAssetsByAuthority, handleAssetLoad } from "@utils";
 import { NftDataType } from "@explorer-types";
 import { NFT } from "src/types";
+import debounce from "lodash.debounce";
 
 interface Props {
   setAssets: Dispatch<SetStateAction<boolean[]>>;
@@ -25,6 +26,35 @@ const ExplorerView: FC<Props> = (props: Props) => {
   const [listingData, setListingData] = useState<NftDataType | null>(null);
   const [nftData, setNftData] = useState<NFT[]>([]);
   const [page, setPage] = useState<number>(1); //used to paginate and lazy load
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const paginateDebouncer = debounce(() => setPage((prev) => prev + 1), 1500);
+  const loadDebounce = debounce(() => setLoading(false), 1500);
+
+  const paginateData = () => {
+    if (loading) return;
+    console.log("--> load more data");
+    paginateDebouncer();
+  };
+
+  //fetch nft metadata
+  const fetchNftMetadata = useCallback(async () => {
+    setLoading(true);
+    try {
+      const frogs: NFT[] = await getAssetsByAuthority(page, 12);
+      if (!frogs) return;
+
+      setNftData((prev) => (page === 1 ? frogs : [...prev, ...frogs]));
+    } catch (error) {
+      console.error(error);
+    } finally {
+      loadDebounce();
+    }
+  }, [page]);
+
+  useEffect(() => {
+    fetchNftMetadata();
+  }, [fetchNftMetadata]);
 
   useEffect(() => {
     //TODO: fetch listing data
@@ -38,15 +68,13 @@ const ExplorerView: FC<Props> = (props: Props) => {
     setListingData(NftData);
   }, []);
 
-  //fetch nft metadata
-  const fetchNftMetadata = useCallback(async () => {
-    const frogs: NFT[] = await getAssetsByAuthority(page, 30);
-    setNftData(frogs);
+  useEffect(() => {
+    console.log("page", page);
   }, [page]);
 
   useEffect(() => {
-    fetchNftMetadata();
-  }, [fetchNftMetadata]);
+    console.log("nftData", nftData);
+  }, [nftData]);
 
   return (
     <div className="w-full flex flex-col items-center xl:items-start justify-start px-3 md:px-12 2xl:px-0 my-10 ">
@@ -73,7 +101,11 @@ const ExplorerView: FC<Props> = (props: Props) => {
       </div>
 
       {/* explorer */}
-      <Explorer data={nftData} />
+      <Explorer
+        data={nftData}
+        paginateData={paginateData}
+        loadingData={loading}
+      />
     </div>
   );
 };

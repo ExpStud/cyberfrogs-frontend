@@ -18,6 +18,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   fill?: boolean; //fill & objectFit or width & height
   objectFit?: string;
   imageClass?: string;
+  shimmerOnly?: boolean;
 }
 
 const ImageShimmer: FC<Props> = (props: Props) => {
@@ -32,6 +33,7 @@ const ImageShimmer: FC<Props> = (props: Props) => {
     objectFit = "cover",
     imageClass = "",
     className,
+    shimmerOnly = false,
     ...componentProps
   } = props;
 
@@ -73,7 +75,7 @@ const ImageShimmer: FC<Props> = (props: Props) => {
             style={{ objectFit: objectFit }}
             alt={alt}
             className={`rounded ${imageClass}`}
-            onLoad={() => setImageLoaded(true)}
+            onLoad={() => setImageLoaded(true && !shimmerOnly)}
           />
         )}
         {width && height && (
@@ -83,7 +85,7 @@ const ImageShimmer: FC<Props> = (props: Props) => {
             height={height}
             alt={alt}
             className={`rounded ${imageClass}`}
-            onLoad={() => setImageLoaded(true)}
+            onLoad={() => setImageLoaded(true && !shimmerOnly)}
           />
         )}
       </motion.div>

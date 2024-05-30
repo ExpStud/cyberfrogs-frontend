@@ -12,15 +12,15 @@ import { NFT } from "@types";
 import { filters } from "@explorer-constants";
 import { SelectedFilter } from "@explorer-types";
 import { useWindowSize } from "@hooks";
-import Image from "next/image";
-import { motion } from "framer-motion";
 
 interface Props {
   data: NFT[];
+  paginateData: () => void;
+  loadingData: boolean;
 }
 
 const Explorer: FC<Props> = (props: Props) => {
-  const { data } = props;
+  const { data, paginateData, loadingData } = props;
 
   const [toggle, setToggle] = useState<"solana" | "bitcoin">("solana");
   const [selectedFilters, setSelectedFilters] = useState<SelectedFilter[]>([]);
@@ -67,7 +67,7 @@ const Explorer: FC<Props> = (props: Props) => {
   return (
     <div className="flex flex-col lg:flex-row gap-4 lg:gap-2 relative w-full 2xl:w-[1554px] h-[1000px] 2xl:h-[1005px] bg-cf-green-950 2xl:bg-transparent mt-2 2xl:-mt-0.5 pl-3 lg:pl-5 2xl:pl-8 py-3 lg:py-5">
       {/* sort, search, filter */}
-      <div className="flex flex-col-reverse  sm:flex-row lg:flex-col sm:items-center lg:items-start  gap-4 lg:gap-6 w-full lg:w-auto h-[100px] sm:h-[40px] lg:h-auto">
+      <div className="flex flex-col-reverse  sm:flex-row lg:flex-col sm:items-center lg:items-start gap-4 lg:gap-6 w-full lg:w-auto h-[100px] sm:h-[40px] lg:h-auto pr-3 lg:pr-0">
         <ExplorerToggle toggle={toggle} setToggle={setToggle} />
         <div className="flex gap-4 items-center justify-between w-full">
           <NumberInput
@@ -78,7 +78,7 @@ const Explorer: FC<Props> = (props: Props) => {
           <FilterIcon className="lg:hidden" onClick={() => setOpenMenu(true)} />
         </div>
 
-        <div className="hidden lg:flex flex-col explorer-scroll overflow-y-auto overflow-x-hidden pr-5">
+        <div className="hidden lg:flex flex-col explorer-scroll overflow-y-auto overflow-x-hidden pr-5 lg:pr-0">
           {filters.map((filter, index) => (
             <ExplorerFilterItem
               key={filter.name}
@@ -107,8 +107,23 @@ const Explorer: FC<Props> = (props: Props) => {
           }`}
         >
           {data.map((nft: NFT, index) => (
-            <NftCard metadata={nft} key={index} />
+            <NftCard
+              metadata={nft}
+              key={index}
+              isLoadingCard={false}
+              paginateData={paginateData}
+              loadingData={loadingData}
+            />
           ))}
+          {/* loading card - used to trigger pagination */}
+          {data.length > 0 && (
+            <NftCard
+              metadata={data[0]}
+              isLoadingCard={true}
+              paginateData={paginateData}
+              loadingData={loadingData}
+            />
+          )}
         </div>
       </div>
       <MobileFilters
