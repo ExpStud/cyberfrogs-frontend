@@ -1,15 +1,12 @@
 import { FC, ReactNode, useState } from "react";
-import {
-  PageHead,
-  Header,
-  Footer,
-  SplashScreen,
-  ImageModal,
-} from "@components";
+import { PageHead, Header, Footer, SplashScreen } from "@components";
 import { enterAnimation } from "@constants";
 import { AnimatePresence, motion } from "framer-motion";
 import { ViewContext } from "@contexts";
 import Image from "next/image";
+import { ExplorerModal } from "@explorer-components";
+import { NFT } from "@types";
+
 interface Props {
   children: ReactNode;
   fixed?: boolean;
@@ -22,12 +19,13 @@ const PageLayout: FC<Props> = (props: Props) => {
 
   //context for splash screen & modals
   const [showView, setShowView] = useState<boolean>(false);
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const [showExplorerModal, setShowExplorerModal] = useState<NFT | null>(null);
+
   const value = {
     showView,
     setShowView,
-    showModal,
-    setShowModal,
+    showExplorerModal,
+    setShowExplorerModal,
   };
 
   return (
@@ -53,14 +51,18 @@ const PageLayout: FC<Props> = (props: Props) => {
         </motion.main>
         <Footer />
 
-        {/* modals */}
+        {/* used to display splash screen when loading large assets on page open */}
         <AnimatePresence mode="wait">
           {assets && <SplashScreen assets={assets} key="assets" />}
-          {showModal && (
-            <ImageModal
-              key="image-modal"
-              show={showModal}
-              close={() => setShowModal(false)}
+        </AnimatePresence>
+
+        {/* modals - used here to display in root container and avoid nesting issues */}
+        <AnimatePresence mode="wait">
+          {showExplorerModal && (
+            <ExplorerModal
+              key="explorer-modal"
+              show={showExplorerModal !== null}
+              close={() => setShowExplorerModal(null)}
             />
           )}
         </AnimatePresence>

@@ -1,8 +1,9 @@
-import { FC, useEffect, useRef } from "react";
+import { FC, useContext, useEffect, useRef } from "react";
 import { NFT } from "@types";
 import Image from "next/image";
 import { useInView } from "framer-motion";
-import { ImageShimmer } from "src/components";
+import { ImageShimmer } from "@components";
+import { ViewContext } from "@contexts";
 
 interface Props {
   metadata: NFT;
@@ -14,8 +15,13 @@ interface Props {
 const Explorer: FC<Props> = (props: Props) => {
   const { metadata, isLoadingCard, paginateData, loadingData } = props;
 
+  const { setShowExplorerModal } = useContext(ViewContext);
+
   const ref = useRef(null);
   const isInView = useInView(ref);
+
+  //TODO: add rank
+  const rank = 69;
 
   // trigger pagination when last card is in view
   useEffect(() => {
@@ -25,7 +31,11 @@ const Explorer: FC<Props> = (props: Props) => {
   }, [isInView, isLoadingCard, loadingData, paginateData]);
 
   return (
-    <div className="flex flex-col relative cursor-pointer" ref={ref}>
+    <div
+      className="flex flex-col relative cursor-pointer"
+      ref={ref}
+      onClick={() => setShowExplorerModal(metadata)}
+    >
       <ImageShimmer
         src={metadata.content.links.image}
         alt={metadata.content.metadata.name}
@@ -50,10 +60,8 @@ const Explorer: FC<Props> = (props: Props) => {
             )}
           </p>
 
-          {/* TODO: add rank */}
-
           <p className="text-cf-white/50 text-sm">
-            Rank {!isLoadingCard && 69}
+            Rank {!isLoadingCard && rank}
           </p>
         </div>
       </div>

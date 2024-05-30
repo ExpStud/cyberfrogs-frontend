@@ -50,6 +50,7 @@ const ExplorerView: FC<Props> = (props: Props) => {
     } finally {
       loadDebounce();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   useEffect(() => {

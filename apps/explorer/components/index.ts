@@ -17,6 +17,7 @@ const NftCard = dynamic(() => import("./molecules/NftCard"));
 const ListingData = dynamic(() => import("./organisms/ListingData"));
 const Explorer = dynamic(() => import("./organisms/Explorer"));
 const MobileFilters = dynamic(() => import("./organisms/MobileFilters"));
+const ExplorerModal = dynamic(() => import("./organisms/ExplorerModal"));
 //templates
 const ExplorerView = dynamic(() => import("./templates/ExplorerView"));
 
@@ -34,5 +35,6 @@ export {
   FilterToggle,
   FilterTags,
   MobileFilters,
-  NftCard
+  NftCard,
+  ExplorerModal
 };
