@@ -1,7 +1,7 @@
 import { Dispatch, FC, Fragment, SetStateAction, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { HeaderIcons, NavigationItem } from "@components";
-import { useWindowSize } from "@hooks";
+import { useLockBodyScroll, useWindowSize } from "@hooks";
 import { fadeVariants, midExitAnimation, navigationData } from "@constants";
 
 interface Props {
@@ -15,13 +15,7 @@ const Menu: FC<Props> = (props: Props) => {
 
   const isMobile: boolean = winWidth < 730;
   //stop page scroll (when modal or menu open)
-  useEffect(() => {
-    if (open) document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [open]);
+  useLockBodyScroll(open);
 
   return (
     <AnimatePresence mode="wait" initial={false}>

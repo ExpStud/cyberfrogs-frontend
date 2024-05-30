@@ -5,6 +5,7 @@ import { filters } from "@explorer-constants";
 import { ExplorerFilterItem } from "..";
 import { SelectedFilter } from "@explorer-types";
 import { CloseIcon } from "@components";
+import { useLockBodyScroll } from "@hooks";
 
 interface Props {
   toggleMenu: Dispatch<SetStateAction<boolean>>;
@@ -26,13 +27,7 @@ const Menu: FC<Props> = (props: Props) => {
   } = props;
 
   //stop page scroll (when modal or menu open)
-  useEffect(() => {
-    if (open) document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [open]);
+  useLockBodyScroll(open);
 
   return (
     <AnimatePresence mode="wait" initial={false}>

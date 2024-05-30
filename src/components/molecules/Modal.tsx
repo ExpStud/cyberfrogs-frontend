@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { FC, ReactNode, useEffect, HTMLAttributes } from "react";
+import { FC, ReactNode, HTMLAttributes } from "react";
 import { midClickAnimation, scaleExitAnimation } from "@constants";
 import Image from "next/image";
+import { useLockBodyScroll } from "@hooks";
 interface Props extends HTMLAttributes<HTMLDivElement> {
   show: boolean;
   children: ReactNode;
@@ -9,11 +10,8 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 const Modal: FC<Props> = (props: Props) => {
   const { show, children, className, ...componentProps } = props;
 
-  //stop page scroll (when modal or menu open)
-  useEffect(() => {
-    if (show) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "auto";
-  }, [show]);
+  //disable body scroll when modal is open
+  useLockBodyScroll(show);
 
   return (
     <motion.div

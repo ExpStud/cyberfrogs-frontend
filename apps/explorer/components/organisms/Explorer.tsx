@@ -78,7 +78,7 @@ const Explorer: FC<Props> = (props: Props) => {
           <FilterIcon className="lg:hidden" onClick={() => setOpenMenu(true)} />
         </div>
 
-        <div className="hidden lg:flex flex-col explorer-scroll overflow-y-auto overflow-x-hidden pr-5 lg:pr-0">
+        <div className="hidden lg:flex flex-col explorer-scroll overflow-y-auto overflow-x-hidden md:!w-[288px] pr-3">
           {filters.map((filter, index) => (
             <ExplorerFilterItem
               key={filter.name}

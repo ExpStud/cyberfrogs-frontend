@@ -2,6 +2,7 @@ import { FC, useCallback, useContext, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ViewContext } from "@contexts";
 import debounce from "lodash.debounce";
+import { useLockBodyScroll } from "src/hooks";
 
 interface Props {
   assets?: boolean[];
@@ -41,10 +42,7 @@ const SplashScreen: FC<Props> = ({ assets = [] }: Props) => {
   }, [setShowView, showAnimation]);
 
   //stop page scroll (when modal or menu open)
-  useEffect(() => {
-    if (showAnimation) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "auto";
-  }, [showAnimation]);
+  useLockBodyScroll(showAnimation);
 
   return (
     <AnimatePresence mode="wait">
