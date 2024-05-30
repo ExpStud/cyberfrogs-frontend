@@ -116,7 +116,7 @@ const Explorer: FC<Props> = (props: Props) => {
             />
           ))}
           {/* loading card - used to trigger pagination */}
-          {data.length > 0 && (
+          {data.length > -1 && (
             <NftCard
               metadata={data[0]}
               isLoadingCard={true}
