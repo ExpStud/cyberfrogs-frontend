@@ -24,6 +24,7 @@ const ExplorerView: FC<Props> = (props: Props) => {
   const [overviewToggle, setOverviewToggle] = useState<boolean>(true);
   const [listingData, setListingData] = useState<NftDataType | null>(null);
   const [nftData, setNftData] = useState<NFT[]>([]);
+  const [page, setPage] = useState<number>(1); //used to paginate and lazy load
 
   useEffect(() => {
     //TODO: fetch listing data
@@ -39,9 +40,9 @@ const ExplorerView: FC<Props> = (props: Props) => {
 
   //fetch nft metadata
   const fetchNftMetadata = useCallback(async () => {
-    const frogs: NFT[] = await getAssetsByAuthority();
+    const frogs: NFT[] = await getAssetsByAuthority(page, 30);
     setNftData(frogs);
-  }, []);
+  }, [page]);
 
   useEffect(() => {
     fetchNftMetadata();

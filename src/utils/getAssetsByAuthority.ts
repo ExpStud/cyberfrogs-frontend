@@ -1,5 +1,8 @@
 
-export const getAssetsByAuthority = async (): Promise<any[]> => {
+export const getAssetsByAuthority = async (
+  page?: number,
+  limit?: number
+  ): Promise<any[]> => {
 
   const rpcDevnetHelius = "https://devnet.helius-rpc.com/?api-key=b2fbf3d2-b256-4bd7-8f59-4f5dd972499b";
   const rpcMainnetHelius = "https://mainnet.helius-rpc.com/?api-key=b2fbf3d2-b256-4bd7-8f59-4f5dd972499b";
@@ -17,8 +20,8 @@ export const getAssetsByAuthority = async (): Promise<any[]> => {
       method: 'getAssetsByAuthority',
         params: {
           authorityAddress: collectionAddress,
-          page: 1, // Starts at 1
-          limit: 100 //can modify
+          page: page ?? 1, // Starts at 1
+          limit: limit ?? 20 //can modify
         },
     }),
   });

@@ -1,15 +1,7 @@
-import { AnimatePresence, HTMLMotionProps, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { FC, HTMLAttributes, useState } from "react";
 import Image from "next/image";
 import { imageLoadAnimation } from "@constants";
-
-enum ObjectFit {
-  "contain",
-  "cover",
-  "fill",
-  "none",
-  "scale-down",
-}
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   src: string;
@@ -57,7 +49,7 @@ const ImageShimmer: FC<Props> = (props: Props) => {
       <AnimatePresence mode="wait">
         {!imageLoaded && (
           <motion.div
-            className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-custom-dark-gray via-custom-black to-custom-dark-gray rounded opacity-40"
+            className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-cf-green-500 via-cf-green-800 to-cf-green-500 rounded opacity-40"
             style={{
               backgroundSize: "200% 100%",
               animation: "shimmer 1.5s ease-in-out infinite",
@@ -72,7 +64,6 @@ const ImageShimmer: FC<Props> = (props: Props) => {
             ? "transition-all duration-300 hover:scale-110 cursor-pointer"
             : ""
         }`}
-        // {...imageLoadAnimation(imageLoaded)}
       >
         {fill && (
           <Image

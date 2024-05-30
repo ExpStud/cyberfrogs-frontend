@@ -76,6 +76,8 @@ html {
   }
 }
 
+
+
 /* Hide the spinner controls in number inputs */
 .hide-spinner::-webkit-inner-spin-button,
 .hide-spinner::-webkit-outer-spin-button {
@@ -227,3 +229,12 @@ input[type="checkbox"]:checked {
   filter: drop-shadow(0px 0px 16.2px #FFF79E) drop-shadow(0px 0px 32.4px #FFF79E) drop-shadow(0px 0px 113.4px #FFF79E);
 }
 
+.pulse {
+  animation: pulse 1.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.loadable {
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}

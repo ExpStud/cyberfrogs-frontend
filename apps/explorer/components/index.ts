@@ -12,6 +12,7 @@ const ExplorerToggle = dynamic(() => import("./molecules/ExplorerToggle"));
 const ExplorerFilterItem = dynamic(() => import("./molecules/ExplorerFilterItem"));
 const FilterToggle = dynamic(() => import("./molecules/FilterToggle"));
 const FilterTags = dynamic(() => import("./molecules/FilterTags"));
+const NftCard = dynamic(() => import("./molecules/NftCard"));
 //organisms
 const ListingData = dynamic(() => import("./organisms/ListingData"));
 const Explorer = dynamic(() => import("./organisms/Explorer"));
@@ -32,5 +33,6 @@ export {
   DropdownItem,
   FilterToggle,
   FilterTags,
-  MobileFilters
+  MobileFilters,
+  NftCard
 };
