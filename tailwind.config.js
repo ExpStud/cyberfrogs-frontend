@@ -12,6 +12,8 @@ module.exports = {
       boxShadow: {
         explorerData:
           "0px 3px 6px rgba(23, 23, 23, 0.10), 0px 11px 11px rgba(23, 23, 23, 0.09), 0px 24px 14px rgba(23, 23, 23, 0.05), 0px 43px 17px rgba(23, 23, 23, 0.01), 0px 67px 19px rgba(23, 23, 23, 0.00)",
+        dashboardData:
+          "drop-shadow(0px 3px 6px rgba(23, 23, 23, 0.10)) drop-shadow(0px 11px 11px rgba(23, 23, 23, 0.09)) drop-shadow(0px 24px 14px rgba(23, 23, 23, 0.05)) drop-shadow(0px 43px 17px rgba(23, 23, 23, 0.01)) drop-shadow(0px 67px 19px rgba(23, 23, 23, 0.00))",
       },
       backgroundColor: {
         "custom-grey": "rgba(217, 217, 217, 0.08)",
@@ -23,6 +25,7 @@ module.exports = {
         explorerToggleActiveBg: "url('/images/explorer/toggle-active-bg.svg')",
         explorerToggle1Bg: "url('/images/explorer/toggle-1-bg.svg')",
         explorerToggleActive1Bg: "url('/images/explorer/toggle-1-active.svg')",
+        dashboardData: "url('/images/dashboard/data-bg.svg')",
       },
       fontFamily: {
         rajdhani: ["Rajdhani-Medium"],
