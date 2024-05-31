@@ -1,10 +1,14 @@
 import { useRouter } from "next/router";
-import { FC, useEffect, useState } from "react";
+import { FC, HTMLAttributes, useEffect, useState } from "react";
 import Image from "next/image";
 import { HeadingType } from "@types";
 import { HeadingData } from "@constants";
 
-const Heading: FC = () => {
+interface HeadingProps extends HTMLAttributes<HTMLDivElement> {
+  imageClass?: string;
+}
+
+const Heading: FC<HeadingProps> = (props) => {
   const [data, setData] = useState<HeadingType | null>(null);
   const router = useRouter();
 
@@ -15,10 +19,12 @@ const Heading: FC = () => {
   }, [router.asPath]);
 
   return (
-    <div className="relative">
+    <div className="relative" {...props}>
       <h1>{data?.name}</h1>
       {data?.image && (
-        <div className="absolute -top-9 md:-top-6 -left-4">
+        <div
+          className={`absolute -top-9 md:-top-6 -left-4 ${props.imageClass}`}
+        >
           <Image
             src={data.image}
             alt={data.name}

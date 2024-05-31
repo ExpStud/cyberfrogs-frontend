@@ -1,21 +1,14 @@
-import { GetServerSideProps, NextPage } from "next";
-import { PageLayout } from "src/components";
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { res } = context;
-
-  // Redirect to the new URL
-  res.writeHead(301, { Location: "https://legacy.cyberfrogs.io/dashboard" });
-  res.end();
-
-  // You should return an object from getServerSideProps
-  return { props: {} };
-};
+import { NextPage } from "next";
+import { useState } from "react";
+import { PageLayout } from "@components";
+import { DashboardView } from "@dashboard-components";
 
 const Dashboard: NextPage = () => {
+  const [assets, setAssets] = useState<boolean[]>([]);
+
   return (
-    <PageLayout>
-      <></>
+    <PageLayout assets={assets}>
+      <DashboardView setAssets={setAssets} />
     </PageLayout>
   );
 };

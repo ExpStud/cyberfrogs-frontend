@@ -132,7 +132,7 @@ input[type="checkbox"]:checked {
 
 /* wallet adapter modal */
 .wallet-adapter-modal-wrapper {
-  @apply !bg-cf-green;
+  @apply !bg-cf-green-900;
 }
 .wallet-adapter-modal-button-close {
   @apply !bg-cf-green-900 transition-200 hover:!bg-cf-green-800;
@@ -237,4 +237,12 @@ input[type="checkbox"]:checked {
   margin: 0 auto;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.green-highlight {
+  fill: #7CDDBB;
+  filter: drop-shadow(0px 0px 0.72px #7CDDBB) drop-shadow(0px 0px 1.44px #7CDDBB) drop-shadow(0px 0px 5.04px #7CDDBB) drop-shadow(0px 0px 10.08px #7CDDBB) drop-shadow(0px 0px 17.28px #7CDDBB) drop-shadow(0px 0px 30.24px #7CDDBB);
+}
+.orange-highlight {
+  fill: #E62E05;
+  filter: drop-shadow(0px 0px 0.72px #E62E05) drop-shadow(0px 0px 1.44px #E62E05) drop-shadow(0px 0px 5.04px #E62E05) drop-shadow(0px 0px 10.08px #E62E05) drop-shadow(0px 0px 17.28px #E62E05) drop-shadow(0px 0px 30.24px #E62E05);
 }

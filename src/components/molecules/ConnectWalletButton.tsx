@@ -5,13 +5,15 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { truncatePubKey } from "@utils";
 import { Dispatch, FC, SetStateAction, useRef, useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { useOutsideAlerter } from "@hooks";
+import { useLockBodyScroll, useOutsideAlerter } from "@hooks";
 
 const ConnectWalletButton: FC = () => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
 
   const { setVisible, visible } = useWalletModal();
   const { publicKey, connecting } = useWallet();
+
+  useLockBodyScroll(visible);
 
   //close dropdown on outside click
   const ref = useRef(null);

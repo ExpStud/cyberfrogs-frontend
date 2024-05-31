@@ -69,14 +69,6 @@ const ExplorerView: FC<Props> = (props: Props) => {
     setListingData(NftData);
   }, []);
 
-  useEffect(() => {
-    console.log("page", page);
-  }, [page]);
-
-  useEffect(() => {
-    console.log("nftData", nftData);
-  }, [nftData]);
-
   return (
     <div className="w-full flex flex-col items-center xl:items-start justify-start px-3 md:px-12 2xl:px-0 my-10 ">
       {/* heading & image */}
@@ -86,7 +78,7 @@ const ExplorerView: FC<Props> = (props: Props) => {
           src="/images/explorer/intro.png"
           width={994}
           height={218}
-          alt="Loaded"
+          alt="Explorer"
           className="hidden lg:block lg:-mt-8"
           onLoad={() => handleAssetLoad(0, setAssets)}
         />

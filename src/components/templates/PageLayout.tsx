@@ -31,7 +31,7 @@ const PageLayout: FC<Props> = (props: Props) => {
   return (
     <ViewContext.Provider value={value}>
       <div
-        className={`flex flex-col min-h-[100svh] h-full justify-between items-center overflow-x-hidden ${
+        className={`flex flex-col min-h-screen justify-between items-center overflow-x-hidden ${
           fixed ? "fixed inset-0" : absolute ? "absolute inset-0" : "relative"
         }`}
       >
@@ -44,7 +44,7 @@ const PageLayout: FC<Props> = (props: Props) => {
 
         <Header />
         <motion.main
-          className="main-width flex flex-col h-full w-full mt-10"
+          className="main-width flex flex-col flex-grow h-full w-full mt-10"
           {...enterAnimation}
         >
           {children}
