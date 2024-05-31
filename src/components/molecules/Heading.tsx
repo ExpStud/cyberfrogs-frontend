@@ -4,11 +4,9 @@ import Image from "next/image";
 import { HeadingType } from "@types";
 import { HeadingData } from "@constants";
 
-interface HeadingProps extends HTMLAttributes<HTMLDivElement> {
-  imageClass?: string;
-}
+interface HeadingProps extends HTMLAttributes<HTMLDivElement> {}
 
-const Heading: FC<HeadingProps> = (props) => {
+const Heading: FC<HeadingProps> = (props: HeadingProps) => {
   const [data, setData] = useState<HeadingType | null>(null);
   const router = useRouter();
 
@@ -22,9 +20,7 @@ const Heading: FC<HeadingProps> = (props) => {
     <div className="relative" {...props}>
       <h1>{data?.name}</h1>
       {data?.image && (
-        <div
-          className={`absolute -top-9 md:-top-6 -left-4 ${props.imageClass}`}
-        >
+        <div className={`absolute -top-9 md:-top-6 -left-4`}>
           <Image
             src={data.image}
             alt={data.name}

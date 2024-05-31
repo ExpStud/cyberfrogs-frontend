@@ -50,14 +50,14 @@ const Data: FC<Props> = (props: Props) => {
           </span>
         </div>
       </div>
-      {/* <div className="absolute -top-1 left-2 xl:left-[22px] z-0 hidden xl:block">
+      <div className="absolute -bottom-7 inset-x-0 -z-[1] h-[33px] w-full md:w-[97.9%] lg:w-[98.8%] md:ml-4">
         <Image
-          src="/images/dashboard/data-bg.svg"
-          width={1520}
-          height={70}
-          alt="Data"
+          src="/images/dashboard/data-dots.svg"
+          fill
+          className="object-cover"
+          alt="Dots"
         />
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -38,7 +38,7 @@ const Explorer: FC<Props> = (props: Props) => {
     >
       <ImageShimmer
         src={metadata?.content?.links?.image}
-        alt={metadata?.content?.metadata?.name}
+        alt={metadata?.content?.metadata?.name ?? "Cyber Frog"}
         width={356}
         height={356}
         shimmerOnly={isLoadingCard}
