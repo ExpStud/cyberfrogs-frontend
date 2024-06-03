@@ -27,7 +27,7 @@ const FilterTags: FC<Props> = (props: Props) => {
             width={99}
             height={30}
             alt="Clear All"
-            className="min-w-[99px] hidden md:flex"
+            className="button-transition min-w-[99px] hidden md:flex"
           />
         </motion.div>
       )}

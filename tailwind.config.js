@@ -27,6 +27,7 @@ module.exports = {
         explorerToggleActive1Bg: "url('/images/explorer/toggle-1-active.svg')",
         dashboardData: "url('/images/dashboard/data-bg.svg')",
         dashboardBg: "url('/images/dashboard/dashboard-bg-full.svg')",
+        manageBg: "url('/images/dashboard/manage-bg.svg')",
       },
       fontFamily: {
         rajdhani: ["Rajdhani-Medium"],
