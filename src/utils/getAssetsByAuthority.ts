@@ -1,14 +1,9 @@
+import { collectionAddress, rpcMainnetHelius } from "@constants";
 
 export const getAssetsByAuthority = async (
   page: number,
   limit: number
-  ): Promise<any[]> => {
-
-  const rpcDevnetHelius = "https://devnet.helius-rpc.com/?api-key=b2fbf3d2-b256-4bd7-8f59-4f5dd972499b";
-  const rpcMainnetHelius = "https://mainnet.helius-rpc.com/?api-key=b2fbf3d2-b256-4bd7-8f59-4f5dd972499b";
-
-  const collectionAddress = "frogQCpP8LpgfhhpusLvNoRw6sjmsX3Vij7MF8KtHn2";
-
+): Promise<any[]> => {
   const response = await fetch(rpcMainnetHelius, {
     method: 'POST',
     headers: {
@@ -20,15 +15,13 @@ export const getAssetsByAuthority = async (
       method: 'getAssetsByAuthority',
         params: {
           authorityAddress: collectionAddress,
-          page: page , // Starts at 1
-          limit: limit //can modify
+          page: page,  
+          limit: limit  
         },
     }),
   });
   const { result } = await response.json();
   
-  console.log("Assets by Authority: ",
-  //  result?.items
-   );
+  // console.log("Assets by Authority: ", result?.items);
   return result?.items;
 };

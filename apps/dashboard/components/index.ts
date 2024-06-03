@@ -8,9 +8,8 @@ const DashboardHeading = dynamic(() => import("./organisms/DashboardHeading"));
 //templates
 const DashboardView = dynamic(() => import("./templates/DashboardView"));
 
-
 export {
- DashboardView,
- Data,
- DashboardHeading
+  DashboardView,
+  Data,
+  DashboardHeading,
 };
