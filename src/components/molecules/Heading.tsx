@@ -17,7 +17,7 @@ const Heading: FC<HeadingProps> = (props: HeadingProps) => {
   }, [router.asPath]);
 
   return (
-    <div className="relative" {...props}>
+    <div className="z-[1] relative" {...props}>
       <h1>{data?.name}</h1>
       {data?.image && (
         <div className={`absolute -top-9 md:-top-6 -left-4`}>

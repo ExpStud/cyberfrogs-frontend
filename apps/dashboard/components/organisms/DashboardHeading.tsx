@@ -16,7 +16,7 @@ const DashboardHeading: FC<DashboardHeadingProps> = (
   const { connected, totalFrogs, setAssets } = props;
 
   return (
-    <div className="relative w-full flex flex-col lg:flex-row justify-between px-3 sm:px-0 2xl:ml-4 mb-4">
+    <div className="relative w-full flex flex-col lg:flex-row justify-between px-3 md:px-0 2xl:ml-4 mb-4">
       <div className="flex flex-col justify-between">
         <Heading className="relative w-[504px]" />
 
@@ -53,7 +53,7 @@ const DashboardHeading: FC<DashboardHeadingProps> = (
         width={968}
         height={210}
         alt="Dashboard"
-        className="hidden lg:block absolute right-0 -top-4 -z-10 opacity-20 xl:opacity-100"
+        className="hidden lg:block absolute right-0 -top-4 z-0 opacity-20 xl:opacity-100"
         onLoad={() => handleAssetLoad(0, setAssets)}
       />
     </div>
