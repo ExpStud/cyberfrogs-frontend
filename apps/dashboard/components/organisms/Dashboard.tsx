@@ -2,24 +2,31 @@ import { FC } from "react";
 import Image from "next/image";
 import { NFT } from "@types";
 import { AuthData } from "@dashboard-types";
-import { UserNft } from "@dashboard-components";
+import { DataWrapper, UserNft, VariableLabel } from "@dashboard-components";
 
 interface DashboardProps {
   userFrogs: NFT[];
-  authData: AuthData;
   isLoading: boolean;
+  connected: boolean;
 }
 
 const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
-  const { userFrogs, authData, isLoading } = props;
+  const { userFrogs, isLoading, connected } = props;
 
   //TODO: add data
-  const kira = 420;
-  const alpha = 0;
-  const beta = 0;
-  const thor = 0;
-  const top1000 = 0;
-  const og = 1;
+  const kira = connected ? 420 : 0;
+  const alpha = connected ? 0 : 0;
+  const beta = connected ? 10 : 0;
+  const thor = connected ? 0 : 0;
+  const top1000 = connected ? 0 : 0;
+  const og = connected ? 1 : 0;
+
+  const estimateValue = connected ? 13.44 : 0;
+  const paperhandValue = connected ? 9 : 0;
+
+  const authData: AuthData | undefined = connected
+    ? { discordId: "DarthDegen#69", role: "Whale" }
+    : undefined;
 
   return (
     <div className="relative flex flex-col justify-between gap-3  bg-cf-green-950 md:bg-transparent md:bg-dashboardBg min-h-[700px] w-full md:w-full mt-5 md:mt-0 pl-5 pr-0 md:pl-10 xl:pr-10 py-6">
@@ -40,10 +47,12 @@ const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
               {kira} $KIRA
             </p>
           </DataWrapper>
-          <DataWrapper title="Esitmate Value">
-            <p className="text-cf-gold text-3xl md:text-4xl">{13.44} SOL</p>
+          <DataWrapper title="Estimate Value">
+            <p className="text-cf-gold text-3xl md:text-4xl">
+              {estimateValue} SOL
+            </p>
             <p className="text-cf-white/50 uppercase mt-2 text-sm md:text-base">
-              Paperhand: {9} $SOL
+              Paperhand: {paperhandValue} $SOL
             </p>
           </DataWrapper>
           <DataWrapper title="Frog Types">
@@ -64,12 +73,17 @@ const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
               <div className="flex flex-col gap-2 w-full uppercase pr-10">
                 <VariableLabel
                   label="Discord ID"
-                  variable={authData.discordId}
+                  variable={authData?.discordId}
+                  emptyMessage="Not Linked"
                 />
-                <VariableLabel label="Role" variable={authData.role} />
+                <VariableLabel
+                  label="Role"
+                  variable={authData?.role}
+                  emptyMessage="Not Linked"
+                />
                 <VariableLabel
                   label="Bitcoin"
-                  variable={authData.bitcoin}
+                  variable={authData?.bitcoin}
                   emptyMessage="Not Linked"
                 />
               </div>
@@ -98,7 +112,7 @@ const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
         {userFrogs.map((nft: NFT, index) => (
           <UserNft metadata={nft} isLoadingCard={false} key={index} />
         ))}
-        {/* loading card - used to trigger pagination */}
+        {/* loading card */}
         {userFrogs.length === 0 && isLoading && (
           <UserNft metadata={undefined} isLoadingCard={true} />
         )}
@@ -114,44 +128,6 @@ const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
           className="hidden md:block"
         />
       </div>
-    </div>
-  );
-};
-
-interface VariableLabelProps {
-  label: string;
-  variable: number | string | undefined;
-  emptyMessage?: string;
-}
-const VariableLabel: FC<VariableLabelProps> = (props: VariableLabelProps) => {
-  const { label, variable, emptyMessage } = props;
-  return (
-    <div className="flex w-full gap-2 justify-between text-sm md:text-base">
-      <p className={variable ? "text-cf-white" : "text-cf-white/50"}>{label}</p>
-      <p className={variable ? "text-cf-gold" : "text-cf-white/50"}>
-        {variable ?? emptyMessage ?? "N/A"}
-      </p>
-    </div>
-  );
-};
-
-interface DataProps {
-  title: string;
-  children: React.ReactNode;
-}
-const DataWrapper: FC<DataProps> = (props: DataProps) => {
-  const { title, children } = props;
-  return (
-    <div className="relative w-[256px] min-w-[200px] h-[172px] min-h-[172px] flex flex-col py-4">
-      <Image
-        src="/images/dashboard/divider.svg"
-        width={256}
-        height={1}
-        alt="Divider"
-        className="-mt-4 mb-4 opacity-75"
-      />
-      <p className="uppercase mb-6">{title}</p>
-      {children}
     </div>
   );
 };

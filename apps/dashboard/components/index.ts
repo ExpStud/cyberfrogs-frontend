@@ -1,8 +1,10 @@
 import dynamic from "next/dynamic";
 
 //atoms  
+const VariableLabel = dynamic(() => import("./atoms/VariableLabel"));
 //molecules
 const UserNft = dynamic(() => import("./molecules/UserNft"));
+const DataWrapper = dynamic(() => import("./molecules/DataWrapper"));
 //organisms
 const Data = dynamic(() => import("./organisms/Data"));
 const DashboardHeading = dynamic(() => import("./organisms/DashboardHeading"));
@@ -15,5 +17,7 @@ export {
   Data,
   DashboardHeading,
   Dashboard,
-  UserNft
+  UserNft,
+  DataWrapper,
+  VariableLabel
 };

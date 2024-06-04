@@ -34,14 +34,9 @@ const UserNft: FC<Props> = (props: Props) => {
         height={356}
         shimmerOnly={isLoadingCard}
         hover
+        className="max-w-[256px]"
       />
       <div className="relative">
-        {/* <Image
-          src="/images/explorer/card-bg.svg"
-          width={356}
-          height={69}
-          alt={metadata?.content?.metadata?.name.slice(5) ?? "Loading"}
-        /> */}
         <div className="flex flex-col justify-center px-4 gap-0 uppercase bg-cf-green-900 h-[72px]">
           <p>
             Cyber Frog{" "}

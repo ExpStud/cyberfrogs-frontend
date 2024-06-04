@@ -6,13 +6,11 @@ import {
   useEffect,
   useState,
 } from "react";
-import Image from "next/image";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { Dashboard, DashboardHeading, Data } from "@dashboard-components";
 import { getAssetsByOwner } from "@utils";
 import { NFT } from "@types";
 import { collectionAddress } from "src/constants";
-import { AuthData } from "@dashboard-types";
 
 interface Props {
   setAssets: Dispatch<SetStateAction<boolean[]>>;
@@ -22,10 +20,6 @@ const DashboardView: FC<Props> = (props: Props) => {
   const { setAssets } = props;
 
   const [userFrogs, setUserFrogs] = useState<NFT[]>([]);
-  const [authData, setAuthData] = useState<AuthData>({
-    discordId: "DarthDegen#69",
-    role: "Whale",
-  }); //TODO: add auth data
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { connected, publicKey } = useWallet();
 
@@ -40,8 +34,7 @@ const DashboardView: FC<Props> = (props: Props) => {
       const frogs = userFrogs.filter(
         (nft) => nft.authorities[0].address === collectionAddress
       );
-      //TODO: setUserFrogs(frogs)
-      setUserFrogs([...frogs, ...frogs]);
+      setUserFrogs(frogs);
     } catch (error) {
       console.error(error);
       setIsLoading(false);
@@ -53,6 +46,13 @@ const DashboardView: FC<Props> = (props: Props) => {
   useEffect(() => {
     getUserNfts();
   }, [getUserNfts]);
+
+  //reset data on wallet disconnect
+  useEffect(() => {
+    if (!connected) {
+      setUserFrogs([]);
+    }
+  }, [connected]);
 
   return (
     <div className="w-full flex flex-col items-start justify-start px-3 md:pl-12 md:pr-0 2xl:px-0 mt-10 ">
@@ -72,8 +72,8 @@ const DashboardView: FC<Props> = (props: Props) => {
       />
       <Dashboard
         userFrogs={userFrogs}
-        authData={authData}
         isLoading={isLoading}
+        connected={connected}
       />
     </div>
   );
