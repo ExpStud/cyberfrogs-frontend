@@ -26,13 +26,13 @@ const DashboardView: FC<Props> = (props: Props) => {
     discordId: "DarthDegen#69",
     role: "Whale",
   }); //TODO: add auth data
-  const [loading, setLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { connected, publicKey } = useWallet();
 
   //fetch user nfts and filter cyber frogs
   const getUserNfts = useCallback(async () => {
     if (!publicKey) return;
-    setLoading(true);
+    setIsLoading(true);
 
     try {
       const userFrogs: NFT[] = await getAssetsByOwner(publicKey?.toBase58());
@@ -43,9 +43,9 @@ const DashboardView: FC<Props> = (props: Props) => {
       setUserFrogs(frogs);
     } catch (error) {
       console.error(error);
-      setLoading(false);
+      setIsLoading(false);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   }, [publicKey]);
 
@@ -69,7 +69,11 @@ const DashboardView: FC<Props> = (props: Props) => {
         totalSupply={69}
         burned={69}
       />
-      <Dashboard userFrogs={userFrogs} authData={authData} loading={loading} />
+      <Dashboard
+        userFrogs={userFrogs}
+        authData={authData}
+        isLoading={isLoading}
+      />
     </div>
   );
 };

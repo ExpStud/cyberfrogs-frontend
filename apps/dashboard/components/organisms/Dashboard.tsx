@@ -2,15 +2,16 @@ import { FC } from "react";
 import Image from "next/image";
 import { NFT } from "@types";
 import { AuthData } from "@dashboard-types";
+import { UserNft } from "@dashboard-components";
 
 interface DashboardProps {
   userFrogs: NFT[];
   authData: AuthData;
-  loading: boolean;
+  isLoading: boolean;
 }
 
 const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
-  const { userFrogs, authData, loading } = props;
+  const { userFrogs, authData, isLoading } = props;
 
   //TODO: add kira
   const kira = 420;
@@ -21,71 +22,89 @@ const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
   const og = 1;
 
   return (
-    <div className="relative flex flex-col gap-3  bg-cf-green-950 md:bg-transparent md:bg-dashboardBg min-h-[700px] w-full md:w-[1550px] mt-5 md:mt-0 px-5 md:px-10 py-6">
-      <Image
-        src="/images/dashboard/dash-text.svg"
-        width={118}
-        height={9}
-        alt="Text"
-      />
-      {/* data */}
-      <div className="flex justify-between w-full mt-2 overflow-x-auto explorer-scroll">
-        <DataWrapper title="My Frogs">
-          <p className="text-cf-gold text-4xl">{userFrogs.length}</p>
-          <p className="text-cf-white/50 uppercase mt-2">{kira} $KIRA</p>
-        </DataWrapper>
-        <DataWrapper title="Esitmate Value">
-          <p className="text-cf-gold text-4xl">{13.44} SOL</p>
-          <p className="text-cf-white/50 uppercase mt-2">Paperhand: {9} $SOL</p>
-        </DataWrapper>
-        <DataWrapper title="Frog Types">
-          <div className="flex justify-between">
-            <div className="flex flex-col gap-2 w-1/2 uppercase pr-10">
-              <VariableLabel label="Alpha" variable={alpha} />
-              <VariableLabel label="Beta" variable={beta} />
-              <VariableLabel label="Thor" variable={thor} />
+    <div className="relative flex flex-col justify-between gap-3  bg-cf-green-950 md:bg-transparent md:bg-dashboardBg min-h-[700px] w-full md:w-full mt-5 md:mt-0 pl-5 pr-0 md:pl-10 xl:pr-10 py-6">
+      <div>
+        <Image
+          src="/images/dashboard/dash-text.svg"
+          width={118}
+          height={9}
+          alt="Text"
+        />
+        {/* data */}
+        <div className="explorer-scroll flex justify-between w-full h-full mt-2 overflow-x-auto pr-5 xl:pr-0 pb-2">
+          <DataWrapper title="My Frogs">
+            <p className="text-cf-gold text-3xl md:text-4xl">
+              {userFrogs.length}
+            </p>
+            <p className="text-cf-white/50 uppercase mt-2 text-sm md:text-base">
+              {kira} $KIRA
+            </p>
+          </DataWrapper>
+          <DataWrapper title="Esitmate Value">
+            <p className="text-cf-gold text-3xl md:text-4xl">{13.44} SOL</p>
+            <p className="text-cf-white/50 uppercase mt-2 text-sm md:text-base">
+              Paperhand: {9} $SOL
+            </p>
+          </DataWrapper>
+          <DataWrapper title="Frog Types">
+            <div className="flex justify-between">
+              <div className="flex flex-col gap-2 w-1/2 uppercase pr-10">
+                <VariableLabel label="Alpha" variable={alpha} />
+                <VariableLabel label="Beta" variable={beta} />
+                <VariableLabel label="Thor" variable={thor} />
+              </div>
+              <div className="flex flex-col gap-2 w-1/2 uppercase pr-10">
+                <VariableLabel label="Top 1000" variable={top1000} />
+                <VariableLabel label="OG" variable={og} />
+              </div>
             </div>
-            <div className="flex flex-col gap-2 w-1/2 uppercase pr-10">
-              <VariableLabel label="Top 1000" variable={top1000} />
-              <VariableLabel label="OG" variable={og} />
+          </DataWrapper>
+          <DataWrapper title="Thor Authentication">
+            <div className="flex justify-between">
+              <div className="flex flex-col gap-2 w-full uppercase pr-10">
+                <VariableLabel
+                  label="Discord ID"
+                  variable={authData.discordId}
+                />
+                <VariableLabel label="Role" variable={authData.role} />
+                <VariableLabel
+                  label="Bitcoin"
+                  variable={authData.bitcoin}
+                  emptyMessage="Not Linked"
+                />
+              </div>
             </div>
+          </DataWrapper>
+          <div className="bg-manageBg flex flex-col justify-between w-[256px] min-w-[256px] h-[172px] min-h-[172px p-4">
+            <p className="uppercase">Staked Frogs</p>
+            <p className="text-sm text-cf-white/50 mb-3">
+              Visit the legacy website to manage your staked frogs.
+            </p>
+            <Image
+              src="/images/buttons/manage.svg"
+              width={216}
+              height={40}
+              alt="Clear All"
+              className="cursor-pointer button-transition min-w-[99px]"
+              onClick={() =>
+                window.open("https://legacy.cyberfrogs.io/staking", "_blank")
+              }
+            />
           </div>
-        </DataWrapper>
-        <DataWrapper title="Thor Authentication">
-          <div className="flex justify-between">
-            <div className="flex flex-col gap-2 w-full uppercase pr-10">
-              <VariableLabel label="Discord ID" variable={authData.discordId} />
-              <VariableLabel label="Role" variable={authData.role} />
-              <VariableLabel
-                label="Bitcoin"
-                variable={authData.bitcoin}
-                emptyMessage="Not Linked"
-              />
-            </div>
-          </div>
-        </DataWrapper>
-        <div className="bg-manageBg flex flex-col justify-between w-[256px] h-[172px] p-4">
-          <p className="uppercase">Staked Frogs</p>
-          <p className="text-sm text-cf-white/50 mb-3">
-            Visit the legacy website to manage your staked frogs.
-          </p>
-          <Image
-            src="/images/buttons/manage.svg"
-            width={216}
-            height={40}
-            alt="Clear All"
-            className="cursor-pointer button-transition min-w-[99px] hidden md:flex"
-            onClick={() =>
-              window.open("https://legacy.cyberfrogs.io/staking", "_blank")
-            }
-          />
         </div>
       </div>
       {/* user frogs */}
-      <div className="grid grid-cols-2 xs:grid-cols-2 md:grid-cols-5 gap-4 lg:gap-8 pr-2 explorer-scroll mt-32">
+      <div className="grid grid-cols-2 xs:grid-cols-2 md:grid-cols-5 gap-4 lg:gap-8 pr-2 explorer-scroll mt-6md:mt-32">
         {userFrogs.map((nft: NFT, index) => (
-          <div key={index}>{nft.content.metadata.name}</div>
+          <div key={index}>
+            {" "}
+            <UserNft metadata={nft} isLoadingCard={false} />
+          </div>
         ))}
+        {/* loading card - used to trigger pagination */}
+        {userFrogs.length === 0 && isLoading && (
+          <UserNft metadata={undefined} isLoadingCard={true} />
+        )}
       </div>
 
       {/* left image */}
@@ -110,7 +129,7 @@ interface VariableLabelProps {
 const VariableLabel: FC<VariableLabelProps> = (props: VariableLabelProps) => {
   const { label, variable, emptyMessage } = props;
   return (
-    <div className="flex w-full justify-between">
+    <div className="flex w-full justify-between text-sm md:text-base">
       <p className={variable ? "text-cf-white" : "text-cf-white/50"}>{label}</p>
       <p className={variable ? "text-cf-gold" : "text-cf-white/50"}>
         {variable ?? emptyMessage ?? "N/A"}
@@ -126,7 +145,7 @@ interface DataProps {
 const DataWrapper: FC<DataProps> = (props: DataProps) => {
   const { title, children } = props;
   return (
-    <div className="relative w-[256px] h-[172px] flex flex-col py-4">
+    <div className="relative w-[256px] min-w-[200px] h-[172px] min-h-[172px] flex flex-col py-4">
       <Image
         src="/images/dashboard/divider.svg"
         width={256}
