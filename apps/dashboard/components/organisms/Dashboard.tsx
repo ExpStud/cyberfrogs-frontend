@@ -13,7 +13,7 @@ interface DashboardProps {
 const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
   const { userFrogs, authData, isLoading } = props;
 
-  //TODO: add kira
+  //TODO: add data
   const kira = 420;
   const alpha = 0;
   const beta = 0;
@@ -31,7 +31,7 @@ const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
           alt="Text"
         />
         {/* data */}
-        <div className="explorer-scroll flex justify-between w-full h-full mt-2 overflow-x-auto pr-5 xl:pr-0 pb-2">
+        <div className="explorer-scroll flex justify-between w-full h-full mt-2 overflow-x-auto pr-5 xl:pr-0 pb-2 gap-8">
           <DataWrapper title="My Frogs">
             <p className="text-cf-gold text-3xl md:text-4xl">
               {userFrogs.length}
@@ -94,12 +94,9 @@ const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
         </div>
       </div>
       {/* user frogs */}
-      <div className="grid grid-cols-2 xs:grid-cols-2 md:grid-cols-5 gap-4 lg:gap-8 pr-2 explorer-scroll mt-6md:mt-32">
+      <div className="flex gap-4 lg:gap-8 pr-2 explorer-scroll mt-6 overflow-x-auto pb-2">
         {userFrogs.map((nft: NFT, index) => (
-          <div key={index}>
-            {" "}
-            <UserNft metadata={nft} isLoadingCard={false} />
-          </div>
+          <UserNft metadata={nft} isLoadingCard={false} key={index} />
         ))}
         {/* loading card - used to trigger pagination */}
         {userFrogs.length === 0 && isLoading && (
@@ -129,7 +126,7 @@ interface VariableLabelProps {
 const VariableLabel: FC<VariableLabelProps> = (props: VariableLabelProps) => {
   const { label, variable, emptyMessage } = props;
   return (
-    <div className="flex w-full justify-between text-sm md:text-base">
+    <div className="flex w-full gap-2 justify-between text-sm md:text-base">
       <p className={variable ? "text-cf-white" : "text-cf-white/50"}>{label}</p>
       <p className={variable ? "text-cf-gold" : "text-cf-white/50"}>
         {variable ?? emptyMessage ?? "N/A"}
@@ -151,7 +148,7 @@ const DataWrapper: FC<DataProps> = (props: DataProps) => {
         width={256}
         height={1}
         alt="Divider"
-        className="absolute -top-[1px] left-0"
+        className="-mt-4 mb-4 opacity-75"
       />
       <p className="uppercase mb-6">{title}</p>
       {children}

@@ -42,6 +42,7 @@ const Explorer: FC<Props> = (props: Props) => {
         width={356}
         height={356}
         shimmerOnly={isLoadingCard}
+        hover
       />
       <div className="relative">
         <Image

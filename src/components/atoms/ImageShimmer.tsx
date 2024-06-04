@@ -63,28 +63,29 @@ const ImageShimmer: FC<Props> = (props: Props) => {
       <div
         className={`${
           hover
-            ? "transition-all duration-300 hover:scale-110 cursor-pointer"
+            ? "transition-all duration-500 hover:scale-110 cursor-pointer"
             : ""
         }`}
       >
-        {fill && (
-          <Image
-            src={src}
-            fill
-            //@ts-ignore
-            style={{ objectFit: objectFit }}
-            alt={alt}
-            className={`${imageClass}`}
-            onLoad={() => setImageLoaded(true && !shimmerOnly)}
-          />
-        )}
+        {fill &&
+          !(
+            <Image
+              src={src}
+              fill
+              //@ts-ignore
+              style={{ objectFit: objectFit }}
+              alt={alt}
+              className={`${imageClass} ${shimmerOnly ? "opacity-0" : ""}`}
+              onLoad={() => setImageLoaded(true && !shimmerOnly)}
+            />
+          )}
         {width && height && (
           <Image
             src={src}
             width={width}
             height={height}
             alt={alt}
-            className={`${imageClass}`}
+            className={`${imageClass} ${shimmerOnly ? "opacity-0" : ""}`}
             onLoad={() => setImageLoaded(true && !shimmerOnly)}
           />
         )}

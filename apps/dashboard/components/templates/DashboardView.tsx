@@ -40,7 +40,8 @@ const DashboardView: FC<Props> = (props: Props) => {
       const frogs = userFrogs.filter(
         (nft) => nft.authorities[0].address === collectionAddress
       );
-      setUserFrogs(frogs);
+      //TODO: setUserFrogs(frogs)
+      setUserFrogs([...frogs, ...frogs]);
     } catch (error) {
       console.error(error);
       setIsLoading(false);
