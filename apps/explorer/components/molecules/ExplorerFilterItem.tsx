@@ -42,8 +42,8 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
   };
 
   //used to calculate duration/delay of dropdown
-  const heightDuration = (length: number): number => length * 0.1 + 0.2;
-  const heightDelay = (length: number): number => length * 0.03;
+  const heightDuration = (length: number): number => length * 0.05 + 0.2;
+  const heightDelay = (length: number): number => length * 0.01;
 
   const isSelected = (filterName: string) => {
     return selectedFilters.some((filter) => filter.filter === filterName);

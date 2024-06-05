@@ -6,13 +6,13 @@ export const dropdownParent = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { staggerChildren: 0.1, ease: "easeInOut" },
+    transition: { staggerChildren: 0.06, ease: "easeInOut" },
   },
   exit: {
     opacity: 0,
     transition: {
-      duration: 0.5,
-      staggerChildren: 0.08, 
+      duration: 0.3,
+      staggerChildren: 0.03, 
       staggerDirection: -1,
     },
   },
@@ -50,6 +50,8 @@ export const dropdownChildFirstReneer = {
 export const expandHeight = (animate: boolean, duration?: number, delay?: number) => ({
   initial: { height: 0 },
   animate: {  height: animate ? "auto" : 0, },
+  // transition: {  duration: 0.3, ease: "easeOut", delay:  0, },
+
   transition: {  duration: duration && !animate ? duration * 0.5 : duration ?? 0.3, ease: "easeOut", delay: animate ? 0 : delay ?? 0, },
 })
 
