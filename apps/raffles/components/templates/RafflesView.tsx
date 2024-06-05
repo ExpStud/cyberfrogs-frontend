@@ -1,11 +1,10 @@
 import { Dispatch, SetStateAction, FC } from "react";
 import Image from "next/image";
 import { Heading } from "@components";
-import { handleAssetLoad } from "@utils";
 import { raffles } from "@raffles-constants";
-import { Raffles } from "@raffles-types";
 import { AnimatePresence, motion } from "framer-motion";
 import { midExitAnimation } from "src/constants";
+import { RaffleList } from "@raffles-components";
 
 interface Props {
   setAssets: Dispatch<SetStateAction<boolean[]>>;
@@ -46,9 +45,7 @@ const RafflesView: FC<Props> = (props: Props) => {
             />
           </motion.div>
         ) : (
-          <motion.div key="raffles" {...midExitAnimation} className="my-10">
-            Raffles
-          </motion.div>
+          <RaffleList raffles={raffles} />
         )}
       </AnimatePresence>
     </div>

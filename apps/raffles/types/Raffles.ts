@@ -1,6 +1,7 @@
-import { Metadata } from "@types";
+import { Links, Metadata } from "@types";
 
 export type Raffles = {
   metadata: Metadata,
-  endDateTime: Date,
+  links: Links,
+  endDate: Date,
 };
