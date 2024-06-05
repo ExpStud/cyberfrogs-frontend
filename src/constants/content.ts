@@ -35,10 +35,6 @@ export const getSocialIconByName = (name: string): SocialIcon | undefined => {
 
 export const navigationData: NavigationData[] = [
   {
-    name: "About",
-    href: "/about",
-  },
-  {
     name: "Explorer",
     href: "/explorer",
   },
@@ -46,15 +42,11 @@ export const navigationData: NavigationData[] = [
     name: "My Cyber Frogs",
     dropdown: [
       { name: "Dashboard", href: "/dashboard" },
-      { name: "Staking", href: "/staking" },
-      { name: "Trait Marketplace", href: "/trait-market" },
+      { name: "Raffle House", href: "/raffles" },
       { name: "Auto Thor", href: "/faction-contracts-v3" },
       { name: "Thor", href: "/thor" },
       { name: "Thordinals", href: "/thor-btc" },
-      { name: "Rarity", href: "/rarity" },
       { name: "Faction Missions", href: "/mission" },
-      { name: "Dressing Room", href: "/dressing-room" },
-      { name: "Raffle House", href: "/raffles" },
     ],
   },
   {

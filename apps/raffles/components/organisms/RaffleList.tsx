@@ -1,9 +1,8 @@
-import { Dispatch, SetStateAction, FC } from "react";
-import { raffles } from "@raffles-constants";
+import { FC } from "react";
 import { midExitAnimation } from "src/constants";
 import { motion } from "framer-motion";
 import { Raffles } from "@raffles-types";
-import { RaffleItem } from "..";
+import { RaffleItem } from "@raffles-components";
 
 interface Props {
   raffles: Raffles[];
