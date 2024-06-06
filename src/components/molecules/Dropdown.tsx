@@ -30,7 +30,7 @@ const Dropdown: FC<Props> = ({ children, grid = false }) => {
         viewBox="0 0 202 231"
         fill="none"
         className={`absolute top-0 -left-[16px] -z-10 ${
-          grid ? "top-[102px] scale-y-[1.9]" : ""
+          grid ? "top-[90px] scale-y-[1.8]" : ""
         }`}
       >
         <g filter="url(#filter0_dddd_2116_102)">
@@ -135,7 +135,7 @@ const Dropdown: FC<Props> = ({ children, grid = false }) => {
         height={33}
         alt="dots"
         className={`absolute  -z-10 ${
-          grid ? "right-[20px] -bottom-[180px]" : "-bottom-7 right-[20px]"
+          grid ? "right-[20px] -bottom-[160px]" : "-bottom-7 right-[20px]"
         }`}
       />
     </motion.div>
