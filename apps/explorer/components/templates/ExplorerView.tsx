@@ -85,7 +85,7 @@ const ExplorerView: FC<Props> = (props: Props) => {
       </div>
 
       {/* toggle & data */}
-      <div className="w-full flex flex-col lg:flex-row justify-between mt-10 lg:-mt-10 z-0 2xl:ml-0">
+      <div className="z-[2] w-full flex flex-col lg:flex-row justify-between mt-10 lg:-mt-10  2xl:ml-0">
         <TextToggle
           overviewToggle={overviewToggle}
           setOverviewToggle={setOverviewToggle}

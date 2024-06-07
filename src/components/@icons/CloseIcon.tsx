@@ -5,7 +5,7 @@ interface Props extends SVGProps<SVGSVGElement> {
 }
 
 const CloseIcon: FC<Props> = (props: Props) => {
-  const { size = 42, className } = props;
+  const { size = 30, className } = props;
   return (
     <svg
       width={size}

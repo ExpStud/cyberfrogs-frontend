@@ -1,9 +1,11 @@
-import { Dispatch, FC, Fragment, SetStateAction, useEffect } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { HeaderIcons, NavigationItem } from "@components";
+import { ArrowIcon, HeaderIcons } from "@components";
 import { useLockBodyScroll, useWindowSize } from "@hooks";
 import { fadeVariants, midExitAnimation, navigationData } from "@constants";
-
+import Image from "next/image";
+import { NavigationData } from "@types";
+import { useRouter } from "next/router";
 interface Props {
   toggleMenu: Dispatch<SetStateAction<boolean>>;
   open: boolean;
@@ -39,18 +41,10 @@ const Menu: FC<Props> = (props: Props) => {
             animate="open"
             exit="closed"
           >
-            <div className="absolute left-1/2 sm:left-[48%]  top-[20vh] transform -translate-x-1/2 z-10">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 scale-110 sm:scale-125 mr-5">
-                {navigationData.map((nav, index) => (
-                  <div key={index} className="w-[185px] sm:w-[210px] px-4">
-                    {nav?.component ? (
-                      <nav.component />
-                    ) : (
-                      <NavigationItem item={nav} />
-                    )}
-                  </div>
-                ))}
-              </div>
+            <div className="mt-20 mx-8 flex flex-col">
+              {navigationData.map((nav, index) => (
+                <MenuNavigationItem key={index} item={nav} />
+              ))}
             </div>
             <HeaderIcons className="block absolute left-1/2 transform -translate-x-1/2 bottom-10 z-0" />
           </motion.div>
@@ -64,6 +58,73 @@ const Menu: FC<Props> = (props: Props) => {
         />
       )}
     </AnimatePresence>
+  );
+};
+
+const MenuNavigationItem: FC<{ item: NavigationData }> = ({ item }) => {
+  const [didHover, setDidHover] = useState<boolean>(false);
+  const [openDropdown, setOpenDropdown] = useState<boolean>(false);
+
+  const router = useRouter();
+  const active = router.pathname === item?.href;
+
+  const handleMenuItemClick = (item: NavigationData) => {
+    console.log("item", item);
+
+    //route to the href if it exists
+    if (item?.href && !active) {
+      router.push(item.href);
+      return;
+    }
+
+    //handle dropdown
+    if (item?.dropdown) {
+      setOpenDropdown(!openDropdown);
+    }
+  };
+
+  return (
+    <div
+      className={`relative px-4 text-xl flex flex-col gap-3 pt-6 uppercase ${
+        active
+          ? "cursor-default text-cf-gold-500/70"
+          : "text-cf-white/65 transition-300 hover:text-cf-white cursor-pointer "
+      }`}
+      onClick={() => handleMenuItemClick(item)}
+      onMouseEnter={() => setDidHover(true)}
+      onMouseLeave={() => setDidHover(false)}
+    >
+      <div className="flex w-full justify-between items-center pb-2">
+        <p className="">{item.name}</p>
+        {item?.dropdown && (
+          <ArrowIcon
+            direction="right"
+            pathClass={` transition-300 ${
+              didHover ? "!opacity-100" : "!opacity-65"
+            }`}
+            scale={1.5}
+            animate={openDropdown}
+          />
+        )}
+      </div>
+      {item?.dropdown && openDropdown && (
+        <motion.div className="flex flex-col gap-3">
+          {item.dropdown.map((d, i) => (
+            <motion.div className="" key={i}>
+              {d.name}
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
+      <div className="relative w-full h-[1px]">
+        <Image
+          src="/images/dashboard/divider.svg"
+          fill
+          alt="Divider"
+          className="opacity-75 h-[1px] object-cover"
+        />
+      </div>
+    </div>
   );
 };
 
