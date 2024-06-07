@@ -249,3 +249,6 @@ input[type="checkbox"]:checked {
 .button-transition {
   @apply transition-200 hover:opacity-80 active:opacity-50;
 }
+.menu-item-border {
+  border-top: 1px solid rgba(255, 254, 243, 0.15);
+}

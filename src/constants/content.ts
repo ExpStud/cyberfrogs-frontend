@@ -43,18 +43,18 @@ export const navigationData: NavigationData[] = [
     dropdown: [
       { name: "Dashboard", href: "/dashboard" },
       { name: "Raffle House", href: "/raffles" },
-      { name: "Auto Thor", href: "/faction-contracts-v3" },
-      { name: "Thor", href: "/thor" },
-      { name: "Thordinals", href: "/thor-btc" },
-      { name: "Faction Missions", href: "/mission" },
+      { name: "Auto Thor", href: "/faction-contracts-v3", redirect: true },
+      { name: "Thor", href: "/thor", redirect: true },
+      { name: "Thordinals", href: "/thor-btc", redirect: true },
+      { name: "Faction Missions", href: "/mission", redirect: true },
     ],
   },
   {
     name: "Buy",
     dropdown: [
-      { name: "Tensor", href: "https://www.tensor.trade/trade/cyber_frogs" },
-      { name: "Magic Eden - SOL", href: "https://magiceden.io/marketplace/cyber_frogs" },
-      { name: "Magic Eden - BTC", href: "https://magiceden.io/ordinals/marketplace/thordinals" },
+      { name: "Tensor", href: "https://www.tensor.trade/trade/cyber_frogs", redirect: true },
+      { name: "Magic Eden - SOL", href: "https://magiceden.io/marketplace/cyber_frogs", redirect: true },
+      { name: "Magic Eden - BTC", href: "https://magiceden.io/ordinals/marketplace/thordinals", redirect: true },
     ],
   },
   {

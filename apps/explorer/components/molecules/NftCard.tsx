@@ -37,7 +37,9 @@ const Explorer: FC<Props> = (props: Props) => {
       onClick={() => setShowExplorerModal(metadata)}
     >
       <ImageShimmer
-        src={metadata?.content?.links?.image}
+        src={
+          metadata?.content?.links?.image ?? "/images/dashboard/cf-4678.webp"
+        }
         alt={metadata?.content?.metadata?.name ?? "Cyber Frog"}
         width={356}
         height={356}
@@ -49,7 +51,7 @@ const Explorer: FC<Props> = (props: Props) => {
           src="/images/explorer/card-bg.svg"
           width={356}
           height={69}
-          alt={metadata?.content?.metadata?.name.slice(5)}
+          alt={metadata?.content?.metadata?.name.slice(5) ?? "Cyber Frog"}
         />{" "}
         <div className="flex flex-col gap-0 uppercase absolute left-3 top-[25%] xs:top-[15%] sm:top-[20%] md:top-[15%] lg:top-[20%]">
           <p>

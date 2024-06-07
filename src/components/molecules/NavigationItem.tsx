@@ -54,7 +54,7 @@ const NavigationItem: FC<NavigationItemProps> = (
 
     //open external link in new tab or internal link
     if (item?.href) {
-      if (item?.href.startsWith("http")) window.open(item.href, "_blank");
+      if (item?.redirect) window.open(item.href, "_blank");
       else router.push(item.href);
     }
   };

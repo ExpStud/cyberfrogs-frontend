@@ -22,14 +22,16 @@ const RaffleItem: FC<Props> = (props: Props) => {
       className="bg-raffleCardBg flex flex-col relative w-[374px] h-[544px] pl-9 pt-9 -ml-3.5"
       {...midEnterAnimation}
     >
-      <ImageShimmer
-        src={metadata?.links?.image ?? "/images/dashboard/cf-4678.webp"}
-        alt={metadata?.metadata?.name ?? "Cyber Frog"}
-        width={300}
-        height={300}
-        shimmerOnly={isLoadingCard}
-        hover
-      />
+      <div className="max-w-[305px]">
+        <ImageShimmer
+          src={metadata?.links?.image ?? "/images/dashboard/cf-4678.webp"}
+          alt={metadata?.metadata?.name ?? "Cyber Frog"}
+          width={400}
+          height={400}
+          shimmerOnly={isLoadingCard}
+          hover
+        />
+      </div>
       <div className="relative py-4">
         <div className="flex flex-col justify-center gap-0 uppercase">
           <div className="flex gap-2">

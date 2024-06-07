@@ -36,7 +36,7 @@ const ConnectWalletButton = dynamic(() => import("./molecules/ConnectWalletButto
 const DropdownItem = dynamic(() => import("./molecules/DropdownItem"));
 const Dropdown = dynamic(() => import("./molecules/Dropdown"));
 const Heading = dynamic(() => import("./molecules/Heading"));
-
+const MobileNavigationItem = dynamic(() => import("./molecules/MobileNavigationItem"));
 //organisms
 const Header = dynamic(() => import("./organisms/Header"));
 const Footer = dynamic(() => import("./organisms/Footer"));
@@ -85,5 +85,6 @@ export {
   DropdownItem,
   Dropdown,
   Heading,
-  FilterIcon
+  FilterIcon,
+  MobileNavigationItem
 }

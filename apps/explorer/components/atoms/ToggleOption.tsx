@@ -41,7 +41,7 @@ const ToggleOption: FC<ToggleOptionProps> = ({ active, onClick, label }) => (
       src={`/images/icons/${label.toLocaleLowerCase()}.svg`}
       width={14}
       height={14}
-      alt={label}
+      alt={label ?? "Option"}
     />
     <p>{label}</p>
   </div>
