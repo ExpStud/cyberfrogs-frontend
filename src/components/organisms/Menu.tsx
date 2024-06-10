@@ -10,7 +10,7 @@ interface Props {
 
 const Menu: FC<Props> = (props: Props) => {
   const { toggleMenu, open } = props;
-  const [winWidth, winHeight] = useWindowSize();
+  const [winWidth] = useWindowSize();
 
   const isMobile: boolean = winWidth < 730;
   //stop page scroll (when modal or menu open)
@@ -47,7 +47,7 @@ const Menu: FC<Props> = (props: Props) => {
                 <MenuItem key={index} item={nav} />
               ))}
             </div>
-            <HeaderIcons className="w-full !justify-center" />
+            <HeaderIcons className="w-full !justify-center pt-8 lg:pt-4" />
           </motion.div>
         </motion.div>
       )}

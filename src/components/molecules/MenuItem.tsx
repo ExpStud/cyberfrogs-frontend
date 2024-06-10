@@ -5,6 +5,10 @@ import Image from "next/image";
 import { Navigation, NavigationData } from "@types";
 import { useRouter } from "next/router";
 import { navChild, navParent, expandHeight } from "@constants";
+import { useWalletModal } from "@solana/wallet-adapter-react-ui";
+import { useWallet } from "@solana/wallet-adapter-react";
+import { truncatePubKey } from "@utils";
+import { useWalletMultiButton } from "@solana/wallet-adapter-base-ui";
 
 const MenuItem: FC<{ item: NavigationData }> = ({ item }) => {
   const [didHover, setDidHover] = useState<boolean>(false);
@@ -13,6 +17,24 @@ const MenuItem: FC<{ item: NavigationData }> = ({ item }) => {
   const router = useRouter();
   const active = router.pathname === item?.href;
 
+  const isConnect = item?.name === "Connect";
+  const { setVisible, visible } = useWalletModal();
+  const { publicKey, connecting } = useWallet();
+  //disconnect wallet
+  const { onDisconnect } = useWalletMultiButton({
+    onSelectWallet() {
+      setVisible(true);
+    },
+  });
+
+  const label = isConnect
+    ? publicKey
+      ? truncatePubKey(publicKey)
+      : visible || connecting
+      ? "Connecting..."
+      : "Connect"
+    : item.name;
+
   const handleMenuItemClick = (item: NavigationData) => {
     console.log("item", item);
 
@@ -20,11 +42,24 @@ const MenuItem: FC<{ item: NavigationData }> = ({ item }) => {
     if (item?.href) {
       if (item?.redirect) window.open(item.href, "_blank");
       else router.push(item.href);
+
+      return;
     }
 
     //handle dropdown
     if (item?.dropdown) {
       setOpenDropdown(!openDropdown);
+      return;
+    }
+
+    //handle connect wallet
+    if (isConnect) {
+      if (publicKey && onDisconnect) {
+        onDisconnect();
+      } else {
+        setVisible(true);
+      }
+      return;
     }
   };
 
@@ -44,7 +79,7 @@ const MenuItem: FC<{ item: NavigationData }> = ({ item }) => {
       onMouseLeave={() => setDidHover(false)}
     >
       <div className="flex w-full justify-between items-center pb-2">
-        <p className="">{item.name}</p>
+        <p>{label}</p>
         {item?.dropdown && (
           <ArrowIcon
             direction="right"
