@@ -1,8 +1,8 @@
-import { Dispatch, FC, SetStateAction, useEffect, useRef } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { fadeVariants, midExitAnimation } from "@constants";
 import { filters } from "@explorer-constants";
-import { ExplorerFilterItem } from "..";
+import { ExplorerFilterItem } from "@explorer-components";
 import { SelectedFilter } from "@explorer-types";
 import { CloseIcon } from "@components";
 import { useLockBodyScroll } from "@hooks";
@@ -11,20 +11,11 @@ interface Props {
   toggleMenu: Dispatch<SetStateAction<boolean>>;
   open: boolean;
   handleFilter: (selectedFilter: SelectedFilter) => void;
-  firstRender: boolean;
-  setFirstRender: (firstRender: boolean) => void;
   selectedFilters: SelectedFilter[];
 }
 
 const Menu: FC<Props> = (props: Props) => {
-  const {
-    toggleMenu,
-    open,
-    handleFilter,
-    firstRender,
-    setFirstRender,
-    selectedFilters,
-  } = props;
+  const { toggleMenu, open, handleFilter, selectedFilters } = props;
 
   //stop page scroll (when modal or menu open)
   useLockBodyScroll(open);
@@ -61,8 +52,6 @@ const Menu: FC<Props> = (props: Props) => {
                   filter={filter}
                   index={index}
                   handleFilter={handleFilter}
-                  firstRender={firstRender}
-                  setFirstRender={setFirstRender}
                   selectedFilters={selectedFilters}
                 />
               ))}

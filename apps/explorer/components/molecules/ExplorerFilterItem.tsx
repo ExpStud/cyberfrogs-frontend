@@ -1,23 +1,16 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  dropdownChild,
-  dropdownChildFirstReneer,
-  dropdownParent,
-  dropdownParentFirstRender,
-  expandHeight,
-} from "@constants";
+import { dropdownChild, dropdownParent, expandHeight } from "@constants";
 import { ExplorerFilter, SelectedFilter } from "@explorer-types";
-import { DropdownItem, FilterToggle } from "@explorer-components";
+import { FilterToggle } from "@explorer-components";
 import { TextInput } from "@components";
 
 interface ExplorerFilterItemProps {
   filter: ExplorerFilter;
   index: number;
   handleFilter: (filter: SelectedFilter) => void;
-  firstRender: boolean; //disables animation on first render due to initial load
-  setFirstRender: (firstRender: boolean) => void;
+
   selectedFilters: SelectedFilter[];
 }
 const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
@@ -27,8 +20,7 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
     filter,
     index,
     handleFilter,
-    firstRender,
-    setFirstRender,
+
     selectedFilters,
   } = props;
 
@@ -55,10 +47,6 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
   const handleToggle = (toggled: boolean) => {
     //TODO: handle toggle
   };
-
-  useEffect(() => {
-    if (firstRender && openDropdown) setFirstRender(false);
-  }, [firstRender, openDropdown, setFirstRender]);
 
   return (
     <div className="flex flex-col ">
@@ -88,31 +76,24 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
 
         <motion.div
           key={index}
-          {...(firstRender
-            ? {}
-            : expandHeight(
-                openDropdown,
-                heightDuration(filter?.dropdown?.length ?? 0),
-                heightDelay(filter?.dropdown?.length ?? 0)
-              ))}
+          {...expandHeight(
+            openDropdown,
+            heightDuration(filter?.dropdown?.length ?? 0)
+          )}
         >
           {isDropdown && (
             <AnimatePresence>
               {openDropdown && (
                 <motion.div
                   className="flex flex-col py-3 gap-1"
-                  variants={
-                    firstRender ? dropdownParentFirstRender : dropdownParent
-                  }
+                  variants={dropdownParent}
                   initial="hidden"
                   animate="visible"
                   exit="exit"
                 >
                   <motion.div
                     className="w-auto flex items-center pt-1 pb-3"
-                    variants={
-                      firstRender ? dropdownChildFirstReneer : dropdownChild
-                    }
+                    variants={dropdownChild}
                     onClick={(e) => e.stopPropagation()}
                   >
                     <TextInput
@@ -144,6 +125,49 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
         alt="Divider"
       />
     </div>
+  );
+};
+
+//keeping child in same file prevent animation fail on first render
+interface DropdownItemProps {
+  category: string;
+  item: string;
+  isDropdown: boolean;
+  handleFilter: (filter: SelectedFilter) => void;
+  isSelected?: boolean;
+}
+const DropdownItem: FC<DropdownItemProps> = (props: DropdownItemProps) => {
+  const { category, item, isDropdown, handleFilter, isSelected } = props;
+
+  const handleSelect = () => {
+    if (isDropdown) {
+      handleFilter({ category, filter: item });
+    }
+  };
+
+  return (
+    <motion.div
+      className="w-auto flex items-center"
+      variants={dropdownChild}
+      onClick={(e) => e.stopPropagation()}
+    >
+      {isDropdown && (
+        <div
+          className={`h-4 w-4 cursor-pointer transition-300 border text-cf-green-950 col-centered \ ${
+            isSelected
+              ? "bg-cf-gold-500 border-cf-gold-500"
+              : "bg-cf-green-950 hover:bg-cf-green-900 border-cf-green-500  "
+          }`}
+          onClick={() => handleSelect()}
+        >
+          <p className="font-inter text-lg">✓</p>
+        </div>
+      )}
+      <p className="px-4 text-sm" onClick={() => handleSelect()}>
+        {item}{" "}
+        {isDropdown && <span className="pl-1 text-cf-white/50"> (12)</span>}
+      </p>
+    </motion.div>
   );
 };
 

@@ -24,7 +24,6 @@ const Explorer: FC<Props> = (props: Props) => {
 
   const [toggle, setToggle] = useState<"solana" | "bitcoin">("solana");
   const [selectedFilters, setSelectedFilters] = useState<SelectedFilter[]>([]);
-  const [firstRender, setFirstRender] = useState<boolean>(true);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   const [winWidth] = useWindowSize();
@@ -85,8 +84,6 @@ const Explorer: FC<Props> = (props: Props) => {
               filter={filter}
               index={index}
               handleFilter={handleFilter}
-              firstRender={firstRender}
-              setFirstRender={setFirstRender}
               selectedFilters={selectedFilters}
             />
           ))}
@@ -130,8 +127,6 @@ const Explorer: FC<Props> = (props: Props) => {
         toggleMenu={setOpenMenu}
         open={openMenu}
         handleFilter={handleFilter}
-        firstRender={firstRender}
-        setFirstRender={setFirstRender}
         selectedFilters={selectedFilters}
       />
       <ExplorerBackground />

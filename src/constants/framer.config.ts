@@ -46,18 +46,6 @@ export const dropdownParent = {
   },
 };
 
-export const dropdownParentFirstRender = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.14, ease: "easeInOut" },
-  },
-  exit: {
-    opacity: 0,
-    transition: { duration: 0.5 },
-  },
-};
-
 export const dropdownChild = {
   hidden: { opacity: 0, y: -5 },
   visible: {

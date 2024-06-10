@@ -1,6 +1,6 @@
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowIcon, HeaderIcons, MobileNavigationItem } from "@components";
+import { ArrowIcon, HeaderIcons, MenuItem } from "@components";
 import { useLockBodyScroll, useWindowSize } from "@hooks";
 import { fadeVariants, midExitAnimation, navigationData } from "@constants";
 interface Props {
@@ -40,7 +40,7 @@ const Menu: FC<Props> = (props: Props) => {
           >
             <div className="mt-20 mx-2 md:mx-6 flex flex-col h-full">
               {navigationData.map((nav, index) => (
-                <MobileNavigationItem key={index} item={nav} />
+                <MenuItem key={index} item={nav} />
               ))}
             </div>
             <HeaderIcons className="self-end" />

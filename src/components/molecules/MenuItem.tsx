@@ -6,7 +6,7 @@ import { Navigation, NavigationData } from "@types";
 import { useRouter } from "next/router";
 import { navChild, navParent, expandHeight } from "@constants";
 
-const MobileNavigationItem: FC<{ item: NavigationData }> = ({ item }) => {
+const MenuItem: FC<{ item: NavigationData }> = ({ item }) => {
   const [didHover, setDidHover] = useState<boolean>(false);
   const [openDropdown, setOpenDropdown] = useState<boolean>(false);
 
@@ -77,7 +77,7 @@ const MobileNavigationItem: FC<{ item: NavigationData }> = ({ item }) => {
               exit="exit"
             >
               {item.dropdown.map((d, i) => (
-                <MobileNavigationDropdownItem item={d} key={i} />
+                <MenuDropdownItem item={d} key={i} />
               ))}
             </motion.div>
           )}
@@ -95,7 +95,8 @@ const MobileNavigationItem: FC<{ item: NavigationData }> = ({ item }) => {
   );
 };
 
-const MobileNavigationDropdownItem: FC<{ item: Navigation }> = ({ item }) => {
+//keeping child in same file prevent animation fail on first render
+const MenuDropdownItem: FC<{ item: Navigation }> = ({ item }) => {
   const router = useRouter();
   const active = router.pathname === item?.href;
 
@@ -123,4 +124,4 @@ const MobileNavigationDropdownItem: FC<{ item: Navigation }> = ({ item }) => {
   );
 };
 
-export default MobileNavigationItem;
+export default MenuItem;
