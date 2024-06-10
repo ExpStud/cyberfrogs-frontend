@@ -1,9 +1,10 @@
 import { FC, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowIcon } from "@components";
 import Image from "next/image";
 import { Navigation, NavigationData } from "@types";
 import { useRouter } from "next/router";
+import { navChild, navParent, expandHeight } from "@constants";
 
 const MobileNavigationItem: FC<{ item: NavigationData }> = ({ item }) => {
   const [didHover, setDidHover] = useState<boolean>(false);
@@ -26,6 +27,10 @@ const MobileNavigationItem: FC<{ item: NavigationData }> = ({ item }) => {
       setOpenDropdown(!openDropdown);
     }
   };
+
+  //used to calculate duration/delay of dropdown
+  const heightDuration = (length: number): number => length * 0.05 + 0.2;
+  const heightDelay = (length: number): number => length * 0.01;
 
   return (
     <div
@@ -51,13 +56,33 @@ const MobileNavigationItem: FC<{ item: NavigationData }> = ({ item }) => {
           />
         )}
       </div>
-      {item?.dropdown && openDropdown && (
-        <motion.div className="flex flex-col gap-3 mb-4 -mt-2 ">
-          {item.dropdown.map((d, i) => (
-            <MobileNavigationDropdownItem item={d} key={i} />
-          ))}
-        </motion.div>
-      )}
+
+      <motion.div
+        key="dropdown"
+        {...expandHeight(
+          openDropdown,
+          heightDuration(item?.dropdown?.length ?? 0),
+          heightDelay(item?.dropdown?.length ?? 0)
+        )}
+        className="-mt-2"
+      >
+        <AnimatePresence mode="wait">
+          {item?.dropdown && openDropdown && (
+            <motion.div
+              key="dropdown"
+              className="flex flex-col gap-3 mb-4 -mt-2 "
+              variants={navParent}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              {item.dropdown.map((d, i) => (
+                <MobileNavigationDropdownItem item={d} key={i} />
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
       <div className="relative w-full h-[1px]">
         <Image
           src="/images/dashboard/divider.svg"
@@ -71,9 +96,6 @@ const MobileNavigationItem: FC<{ item: NavigationData }> = ({ item }) => {
 };
 
 const MobileNavigationDropdownItem: FC<{ item: Navigation }> = ({ item }) => {
-  const [didHover, setDidHover] = useState<boolean>(false);
-  const [openDropdown, setOpenDropdown] = useState<boolean>(false);
-
   const router = useRouter();
   const active = router.pathname === item?.href;
 
@@ -94,6 +116,7 @@ const MobileNavigationDropdownItem: FC<{ item: Navigation }> = ({ item }) => {
           : "text-cf-white/60 transition-300 hover:text-cf-white cursor-pointer"
       }`}
       onClick={(e) => handleClick(e)}
+      variants={navChild}
     >
       {item.name}
     </motion.div>

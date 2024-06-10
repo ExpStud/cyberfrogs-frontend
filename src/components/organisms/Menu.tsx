@@ -29,21 +29,21 @@ const Menu: FC<Props> = (props: Props) => {
             opacity: 1,
           }}
           transition={{ duration: 0.7 }}
-          className=" bg-cf-green-900 fixed top-0 right-0 z-50"
+          className=" bg-cf-green-900 fixed top-0 right-0 z-50 h-full"
         >
           <motion.div
-            className={`px-4 sm:px-6 lg:px-10 py-6 min-h-screen relative overflow-y-auto`}
+            className={`px-4 sm:px-6 lg:px-10 py-6 h-full relative `}
             variants={fadeVariants}
             initial="closed"
             animate="open"
             exit="closed"
           >
-            <div className="mt-20 mx-2 md:mx-6 flex flex-col">
+            <div className="mt-20 mx-2 md:mx-6 flex flex-col h-full">
               {navigationData.map((nav, index) => (
                 <MobileNavigationItem key={index} item={nav} />
               ))}
             </div>
-            <HeaderIcons className="block absolute left-1/2 transform -translate-x-1/2 bottom-10 z-0" />
+            <HeaderIcons className="self-end" />
           </motion.div>
         </motion.div>
       )}

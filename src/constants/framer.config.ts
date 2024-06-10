@@ -1,6 +1,34 @@
 import { Variants } from "framer-motion";
 
 //custom
+
+export const navParent = {
+  hidden: { opacity: 0, x: 0 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { staggerChildren: 0.1, ease: "easeInOut" },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.3,
+      staggerChildren: 0.03,
+      staggerDirection: -1,
+    },
+  },
+};
+
+export const navChild = {
+  hidden: { opacity: 0, x: 0 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.69 },
+  },
+  exit: { opacity: 0, x: 0, transition: { duration: 0.08 } },
+};
+
 export const dropdownParent = {
   hidden: { opacity: 0, y: -10 },
   visible: {
@@ -12,13 +40,14 @@ export const dropdownParent = {
     opacity: 0,
     transition: {
       duration: 0.3,
-      staggerChildren: 0.03, 
+      staggerChildren: 0.03,
       staggerDirection: -1,
     },
   },
 };
+
 export const dropdownParentFirstRender = {
-  hidden: { opacity: 0  },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: { staggerChildren: 0.14, ease: "easeInOut" },
@@ -36,32 +65,39 @@ export const dropdownChild = {
     y: 0,
     transition: { duration: 0.08 },
   },
-  exit: { opacity: 0, y: -5, transition: { duration: 0.08 }}, 
+  exit: { opacity: 0, y: -5, transition: { duration: 0.08 } },
 };
 export const dropdownChildFirstReneer = {
-  hidden: { opacity: 0},
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: { duration: 0.5 },
   },
-  exit: { opacity: 0, transition: { duration: 0.1 }}, 
+  exit: { opacity: 0, transition: { duration: 0.1 } },
 };
 
-export const expandHeight = (animate: boolean, duration?: number, delay?: number) => ({
+export const expandHeight = (
+  animate: boolean,
+  duration?: number,
+  delay?: number
+) => ({
   initial: { height: 0 },
-  animate: {  height: animate ? "auto" : 0, },
-  // transition: {  duration: 0.3, ease: "easeOut", delay:  0, },
+  animate: { height: animate ? "auto" : 0 },
+  exit:{ height: 0 },
 
-  transition: {  duration: duration && !animate ? duration * 0.5 : duration ?? 0.3, ease: "easeOut", delay: animate ? 0 : delay ?? 0, },
-})
+  transition: {
+    duration: duration && !animate ? duration * 0.5 : duration ?? 0.3,
+    ease: "easeOut",
+    delay: animate ? 0 : delay ?? 0,
+  },
+});
 
 export const fadeAnimation = (animate: boolean, delay?: number) => ({
   initial: { opacity: 0 },
   animate: { opacity: animate ? 1 : 0 },
   exit: { opacity: 0 },
   transition: { duration: 1.5, ease: "easeInOut", delay: delay ?? 0 },
-})
-
+});
 
 //click animations
 export const largeClickAnimation = {
@@ -172,9 +208,9 @@ export const dropdownAnimations: Variants = {
       // delay: 0.5,
       staggerChildren: 0.1,
       ease: "easeInOut",
-    }
+    },
   },
-  exit: { y: -10, opacity: 0, transition: { duration: 0.1 }},
+  exit: { y: -10, opacity: 0, transition: { duration: 0.1 } },
 };
 export const dropdownItemsAnimations = {
   closed: { opacity: 1 },
@@ -187,7 +223,6 @@ export const dropdownItemsAnimations = {
     damping: 24,
   },
 };
-
 
 export const fadeVariants = {
   closed: {
@@ -233,7 +268,7 @@ export const imageLoadAnimation = (animate: boolean) => ({
   animate: { opacity: animate ? 1 : 0 },
   exit: { opacity: 0 },
   transition: { duration: 1, ease: "easeInOut" },
-})
+});
 
 export const imageSlideAnimation = (
   animate: boolean,
@@ -246,10 +281,7 @@ export const imageSlideAnimation = (
   transition: { duration: 0.15, ease: "easeInOut", delay: delay ?? 0 },
 });
 
-export const imageDropAnimation = (
-  animate: boolean,
-  delay?: number,
-) => ({
+export const imageDropAnimation = (animate: boolean, delay?: number) => ({
   initial: { y: -40, opacity: 0.25 },
   animate: { y: animate ? -20 : 0, opacity: 1 },
   eyit: { x: -40 },
