@@ -1,6 +1,6 @@
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowIcon, HeaderIcons, MenuItem } from "@components";
+import { ArrowIcon, CloseIcon, HeaderIcons, MenuItem } from "@components";
 import { useLockBodyScroll, useWindowSize } from "@hooks";
 import { fadeVariants, midExitAnimation, navigationData } from "@constants";
 interface Props {
@@ -32,18 +32,22 @@ const Menu: FC<Props> = (props: Props) => {
           className=" bg-cf-green-900 fixed top-0 right-0 z-50 h-full"
         >
           <motion.div
-            className={`px-4 sm:px-6 lg:px-10 py-6 h-full relative `}
+            className="explorer-scroll px-4 sm:px-6 lg:px-10 py-6 relative h-full flex flex-col justify-between overflow-auto"
             variants={fadeVariants}
             initial="closed"
             animate="open"
             exit="closed"
           >
-            <div className="mt-20 mx-2 md:mx-6 flex flex-col h-full">
+            <CloseIcon
+              onClick={() => toggleMenu(false)}
+              className="cursor-pointer self-end !min-w-[30px] !min-h-[30px]"
+            />
+            <div className="mt-10 ml-2 mr-4 md:mx-6 flex flex-col flex-grow">
               {navigationData.map((nav, index) => (
                 <MenuItem key={index} item={nav} />
               ))}
             </div>
-            <HeaderIcons className="self-end" />
+            <HeaderIcons className="w-full !justify-center" />
           </motion.div>
         </motion.div>
       )}

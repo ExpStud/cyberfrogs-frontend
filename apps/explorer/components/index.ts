@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 
 //atoms  
 const ToggleOption = dynamic(() => import("./atoms/ToggleOption"));
-const DropdownItem = dynamic(() => import("./atoms/DropdownItem"));
 //molecules 
 const TextToggle = dynamic(() => import("./molecules/TextToggle"));
 const ExplorerBackground = dynamic(() => import("./molecules/ExplorerBackground"));
@@ -31,7 +30,6 @@ export {
   ExplorerToggle,
   ToggleOption,
   ExplorerFilterItem,
-  DropdownItem,
   FilterToggle,
   FilterTags,
   MobileFilters,

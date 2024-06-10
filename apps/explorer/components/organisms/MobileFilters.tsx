@@ -36,7 +36,7 @@ const Menu: FC<Props> = (props: Props) => {
           className=" bg-cf-green-900 fixed top-0 right-0 z-50"
         >
           <motion.div
-            className={`px-4 sm:px-6 lg:px-10 py-6 h-screen relative overflow-auto`}
+            className={`explorer-scroll px-4 sm:px-6 lg:px-10 py-6 h-screen relative overflow-auto`}
             variants={fadeVariants}
             initial="closed"
             animate="open"

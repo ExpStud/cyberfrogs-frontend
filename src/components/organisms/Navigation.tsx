@@ -30,7 +30,15 @@ const Navigation: FC = () => {
 
       {/* mobile nav */}
       <div className="flex xl:hidden gap-10">
-        <AnimatePresence mode="wait">
+        <motion.div
+          key="menu-icon"
+          onClick={() => setOpenMenu(true)}
+          className="cursor-pointer "
+          {...midExitAnimation}
+        >
+          <MenuIcon />
+        </motion.div>
+        {/* <AnimatePresence mode="wait">
           {!openMenu ? (
             <motion.div
               key="menu-icon"
@@ -50,7 +58,7 @@ const Navigation: FC = () => {
               <CloseIcon />
             </motion.div>
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
 
         <Menu toggleMenu={setOpenMenu} open={openMenu} />
       </div>
