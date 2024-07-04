@@ -156,10 +156,10 @@ export const fastEnterAnimation = {
 };
 
 export const scaleExitAnimation = {
-  initial: { opacity: 0, scale: 0.5 },
+  initial: { opacity: 0, scale: 0.8 },
   animate: { opacity: 1, scale: 1 },
-  exit: { opacity: 0, scale: 0.5 },
-  transition: { duration: 0.4, ease: "easeInOut" },
+  exit: { opacity: 0, scale: 0.8 },
+  transition: { duration: 0.3, ease: "easeInOut" },
 };
 //variants
 export const arrowVariants: Variants = {
@@ -236,9 +236,10 @@ export const slideDown = (animate: boolean) => ({
 });
 
 export const slideUp = (animate: boolean) => ({
-  initial: { y: 300, opacity: 0 },
-  animate: { y: animate ? 0 : 300, opacity: animate ? 1 : 0 },
-  transition: { duration: 1.5, ease: "easeInOut" },
+  initial: { y: 100, opacity: 0 },
+  animate: { y: animate ? 0 : 100, opacity: animate ? 1 : 0 },
+  exit: { y: 100, opacity: 0, transition: { duration: .15, ease: "easeInOut" } },
+  transition: { duration: .35, ease: "easeInOut" },
 });
 export const slideLeft = (animate: boolean) => ({
   initial: { x: 300, opacity: 0 },

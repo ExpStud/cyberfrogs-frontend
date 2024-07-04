@@ -193,6 +193,9 @@ input[type="checkbox"]:checked {
 .transition-200 {
   @apply transition-all duration-300;
 }
+.transition-100 {
+  @apply transition-all duration-100;
+}
 
 /* Custom */
 .icon-opacity {

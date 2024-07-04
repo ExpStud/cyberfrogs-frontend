@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-import { FC, ReactNode, HTMLAttributes } from "react";
-import { midClickAnimation, scaleExitAnimation } from "@constants";
-import Image from "next/image";
+import { FC, ReactNode, HTMLAttributes, useState } from "react";
+import { midExitAnimation } from "@constants";
 import { useLockBodyScroll } from "@hooks";
+import Image from "next/image";
+
 interface Props extends HTMLAttributes<HTMLDivElement> {
   show: boolean;
   children: ReactNode;
@@ -10,37 +11,94 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 const Modal: FC<Props> = (props: Props) => {
   const { show, children, className, ...componentProps } = props;
 
+  const [exitHover, setExitHover] = useState<boolean>(false);
+
   //disable body scroll when modal is open
   useLockBodyScroll(show);
 
   return (
-    <motion.div
-      key="image-modal"
-      className="fixed inset-0 backdrop-blur-sm z-50 w-screen h-screen "
-      onClick={componentProps.onClick}
-      {...scaleExitAnimation}
-    >
-      <div
+    <div key="image-modal" className="fixed inset-0 w-full h-full z-50">
+      {/* modal */}
+      <motion.div
+        initial={{
+          opacity: 0,
+          left: "50%",
+          translateX: "-50%",
+          top: "70%",
+          translateY: "-50%",
+        }}
+        animate={{
+          opacity: 1,
+          left: "50%",
+          translateX: "-50%",
+          top: "50%",
+          translateY: "-50%",
+        }}
+        exit={{
+          opacity: 0,
+          left: "50%",
+          translateX: "-50%",
+          top: "70%",
+          translateY: "-50%",
+        }}
+        transition={{ duration: 0.3 }}
         onClick={(e) => e.stopPropagation()}
-        className={`md:bg-opacity-90 absolute left-1/2 top-1 md:top-1/2 transform -translate-x-1/2 md:-translate-y-1/2 overflow-clip
-         rounded-3xl border-[3px] border-cf-white-2 w-[98%] h-[85%] md:h-[90%] lg:h-[60vh] lg:w-[100vh] xl:w-[120vh] 3xl:h-[50vh] 3xl:w-[70vh] ${className}`}
+        //left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2
+        className={`z-10 absolute 
+        xl:aspect-[12/5] w-[100vw] md:w-[95vw] xl:w-[90vw] xl:max-w-[1520px] h-[100vh] md:h-[95vh] xl:h-auto
+        bg-cf-green-900 xl:bg-transparent  xl:bg-modalBg 
+         ${className ?? ""}`}
       >
-        <motion.div
-          className="fixed top-1 md:top-5 right-1 md:right-6 cursor-pointer"
+        {/* <motion.img src="/images/backgrounds/modal.svg" alt="Background" /> */}
+        <Image
+          src="/images/icons/threedots.svg"
+          width={82}
+          height={33}
+          alt="dots"
+          className="absolute top-0 left-0 xl:-top-5 xl:-left-1.5"
+        />
+        {/* close icon */}
+        <div
+          className="cursor-pointer absolute top-3 right-4 xl:top-5 xl:right-2"
           onClick={componentProps.onClick}
-          {...midClickAnimation}
+          onMouseEnter={() => setExitHover(true)}
+          onMouseLeave={() => setExitHover(false)}
         >
-          <Image
-            src="/images/icons/close.png"
-            height={40}
-            width={40}
-            alt="close"
-            priority
-          />
-        </motion.div>
-        {children}
-      </div>
-    </motion.div>
+          <svg
+            width="40"
+            height="32"
+            viewBox="0 0 40 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 5L10 0H40V27L37.5 29.5L35 32H0V5H5Z"
+              fill="#081F17"
+              className={`transition-100 ${
+                exitHover ? "opacity-90" : "opacity-60"
+              }`}
+            />
+            <rect x="35" y="2" width="3" height="3" fill="#124835" />
+            <rect x="35" y="7" width="3" height="3" fill="#124835" />
+            <path
+              d="M17.0568 20.8295L15.9318 19.6989L23.0341 12.625L24.1648 13.75L17.0568 20.8295ZM23.0341 20.8295L15.9261 13.75L17.0568 12.625L24.1591 19.6989L23.0341 20.8295Z"
+              fill="#FFFEF3"
+              fillOpacity="0.5"
+            />
+          </svg>
+        </div>
+        {/* content */}
+        <div className="mt-16 mx-12 mb-12">{children}</div>
+      </motion.div>
+      {/* background shade */}
+      {show && (
+        <motion.div
+          className="z-0 fixed inset-0 bg-black bg-opacity-80 cursor-pointer"
+          {...midExitAnimation}
+          onClick={componentProps.onClick}
+        />
+      )}
+    </div>
   );
 };
 

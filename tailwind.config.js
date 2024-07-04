@@ -29,6 +29,7 @@ module.exports = {
         dashboardBg: "url('/images/dashboard/dashboard-bg-full.svg')",
         manageBg: "url('/images/dashboard/manage-bg.svg')",
         raffleCardBg: "url('/images/raffles/card-bg.svg')",
+        modalBg: "url('/images/backgrounds/modal.svg')",
       },
       fontFamily: {
         rajdhani: ["Rajdhani-Medium"],

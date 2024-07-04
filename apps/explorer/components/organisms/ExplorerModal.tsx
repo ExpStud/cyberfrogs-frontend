@@ -11,7 +11,7 @@ const ExplorerModal: FC<Props> = (props: Props) => {
 
   return (
     <Modal show={show} onClick={() => close()}>
-      <div>Add content</div>
+      <div className="h-full">Add content</div>
     </Modal>
   );
 };
