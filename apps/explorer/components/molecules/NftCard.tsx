@@ -15,7 +15,7 @@ interface Props {
 const Explorer: FC<Props> = (props: Props) => {
   const { metadata, isLoadingCard, paginateData, loadingData } = props;
 
-  const { setShowExplorerModal } = useContext(ViewContext);
+  const { setNftModal } = useContext(ViewContext);
 
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -34,7 +34,7 @@ const Explorer: FC<Props> = (props: Props) => {
     <div
       className="flex flex-col relative cursor-pointer"
       ref={ref}
-      onClick={() => setShowExplorerModal(metadata)}
+      onClick={() => setNftModal(metadata)}
     >
       <ImageShimmer
         src={

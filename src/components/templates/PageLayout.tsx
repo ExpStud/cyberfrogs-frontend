@@ -19,13 +19,13 @@ const PageLayout: FC<Props> = (props: Props) => {
 
   //context for splash screen & modals
   const [showView, setShowView] = useState<boolean>(false);
-  const [showExplorerModal, setShowExplorerModal] = useState<NFT | null>(null);
+  const [nftModal, setNftModal] = useState<NFT | null>(null);
 
   const value = {
     showView,
     setShowView,
-    showExplorerModal,
-    setShowExplorerModal,
+    nftModal,
+    setNftModal,
   };
 
   return (
@@ -58,11 +58,11 @@ const PageLayout: FC<Props> = (props: Props) => {
 
         {/* modals - used here to display in root container and avoid nesting issues */}
         <AnimatePresence mode="wait">
-          {showExplorerModal && (
+          {nftModal && (
             <ExplorerModal
               key="explorer-modal"
-              show={showExplorerModal !== null}
-              close={() => setShowExplorerModal(null)}
+              show={nftModal !== null}
+              close={() => setNftModal(null)}
             />
           )}
         </AnimatePresence>

@@ -14,7 +14,7 @@ interface Props {
 const UserNft: FC<Props> = (props: Props) => {
   const { metadata, isLoadingCard = false } = props;
 
-  const { setShowExplorerModal } = useContext(ViewContext);
+  const { setNftModal } = useContext(ViewContext);
 
   //TODO: add rank
   const rank = 69;
@@ -22,7 +22,7 @@ const UserNft: FC<Props> = (props: Props) => {
   return (
     <motion.div
       className="flex flex-col relative cursor-pointer min-w-[256px]"
-      onClick={() => metadata && setShowExplorerModal(metadata)}
+      onClick={() => metadata && setNftModal(metadata)}
       {...midEnterAnimation}
     >
       <ImageShimmer

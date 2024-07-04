@@ -45,21 +45,20 @@ const Modal: FC<Props> = (props: Props) => {
         onClick={(e) => e.stopPropagation()}
         //left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2
         className={`z-10 absolute 
-        xl:aspect-[12/5] w-[100vw] md:w-[95vw] xl:w-[90vw] xl:max-w-[1520px] h-[100vh] md:h-[95vh] xl:h-auto
-        bg-cf-green-900 xl:bg-transparent  xl:bg-modalBg 
+        lg:aspect-[12/5] w-[100vw] md:w-[95vw] lg:w-[90vw] lg:max-w-[1520px] h-[100vh] md:h-[95vh]  
+        bg-cf-green-900 lg:bg-transparent  lg:bg-modalBg lg:max-h-[622px]
          ${className ?? ""}`}
       >
-        {/* <motion.img src="/images/backgrounds/modal.svg" alt="Background" /> */}
         <Image
           src="/images/icons/threedots.svg"
           width={82}
           height={33}
           alt="dots"
-          className="absolute top-0 left-0 xl:-top-5 xl:-left-1.5"
+          className="absolute top-0 left-0 lg:-top-5 lg:-left-1.5"
         />
         {/* close icon */}
         <div
-          className="cursor-pointer absolute top-3 right-4 xl:top-5 xl:right-2"
+          className="cursor-pointer absolute top-3 right-4 lg:top-5 lg:right-2"
           onClick={componentProps.onClick}
           onMouseEnter={() => setExitHover(true)}
           onMouseLeave={() => setExitHover(false)}
@@ -88,7 +87,7 @@ const Modal: FC<Props> = (props: Props) => {
           </svg>
         </div>
         {/* content */}
-        <div className="mt-16 mx-12 mb-12">{children}</div>
+        <div className="mt-14 mx-12 mb-12">{children}</div>
       </motion.div>
       {/* background shade */}
       {show && (
