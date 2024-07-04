@@ -24,8 +24,12 @@ const ExplorerModal: FC<Props> = (props: Props) => {
   console.log("modal", nftModal);
 
   return (
-    <Modal show={show} onClick={() => close()}>
-      <div className="h-full flex flex-col lg:flex-row items-center lg:items-start justify-between gap-5 lg:gap-10 overflow-auto">
+    <Modal
+      show={show}
+      onClick={() => close()}
+      className="overflow-y-auto lg:overflow-hidden explorer-scroll"
+    >
+      <div className="h-full flex flex-col lg:flex-row items-start lg:items-start justify-between gap-5 lg:gap-10 ">
         {/* main image */}
         <Image
           src={
@@ -34,10 +38,13 @@ const ExplorerModal: FC<Props> = (props: Props) => {
           width={532}
           height={532}
           alt={`Cyber Frog ${id}`}
-          className="w-screen lg:w-[420px] xl:w-auto max-w-[532px]"
+          className=" w-[330px] lg:w-[420px] xl:w-auto max-w-[532px]"
         />
         {/* data */}
-        <div className="flex flex-col gap-2 overflow-auto">
+        <div
+          className="flex flex-col gap-2"
+          // style={{ maxHeight: "90vh" }}
+        >
           <p className="uppercase text-2xl md:text-4xl font-rajdhani">
             Cyber Frog <span className="ml-1 text-cf-gold-500">{id}</span>
           </p>
@@ -64,9 +71,9 @@ const ExplorerModal: FC<Props> = (props: Props) => {
           </p>
           {/* attributes */}
           <div
-            className={`grid grid-cols-1 md:grid-cols-2 gap-5 overflow-auto ${
+            className={`grid grid-cols-1 md:grid-cols-2 gap-5  ${
               attrsLength > 8
-                ? "xl:grid-cols-3 xl:grid-rows-4 xl:grid-flow-col "
+                ? "2xl:grid-cols-3 2xl:grid-rows-4 2xl:grid-flow-col "
                 : ""
             }`}
           >
@@ -94,11 +101,11 @@ const AttributeItem: FC<AttributeProps> = (props: AttributeProps) => {
 
   return (
     <div
-      className={`flex flex-col  gap-0 mb-3 ${
+      className={`flex flex-col gap-0 mb-3 text-sm 2xl:text-base ${
         attrsLength < 9 ? "items-start" : ""
       }`}
     >
-      <p className="text-cf-white text-sm lg:text-base whitespace-nowrap text-ellipsis">
+      <p className="text-cf-white whitespace-nowrap text-ellipsis">
         {data.trait_type}{" "}
         <span className="text-cf-gold ml-2">{data.value}</span>
       </p>
