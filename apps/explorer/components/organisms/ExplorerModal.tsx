@@ -1,5 +1,5 @@
 import { FC, useContext } from "react";
-import { Modal } from "@components";
+import { ImageShimmer, Modal } from "@components";
 import { ViewContext } from "@contexts";
 import Image from "next/image";
 import { Attribute } from "@types";
@@ -31,10 +31,8 @@ const ExplorerModal: FC<Props> = (props: Props) => {
     >
       <div className="h-full flex flex-col lg:flex-row items-start lg:items-start justify-between gap-5 lg:gap-10 ">
         {/* main image */}
-        <Image
-          src={
-            nftModal?.content?.links?.image ?? "/images/dashboard/cf-4678.webp"
-          }
+        <ImageShimmer
+          src={nftModal?.content?.links?.image ?? ""}
           width={532}
           height={532}
           alt={`Cyber Frog ${id}`}
@@ -73,7 +71,7 @@ const ExplorerModal: FC<Props> = (props: Props) => {
           <div
             className={`grid grid-cols-1 md:grid-cols-2 gap-5  ${
               attrsLength > 8
-                ? "2xl:grid-cols-3 2xl:grid-rows-4 2xl:grid-flow-col "
+                ? "xl:grid-cols-3 xl:grid-rows-4 xl:grid-flow-col "
                 : ""
             }`}
           >
