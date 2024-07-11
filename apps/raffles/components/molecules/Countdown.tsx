@@ -1,10 +1,10 @@
-import { FC, useEffect, useState } from "react";
+import { FC, HTMLAttributes, useEffect, useState } from "react";
 
-interface CountdownProps {
+interface CountdownProps extends HTMLAttributes<HTMLDivElement> {
   date: Date;
 }
 
-const Countdown: FC<CountdownProps> = ({ date }) => {
+const Countdown: FC<CountdownProps> = ({ date, ...props }) => {
   // Function to calculate the time left until the provided date
   const calculateTimeLeft = () => {
     // Calculate the difference in milliseconds between the provided date and the current date
@@ -41,7 +41,7 @@ const Countdown: FC<CountdownProps> = ({ date }) => {
   }, []);
 
   return (
-    <div className="text-cf-gold-500">
+    <div className={`text-cf-gold-500 ${props.className ?? ""}`}>
       {isMounted &&
         Object.entries(timeLeft).map(([unit, value]) => (
           <span key={unit}>

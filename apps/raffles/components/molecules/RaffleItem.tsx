@@ -26,6 +26,9 @@ const RaffleItem: FC<Props> = (props: Props) => {
       className="bg-raffleCardBg flex flex-col relative w-[374px] h-[544px] pl-9 pt-9 -ml-3.5"
       {...midEnterAnimation}
     >
+      <p className="text-xl -mt-2 mb-2 font-rajdhani-bold">
+        {metadata?.metadata?.name}
+      </p>
       <div className="max-w-[305px]">
         <ImageShimmer
           src={metadata?.links?.image ?? "/images/dashboard/cf-4678.webp"}
@@ -37,7 +40,7 @@ const RaffleItem: FC<Props> = (props: Props) => {
           onClick={() => openModal()}
         />
       </div>
-      <div className="relative py-4">
+      <div className="relative py-2">
         <div className="flex flex-col justify-center gap-0 uppercase">
           <div className="flex gap-2">
             Ends In <Countdown date={metadata.endDate} />
@@ -53,7 +56,7 @@ const RaffleItem: FC<Props> = (props: Props) => {
         width={300}
         height={40}
         alt="Clear All"
-        className="cursor-pointer button-transition min-w-[99px] mt-4"
+        className="cursor-pointer button-transition min-w-[99px] mt-0"
         onClick={() => openModal()}
       />
     </motion.div>

@@ -37,13 +37,10 @@ const NftModal: FC<Props> = (props: Props) => {
             width={532}
             height={532}
             alt={`Cyber Frog ${id}`}
-            className=" w-[330px] lg:w-[420px] xl:w-auto max-w-[532px] xl:min-w-[532px]"
+            className=" w-auto sm:w-[420px] xl:w-auto max-w-[532px] xl:min-w-[532px]"
           />
           {/* data */}
-          <div
-            className="flex flex-col gap-2"
-            // style={{ maxHeight: "90vh" }}
-          >
+          <div className="flex flex-col gap-2">
             <p className="uppercase text-2xl md:text-4xl font-rajdhani">
               Cyber Frog <span className="ml-1 text-cf-gold-500">{id}</span>
             </p>
