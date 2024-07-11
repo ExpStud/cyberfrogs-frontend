@@ -6,7 +6,7 @@ interface Props {
   close: () => void;
 }
 
-const ExplorerModal: FC<Props> = (props: Props) => {
+const NftModal: FC<Props> = (props: Props) => {
   const { show, close } = props;
 
   return (
@@ -16,4 +16,4 @@ const ExplorerModal: FC<Props> = (props: Props) => {
   );
 };
 
-export default ExplorerModal;
+export default NftModal;

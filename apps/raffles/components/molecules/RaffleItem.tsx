@@ -1,10 +1,11 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ImageShimmer } from "@components";
 import { midEnterAnimation } from "@constants";
 import { Raffles } from "@raffles-types";
 import { Countdown } from "@raffles-components";
+import { ViewContext } from "@contexts";
 
 interface Props {
   metadata: Raffles;
@@ -14,8 +15,11 @@ interface Props {
 const RaffleItem: FC<Props> = (props: Props) => {
   const { metadata, isLoadingCard = false } = props;
 
+  const { setRaffleModal } = useContext(ViewContext);
   //TODO: add participants
   const participants = 420;
+
+  const openModal = () => setRaffleModal(metadata);
 
   return (
     <motion.div
@@ -30,6 +34,7 @@ const RaffleItem: FC<Props> = (props: Props) => {
           height={400}
           shimmerOnly={isLoadingCard}
           hover
+          onClick={() => openModal()}
         />
       </div>
       <div className="relative py-4">
@@ -49,7 +54,7 @@ const RaffleItem: FC<Props> = (props: Props) => {
         height={40}
         alt="Clear All"
         className="cursor-pointer button-transition min-w-[99px] mt-4"
-        onClick={() => console.log("TODO: handle Raffle")}
+        onClick={() => openModal()}
       />
     </motion.div>
   );

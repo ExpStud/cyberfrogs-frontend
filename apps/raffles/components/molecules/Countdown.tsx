@@ -34,14 +34,21 @@ const Countdown: FC<CountdownProps> = ({ date }) => {
     return () => clearTimeout(timer);
   });
 
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <div className="text-cf-gold-500">
-      {Object.entries(timeLeft).map(([unit, value]) => (
-        <span key={unit}>
-          {value as number}
-          {unit}{" "}
-        </span>
-      ))}
+      {isMounted &&
+        Object.entries(timeLeft).map(([unit, value]) => (
+          <span key={unit}>
+            {value as number}
+            {unit}{" "}
+          </span>
+        ))}
     </div>
   );
 };

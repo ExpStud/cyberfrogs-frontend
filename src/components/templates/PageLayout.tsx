@@ -4,8 +4,10 @@ import { enterAnimation } from "@constants";
 import { AnimatePresence, motion } from "framer-motion";
 import { ViewContext } from "@contexts";
 import Image from "next/image";
-import { ExplorerModal } from "@explorer-components";
+import { NftModal } from "@explorer-components";
 import { NFT } from "@types";
+import { RaffleModal } from "@raffles-components";
+import { Raffles } from "@raffles-types";
 
 interface Props {
   children: ReactNode;
@@ -20,12 +22,15 @@ const PageLayout: FC<Props> = (props: Props) => {
   //context for splash screen & modals
   const [showView, setShowView] = useState<boolean>(false);
   const [nftModal, setNftModal] = useState<NFT | null>(null);
+  const [raffleModal, setRaffleModal] = useState<Raffles | null>(null);
 
   const value = {
     showView,
     setShowView,
     nftModal,
     setNftModal,
+    raffleModal,
+    setRaffleModal,
   };
 
   return (
@@ -59,10 +64,17 @@ const PageLayout: FC<Props> = (props: Props) => {
         {/* modals - used here to display in root container and avoid nesting issues */}
         <AnimatePresence mode="wait">
           {nftModal && (
-            <ExplorerModal
+            <NftModal
               key="explorer-modal"
               show={nftModal !== null}
               close={() => setNftModal(null)}
+            />
+          )}
+          {raffleModal && (
+            <RaffleModal
+              key="raffle-modal"
+              show={raffleModal !== null}
+              close={() => setRaffleModal(null)}
             />
           )}
         </AnimatePresence>
