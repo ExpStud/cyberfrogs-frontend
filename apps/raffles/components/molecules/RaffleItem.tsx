@@ -23,7 +23,7 @@ const RaffleItem: FC<Props> = (props: Props) => {
 
   return (
     <motion.div
-      className="bg-raffleCardBg flex flex-col relative w-[374px] h-[544px] pl-9 pt-9 -ml-3.5"
+      className="bg-raffleCardBg flex flex-col relative  w-[374px] max-h-[544px] pl-9 pt-9 -ml-3.5 aspect-[16/11]"
       {...midEnterAnimation}
     >
       <p className="text-xl -mt-2 mb-2 font-rajdhani-bold">
@@ -56,7 +56,7 @@ const RaffleItem: FC<Props> = (props: Props) => {
         width={300}
         height={40}
         alt="Clear All"
-        className="cursor-pointer button-transition min-w-[99px] mt-0"
+        className="cursor-pointer button-transition min-w-[99px] mt-0 pb-6 pt-1"
         onClick={() => openModal()}
       />
     </motion.div>
