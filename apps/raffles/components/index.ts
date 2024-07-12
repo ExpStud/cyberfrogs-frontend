@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 //molecules 
 const RaffleItem = dynamic(() => import("./molecules/RaffleItem"));
 const Countdown = dynamic(() => import("./molecules/Countdown"));
+const BuyTickets = dynamic(() => import("./molecules/BuyTickets"));
 //organisms
 const RaffleList = dynamic(() => import("./organisms/RaffleList"));
 const RaffleModal = dynamic(() => import("./organisms/RaffleModal"));
@@ -18,5 +19,6 @@ export {
   RaffleItem,
   RaffleList,
   Countdown,
-  RaffleModal
+  RaffleModal,
+  BuyTickets
 };

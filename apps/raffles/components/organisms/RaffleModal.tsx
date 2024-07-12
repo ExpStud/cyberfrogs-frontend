@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
 import { ImageShimmer, Modal } from "@components";
 import { ViewContext } from "@contexts";
-import { Countdown } from "@raffles-components";
+import { BuyTickets, Countdown } from "@raffles-components";
 
 interface Props {
   show: boolean;
@@ -12,7 +12,6 @@ const RaffleModal: FC<Props> = (props: Props) => {
   const { show, close } = props;
 
   const { raffleModal } = useContext(ViewContext);
-  const id = raffleModal?.metadata?.name.slice(5).replace("#", "NO ");
 
   //TODO: add variables
   const participants = 420;
@@ -59,11 +58,8 @@ const RaffleModal: FC<Props> = (props: Props) => {
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 mt-10 gap-5 xl:gap-10 2xl:gap-20 2xl:mr-10">
-              {/* connect wallet */}
-              <div className="flex flex-col gap-2">
-                <p className="text-cf-white ">Buy Tickets</p>
-                <button className="bg-cf-orange">connect wallet</button>
-              </div>
+              {/* buy tickets */}
+              <BuyTickets />
               {/* description */}
               <div className="flex flex-col gap-2 max-h-[200px] overflow-hidden">
                 <p className="text-cf-white">Description</p>
