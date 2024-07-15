@@ -47,10 +47,10 @@ const SplashScreen: FC<Props> = ({ assets = [] }: Props) => {
 
   return (
     <AnimatePresence mode="wait">
-      {true && (
+      {showAnimation && (
         <motion.div
-          className={`bg-splash-gradient bg-cf-green-900  ${
-            true ? "fixed z-50 inset-0" : "hidden -z-50"
+          className={`bg-splash-gradient bg-cf-green-900 flex justify-center ${
+            showAnimation ? "fixed z-50 inset-0" : "hidden -z-50"
           }`}
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
@@ -60,7 +60,7 @@ const SplashScreen: FC<Props> = ({ assets = [] }: Props) => {
             ease: "easeInOut",
           }}
         >
-          <div className="page-spacing pt-1 md:pt-3 lg:pt-6 8 z-20">
+          <div className="page-spacing pt-1 md:pt-3 lg:pt-6 w-screen">
             <Logo />
           </div>
           <BackgroundGradients />
