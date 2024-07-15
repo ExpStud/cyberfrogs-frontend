@@ -7,7 +7,7 @@ const Mint: NextPage = () => {
   const [assets, setAssets] = useState<boolean[]>([]);
 
   return (
-    <PageLayout assets={assets} footer={false}>
+    <PageLayout assets={assets} footer={false} fixed>
       <MintView setAssets={setAssets} />
     </PageLayout>
   );

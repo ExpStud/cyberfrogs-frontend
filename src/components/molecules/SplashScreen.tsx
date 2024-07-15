@@ -15,8 +15,8 @@ const SplashScreen: FC<Props> = ({ assets = [] }: Props) => {
   const router = useRouter();
 
   const isMint = router.pathname === "/mint";
-  const showLogo = false; //isMint;
-  const showBlur = false; //isMint;
+  const showLogo = isMint;
+  const showBlur = isMint;
 
   //splash screen animation
   const [showAnimation, setShowAnimation] = useState<boolean>(true); // shows/hides SplashScreen animation

@@ -33,14 +33,16 @@ const Navigation: FC = () => {
       )}
 
       {/* mobile nav */}
-      <div className="flex xl:hidden gap-10">
-        <MenuIcon
-          onClick={() => setOpenMenu(true)}
-          className="cursor-pointer "
-        />
+      {showNav && (
+        <div className="flex xl:hidden gap-10">
+          <MenuIcon
+            onClick={() => setOpenMenu(true)}
+            className="cursor-pointer "
+          />
 
-        <Menu toggleMenu={setOpenMenu} open={openMenu} />
-      </div>
+          <Menu toggleMenu={setOpenMenu} open={openMenu} />
+        </div>
+      )}
     </div>
   );
 };

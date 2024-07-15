@@ -7,10 +7,11 @@ import {
   useState,
 } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { getAssetsByOwner } from "@utils";
+import { getAssetsByOwner, handleAssetLoad } from "@utils";
 import { NFT } from "@types";
 import { collectionAddress } from "@constants";
-
+import { useWindowSize } from "src/hooks";
+import Image from "next/image";
 interface Props {
   setAssets: Dispatch<SetStateAction<boolean[]>>;
 }
@@ -20,6 +21,12 @@ const MintView: FC<Props> = (props: Props) => {
 
   const [userFrogs, setUserFrogs] = useState<NFT[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const [winWidth] = useWindowSize();
+  const isMobile = winWidth < 768;
+  const isTablet = winWidth <= 1024 && winWidth >= 768;
+  const isDesktop = winWidth >= 1024;
+
   const { connected, publicKey } = useWallet();
 
   //fetch user nfts and filter cyber frogs
@@ -54,7 +61,35 @@ const MintView: FC<Props> = (props: Props) => {
   }, [connected]);
 
   return (
-    <div className="w-full flex flex-col items-start justify-start px-3 md:pl-12 md:pr-0 2xl:px-0 mt-10 "></div>
+    <div className="fixed inset-0 w-screen h-screen">
+      {isDesktop && (
+        <Image
+          src="/images/mint/bg-xl.jpg"
+          fill
+          alt="Mint"
+          className="w-full h-full object-cover absolute inset-0"
+          onLoad={() => handleAssetLoad(0, setAssets)}
+        />
+      )}
+      {isTablet && (
+        <Image
+          src="/images/mint/bg-md.jpg"
+          fill
+          alt="Mint"
+          className="w-full h-full object-cover absolute inset-0"
+          onLoad={() => handleAssetLoad(0, setAssets)}
+        />
+      )}{" "}
+      {isMobile && (
+        <Image
+          src="/images/mint/bg-sm.jpg"
+          fill
+          alt="Mint"
+          className="w-full h-full object-cover absolute inset-0"
+          onLoad={() => handleAssetLoad(0, setAssets)}
+        />
+      )}
+    </div>
   );
 };
 
