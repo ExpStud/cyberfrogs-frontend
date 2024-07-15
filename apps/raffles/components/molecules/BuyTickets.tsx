@@ -42,7 +42,7 @@ const BuyTickets: FC<Props> = (props: Props) => {
             max={100}
           />
           <Image
-            src="/images/buttons/participate.svg"
+            src="/images/general/buttons/participate.svg"
             width={300}
             height={40}
             alt="Clear All"
@@ -53,7 +53,7 @@ const BuyTickets: FC<Props> = (props: Props) => {
       ) : (
         <motion.div key="connect" {...midExitAnimation}>
           <Image
-            src="/images/buttons/connect-wallet.svg"
+            src="/images/general/buttons/connect-wallet.svg"
             width={300}
             height={40}
             alt="Clear All"

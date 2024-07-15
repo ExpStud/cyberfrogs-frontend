@@ -10,7 +10,7 @@ const DataWrapper: FC<DataProps> = (props: DataProps) => {
   return (
     <div className="relative w-[256px] min-w-[200px] h-[172px] min-h-[172px] flex flex-col py-4">
       <Image
-        src="/images/dashboard/divider.svg"
+        src="/images/pages/dashboard/divider.svg"
         width={256}
         height={1}
         alt="Divider"

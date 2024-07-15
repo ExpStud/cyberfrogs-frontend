@@ -19,7 +19,7 @@ const ToggleOption: FC<ToggleOptionProps> = ({ active, onClick, label }) => (
     {active && (
       <>
         <motion.img
-          src={`/images/explorer/toggle-active-highlight.svg`}
+          src={`/images/pages/explorer/toggle-active-highlight.svg`}
           width={216}
           height={242}
           alt={label}
@@ -27,7 +27,7 @@ const ToggleOption: FC<ToggleOptionProps> = ({ active, onClick, label }) => (
           {...fastEnterAnimation}
         />{" "}
         <motion.img
-          src={`/images/explorer/toggle-active-bg.svg`}
+          src={`/images/pages/explorer/toggle-active-bg.svg`}
           width={136}
           height={36}
           alt={label}

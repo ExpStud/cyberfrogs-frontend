@@ -52,7 +52,7 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
     <div className="flex flex-col ">
       {index === 0 && (
         <Image
-          src="/images/explorer/filter-divider.svg"
+          src="/images/pages/explorer/filter-divider.svg"
           width={276}
           height={1}
           alt="Divider"
@@ -119,7 +119,7 @@ const ExplorerFilterItem: FC<ExplorerFilterItemProps> = (
       </div>
 
       <Image
-        src="/images/explorer/filter-divider.svg"
+        src="/images/pages/explorer/filter-divider.svg"
         width={276}
         height={1}
         alt="Divider"

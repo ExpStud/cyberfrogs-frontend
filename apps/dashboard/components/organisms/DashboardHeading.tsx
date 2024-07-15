@@ -49,7 +49,7 @@ const DashboardHeading: FC<DashboardHeadingProps> = (
         </div>
       </div>
       <Image
-        src="/images/dashboard/intro.png"
+        src="/images/pages/dashboard/intro.png"
         width={968}
         height={210}
         alt="Dashboard"

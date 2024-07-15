@@ -22,16 +22,19 @@ module.exports = {
       backgroundImage: {
         "splash-gradient":
           "linear-gradient(180deg, rgba(5, 17, 13, 0.75) 0%, rgba(12, 44, 33, 0.00) 100%)",
-        explorerData: "url('/images/explorer/data-bg.svg')",
-        explorerToggleBg: "url('/images/explorer/toggle-bg.svg')",
-        explorerToggleActiveBg: "url('/images/explorer/toggle-active-bg.svg')",
-        explorerToggle1Bg: "url('/images/explorer/toggle-1-bg.svg')",
-        explorerToggleActive1Bg: "url('/images/explorer/toggle-1-active.svg')",
-        dashboardData: "url('/images/dashboard/data-bg.svg')",
-        dashboardBg: "url('/images/dashboard/dashboard-bg-full.svg')",
-        manageBg: "url('/images/dashboard/manage-bg.svg')",
-        raffleCardBg: "url('/images/raffles/card-bg.svg')",
-        modalBg: "url('/images/backgrounds/modal.svg')",
+        explorerData: "url('/images/pages/explorer/data-bg.svg')",
+        explorerToggleBg: "url('/images/pages/explorer/toggle-bg.svg')",
+        explorerToggleActiveBg:
+          "url('/images/pages/explorer/toggle-active-bg.svg')",
+        explorerToggle1Bg: "url('/images/pages/explorer/toggle-1-bg.svg')",
+        explorerToggleActive1Bg:
+          "url('/images/pages/explorer/toggle-1-active.svg')",
+        dashboardData: "url('/images/pages/dashboard/data-bg.svg')",
+        dashboardBg: "url('/images/pages/dashboard/dashboard-bg-full.svg')",
+        manageBg: "url('/images/pages/dashboard/manage-bg.svg')",
+        raffleCardBg: "url('/images/pages/raffles/card-bg.svg')",
+        modalBg: "url('/images/general/backgrounds/modal.svg')",
+        "connect-bg": "url('/images/pages/mint/connect-bg.svg')",
       },
       fontFamily: {
         rajdhani: ["Rajdhani-Medium"],

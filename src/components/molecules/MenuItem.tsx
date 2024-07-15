@@ -120,7 +120,7 @@ const MenuItem: FC<{ item: NavigationData }> = ({ item }) => {
       </motion.div>
       <div className="relative w-full h-[1px]">
         <Image
-          src="/images/dashboard/divider.svg"
+          src="/images/pages/dashboard/divider.svg"
           fill
           alt="Divider"
           className="opacity-75 h-[1px] object-cover"

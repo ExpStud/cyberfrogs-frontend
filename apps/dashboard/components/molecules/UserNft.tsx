@@ -27,7 +27,8 @@ const UserNft: FC<Props> = (props: Props) => {
     >
       <ImageShimmer
         src={
-          metadata?.content?.links?.image ?? "/images/dashboard/cf-4678.webp"
+          metadata?.content?.links?.image ??
+          "/images/pages/dashboard/cf-4678.webp"
         }
         alt={metadata?.content?.metadata?.name ?? "Cyber Frog"}
         width={356}
@@ -52,7 +53,7 @@ const UserNft: FC<Props> = (props: Props) => {
           </p>
         </div>
         <Image
-          src="/images/dashboard/divider.svg"
+          src="/images/pages/dashboard/divider.svg"
           width={256}
           height={1}
           alt="Divider"

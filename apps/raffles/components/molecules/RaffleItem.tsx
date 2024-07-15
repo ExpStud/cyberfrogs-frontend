@@ -31,7 +31,7 @@ const RaffleItem: FC<Props> = (props: Props) => {
       </p>
       <div className="max-w-[305px]">
         <ImageShimmer
-          src={metadata?.links?.image ?? "/images/dashboard/cf-4678.webp"}
+          src={metadata?.links?.image ?? "/images/pages/dashboard/cf-4678.webp"}
           alt={metadata?.metadata?.name ?? "Cyber Frog"}
           width={400}
           height={400}
@@ -52,7 +52,7 @@ const RaffleItem: FC<Props> = (props: Props) => {
         </div>
       </div>
       <Image
-        src="/images/buttons/participate.svg"
+        src="/images/general/buttons/participate.svg"
         width={300}
         height={40}
         alt="Clear All"

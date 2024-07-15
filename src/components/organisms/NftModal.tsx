@@ -49,14 +49,14 @@ const NftModal: FC<Props> = (props: Props) => {
             </p>
             {/* divider */}
             <Image
-              src="/images/explorer/filter-divider.svg"
+              src="/images/pages/explorer/filter-divider.svg"
               width={600}
               height={1}
               alt="Divider"
               className="xl:hidden"
             />
             <Image
-              src="/images/explorer/divider-long.svg"
+              src="/images/pages/explorer/divider-long.svg"
               width={900}
               height={1}
               alt="Divider"

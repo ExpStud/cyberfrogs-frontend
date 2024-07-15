@@ -23,7 +23,7 @@ const RafflesView: FC<Props> = (props: Props) => {
 
         {showRaffles && (
           <Image
-            src="/images/raffles/intro.jpg"
+            src="/images/pages/raffles/intro.jpg"
             width={1017}
             height={208}
             alt="Raffles"
@@ -37,7 +37,7 @@ const RafflesView: FC<Props> = (props: Props) => {
         {!showRaffles ? (
           <motion.div key="no-raffles" {...midExitAnimation}>
             <Image
-              src="/images/raffles/empty.png"
+              src="/images/pages/raffles/empty.png"
               width={1219}
               height={860}
               alt="Mp Raffles"

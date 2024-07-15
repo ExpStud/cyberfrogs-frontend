@@ -38,7 +38,8 @@ const Explorer: FC<Props> = (props: Props) => {
     >
       <ImageShimmer
         src={
-          metadata?.content?.links?.image ?? "/images/dashboard/cf-4678.webp"
+          metadata?.content?.links?.image ??
+          "/images/pages/dashboard/cf-4678.webp"
         }
         alt={metadata?.content?.metadata?.name ?? "Cyber Frog"}
         width={356}
@@ -48,7 +49,7 @@ const Explorer: FC<Props> = (props: Props) => {
       />
       <div className="relative">
         <Image
-          src="/images/explorer/card-bg.svg"
+          src="/images/pages/explorer/card-bg.svg"
           width={356}
           height={69}
           alt={metadata?.content?.metadata?.name.slice(5) ?? "Cyber Frog"}

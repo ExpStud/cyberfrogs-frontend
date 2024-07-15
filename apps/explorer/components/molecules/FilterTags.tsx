@@ -23,7 +23,7 @@ const FilterTags: FC<Props> = (props: Props) => {
           {...fastExitAnimation}
         >
           <Image
-            src="/images/buttons/clear-all.svg"
+            src="/images/general/buttons/clear-all.svg"
             width={99}
             height={30}
             alt="Clear All"

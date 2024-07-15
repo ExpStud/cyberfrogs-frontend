@@ -51,7 +51,7 @@ const Data: FC<Props> = (props: Props) => {
       </div>
       <div className="absolute -bottom-7 inset-x-0 -z-[1] h-[33px] w-full md:w-[97.9%] lg:w-[98.8%] md:ml-[18px]">
         <Image
-          src="/images/dashboard/data-dots.svg"
+          src="/images/pages/dashboard/data-dots.svg"
           fill
           className="object-cover"
           alt="Dots"
