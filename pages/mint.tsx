@@ -1,15 +1,15 @@
 import { NextPage } from "next";
 import { useState } from "react";
 import { PageLayout } from "@components";
-import { DashboardView } from "@dashboard-components";
+import { MintView } from "@mint-components";
 
-const Dashboard: NextPage = () => {
+const Mint: NextPage = () => {
   const [assets, setAssets] = useState<boolean[]>([]);
 
   return (
-    <PageLayout assets={assets}>
-      <DashboardView setAssets={setAssets} />
+    <PageLayout assets={assets} header={true} footer={false}>
+      <MintView setAssets={setAssets} />
     </PageLayout>
   );
 };
-export default Dashboard;
+export default Mint;

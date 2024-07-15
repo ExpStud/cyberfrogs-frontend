@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ViewContext } from "@contexts";
 import debounce from "lodash.debounce";
 import { useLockBodyScroll } from "src/hooks";
+import { BackgroundGradients, Logo } from "@components";
 
 interface Props {
   assets?: boolean[];
@@ -46,10 +47,10 @@ const SplashScreen: FC<Props> = ({ assets = [] }: Props) => {
 
   return (
     <AnimatePresence mode="wait">
-      {showAnimation && (
+      {true && (
         <motion.div
-          className={`backdrop-blur-2xl bg-[#081F17] bg-opacity-50 flex items-center justify-center  ${
-            showAnimation ? "fixed z-50 inset-0" : "hidden -z-50"
+          className={`bg-splash-gradient bg-cf-green-900  ${
+            true ? "fixed z-50 inset-0" : "hidden -z-50"
           }`}
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
@@ -58,7 +59,12 @@ const SplashScreen: FC<Props> = ({ assets = [] }: Props) => {
             duration: animationTransition / 1000,
             ease: "easeInOut",
           }}
-        ></motion.div>
+        >
+          <div className="page-spacing pt-1 md:pt-3 lg:pt-6 8 z-20">
+            <Logo />
+          </div>
+          <BackgroundGradients />
+        </motion.div>
       )}
     </AnimatePresence>
   );

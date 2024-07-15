@@ -1,14 +1,6 @@
 import { FC, Fragment, useState } from "react";
-import {
-  CloseIcon,
-  HeaderIcons,
-  Logo,
-  Menu,
-  MenuIcon,
-  NavigationItem,
-} from "@components";
-import { AnimatePresence, motion } from "framer-motion";
-import { midExitAnimation, navigationData } from "@constants";
+import { HeaderIcons, Logo, Menu, MenuIcon, NavigationItem } from "@components";
+import { navigationData } from "@constants";
 
 const Navigation: FC = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);

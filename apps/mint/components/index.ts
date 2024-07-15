@@ -7,8 +7,8 @@ import dynamic from "next/dynamic";
 //organisms
 // const Data = dynamic(() => import("./organisms/Data"));
 //templates
-const DashboardView = dynamic(() => import("./templates/MintView"));
+const MintView = dynamic(() => import("./templates/MintView"));
 
 export {
-  DashboardView,
+  MintView,
 };

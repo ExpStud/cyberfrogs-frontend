@@ -20,6 +20,8 @@ module.exports = {
         "custom-grey-light": "rgba(217, 217, 217, 0.16)",
       },
       backgroundImage: {
+        "splash-gradient":
+          "linear-gradient(180deg, rgba(5, 17, 13, 0.75) 0%, rgba(12, 44, 33, 0.00) 100%)",
         explorerData: "url('/images/explorer/data-bg.svg')",
         explorerToggleBg: "url('/images/explorer/toggle-bg.svg')",
         explorerToggleActiveBg: "url('/images/explorer/toggle-active-bg.svg')",
