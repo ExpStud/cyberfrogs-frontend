@@ -144,7 +144,7 @@ const RaffleModal: FC<Props> = (props: Props) => {
               </div>
               {/* bids history */}
               <div className="flex flex-col gap-2 max-h-[200px] ">
-                <p className="text-cf-white">Bids History</p>
+                <p className="text-cf-white">Bid History</p>
                 <div className="flex flex-col gap-2  overflow-auto explorer-scroll pr-5">
                   {bidHistory.map((bid, index) => (
                     <BidItem key={index} bid={bid} />
