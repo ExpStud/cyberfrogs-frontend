@@ -9,7 +9,7 @@ import {
 import { useWallet } from "@solana/wallet-adapter-react";
 import { getAssetsByOwner } from "@utils";
 import { NFT } from "@types";
-import { collectionAddress } from "src/constants";
+import { collectionAddress } from "@constants";
 
 interface Props {
   setAssets: Dispatch<SetStateAction<boolean[]>>;

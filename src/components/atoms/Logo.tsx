@@ -2,9 +2,10 @@ import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const Logo: FC = () => {
+interface Props extends React.HTMLProps<HTMLDivElement> {}
+const Logo: FC<Props> = (props: Props) => {
   return (
-    <div className="my-0 flex items-center gap-2 cursor-pointer">
+    <div className={`cursor-pointer ${props.className ?? ""}`} {...props}>
       <Link href="/">
         <Image
           src="/images/logo.svg"
