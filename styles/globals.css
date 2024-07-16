@@ -255,3 +255,6 @@ input[type="checkbox"]:checked {
 .menu-item-border {
   border-top: 1px solid rgba(255, 254, 243, 0.15);
 }
+.green-container {
+  @apply border border-[#75FF72]/20 bg-[rgba(8,31,23,0.95)];
+}

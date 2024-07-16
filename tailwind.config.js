@@ -35,6 +35,7 @@ module.exports = {
         raffleCardBg: "url('/images/pages/raffles/card-bg.svg')",
         modalBg: "url('/images/general/backgrounds/modal.svg')",
         "connect-bg": "url('/images/pages/mint/connect-bg.svg')",
+        "select-bg": "url('/images/pages/mint/select-bg.svg')",
       },
       fontFamily: {
         rajdhani: ["Rajdhani-Medium"],
