@@ -9,11 +9,11 @@ import {
 import { enterAnimation } from "@constants";
 import { AnimatePresence, motion } from "framer-motion";
 import { ViewContext } from "@contexts";
-import Image from "next/image";
 import { NftModal } from "@explorer-components";
 import { NFT } from "@types";
 import { RaffleModal } from "@raffles-components";
 import { Raffles } from "@raffles-types";
+import { UpgradeModal } from "@mint-components";
 
 interface Props {
   children: ReactNode;
@@ -38,6 +38,7 @@ const PageLayout: FC<Props> = (props: Props) => {
   const [showView, setShowView] = useState<boolean>(false);
   const [nftModal, setNftModal] = useState<NFT | null>(null);
   const [raffleModal, setRaffleModal] = useState<Raffles | null>(null);
+  const [upgradeModal, setUpgradeModal] = useState<boolean>(false);
 
   const value = {
     showView,
@@ -46,6 +47,8 @@ const PageLayout: FC<Props> = (props: Props) => {
     setNftModal,
     raffleModal,
     setRaffleModal,
+    upgradeModal,
+    setUpgradeModal,
   };
 
   return (
@@ -72,10 +75,10 @@ const PageLayout: FC<Props> = (props: Props) => {
         {footer && <Footer />}
 
         {/* used to display splash screen when loading large assets on page open */}
-        {/* <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait">
           {assets && <SplashScreen assets={assets} key="assets" />}
-        </AnimatePresence> */}
-        <SplashScreen assets={assets} key="assets" />
+        </AnimatePresence>
+
         {/* modals - used here to display in root container and avoid nesting issues */}
         <AnimatePresence mode="wait">
           {nftModal && (
@@ -90,6 +93,13 @@ const PageLayout: FC<Props> = (props: Props) => {
               key="raffle-modal"
               show={raffleModal !== null}
               close={() => setRaffleModal(null)}
+            />
+          )}
+          {upgradeModal && (
+            <UpgradeModal
+              key="upgrade-modal"
+              show={upgradeModal !== null}
+              close={() => setUpgradeModal(false)}
             />
           )}
         </AnimatePresence>

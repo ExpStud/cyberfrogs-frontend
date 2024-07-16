@@ -9,6 +9,8 @@ export const ViewContext = createContext<{
   setNftModal: (nft: NFT | null) => void;
   raffleModal: Raffles | null;
   setRaffleModal: (nft: Raffles | null) => void;
+  upgradeModal: boolean;
+  setUpgradeModal: (show: boolean) => void;
 }>({
   showView: false,
   setShowView: () => {},
@@ -16,6 +18,8 @@ export const ViewContext = createContext<{
   setNftModal: () => {},
   raffleModal: null,
   setRaffleModal: () => {},
+  upgradeModal: false,
+  setUpgradeModal:() => {},
 });
 
  

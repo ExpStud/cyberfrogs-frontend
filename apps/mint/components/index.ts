@@ -6,11 +6,15 @@ import dynamic from "next/dynamic";
 const UserNft = dynamic(() => import("./molecules/UserNft"));
 //organisms
 const ConnectWallet = dynamic(() => import("./organisms/ConnectWallet"));
+const SelectFrogs = dynamic(() => import("./organisms/SelectFrogs"));
+const UpgradeModal = dynamic(() => import("./organisms/UpgradeModal"));
 //templates
 const MintView = dynamic(() => import("./templates/MintView"));
 
 export {
   MintView,
   UserNft,
-  ConnectWallet
+  SelectFrogs,
+  ConnectWallet,
+  UpgradeModal
 };
