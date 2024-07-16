@@ -11,17 +11,15 @@ const RaffleModal: FC<Props> = (props: Props) => {
 
   console.log(show);
   return (
-    <Modal
-      show={show}
-      onClick={() => close()}
-      className="overflow-y-auto lg:overflow-hidden explorer-scroll"
-      upgradeModal
-    >
-      <div className="flex flex-col justify-between items-center w-full h-full">
-        <p>Pricing, multipliers, and discounts</p>
+    <Modal show={show} onClick={() => close()} upgradeModal>
+      <div className="flex flex-col justify-between items-start w-full h-full gap-2">
+        <p className="text-xl">
+          Pricing, multipliers, <br />
+          and discounts
+        </p>
         <Divider />
         <div className="flex flex-col gap-1 text-sm text-cf-white/70">
-          <p className="text-cf-white font-rajdhani-semibold">
+          <p className="text-cf-white font-rajdhani-semibold mb-2">
             BASE UPGRADE COST
           </p>
           <p>NON-FACTIONED FROGS (2,500 KIRA)</p>
@@ -30,7 +28,7 @@ const RaffleModal: FC<Props> = (props: Props) => {
         </div>
         <Divider />
         <div className="flex flex-col gap-1 text-sm text-cf-white/70">
-          <p className="text-cf-white font-rajdhani-semibold">
+          <p className="text-cf-white font-rajdhani-semibold mb-2">
             COST MULTIPLIER LEGEND
           </p>
           <p>IF ALPHA FROG (2X UPGRADE COST)</p>
@@ -39,7 +37,7 @@ const RaffleModal: FC<Props> = (props: Props) => {
         </div>
         <Divider />
         <div className="flex flex-col gap-1 text-sm text-cf-white/70">
-          <p className="text-cf-white font-rajdhani-semibold">
+          <p className="text-cf-white font-rajdhani-semibold mb-2">
             DISCOUNT LEGEND
           </p>
           <p>5 FROGS PREPAYED (15%)</p>
@@ -61,6 +59,7 @@ const Divider = () => {
       viewBox="0 0 400 1"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="mt-5 mb-2 w-[320px] sm:w-auto"
     >
       <g filter="url(#filter0_i_5052_204)">
         <line y1="0.5" x2="400" y2="0.5" stroke="white" strokeOpacity="0.15" />

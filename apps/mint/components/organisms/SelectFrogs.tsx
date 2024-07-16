@@ -69,7 +69,7 @@ const SelectFrogs: FC<SelectFrogsProps> = (props: SelectFrogsProps) => {
             needing to pay each time.
           </p>
           <div
-            className="text-cf-gold flex gap-3 items-center mt-2 hover:underline"
+            className="text-cf-gold flex gap-3 items-center mt-2 hover:underline cursor-pointer"
             onClick={() => setUpgradeModal(true)}
           >
             <p>Pricing, Multipliers, and Discounts</p>

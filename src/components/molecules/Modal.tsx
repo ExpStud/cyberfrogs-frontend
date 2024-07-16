@@ -23,40 +23,75 @@ const Modal: FC<Props> = (props: Props) => {
   //disable body scroll when modal is open
   useLockBodyScroll(show);
 
+  const modalAnimation = {
+    initial: {
+      opacity: 0,
+      scale: 0.75,
+      left: "50%",
+      translateX: "-50%",
+      top: "50%",
+      translateY: "-50%",
+    },
+    animate: {
+      opacity: 1,
+      scale: 1,
+      left: "50%",
+      translateX: "-50%",
+      top: "50%",
+      translateY: "-50%",
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.75,
+      left: "50%",
+      translateX: "-50%",
+      top: "50%",
+      translateY: "-50%",
+    },
+    transition: { duration: 0.3 },
+  };
+
   return (
     <div key="image-modal" className="fixed inset-0 w-full h-full z-50 ">
       {/* modal */}
-      {/* {upgradeModal && <div>Upgrade Modal</div>} */}
+      {upgradeModal && (
+        <motion.div
+          {...modalAnimation}
+          className="absolute z-20  w-full md:w-[480px] h-full md:h-[600px] bg-[#0D3426] border border-[#75FF72]/20"
+        >
+          {/* close icon */}
+          <div
+            className="cursor-pointer absolute top-5 right-5"
+            onClick={componentProps.onClick}
+            onMouseEnter={() => setExitHover(true)}
+            onMouseLeave={() => setExitHover(false)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 10 10"
+              fill="none"
+              className="icon-opacity-60"
+            >
+              <path
+                d="M8.33097 9.92898L0 1.61222L1.60511 0L9.92898 8.33097L8.33097 9.92898ZM1.60511 9.92898L0 8.33097L8.33097 0L9.92898 1.61222L1.60511 9.92898Z"
+                fill="#FFFEF3"
+                fill-opacity="0.5"
+              />
+            </svg>
+          </div>
+          <div className="p-10">{children}</div>
+        </motion.div>
+      )}
       {!upgradeModal && (
         <motion.div
-          initial={{
-            opacity: 0,
-            left: "50%",
-            translateX: "-50%",
-            top: "70%",
-            translateY: "-50%",
-          }}
-          animate={{
-            opacity: 1,
-            left: "50%",
-            translateX: "-50%",
-            top: "50%",
-            translateY: "-50%",
-          }}
-          exit={{
-            opacity: 0,
-            left: "50%",
-            translateX: "-50%",
-            top: "70%",
-            translateY: "-50%",
-          }}
-          transition={{ duration: 0.3 }}
           onClick={(e) => e.stopPropagation()}
-          //left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2
-          className={`z-10 absolute 
-        lg:aspect-[12/5] w-[100vw] md:w-[95vw] lg:w-[90vw] lg:max-w-[1520px] h-[100vh] md:h-[95vh]  
-        bg-cf-green-900 lg:bg-transparent  lg:bg-modalBg lg:max-h-[622px]
-         ${className ?? ""}`}
+          {...modalAnimation}
+          className={`z-20 absolute lg:aspect-[12/5] w-[100vw] md:w-[95vw] lg:w-[90vw] lg:max-w-[1520px] h-[100vh] md:h-[95vh]  
+          bg-cf-green-900 lg:bg-transparent  lg:bg-modalBg lg:max-h-[622px] ${
+            className ?? ""
+          }`}
         >
           <Image
             src="/images/icons/threedots.svg"
@@ -102,7 +137,7 @@ const Modal: FC<Props> = (props: Props) => {
       {/* background shade */}
       {show && (
         <motion.div
-          className="z-0 fixed inset-0 bg-black bg-opacity-80 cursor-pointer"
+          className="z-0 fixed inset-0 bg-[rgba(8,31,23,0.90)] backdrop-blur-[10px] cursor-pointer"
           {...midExitAnimation}
           onClick={componentProps.onClick}
         />
