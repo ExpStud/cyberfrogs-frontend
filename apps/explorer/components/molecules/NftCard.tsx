@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect, useRef } from "react";
+import { FC, useContext, useEffect, useRef, useState } from "react";
 import { NFT } from "@types";
 import Image from "next/image";
 import { useInView } from "framer-motion";
@@ -14,7 +14,7 @@ interface Props {
 
 const Explorer: FC<Props> = (props: Props) => {
   const { metadata, isLoadingCard, paginateData, loadingData } = props;
-
+  const [didHover, setDidHover] = useState<boolean>(false);
   const { setNftModal } = useContext(ViewContext);
 
   const ref = useRef(null);
@@ -35,6 +35,8 @@ const Explorer: FC<Props> = (props: Props) => {
       className="flex flex-col relative cursor-pointer"
       ref={ref}
       onClick={() => setNftModal(metadata)}
+      onMouseEnter={() => setDidHover(true)}
+      onMouseLeave={() => setDidHover(false)}
     >
       <ImageShimmer
         src={
@@ -45,7 +47,7 @@ const Explorer: FC<Props> = (props: Props) => {
         width={356}
         height={356}
         shimmerOnly={isLoadingCard}
-        hover
+        externalHover={didHover}
       />
       <div className="relative">
         <Image

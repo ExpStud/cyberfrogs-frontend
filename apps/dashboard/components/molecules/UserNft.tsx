@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useState } from "react";
 import { NFT } from "@types";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -13,7 +13,7 @@ interface Props {
 
 const UserNft: FC<Props> = (props: Props) => {
   const { metadata, isLoadingCard = false } = props;
-
+  const [didHover, setDidHover] = useState<boolean>(false);
   const { setNftModal } = useContext(ViewContext);
 
   //TODO: add rank
@@ -24,6 +24,8 @@ const UserNft: FC<Props> = (props: Props) => {
       className="flex flex-col relative cursor-pointer min-w-[256px]"
       onClick={() => metadata && setNftModal(metadata)}
       {...midEnterAnimation}
+      onMouseEnter={() => setDidHover(true)}
+      onMouseLeave={() => setDidHover(false)}
     >
       <ImageShimmer
         src={
@@ -34,7 +36,7 @@ const UserNft: FC<Props> = (props: Props) => {
         width={356}
         height={356}
         shimmerOnly={isLoadingCard}
-        hover
+        externalHover={didHover}
         className="max-w-[256px]"
       />
       <div className="relative">
