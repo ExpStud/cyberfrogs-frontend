@@ -31,7 +31,8 @@ const MintView: FC<Props> = (props: Props) => {
   const [mintFlow, setMintFlow] = useState<MintFlow>(MintFlow.ConnectWallet);
 
   const [userFrogs, setUserFrogs] = useState<NFT[]>([]);
-  const [upgradedFrogs, setUpgradedFrogs] = useState<NFT[]>([]);
+  const [selectedFrogs, setSelectedFrogs] = useState<NFT[]>([]);
+  const [upgradedFrogs, setUpgradedFrogs] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [winWidth] = useWindowSize();
@@ -62,7 +63,7 @@ const MintView: FC<Props> = (props: Props) => {
   }, [publicKey]);
 
   useEffect(() => {
-    // getUserNfts();
+    getUserNfts();
   }, [getUserNfts]);
 
   //reset data on wallet disconnect
@@ -74,21 +75,42 @@ const MintView: FC<Props> = (props: Props) => {
 
   //handle mint flow
   useEffect(() => {
-    if (connected && upgradedFrogs.length === 0) {
+    if (connected && !upgradedFrogs) {
       setMintFlow(MintFlow.SelectFrogs);
       return;
     }
 
-    if (connected && upgradedFrogs.length > 0) {
+    if (connected && upgradedFrogs) {
       setMintFlow(MintFlow.UpgradedFrogs);
       return;
     }
 
     setMintFlow(MintFlow.ConnectWallet);
-  }, [connected, upgradedFrogs.length]);
+  }, [connected, upgradedFrogs]);
+
+  const handleSelected = (nft: NFT) => {
+    setSelectedFrogs((prevSelectedFrogs) => {
+      // Check if the NFT is already selected
+      const isAlreadySelected = prevSelectedFrogs.some(
+        (selectedFrog) =>
+          selectedFrog.content?.metadata?.name === nft.content?.metadata?.name
+      );
+
+      if (isAlreadySelected) {
+        // Remove the NFT from the array
+        return prevSelectedFrogs.filter(
+          (selectedFrog) =>
+            selectedFrog.content?.metadata?.name !== nft.content?.metadata?.name
+        );
+      } else {
+        // Add the NFT to the array
+        return [...prevSelectedFrogs, nft];
+      }
+    });
+  };
 
   return (
-    <div className="fixed inset-0 w-screen h-screen flex xl:items-end justify-center pt-24">
+    <div className="fixed inset-0 w-screen h-screen flex xl:items-end 3xl:items-center justify-center pt-24">
       {/* bg image */}
       <>
         {isDesktop && (
@@ -123,7 +145,12 @@ const MintView: FC<Props> = (props: Props) => {
       <AnimatePresence mode="wait">
         {mintFlow === MintFlow.ConnectWallet && <ConnectWallet />}
         {mintFlow === MintFlow.SelectFrogs && (
-          <SelectFrogs nfts={userFrogs} isLoading={isLoading} />
+          <SelectFrogs
+            nfts={userFrogs}
+            isLoading={isLoading}
+            selectedFrogs={selectedFrogs}
+            handleSelected={handleSelected}
+          />
         )}
         {mintFlow === MintFlow.UpgradedFrogs && <UpgradedFrogs />}
       </AnimatePresence>

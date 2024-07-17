@@ -258,3 +258,6 @@ input[type="checkbox"]:checked {
 .green-container {
   @apply border border-[#75FF72]/20 bg-[rgba(8,31,23,0.95)];
 }
+.text-responsive {
+  font-size: clamp(0.1em, 2.5vw, 1rem); 
+}

@@ -9,38 +9,50 @@ import { ViewContext } from "@contexts";
 interface SelectFrogsProps {
   nfts: NFT[];
   isLoading: boolean;
+  selectedFrogs: NFT[];
+  handleSelected: (nft: NFT) => void;
 }
 
 const SelectFrogs: FC<SelectFrogsProps> = (props: SelectFrogsProps) => {
-  const { nfts, isLoading } = props;
+  const { nfts, isLoading, selectedFrogs, handleSelected } = props;
   const { setUpgradeModal } = useContext(ViewContext);
+
   return (
     <motion.div
       key="SelectFrogs"
       {...midExitAnimation}
-      className="flex flex-col xl:flex-row justify-evenly w-full h-full xl:gap-10 px-1 sm:px-5 md:px-10 lg:px-12"
+      className="flex flex-col xl:flex-row justify-evenly xl:justify-center w-full h-auto xl:gap-10 px-1 sm:px-5 md:px-10 lg:px-12"
     >
-      <div className="green-container relative w-full h-[60%] md:h-[55%]">
-        {/* <Image
-          src="/images/pages/mint/select-bg.svg"
-          width={1130}
-          height={833.5}
-          alt="Mint"
-          className="object-cover absolute inset-0"
-        /> */}
-
-        {/* <div className="grid grid-cols-3 md:gird-cols-4 xl:grid-cols-5">
-        {nfts.map((nft, i) => (
-          <UserNft metadata={nft} isLoadingCard={false} key={i} />
-        ))}
-      </div> */}
+      <div className="green-container relative w-full xl:max-w-[1100px] h-[60%] md:h-[55%] xl:h-[70vh] xl:min-h-[700px] 2xl:min-h-[750px] xl:max-h-[850px] xl:mb-10  overflow-y-auto explorer-scroll">
+        <p className="text-lg lg:text-xl px-5 xl:px-10 pt-5 xl:pt-10">
+          select your frogs to upgrade{" "}
+          <span className="ml-1 text-cf-gold">{selectedFrogs.length}</span>
+        </p>
+        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 lg:gap-5 p-5 xl:p-10">
+          {nfts.map((nft, i) => (
+            <UserNft
+              metadata={nft}
+              isLoadingCard={false}
+              key={i}
+              handleSelected={handleSelected}
+              isSelected={selectedFrogs.some(
+                (frog) =>
+                  frog.content?.metadata?.name === nft.content?.metadata?.name
+              )}
+            />
+          ))}
+        </div>
         {/* loading card */}
         {nfts.length === 0 && isLoading && (
-          <UserNft metadata={undefined} isLoadingCard={true} />
+          <UserNft
+            metadata={undefined}
+            isLoadingCard={true}
+            handleSelected={() => {}}
+          />
         )}
       </div>
 
-      <div className="green-container explorer-scroll w-full xl:max-w-[350px] h-[35%]  xl:h-[501px] flex flex-col justify-between items-start px-10 py-5 xl:py-12 gap-3 overflow-y-auto ">
+      <div className="green-container explorer-scroll w-full xl:max-w-[350px] h-[35%] xl:h-[500px] flex flex-col justify-between items-start px-10 py-5 xl:py-12 gap-3 overflow-y-auto ">
         <p className="text-xl">your upgrade cost</p>
         <div className="flex justify-between w-full">
           <p>Your Balance</p>

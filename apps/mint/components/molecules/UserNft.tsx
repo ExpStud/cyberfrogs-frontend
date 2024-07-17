@@ -1,29 +1,39 @@
-import { FC, useContext } from "react";
+import { FC, useState } from "react";
 import { NFT } from "@types";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ImageShimmer } from "@components";
-import { ViewContext } from "@contexts";
 import { midEnterAnimation } from "@constants";
 
 interface Props {
   metadata: NFT | undefined;
   isLoadingCard?: boolean;
+  handleSelected: (nft: NFT) => void;
+  isSelected?: boolean;
 }
 
 const UserNft: FC<Props> = (props: Props) => {
-  const { metadata, isLoadingCard = false } = props;
+  const {
+    metadata,
+    isLoadingCard = false,
+    handleSelected,
+    isSelected = false,
+  } = props;
 
-  const { setNftModal } = useContext(ViewContext);
+  const [didHover, setDidHover] = useState<boolean>(false);
 
   //TODO: add rank
   const rank = 69;
 
   return (
     <motion.div
-      className="flex flex-col relative cursor-pointer min-w-[256px]"
-      onClick={() => metadata && setNftModal(metadata)}
+      className={`flex flex-col relative cursor-pointer max-w-[210px] ${
+        isSelected ? "outline outline-cf-gold" : ""
+      }`}
+      onClick={() => metadata && handleSelected(metadata)}
       {...midEnterAnimation}
+      onMouseEnter={() => setDidHover(true)}
+      onMouseLeave={() => setDidHover(false)}
     >
       <ImageShimmer
         src={
@@ -31,16 +41,16 @@ const UserNft: FC<Props> = (props: Props) => {
           "/images/pages/dashboard/cf-4678.webp"
         }
         alt={metadata?.content?.metadata?.name ?? "Cyber Frog"}
-        width={356}
-        height={356}
+        width={210}
+        height={210}
         shimmerOnly={isLoadingCard}
-        hover
-        className="max-w-[256px]"
+        externalHover={didHover}
       />
-      {/* <div className="relative">
-        <div className="flex flex-col justify-center px-4 gap-0 uppercase bg-cf-green-900 h-[72px]">
-          <p>
-            Cyber Frog{" "}
+      <div className="relative">
+        <div className="flex flex-col justify-center p-2 gap-0 uppercase bg-cf-green-900">
+          <p className="text-sm md:text-base">
+            <span className="hidden md:block">Cyber Frog</span>
+            <span className="md:hidden">CF</span>
             {!isLoadingCard && (
               <span className="ml-1 text-cf-gold-500">
                 {metadata?.content?.metadata?.name.slice(5).replace("#", "NO ")}
@@ -48,7 +58,7 @@ const UserNft: FC<Props> = (props: Props) => {
             )}
           </p>
 
-          <p className="text-cf-white/50 text-sm">
+          <p className="text-cf-white/50 text-xs md:text-sm">
             Rank {!isLoadingCard && rank}
           </p>
         </div>
@@ -59,26 +69,10 @@ const UserNft: FC<Props> = (props: Props) => {
           alt="Divider"
           className="opacity-75"
         />
-      </div>
-      <div className="relative">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="256"
-          height="39"
-          viewBox="0 0 256 39"
-          fill="none"
-          className=""
-        >
-          <path
-            d="M0 0H256V29L251 34L246 39H0V0Z"
-            fill="#124835"
-            fillOpacity="0.25"
-          />
-        </svg>
-        <p className="absolute left-4 bottom-[6px] uppercase text-cf-white/50">
-          est value <span className="text-cf-white ml-1">{420} sol </span>
+        <p className="text-xs md:text-sm text-cf-white/50 p-2 bg-[#0D3426]">
+          cost <span className="text-cf-white">2500 kira</span>
         </p>
-      </div> */}
+      </div>
     </motion.div>
   );
 };

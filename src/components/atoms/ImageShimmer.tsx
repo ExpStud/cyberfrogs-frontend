@@ -19,6 +19,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   objectFit?: string;
   imageClass?: string;
   shimmerOnly?: boolean;
+  externalHover?: boolean;
 }
 
 const ImageShimmer: FC<Props> = (props: Props) => {
@@ -34,6 +35,7 @@ const ImageShimmer: FC<Props> = (props: Props) => {
     imageClass = "",
     className,
     shimmerOnly = false,
+    externalHover = false,
     ...componentProps
   } = props;
 
@@ -61,9 +63,11 @@ const ImageShimmer: FC<Props> = (props: Props) => {
         )}
       </AnimatePresence>
       <div
-        className={`${
-          hover
-            ? "transition-all duration-500 hover:scale-110 cursor-pointer"
+        className={`transition-all duration-500 ${
+          externalHover
+            ? "scale-110 cursor-pointer"
+            : hover
+            ? "hover:scale-110 cursor-pointer"
             : ""
         }`}
       >
