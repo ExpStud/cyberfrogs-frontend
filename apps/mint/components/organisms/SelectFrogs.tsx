@@ -41,15 +41,15 @@ const SelectFrogs: FC<SelectFrogsProps> = (props: SelectFrogsProps) => {
               )}
             />
           ))}
+          {/* loading card */}
+          {nfts.length === 0 && isLoading && (
+            <UserNft
+              metadata={undefined}
+              isLoadingCard={true}
+              handleSelected={() => {}}
+            />
+          )}
         </div>
-        {/* loading card */}
-        {nfts.length === 0 && isLoading && (
-          <UserNft
-            metadata={undefined}
-            isLoadingCard={true}
-            handleSelected={() => {}}
-          />
-        )}
       </div>
 
       <div className="green-container explorer-scroll w-full xl:max-w-[350px] h-[35%] xl:h-[500px] flex flex-col justify-between items-start px-10 py-5 xl:py-12 gap-3 overflow-y-auto ">
@@ -60,7 +60,7 @@ const SelectFrogs: FC<SelectFrogsProps> = (props: SelectFrogsProps) => {
         </div>
         <div className="flex justify-between w-full">
           <p>selected Frogs</p>
-          <p className="text-cf-gold">3</p>
+          <p className="text-cf-gold">{selectedFrogs.length}</p>
         </div>
         <Image
           src="/images/pages/dashboard/divider.svg"
@@ -70,7 +70,7 @@ const SelectFrogs: FC<SelectFrogsProps> = (props: SelectFrogsProps) => {
         />
         <div className="font-rajdhani-bold flex justify-between w-full">
           <p>total cost</p>
-          <p className="text-cf-gold">7,500 KIRA</p>
+          <p className="text-cf-gold">{selectedFrogs.length * 2500} KIRA</p>
         </div>
 
         <div className="flex flex-col gap-3 mt-5 text-xs text-cf-white/85">
