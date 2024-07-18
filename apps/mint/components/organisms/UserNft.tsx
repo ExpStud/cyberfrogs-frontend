@@ -1,10 +1,7 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { NFT } from "@types";
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { ImageShimmer } from "@components";
-import { midEnterAnimation } from "@constants";
-import { CardItem, UserNftBackSide, UserNftFrontSide } from "@mint-components";
+import { UserNftBackSide, UserNftFrontSide } from "@mint-components";
 
 interface Props {
   metadata: NFT | undefined;
@@ -23,9 +20,6 @@ const UserNft: FC<Props> = (props: Props) => {
 
   const [didHover, setDidHover] = useState<boolean>(false);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
-
-  //TODO: add rank
-  const rank = 69;
 
   return (
     <div className="relative">
