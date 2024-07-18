@@ -28,8 +28,8 @@ const SelectFrogs: FC<SelectFrogsProps> = (props: SelectFrogsProps) => {
           select your frogs to upgrade{" "}
           <span className="ml-1 text-cf-gold">{selectedFrogs.length}</span>
         </p>
-        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 lg:gap-5 p-5 xl:p-10">
-          {nfts.map((nft, i) => (
+        <div className="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 lg:gap-5 p-5 xl:p-10 h-full">
+          {[...nfts].map((nft, i) => (
             <UserNft
               metadata={nft}
               isLoadingCard={false}

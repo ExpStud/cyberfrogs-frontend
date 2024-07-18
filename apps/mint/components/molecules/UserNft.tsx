@@ -29,11 +29,11 @@ const UserNft: FC<Props> = (props: Props) => {
   return (
     <div className="relative">
       <motion.div
-        className={`absolute flex flex-col cursor-pointer max-w-[210px] bg-cf-green-900 ${
+        className={`relative flex flex-col cursor-pointer max-w-[210px] bg-cf-green-900 ${
           isSelected ? "outline outline-cf-gold" : ""
         }`}
-        onClick={() => setIsFlipped(!isFlipped)}
-        // onClick={() => metadata && handleSelected(metadata)}
+        // onClick={() => setIsFlipped(!isFlipped)}
+        onClick={() => metadata && handleSelected(metadata)}
         // {...midEnterAnimation}
         onMouseEnter={() => setDidHover(true)}
         onMouseLeave={() => setDidHover(false)}
@@ -68,17 +68,17 @@ const UserNft: FC<Props> = (props: Props) => {
           />
           <div className="relative">
             <div className="flex flex-col justify-center p-2 gap-0 uppercase bg-cf-green-900">
-              <p className="text-sm md:text-base">
-                <span className="hidden md:block">Cyber Frog</span>
-                <span className="md:hidden">CF</span>
+              <div className="flex text-sm md:text-base whitespace-nowrap">
+                <p className="hidden md:block">Cyber Frog</p>
+                <p className="md:hidden">CF</p>
                 {!isLoadingCard && (
-                  <span className="ml-1 text-cf-gold-500">
+                  <p className="ml-1 text-cf-gold-500">
                     {metadata?.content?.metadata?.name
                       .slice(5)
                       .replace("#", "NO ")}
-                  </span>
+                  </p>
                 )}
-              </p>
+              </div>
 
               <p className="text-cf-white/50 text-xs md:text-sm">
                 Rank {!isLoadingCard && rank}
@@ -93,7 +93,7 @@ const UserNft: FC<Props> = (props: Props) => {
             />
             <div className="flex gap-2 items-center text-xs md:text-sm text-cf-white/50 p-2 bg-[#0D3426]">
               <p>cost </p>
-              <p className="text-cf-white">2500 kira</p>{" "}
+              <p className="text-cf-white whitespace-nowrap">2500 kira</p>{" "}
               <div
                 onClick={(e) => {
                   e.stopPropagation();
@@ -124,6 +124,25 @@ const UserNft: FC<Props> = (props: Props) => {
             initial={{ rotateY: 180, opacity: 0 }}
             animate={{ opacity: 1, transition: { delay: 0.06 } }}
           >
+            <svg
+              width="9"
+              height="9"
+              viewBox="0 0 9 9"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="absolute top-2.5 right-2.5"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsFlipped(!isFlipped);
+              }}
+            >
+              <path
+                d="M7.07386 8.35227L0.409091 1.69886L1.69318 0.409091L8.35227 7.07386L7.07386 8.35227ZM1.69318 8.35227L0.409091 7.07386L7.07386 0.409091L8.35227 1.69886L1.69318 8.35227Z"
+                fill="#FFFEF3"
+                fillOpacity="0.5"
+              />
+            </svg>
+
             <p className="p-2.5">
               upgrade cost <br />
               Breakdown
