@@ -36,6 +36,8 @@ module.exports = {
         modalBg: "url('/images/general/backgrounds/modal.svg')",
         "connect-bg": "url('/images/pages/mint/connect-bg.svg')",
         "select-bg": "url('/images/pages/mint/select-bg.svg')",
+        "start-upgrade-bg":
+          "url('/images/general/backgrounds/start-upgrade.svg')",
       },
       fontFamily: {
         rajdhani: ["Rajdhani-Medium"],
