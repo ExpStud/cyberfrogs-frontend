@@ -21,8 +21,6 @@ const NftModal: FC<Props> = (props: Props) => {
   const ogRank = 420;
   const attrsLength = nftModal?.content?.metadata?.attributes.length ?? 0;
 
-  console.log("modal", nftModal);
-
   return (
     <Modal
       show={show}

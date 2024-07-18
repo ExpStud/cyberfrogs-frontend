@@ -33,7 +33,6 @@ const ExplorerView: FC<Props> = (props: Props) => {
 
   const paginateData = () => {
     if (loading) return;
-    console.log("--> load more data");
     paginateDebouncer();
   };
 

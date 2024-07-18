@@ -9,7 +9,6 @@ interface Props {
 const RaffleModal: FC<Props> = (props: Props) => {
   const { show, close } = props;
 
-  console.log(show);
   return (
     <Modal show={show} onClick={() => close()} upgradeModal>
       <div className="flex flex-col justify-between items-start w-full h-full gap-2">

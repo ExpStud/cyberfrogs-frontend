@@ -36,8 +36,6 @@ const MenuItem: FC<{ item: NavigationData }> = ({ item }) => {
     : item.name;
 
   const handleMenuItemClick = (item: NavigationData) => {
-    console.log("item", item);
-
     //open external link in new tab or internal link
     if (item?.href) {
       if (item?.redirect) window.open(item.href, "_blank");

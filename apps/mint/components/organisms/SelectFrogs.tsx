@@ -107,7 +107,7 @@ const SelectFrogs: FC<SelectFrogsProps> = (props: SelectFrogsProps) => {
           height={40}
           alt="Upgrade"
           className="cursor-pointer button-transition min-w-[99px] z-10"
-          onClick={() => console.log(true)}
+          onClick={() => {}}
         />
       </div>
     </motion.div>
