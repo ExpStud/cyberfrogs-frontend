@@ -11,6 +11,7 @@ const ConnectWallet = dynamic(() => import("./organisms/ConnectWallet"));
 const SelectFrogs = dynamic(() => import("./organisms/SelectFrogs"));
 const UpgradeModal = dynamic(() => import("./organisms/UpgradeModal"));
 const UserNft = dynamic(() => import("./organisms/UserNft"));
+const UpgradeFrogs = dynamic(() => import("./organisms/UpgradeFrogs"));
 //templates
 const MintView = dynamic(() => import("./templates/MintView"));
 
@@ -22,5 +23,6 @@ export {
   UpgradeModal,
   CardItem,
   UserNftBackSide,
-  UserNftFrontSide
+  UserNftFrontSide,
+  UpgradeFrogs
 };

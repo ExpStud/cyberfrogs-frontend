@@ -14,7 +14,12 @@ import { useWindowSize } from "src/hooks";
 import Image from "next/image";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { AnimatePresence, motion } from "framer-motion";
-import { ConnectWallet, SelectFrogs, UpgradeModal } from "@mint-components";
+import {
+  ConnectWallet,
+  SelectFrogs,
+  UpgradeFrogs,
+  UpgradeModal,
+} from "@mint-components";
 import toast from "react-hot-toast";
 interface Props {
   setAssets: Dispatch<SetStateAction<boolean[]>>;
@@ -123,8 +128,16 @@ const MintView: FC<Props> = (props: Props) => {
     setUpgradeFrogs(true);
   };
 
+  const handleBack = () => {
+    setUpgradeFrogs(false);
+  };
+
   return (
-    <div className="fixed inset-0 w-screen h-screen flex xl:items-end 3xl:items-center justify-center pt-24">
+    <div
+      className={`fixed inset-0 w-screen h-screen flex 3xl:items-center justify-center pt-24 ${
+        mintFlow === MintFlow.UpgradeFrogs ? "items-center" : "xl:items-end "
+      }`}
+    >
       {/* bg image */}
       <>
         {isDesktop && (
@@ -167,14 +180,12 @@ const MintView: FC<Props> = (props: Props) => {
             handleUpgrade={handleUpgrade}
           />
         )}
-        {mintFlow === MintFlow.UpgradeFrogs && <UpgradeFrogs />}
+        {mintFlow === MintFlow.UpgradeFrogs && (
+          <UpgradeFrogs selectedFrogs={selectedFrogs} handleBack={handleBack} />
+        )}
       </AnimatePresence>
     </div>
   );
-};
-
-const UpgradeFrogs: FC = () => {
-  return <motion.div key="UpgradeFrogs" {...midExitAnimation}></motion.div>;
 };
 
 export default MintView;
