@@ -44,14 +44,14 @@ const App = ({ Component, pageProps }: AppProps) => {
               position="bottom-right"
               toastOptions={{
                 style: {
-                  border: "2px solid #a40227",
+                  border: "1px solid #FFF79E",
                   padding: "10px",
-                  color: "#888888",
-                  backgroundColor: "#101010",
+                  color: "#FFFEF3",
+                  backgroundColor: "rgba(8,31,23,0.95)",
                 },
                 iconTheme: {
-                  primary: "#a40227",
-                  secondary: "#302D2E",
+                  primary: "#FFF79E",
+                  secondary: "rgba(8,31,23,0.95)",
                 },
               }}
             />

@@ -15,6 +15,7 @@ import Image from "next/image";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { AnimatePresence, motion } from "framer-motion";
 import { ConnectWallet, SelectFrogs, UpgradeModal } from "@mint-components";
+import toast from "react-hot-toast";
 interface Props {
   setAssets: Dispatch<SetStateAction<boolean[]>>;
 }
@@ -22,7 +23,7 @@ interface Props {
 enum MintFlow {
   ConnectWallet,
   SelectFrogs,
-  UpgradedFrogs,
+  UpgradeFrogs,
 }
 
 const MintView: FC<Props> = (props: Props) => {
@@ -32,7 +33,7 @@ const MintView: FC<Props> = (props: Props) => {
 
   const [userFrogs, setUserFrogs] = useState<NFT[]>([]);
   const [selectedFrogs, setSelectedFrogs] = useState<NFT[]>([]);
-  const [upgradedFrogs, setUpgradedFrogs] = useState<boolean>(false);
+  const [upgradeFrogs, setUpgradeFrogs] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [winWidth] = useWindowSize();
@@ -75,18 +76,18 @@ const MintView: FC<Props> = (props: Props) => {
 
   //handle mint flow
   useEffect(() => {
-    if (connected && !upgradedFrogs) {
+    if (connected && !upgradeFrogs) {
       setMintFlow(MintFlow.SelectFrogs);
       return;
     }
 
-    if (connected && upgradedFrogs) {
-      setMintFlow(MintFlow.UpgradedFrogs);
+    if (connected && upgradeFrogs) {
+      setMintFlow(MintFlow.UpgradeFrogs);
       return;
     }
 
     setMintFlow(MintFlow.ConnectWallet);
-  }, [connected, upgradedFrogs]);
+  }, [connected, upgradeFrogs]);
 
   const handleSelected = (nft: NFT) => {
     setSelectedFrogs((prevSelectedFrogs) => {
@@ -107,6 +108,19 @@ const MintView: FC<Props> = (props: Props) => {
         return [...prevSelectedFrogs, nft];
       }
     });
+  };
+
+  const handleUpgrade = () => {
+    if (userFrogs.length === 0) {
+      toast.error("No Frogs detected in your wallet");
+      return;
+    }
+    if (selectedFrogs.length === 0) {
+      toast.error("Please select Frogs to upgrade");
+      return;
+    }
+
+    setUpgradeFrogs(true);
   };
 
   return (
@@ -150,16 +164,17 @@ const MintView: FC<Props> = (props: Props) => {
             isLoading={isLoading}
             selectedFrogs={selectedFrogs}
             handleSelected={handleSelected}
+            handleUpgrade={handleUpgrade}
           />
         )}
-        {mintFlow === MintFlow.UpgradedFrogs && <UpgradedFrogs />}
+        {mintFlow === MintFlow.UpgradeFrogs && <UpgradeFrogs />}
       </AnimatePresence>
     </div>
   );
 };
 
-const UpgradedFrogs: FC = () => {
-  return <motion.div key="UpgradedFrogs" {...midExitAnimation}></motion.div>;
+const UpgradeFrogs: FC = () => {
+  return <motion.div key="UpgradeFrogs" {...midExitAnimation}></motion.div>;
 };
 
 export default MintView;

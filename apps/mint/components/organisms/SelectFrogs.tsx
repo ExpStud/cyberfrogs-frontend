@@ -11,10 +11,12 @@ interface SelectFrogsProps {
   isLoading: boolean;
   selectedFrogs: NFT[];
   handleSelected: (nft: NFT) => void;
+  handleUpgrade: () => void;
 }
 
 const SelectFrogs: FC<SelectFrogsProps> = (props: SelectFrogsProps) => {
-  const { nfts, isLoading, selectedFrogs, handleSelected } = props;
+  const { nfts, isLoading, selectedFrogs, handleSelected, handleUpgrade } =
+    props;
   const { setUpgradeModal } = useContext(ViewContext);
 
   return (
@@ -29,18 +31,22 @@ const SelectFrogs: FC<SelectFrogsProps> = (props: SelectFrogsProps) => {
           <span className="ml-1 text-cf-gold">{selectedFrogs.length}</span>
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-2.5 lg:gap-5 p-5 xl:p-10 ">
-          {[...nfts].map((nft, i) => (
-            <UserNft
-              metadata={nft}
-              isLoadingCard={false}
-              key={i}
-              handleSelected={handleSelected}
-              isSelected={selectedFrogs.some(
-                (frog) =>
-                  frog.content?.metadata?.name === nft.content?.metadata?.name
-              )}
-            />
-          ))}
+          {nfts.length === 0 && !isLoading ? (
+            <div className="">No Frogs found</div>
+          ) : (
+            [...nfts].map((nft, i) => (
+              <UserNft
+                metadata={nft}
+                isLoadingCard={false}
+                key={i}
+                handleSelected={handleSelected}
+                isSelected={selectedFrogs.some(
+                  (frog) =>
+                    frog.content?.metadata?.name === nft.content?.metadata?.name
+                )}
+              />
+            ))
+          )}
           {/* loading card */}
           {nfts.length === 0 && isLoading && (
             <UserNft
@@ -107,7 +113,7 @@ const SelectFrogs: FC<SelectFrogsProps> = (props: SelectFrogsProps) => {
           height={40}
           alt="Upgrade"
           className="cursor-pointer button-transition min-w-[99px] z-10"
-          onClick={() => {}}
+          onClick={() => handleUpgrade()}
         />
       </div>
     </motion.div>
