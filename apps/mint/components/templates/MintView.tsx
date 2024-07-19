@@ -139,35 +139,15 @@ const MintView: FC<Props> = (props: Props) => {
       }`}
     >
       {/* bg image */}
-      <>
-        {isDesktop && (
-          <Image
-            src="/images/pages/mint/bg-xl.jpg"
-            fill
-            alt="Mint"
-            className="-z-10 w-full h-full object-cover absolute inset-0"
-            onLoad={() => handleAssetLoad(0, setAssets)}
-          />
-        )}
-        {isTablet && (
-          <Image
-            src="/images/pages/mint/bg-md.jpg"
-            fill
-            alt="Mint"
-            className="-z-10 w-full h-full object-cover absolute inset-0"
-            onLoad={() => handleAssetLoad(0, setAssets)}
-          />
-        )}
-        {isMobile && (
-          <Image
-            src="/images/pages/mint/bg-sm.jpg"
-            fill
-            alt="Mint"
-            className="-z-10 w-full h-full object-cover absolute inset-0"
-            onLoad={() => handleAssetLoad(0, setAssets)}
-          />
-        )}
-      </>
+      <video
+        src={isDesktop ? "/videos/mint-xl.mp4" : "/videos/mint-sm.mp4"}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="-z-10 w-full h-full object-cover absolute inset-0"
+        onLoadedData={() => handleAssetLoad(0, setAssets)}
+      />
 
       <AnimatePresence mode="wait">
         {mintFlow === MintFlow.ConnectWallet && <ConnectWallet />}

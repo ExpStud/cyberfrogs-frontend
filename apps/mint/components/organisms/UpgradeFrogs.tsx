@@ -56,26 +56,35 @@ const UpgradeFrogs: FC<UpgradeFrogsProps> = (props: UpgradeFrogsProps) => {
         />
       </div>
       {/* action panel */}
-      <div className="green-container flex flex-col sm:flex-row justify-between items-center gap-5 p-5 w-[90vw] md:w-[80vw] lg:w-[820px] min-h-[80px]">
+      <div className="green-container flex flex-col sm:flex-row justify-between items-center gap-5 p-5 sm:py-0 w-[90vw] md:w-[80vw] lg:w-[820px] min-h-[80px]">
         <p className="block text-xl font-rajdhani-semibold">
           Frog {upgradeIndex + 1} of {selectedFrogs.length} upgraded
         </p>
-        <Image
-          src="/images/general/buttons/upgrade-another.svg"
-          width={270}
-          height={40}
-          alt="Connect"
-          className="cursor-pointer button-transition min-w-[99px] z-10"
-          onClick={() => upgradeNext()}
-        />
+        {upgradeIndex + 1 === selectedFrogs.length ? (
+          <div
+            className="underline cursor-pointer"
+            onClick={() => handleBack()}
+          >
+            upgrade more?
+          </div>
+        ) : (
+          <Image
+            src="/images/general/buttons/upgrade-another.svg"
+            width={270}
+            height={40}
+            alt="Connect"
+            className="cursor-pointer button-transition min-w-[99px] z-10"
+            onClick={() => upgradeNext()}
+          />
+        )}
       </div>
-      {/* temp button */}
-      <button
-        className="bg-white text-black w-20 h-8 rounded"
+      {/* return */}
+      <div
+        className="underline cursor-pointer -mt-8 self-center text-sm font-rajdhani-semibold"
         onClick={() => handleBack()}
       >
-        Return
-      </button>
+        back to select screen
+      </div>
     </motion.div>
   );
 };
