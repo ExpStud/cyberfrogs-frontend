@@ -119,12 +119,24 @@ const UpgradeFrogs: FC<UpgradeFrogsProps> = (props: UpgradeFrogsProps) => {
         )}
       </div>
       {/* return */}
-      <div
-        className="underline cursor-pointer -mt-8 self-center text-sm font-rajdhani-semibold"
+      <button
+        className="  self-center text-sm font-rajdhani-semibold flex gap-2 items-center uppercase"
         onClick={() => handleBack()}
       >
-        back to select screen
-      </div>
+        <svg
+          width="11"
+          height="11"
+          viewBox="0 0 11 11"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4.84712 10.3679L0.0246804 5.54545L4.84712 0.723011L5.87127 1.73722L2.8038 4.80469H10.2562V6.28622H2.8038L5.87127 9.34872L4.84712 10.3679Z"
+            fill="white"
+          />
+        </svg>
+        back to selection screen
+      </button>
     </motion.div>
   );
 };
