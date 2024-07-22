@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 
 //atoms  
-// const VariableLabel = dynamic(() => import("./atoms/VariableLabel"));
+const ShareButton = dynamic(() => import("./atoms/ShareButton"));
 //molecules
 const CardItem = dynamic(() => import("./molecules/CardItem"));
 const UserNftBackSide = dynamic(() => import("./molecules/UserNftBackSide"));
@@ -24,5 +24,6 @@ export {
   CardItem,
   UserNftBackSide,
   UserNftFrontSide,
-  UpgradeFrogs
+  UpgradeFrogs,
+  ShareButton
 };

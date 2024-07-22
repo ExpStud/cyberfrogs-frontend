@@ -1,8 +1,10 @@
-import { Dispatch, FC, HTMLAttributes, SetStateAction, useState } from "react";
+import { FC, useState } from "react";
 import { NFT } from "@types";
 import { midExitAnimation } from "@constants";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { ShareButton } from "@mint-components";
+import { ImageShimmer } from "@components";
 
 interface UpgradeFrogsProps {
   selectedFrogs: NFT[];
@@ -30,12 +32,12 @@ const UpgradeFrogs: FC<UpgradeFrogsProps> = (props: UpgradeFrogsProps) => {
     <motion.div
       key="UpgradeFrogs"
       {...midExitAnimation}
-      className="flex flex-col gap-10 "
+      className="flex flex-col gap-10 mb-14"
     >
       {/* frog panel */}
-      <div className="green-container-md relative w-[95vw] md:w-[822px] h-[572px] flex flex-col  p-5 md:pt-10">
-        <div className="flex flex-col gap-3">
-          <div className="flex justify-between items-center">
+      <div className="green-container-md relative w-[93vw] md:w-[750px] lg:w-[822px] h-auto md:h-[572px] flex flex-col items-center gap-5 md:gap-10 p-5 md:p-10">
+        <div className="flex flex-col gap-3 w-full">
+          <div className="flex justify-between items-center w-full">
             <p className="text-4xl">
               Cyber Frog{" "}
               <span className="ml-1 text-cf-gold-500">
@@ -48,6 +50,43 @@ const UpgradeFrogs: FC<UpgradeFrogsProps> = (props: UpgradeFrogsProps) => {
           </div>
           <p className="text-cf-white/50 text-2xl">Rank {rank}</p>
         </div>
+
+        {selectedFrogs[upgradeIndex]?.content?.links?.image && (
+          <div className="flex  justify-between gap-5 w-full">
+            <ImageShimmer
+              src={selectedFrogs[upgradeIndex]?.content?.links?.image}
+              alt={
+                selectedFrogs[upgradeIndex]?.content?.metadata?.name ??
+                "Cyber Frog"
+              }
+              width={350}
+              height={350}
+            />
+            <div className="flex flex-col gap-2.5 items-center">
+              <ImageShimmer
+                src={selectedFrogs[upgradeIndex]?.content?.links?.image}
+                alt={
+                  selectedFrogs[upgradeIndex]?.content?.metadata?.name ??
+                  "Cyber Frog"
+                }
+                width={350}
+                height={350}
+                shimmerOnly={true} //TODO: set to false when new image is loaded
+              />
+              {/* TODO: add new image url to href, disable if image isnt loaded */}
+              <a
+                href="/images/pages/dashboard/cf-4678.webp"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:underline text-sm"
+              >
+                download high-res
+              </a>
+            </div>
+          </div>
+        )}
+
+        {/* background */}
         <Image
           src="/images/general/backgrounds/upgrade-frogs.svg"
           width={822}
@@ -57,7 +96,7 @@ const UpgradeFrogs: FC<UpgradeFrogsProps> = (props: UpgradeFrogsProps) => {
         />
       </div>
       {/* action panel */}
-      <div className="green-container flex flex-col sm:flex-row justify-between items-center gap-5 p-5 sm:py-0 w-[90vw] md:w-[80vw] lg:w-[820px] min-h-[80px]">
+      <div className="self-center green-container flex flex-col sm:flex-row justify-between items-center gap-5 p-5 md:px-10 sm:py-0 w-[93vw] md:w-[750px] lg:w-[822px] min-h-[80px]">
         <p className="block text-xl font-rajdhani-semibold">
           Frog {upgradeIndex + 1} of {selectedFrogs.length} upgraded
         </p>
@@ -87,37 +126,6 @@ const UpgradeFrogs: FC<UpgradeFrogsProps> = (props: UpgradeFrogsProps) => {
         back to select screen
       </div>
     </motion.div>
-  );
-};
-
-interface ShareButtonProps extends HTMLAttributes<HTMLButtonElement> {}
-
-const ShareButton: FC<ShareButtonProps> = (props: ShareButtonProps) => {
-  const { ...buttonProps } = props;
-  return (
-    <button
-      className="button-transition relative flex items-center justify-center bg-transparent border-0 p-0 cursor-pointer"
-      style={{ width: "115px", height: "32px" }}
-      {...buttonProps}
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="115"
-        height="32"
-        viewBox="0 0 115 32"
-        fill="none"
-        className="absolute top-0 left-0"
-      >
-        <path
-          d="M5 5L10 0H115V27L112.5 29.5L110 32H0V5H5Z"
-          fill="#124835"
-          fillOpacity="0.65"
-        />
-      </svg>
-      <span className="z-10 text-sm font-semibold text-white uppercase">
-        Share on X
-      </span>
-    </button>
   );
 };
 

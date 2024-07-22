@@ -38,13 +38,11 @@ const MintView: FC<Props> = (props: Props) => {
 
   const [userFrogs, setUserFrogs] = useState<NFT[]>([]);
   const [selectedFrogs, setSelectedFrogs] = useState<NFT[]>([]);
-  const [upgradeFrogs, setUpgradeFrogs] = useState<boolean>(false);
+  const [upgradeFrogs, setUpgradeFrogs] = useState<boolean>(true); //TODO: false
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [winWidth] = useWindowSize();
-  const isMobile = winWidth < 768;
-  const isTablet = winWidth <= 1024 && winWidth >= 768;
-  const isDesktop = winWidth >= 1024;
+  const smVideo = winWidth < 768;
 
   const { connected, publicKey } = useWallet();
 
@@ -140,7 +138,7 @@ const MintView: FC<Props> = (props: Props) => {
     >
       {/* bg image */}
       <video
-        src={isDesktop ? "/videos/mint-xl.mp4" : "/videos/mint-sm.mp4"}
+        src={!smVideo ? "/videos/mint-xl.mp4" : "/videos/mint-sm.mp4"}
         autoPlay
         muted
         loop
