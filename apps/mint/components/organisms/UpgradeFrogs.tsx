@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Dispatch, FC, HTMLAttributes, SetStateAction, useState } from "react";
 import { NFT } from "@types";
 import { midExitAnimation } from "@constants";
 import { motion } from "framer-motion";
@@ -33,10 +33,10 @@ const UpgradeFrogs: FC<UpgradeFrogsProps> = (props: UpgradeFrogsProps) => {
       className="flex flex-col gap-10 "
     >
       {/* frog panel */}
-      <div className="green-container-md relative w-[95vw] md:w-[822px] h-[572px] flex items-center">
-        <div className="flex flex-col gap-5">
+      <div className="green-container-md relative w-[95vw] md:w-[822px] h-[572px] flex flex-col  p-5 md:pt-10">
+        <div className="flex flex-col gap-3">
           <div className="flex justify-between items-center">
-            <p>
+            <p className="text-4xl">
               Cyber Frog{" "}
               <span className="ml-1 text-cf-gold-500">
                 {selectedFrogs[upgradeIndex]?.content?.metadata?.name
@@ -44,8 +44,9 @@ const UpgradeFrogs: FC<UpgradeFrogsProps> = (props: UpgradeFrogsProps) => {
                   .replace("#", "NO ")}
               </span>
             </p>
+            <ShareButton onClick={() => window.open("https://x.com/", "/")} />
           </div>
-          <p className="text-cf-white/50 text-sm">Rank {rank}</p>
+          <p className="text-cf-white/50 text-2xl">Rank {rank}</p>
         </div>
         <Image
           src="/images/general/backgrounds/upgrade-frogs.svg"
@@ -86,6 +87,37 @@ const UpgradeFrogs: FC<UpgradeFrogsProps> = (props: UpgradeFrogsProps) => {
         back to select screen
       </div>
     </motion.div>
+  );
+};
+
+interface ShareButtonProps extends HTMLAttributes<HTMLButtonElement> {}
+
+const ShareButton: FC<ShareButtonProps> = (props: ShareButtonProps) => {
+  const { ...buttonProps } = props;
+  return (
+    <button
+      className="button-transition relative flex items-center justify-center bg-transparent border-0 p-0 cursor-pointer"
+      style={{ width: "115px", height: "32px" }}
+      {...buttonProps}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="115"
+        height="32"
+        viewBox="0 0 115 32"
+        fill="none"
+        className="absolute top-0 left-0"
+      >
+        <path
+          d="M5 5L10 0H115V27L112.5 29.5L110 32H0V5H5Z"
+          fill="#124835"
+          fillOpacity="0.65"
+        />
+      </svg>
+      <span className="z-10 text-sm font-semibold text-white uppercase">
+        Share on X
+      </span>
+    </button>
   );
 };
 
