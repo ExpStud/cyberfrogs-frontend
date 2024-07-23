@@ -10,7 +10,7 @@ const Logo: FC<Props> = (props: Props) => {
         <Image
           src="/images/logo.svg"
           height={80}
-          width={101}
+          width={90}
           alt="Logo"
           priority
         />

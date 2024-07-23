@@ -235,7 +235,7 @@ input[type="checkbox"]:checked {
   @apply max-w-[1537px];
 }
 .page-spacing {
-  @apply  px-4 md:px-6 lg:px-10 2xl:max-w-[1750px] 3xl:max-w-[1850px];
+  @apply  px-4 md:px-6 lg:px-10 max-w-[1620px];
 }
 
 .text-highlight {
