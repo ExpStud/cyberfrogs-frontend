@@ -22,7 +22,7 @@ const LandingView: FC<Props> = (props: Props) => {
           onLoad={() => handleAssetLoad(0, setAssets)}
         />
       </div>
-      <div className="green-container-md  absolute z-20 bottom-44 md:bottom-24 left-1/2 -translate-x-1/2 w-[95vw] md:w-[739px] h-[93px] flex items-center">
+      <div className="absolute z-0 bottom-44 md:bottom-24 left-1/2 -translate-x-1/2 w-[95vw] md:w-[739px] h-[93px] flex items-center">
         <Image
           src="/images/general/backgrounds/start-upgrade.svg"
           width={739}
@@ -30,8 +30,8 @@ const LandingView: FC<Props> = (props: Props) => {
           alt="Connect"
           className="hidden md:block absolute inset-0 -z-10 min-w-[539px] min-h-[93px] object-cover"
         />
-        <div className="flex flex-col sm:flex-row items-center justify-between w-full md:mt-5 px-5 gap-2">
-          <p className="hidden sm:block text-xl font-rajdhani-bold">
+        <div className="flex flex-col md:flex-row items-center justify-between w-full md:mt-5 px-5 gap-2">
+          <p className="hidden md:block text-xl font-rajdhani-bold">
             Upgrade Frogs
           </p>
           <Image

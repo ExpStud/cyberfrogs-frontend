@@ -68,13 +68,16 @@ const Explorer: FC<Props> = (props: Props) => {
       {/* sort, search, filter */}
       <div className="flex flex-col-reverse  sm:flex-row lg:flex-col sm:items-center lg:items-start gap-4 lg:gap-6 w-full lg:w-auto h-[100px] sm:h-[40px] lg:h-auto pr-3 lg:pr-0">
         <ExplorerToggle toggle={toggle} setToggle={setToggle} />
-        <div className="flex gap-4 items-center justify-between w-full">
+        <div className="flex gap-4 items-center justify-start md:justify-between w-full">
           <NumberInput
             placeholder="search id"
             handleInput={handleSearch}
             className="!w-full !max-w-[276px] sm:w-[169px] md:!w-[276px] min-h-[40px]"
           />
-          <FilterIcon className="lg:hidden" onClick={() => setOpenMenu(true)} />
+          <FilterIcon
+            className="lg:hidden ml-1 md:mr-2.5"
+            onClick={() => setOpenMenu(true)}
+          />
         </div>
 
         <div className="hidden lg:flex flex-col explorer-scroll overflow-y-auto overflow-x-hidden md:!w-[288px] pr-3">

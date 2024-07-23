@@ -73,7 +73,7 @@ const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
               <div className="flex flex-col gap-2 w-full uppercase pr-10">
                 <VariableLabel
                   label="Discord ID"
-                  variable={authData?.discordId}
+                  variable={authData?.discordId + "aasasdasdadsds"}
                   emptyMessage="Not Linked"
                 />
                 <VariableLabel
