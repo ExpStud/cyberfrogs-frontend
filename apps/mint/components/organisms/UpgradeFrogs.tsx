@@ -36,13 +36,6 @@ const UpgradeFrogs: FC<UpgradeFrogsProps> = (props: UpgradeFrogsProps) => {
     >
       {/* frog panel */}
       <div className="green-container-md md:bg-mint-3 relative w-[93vw] md:w-[750px] lg:w-[720px]  h-auto  flex flex-col items-center gap-5 md:gap-10 p-5 md:p-10">
-        <Image
-          src="/images/icons/threedots.svg"
-          width={82}
-          height={33}
-          alt="dots"
-          className="absolute -top-5 -left-5"
-        />
         <div className="flex flex-col md:gap-3 w-full">
           <div className="flex justify-between items-center w-full">
             <p className="text-xl md:text-4xl">

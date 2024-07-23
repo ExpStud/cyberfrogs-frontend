@@ -75,9 +75,9 @@ const PageLayout: FC<Props> = (props: Props) => {
         {footer && <Footer />}
 
         {/* used to display splash screen when loading large assets on page open */}
-        <AnimatePresence mode="wait">
+        {/* <AnimatePresence mode="wait">
           {assets && <SplashScreen assets={assets} key="assets" />}
-        </AnimatePresence>
+        </AnimatePresence> */}
 
         {/* modals - used here to display in root container and avoid nesting issues */}
         <AnimatePresence mode="wait">

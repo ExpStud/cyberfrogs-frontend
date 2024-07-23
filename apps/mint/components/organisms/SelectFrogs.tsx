@@ -26,13 +26,6 @@ const SelectFrogs: FC<SelectFrogsProps> = (props: SelectFrogsProps) => {
       className="flex flex-col xl:flex-row justify-evenly xl:justify-center w-full h-auto xl:gap-10 px-1 sm:px-5 md:px-10 lg:px-12"
     >
       <div className="green-container relative w-full xl:max-w-[1100px] h-[60%] md:h-[55%] xl:h-[70vh] xl:min-h-[700px] 2xl:min-h-[750px] xl:max-h-[850px] xl:mb-10  overflow-y-auto explorer-scroll">
-        <Image
-          src="/images/icons/threedots.svg"
-          width={82}
-          height={33}
-          alt="dots"
-          className="absolute  -top-5  -left-5"
-        />
         <p className="text-lg lg:text-xl px-5 xl:px-10 pt-6 xl:pt-10">
           select your frogs to upgrade{" "}
           <span className="ml-1 text-cf-gold">{selectedFrogs.length}</span>

@@ -35,6 +35,10 @@ export const getSocialIconByName = (name: string): SocialIcon | undefined => {
 
 export const navigationData: NavigationData[] = [
   {
+    name: "Upgrade",
+    href: "/mint",
+  },
+  {
     name: "Explorer",
     href: "/explorer",
   },

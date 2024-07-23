@@ -16,7 +16,7 @@ const AttributeItem: FC<AttributeProps> = (props: AttributeProps) => {
 
   return (
     <div
-      className={`flex flex-col gap-0 mb-3 text-sm 2xl:text-base ${
+      className={`flex flex-col gap-0 mb-3 text-sm 2xl:text-base max-w-[375px] ${
         attrsLength < 9 ? "items-start" : ""
       }`}
     >
@@ -34,7 +34,7 @@ const AttributeItem: FC<AttributeProps> = (props: AttributeProps) => {
         viewBox="0 0 375 4"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={`mt-2 w-full`}
+        className={`mt-2 w-full self-start`}
       >
         <rect width="375" height="4" fill="#081F17" />
         <motion.rect
