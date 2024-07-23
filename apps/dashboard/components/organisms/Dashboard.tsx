@@ -38,7 +38,8 @@ const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
           alt="Text"
         />
         {/* data */}
-        <div className="explorer-scroll flex justify-between w-full h-full mt-2 overflow-x-auto pr-5 xl:pr-0 pb-2 gap-8">
+        {/*  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-none md: */}
+        <div className="explorer-scroll flex flex-wrap md:flex-nowrap justify-start w-full h-full mt-2 overflow-x-auto pr-5 xl:pr-0 pb-2 gap-8">
           <DataWrapper title="My Frogs">
             <p className="text-cf-gold text-3xl md:text-4xl">
               {userFrogs.length}
@@ -123,7 +124,7 @@ const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
       </div>
       {/* user frogs */}
       <div className="flex gap-4 lg:gap-8 pr-2 explorer-scroll mt-6 overflow-x-auto pb-2">
-        {userFrogs.map((nft: NFT, index) => (
+        {[...userFrogs].map((nft: NFT, index) => (
           <UserNft metadata={nft} isLoadingCard={false} key={index} />
         ))}
         {/* loading card */}

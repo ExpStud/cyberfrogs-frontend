@@ -33,8 +33,8 @@ const RaffleItem: FC<Props> = (props: Props) => {
         <ImageShimmer
           src={metadata?.links?.image ?? "/images/pages/dashboard/cf-4678.webp"}
           alt={metadata?.metadata?.name ?? "Cyber Frog"}
-          width={400}
-          height={400}
+          width={300}
+          height={300}
           shimmerOnly={isLoadingCard}
           hover
           onClick={() => openModal()}
@@ -56,7 +56,7 @@ const RaffleItem: FC<Props> = (props: Props) => {
         width={300}
         height={40}
         alt="Clear All"
-        className="cursor-pointer button-transition min-w-[99px] mt-0 pb-6 pt-1"
+        className="cursor-pointer button-transition min-w-[99px] mt-4 pb-4 pt-1"
         onClick={() => openModal()}
       />
     </motion.div>

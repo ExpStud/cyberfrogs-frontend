@@ -32,7 +32,7 @@ module.exports = {
         dashboardData: "url('/images/pages/dashboard/data-bg.svg')",
         dashboardBg: "url('/images/pages/dashboard/dashboard-bg-full.svg')",
         manageBg: "url('/images/pages/dashboard/manage-bg.svg')",
-        raffleCardBg: "url('/images/pages/raffles/card-bg.svg')",
+        raffleCardBg: "url('/images/pages/raffles/card-bg-1.svg')",
         modalBg: "url('/images/general/backgrounds/modal.svg')",
         "connect-bg": "url('/images/pages/mint/connect-bg.svg')",
         "select-bg": "url('/images/pages/mint/select-bg.svg')",

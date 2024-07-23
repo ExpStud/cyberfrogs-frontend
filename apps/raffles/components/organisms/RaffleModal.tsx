@@ -4,7 +4,7 @@ import { ViewContext } from "@contexts";
 import { BuyTickets, Countdown } from "@raffles-components";
 import { truncatePubKey } from "@utils";
 import { PublicKey } from "@solana/web3.js";
-
+import Image from "next/image";
 interface Props {
   show: boolean;
   close: () => void;
@@ -134,7 +134,15 @@ const RaffleModal: FC<Props> = (props: Props) => {
                 </p>
               </div>
               {/* bids */}
+
               <div className="flex flex-col gap-2 max-h-[200px] ">
+                <Image
+                  src="/images/pages/explorer/filter-divider.svg"
+                  width={300}
+                  height={1}
+                  alt="Divider"
+                  className="mb-1.5"
+                />
                 <p className="text-cf-white">My Bids</p>
                 <div className="flex flex-col gap-2  overflow-auto explorer-scroll pr-5">
                   {myBids.map((bid, index) => (
@@ -144,6 +152,13 @@ const RaffleModal: FC<Props> = (props: Props) => {
               </div>
               {/* bids history */}
               <div className="flex flex-col gap-2 max-h-[200px] ">
+                <Image
+                  src="/images/pages/explorer/filter-divider.svg"
+                  width={300}
+                  height={1}
+                  alt="Divider"
+                  className="mb-1.5"
+                />
                 <p className="text-cf-white">Bid History</p>
                 <div className="flex flex-col gap-2  overflow-auto explorer-scroll pr-5">
                   {bidHistory.map((bid, index) => (
