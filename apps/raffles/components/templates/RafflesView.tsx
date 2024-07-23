@@ -13,7 +13,7 @@ interface Props {
 const RafflesView: FC<Props> = (props: Props) => {
   const { setAssets } = props;
 
-  const showRaffles = raffles.length > 0;
+  const showRaffles = raffles.length === 0; //TODO: raffles.length > 0;
 
   return (
     <div className="w-full flex flex-col px-3 md:px-12 2xl:px-0 mt-10 ">
@@ -41,7 +41,8 @@ const RafflesView: FC<Props> = (props: Props) => {
               width={1219}
               height={860}
               alt="Mp Raffles"
-              className="mt-20 lg:-mt-20 lg:p-10"
+              className="absolute h-[75vh] w-auto left-1/2 top-1/2 md:top-[55%] transform -translate-x-1/2 -translate-y-1/2 object-contain"
+              // className="mt-20 lg:-mt-20 lg:p-10"
             />
           </motion.div>
         ) : (
