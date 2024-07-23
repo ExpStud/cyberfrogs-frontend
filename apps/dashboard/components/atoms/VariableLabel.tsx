@@ -1,18 +1,23 @@
-import { FC } from "react";
+import { FC, HTMLAttributes } from "react";
 
-interface VariableLabelProps {
+interface VariableLabelProps extends HTMLAttributes<HTMLDivElement> {
   label: string;
   variable: number | string | undefined;
   emptyMessage?: string;
+  labelWidth?: string;
 }
 const VariableLabel: FC<VariableLabelProps> = (props: VariableLabelProps) => {
-  const { label, variable, emptyMessage } = props;
+  const { label, variable, emptyMessage, labelWidth = "", ...divProps } = props;
   return (
-    <div className="flex w-full gap-6 justify-between text-sm md:text-base">
+    <div
+      className={`flex w-full gap-3 justify-start text-sm md:text-base ${
+        divProps.className ?? ""
+      }`}
+    >
       <p
-        className={
-          variable ? "text-cf-white whitespace-nowrap" : "text-cf-white/50"
-        }
+        className={`whitespace-nowrap ${
+          variable ? "text-cf-white " : "text-cf-white/50"
+        } ${labelWidth}`}
       >
         {label}
       </p>
@@ -20,7 +25,7 @@ const VariableLabel: FC<VariableLabelProps> = (props: VariableLabelProps) => {
         className={
           variable
             ? "text-cf-gold whitespace-nowrap overflow-hidden text-ellipsis"
-            : "text-cf-white/50"
+            : "text-cf-white/50 whitespace-nowrap "
         }
       >
         {variable ?? emptyMessage ?? "N/A"}

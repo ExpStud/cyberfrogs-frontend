@@ -58,13 +58,24 @@ const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
           <DataWrapper title="Frog Types">
             <div className="flex justify-between">
               <div className="flex flex-col gap-2 w-1/2 uppercase pr-10">
-                <VariableLabel label="Alpha" variable={alpha} />
-                <VariableLabel label="Beta" variable={beta} />
-                <VariableLabel label="Thor" variable={thor} />
+                <VariableLabel
+                  label="Alpha"
+                  variable={alpha}
+                  className="!justify-between"
+                />
+                <VariableLabel
+                  label="Beta"
+                  variable={beta}
+                  className="!justify-between"
+                />
+                <VariableLabel
+                  label="Thor"
+                  variable={thor}
+                  className="!justify-between"
+                />
               </div>
               <div className="flex flex-col gap-2 w-1/2 uppercase pr-10">
                 <VariableLabel label="Top 1000" variable={top1000} />
-                <VariableLabel label="OG" variable={og} />
               </div>
             </div>
           </DataWrapper>
@@ -75,16 +86,19 @@ const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
                   label="Discord ID"
                   variable={authData?.discordId + "aasasdasdadsds"}
                   emptyMessage="Not Linked"
+                  labelWidth="w-[70px] 2xl:w-[80px]"
                 />
                 <VariableLabel
                   label="Role"
                   variable={authData?.role}
                   emptyMessage="Not Linked"
+                  labelWidth="w-[70px] 2xl:w-[80px]"
                 />
                 <VariableLabel
                   label="Bitcoin"
                   variable={authData?.bitcoin}
                   emptyMessage="Not Linked"
+                  labelWidth="w-[70px] 2xl:w-[80px]"
                 />
               </div>
             </div>
