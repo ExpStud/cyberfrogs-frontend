@@ -31,7 +31,7 @@ const BuyTickets: FC<Props> = (props: Props) => {
         >
           <p className="text-cf-white/50">
             your sol balance{" "}
-            <span className="text-cf-white">{solbalance} sol</span>
+            <span className="text-cf-white ml-1.5">{solbalance} sol</span>
           </p>
           <motion.div className=""></motion.div>
 

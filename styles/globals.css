@@ -123,6 +123,24 @@ input[type="checkbox"]:checked {
   scrollbar-width: thin;
   scrollbar-color: #0B2D21 #081F17 ;
 }
+.raffle-scroll {
+  /* Enable scrolling if needed */
+  overflow: auto;
+
+  /* For Webkit browsers (Chrome, Safari) */
+  &::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+  }
+
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scroll thumb on hover */
+  }
+
+  /* For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #304D42 #0B2D21 ;
+}
 
 /* For IE and Edge */
 @supports (-ms-overflow-style: none) {

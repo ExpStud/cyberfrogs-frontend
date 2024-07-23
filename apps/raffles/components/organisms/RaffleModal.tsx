@@ -113,7 +113,7 @@ const RaffleModal: FC<Props> = (props: Props) => {
                   className="!text-cf-white"
                 />
               </div>
-              <div className="flex gap-2 text-cf-white/50">
+              <div className="flex gap-2 text-cf-white/50 mr-1">
                 participants{" "}
                 <span className="text-cf-white">{participants}</span>
               </div>
@@ -144,7 +144,7 @@ const RaffleModal: FC<Props> = (props: Props) => {
                   className="mb-1.5"
                 />
                 <p className="text-cf-white">My Bids</p>
-                <div className="flex flex-col gap-2  overflow-auto explorer-scroll pr-5">
+                <div className="flex flex-col gap-2 overflow-auto raffle-scroll pr-5">
                   {myBids.map((bid, index) => (
                     <BidItem key={index} bid={bid} isMyBid />
                   ))}
@@ -160,7 +160,7 @@ const RaffleModal: FC<Props> = (props: Props) => {
                   className="mb-1.5"
                 />
                 <p className="text-cf-white">Bid History</p>
-                <div className="flex flex-col gap-2  overflow-auto explorer-scroll pr-5">
+                <div className="flex flex-col gap-2  overflow-auto raffle-scroll pr-5">
                   {bidHistory.map((bid, index) => (
                     <BidItem key={index} bid={bid} />
                   ))}

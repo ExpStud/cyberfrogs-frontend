@@ -43,7 +43,7 @@ export const raffles: Raffles[] = [
       external_url: "https://cyberfrogs.io",
       image: "https://arweave.net/XyWm5zI8kqWMa6qm6TKLVG5KuPghZ6SqAo5pNCQCXdE?ext=png"
     },
-    endDate: new Date("2024-12-31T23:59:59.999Z"),
+    endDate: new Date("2024-07-31T23:59:59.999Z"),
   },
   {
     metadata: {
@@ -87,7 +87,7 @@ export const raffles: Raffles[] = [
       external_url: "https://cyberfrogs.io",
       image: "https://arweave.net/XyWm5zI8kqWMa6qm6TKLVG5KuPghZ6SqAo5pNCQCXdE?ext=png"
     },
-    endDate: new Date("2024-12-31T23:59:59.999Z"),
+    endDate: new Date("2024-07-31T23:59:59.999Z"),
   },
   {
     metadata: {
@@ -131,6 +131,6 @@ export const raffles: Raffles[] = [
       external_url: "https://cyberfrogs.io",
       image: "https://arweave.net/XyWm5zI8kqWMa6qm6TKLVG5KuPghZ6SqAo5pNCQCXdE?ext=png"
     },
-    endDate: new Date("2024-12-31T23:59:59.999Z"),
+    endDate: new Date("2024-07-31T23:59:59.999Z"),
   },
 ];
