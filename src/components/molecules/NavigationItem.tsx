@@ -14,11 +14,12 @@ import { useOutsideAlerter } from "src/hooks";
 interface NavigationItemProps {
   item: NavigationData;
   callback?: () => void;
+  arrow?: true | false | null;
 }
 const NavigationItem: FC<NavigationItemProps> = (
   props: NavigationItemProps
 ) => {
-  const { item, callback } = props;
+  const { item, callback, arrow = null } = props;
 
   const [hover, setHover] = useState<boolean>(false);
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
@@ -93,6 +94,7 @@ const NavigationItem: FC<NavigationItemProps> = (
           {item.name}
         </p>
 
+        {arrow !== null && <ArrowIcon animate={arrow} />}
         {item?.dropdown && <ArrowIcon animate={showDropdown} />}
       </div>
 
