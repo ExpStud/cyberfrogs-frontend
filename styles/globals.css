@@ -52,7 +52,7 @@ a {
 
 @layer base {
   html {
-    @apply scroll-smooth bg-cf-green-900 text-cf-white font-rajdhani uppercase;
+    @apply scroll-smooth bg-cf-green-900 text-cf-white font-rajdhani uppercase tracking-wide;
   }
   h1 {
     @apply font-rajdhani uppercase text-5xl md:text-[64px];
@@ -60,6 +60,7 @@ a {
   h2 {
     @apply font-rajdhani uppercase text-5xl md:text-[64px];
   }
+
 }
 
 html {

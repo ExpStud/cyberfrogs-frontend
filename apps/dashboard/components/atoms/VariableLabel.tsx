@@ -8,12 +8,10 @@ interface VariableLabelProps {
 const VariableLabel: FC<VariableLabelProps> = (props: VariableLabelProps) => {
   const { label, variable, emptyMessage } = props;
   return (
-    <div className="flex w-full gap-2 justify-between text-sm md:text-base">
+    <div className="flex w-full gap-6 justify-between text-sm md:text-base">
       <p
         className={
-          variable
-            ? "text-cf-white whitespace-nowrap overflow-hidden"
-            : "text-cf-white/50"
+          variable ? "text-cf-white whitespace-nowrap" : "text-cf-white/50"
         }
       >
         {label}

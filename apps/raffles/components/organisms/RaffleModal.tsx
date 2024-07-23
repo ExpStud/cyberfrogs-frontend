@@ -106,7 +106,7 @@ const RaffleModal: FC<Props> = (props: Props) => {
               </span>
             </p>
             <div className="flex flex-col flex-wrap sm:flex-row gap-0 sm:gap-5 ">
-              <div className="flex gap-2 text-cf-white/50 w-[173px]">
+              <div className="flex gap-2 text-cf-white/50 w-[177px]">
                 Ends In{" "}
                 <Countdown
                   date={raffleModal?.endDate}
@@ -127,7 +127,7 @@ const RaffleModal: FC<Props> = (props: Props) => {
               {/* description */}
               <div className="flex flex-col gap-2 max-h-[200px] overflow-hidden">
                 <p className="text-cf-white">Description</p>
-                <p className="text-cf-white/85 text-sm normal-case overflow-hidden">
+                <p className="text-cf-white/65 text-sm normal-case overflow-hidden">
                   <span className="line-clamp-6">
                     {raffleModal?.metadata?.description}
                   </span>

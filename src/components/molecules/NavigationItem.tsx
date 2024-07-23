@@ -24,7 +24,18 @@ const NavigationItem: FC<NavigationItemProps> = (
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
 
   const router = useRouter();
-  const active = item?.href && router.asPath === item?.href;
+
+  const inMcfDropdown =
+    router.asPath === "/dashboard" ||
+    router.asPath === "/raffles" ||
+    router.asPath === "/thor" ||
+    router.asPath === "/thor-btc" ||
+    router.asPath === "/mission" ||
+    router.asPath === "/faction-contracts-v3";
+
+  const active =
+    (item?.href && router.asPath === item?.href) ||
+    (item.name.toLocaleLowerCase() === "my cyber frogs" && inMcfDropdown);
 
   //close dropdown on outside click
   const ref = useRef<HTMLDivElement>(null);
@@ -95,7 +106,7 @@ const NavigationItem: FC<NavigationItemProps> = (
       {/* dropdown */}
       <AnimatePresence>
         {item?.dropdown && showDropdown && (
-          <Dropdown grid={item.dropdown.length > 3}>
+          <Dropdown grid={item.dropdown.length > 3} active={active}>
             {item.dropdown.map((data, index) => (
               <DropdownItem
                 key={index}

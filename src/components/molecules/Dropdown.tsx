@@ -6,11 +6,14 @@ import { dropdownAnimations } from "@constants";
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   grid?: boolean; //used for more than 1 column
+  active?: boolean;
 }
-const Dropdown: FC<Props> = ({ children, grid = false }) => {
+const Dropdown: FC<Props> = ({ children, grid = false, active = false }) => {
   return (
     <motion.div
-      className={`absolute top-[25px] h-[168px] w-[168px] cursor-default z-50 `}
+      className={`absolute h-[168px] w-[168px] cursor-default z-50 ${
+        active ? "top-[25px] -left-[2px]" : " top-[25px]"
+      }`}
       variants={dropdownAnimations}
       initial="hidden"
       animate="show"
