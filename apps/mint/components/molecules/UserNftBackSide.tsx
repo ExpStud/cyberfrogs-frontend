@@ -13,7 +13,7 @@ const UserNftBackSide: FC<Props> = (props: Props) => {
 
   return (
     <motion.div
-      className="absolute z-10 h-full w-full flex flex-col cursor-pointer px-2.5 py-4 bg-cf-green-900 overflow-y-auto explorer-scroll"
+      className="absolute z-10 h-full w-full flex flex-col justify-between cursor-pointer  bg-cf-green-900 overflow-y-auto explorer-scroll"
       initial={{ rotateY: 180, opacity: 0 }}
       animate={{ opacity: 1, transition: { delay: 0.06 } }}
     >
@@ -36,27 +36,30 @@ const UserNftBackSide: FC<Props> = (props: Props) => {
         />
       </svg>
 
-      <p>
+      <p className="text-sm md:text-base px-2 pt-5">
         upgrade cost <br />
         Breakdown
       </p>
 
-      <div className="flex flex-col gap-1 text-[13px] mt-5">
+      <div className="flex flex-col gap-2 text-[13px] text-xs md:text-sm p-2">
         <CardItem label="Base Price" value="2,500 KIRA" />
         <CardItem label="Factioned" value="yes (-1000)" />
         <CardItem label="Alpha" value="yes (2x)" />
         <CardItem label="beta" value="" isValid={false} />
         <CardItem label="thor" value="" isValid={false} />
       </div>
-      <Image
-        src="/images/pages/mint/divider-sm.svg"
-        width={170}
-        height={1}
-        alt="Divider"
-        className="py-4"
-      />
-
-      <CardItem label="total" value="5,000 KIRA" />
+      <div>
+        <Image
+          src="/images/pages/dashboard/divider.svg"
+          width={256}
+          height={1}
+          alt="Divider"
+          className="opacity-75"
+        />
+        <div className="flex gap-2 items-center text-xs md:text-sm text-cf-white/50 p-2 bg-[#0D3426] h-[38px]">
+          <CardItem label="total" value="5,000 KIRA" />{" "}
+        </div>
+      </div>
     </motion.div>
   );
 };

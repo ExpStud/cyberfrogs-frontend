@@ -39,7 +39,7 @@ const LandingView: FC<Props> = (props: Props) => {
             width={216}
             height={40}
             alt="Connect"
-            className="cursor-pointer button-transition min-w-[99px] z-10"
+            className="cursor-pointer button-transition min-w-[99px] z-10 mt-3"
             onClick={() => router.push("/mint")}
           />
         </div>

@@ -1,14 +1,14 @@
 import { FC } from "react";
 
-interface CardItemProps {
+interface CardItemProps extends React.HTMLAttributes<HTMLDivElement> {
   label: string;
   value: string;
   isValid?: boolean;
 }
 const CardItem: FC<CardItemProps> = (props: CardItemProps) => {
-  const { label, value, isValid = true } = props;
+  const { label, value, isValid = true, ...divProps } = props;
   return (
-    <div className="flex justify-start">
+    <div className={`flex justify-start ${divProps.className ?? ""}`}>
       <p
         className={`whitespace-nowrap w-1/2 ${
           isValid ? "text-cf-white " : "text-cf-white/50"

@@ -35,10 +35,17 @@ const UpgradeFrogs: FC<UpgradeFrogsProps> = (props: UpgradeFrogsProps) => {
       className="flex flex-col gap-10 mb-14"
     >
       {/* frog panel */}
-      <div className="green-container-md relative w-[93vw] md:w-[750px] lg:w-[822px] h-auto md:h-[572px] flex flex-col items-center gap-5 md:gap-10 p-5 md:p-10">
-        <div className="flex flex-col gap-3 w-full">
+      <div className="green-container-md md:bg-mint-3 relative w-[93vw] md:w-[750px] lg:w-[720px]  h-auto  flex flex-col items-center gap-5 md:gap-10 p-5 md:p-10">
+        <Image
+          src="/images/icons/threedots.svg"
+          width={82}
+          height={33}
+          alt="dots"
+          className="absolute -top-5 -left-5"
+        />
+        <div className="flex flex-col md:gap-3 w-full">
           <div className="flex justify-between items-center w-full">
-            <p className="text-4xl">
+            <p className="text-xl md:text-4xl">
               Cyber Frog{" "}
               <span className="ml-1 text-cf-gold-500">
                 {selectedFrogs[upgradeIndex]?.content?.metadata?.name
@@ -48,7 +55,7 @@ const UpgradeFrogs: FC<UpgradeFrogsProps> = (props: UpgradeFrogsProps) => {
             </p>
             <ShareButton onClick={() => window.open("https://x.com/", "/")} />
           </div>
-          <p className="text-cf-white/50 text-2xl">Rank {rank}</p>
+          <p className="text-cf-white/50 text-lg md:text-2xl">Rank {rank}</p>
         </div>
 
         {selectedFrogs[upgradeIndex]?.content?.links?.image && (
@@ -59,8 +66,8 @@ const UpgradeFrogs: FC<UpgradeFrogsProps> = (props: UpgradeFrogsProps) => {
                 selectedFrogs[upgradeIndex]?.content?.metadata?.name ??
                 "Cyber Frog"
               }
-              width={350}
-              height={350}
+              width={300}
+              height={300}
             />
             <div className="flex flex-col gap-2.5 items-center">
               <ImageShimmer
@@ -69,8 +76,8 @@ const UpgradeFrogs: FC<UpgradeFrogsProps> = (props: UpgradeFrogsProps) => {
                   selectedFrogs[upgradeIndex]?.content?.metadata?.name ??
                   "Cyber Frog"
                 }
-                width={350}
-                height={350}
+                width={300}
+                height={300}
                 shimmerOnly={true} //TODO: set to false when new image is loaded
               />
               {/* TODO: add new image url to href, disable if image isnt loaded */}
@@ -87,16 +94,16 @@ const UpgradeFrogs: FC<UpgradeFrogsProps> = (props: UpgradeFrogsProps) => {
         )}
 
         {/* background */}
-        <Image
+        {/* <Image
           src="/images/general/backgrounds/upgrade-frogs.svg"
           width={822}
           height={572}
           alt="Connect"
           className="hidden md:block absolute inset-0 -z-10 min-w-[539px] min-h-[93px] object-cover"
-        />
+        /> */}
       </div>
       {/* action panel */}
-      <div className="self-center green-container flex flex-col sm:flex-row justify-between items-center gap-5 p-5 md:px-10 sm:py-0 w-[93vw] md:w-[750px] lg:w-[822px] min-h-[80px]">
+      <div className="self-center green-container flex flex-col sm:flex-row justify-between items-center gap-5 p-5 md:px-10 sm:py-0 w-[93vw] md:w-[750px] lg:w-[720px] min-h-[80px]">
         <p className="block text-xl font-rajdhani-semibold">
           Frog {upgradeIndex + 1} of {selectedFrogs.length} upgraded
         </p>

@@ -76,9 +76,9 @@ const UserNftFrontSide: FC<Props> = (props: Props) => {
           alt="Divider"
           className="opacity-75"
         />
-        <div className="flex gap-2 items-center text-xs md:text-sm text-cf-white/50 p-2 bg-[#0D3426]">
+        <div className="flex gap-2 items-center text-xs md:text-sm text-cf-white/50 p-2 bg-[#0D3426] h-[38px]">
           {readyToUpgrade && !isLoadingCard ? (
-            <p className="text-cf-gold text-sm">Ready to upgrade</p>
+            <p className="text-cf-gold ">Ready to upgrade</p>
           ) : (
             <>
               <p>cost </p>
