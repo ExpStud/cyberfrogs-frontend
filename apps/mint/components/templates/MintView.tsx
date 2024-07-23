@@ -9,17 +9,10 @@ import {
 import { useWallet } from "@solana/wallet-adapter-react";
 import { getAssetsByOwner, handleAssetLoad } from "@utils";
 import { NFT } from "@types";
-import { collectionAddress, midExitAnimation } from "@constants";
+import { collectionAddress } from "@constants";
 import { useWindowSize } from "src/hooks";
-import Image from "next/image";
-import { useWalletModal } from "@solana/wallet-adapter-react-ui";
-import { AnimatePresence, motion } from "framer-motion";
-import {
-  ConnectWallet,
-  SelectFrogs,
-  UpgradeFrogs,
-  UpgradeModal,
-} from "@mint-components";
+import { AnimatePresence } from "framer-motion";
+import { ConnectWallet, SelectFrogs, UpgradeFrogs } from "@mint-components";
 import toast from "react-hot-toast";
 interface Props {
   setAssets: Dispatch<SetStateAction<boolean[]>>;
@@ -38,7 +31,7 @@ const MintView: FC<Props> = (props: Props) => {
 
   const [userFrogs, setUserFrogs] = useState<NFT[]>([]);
   const [selectedFrogs, setSelectedFrogs] = useState<NFT[]>([]);
-  const [upgradeFrogs, setUpgradeFrogs] = useState<boolean>(true); //TODO: false
+  const [upgradeFrogs, setUpgradeFrogs] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [winWidth] = useWindowSize();
