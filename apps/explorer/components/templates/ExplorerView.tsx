@@ -39,15 +39,15 @@ const ExplorerView: FC<Props> = (props: Props) => {
   //fetch nft metadata
   const fetchNftMetadata = useCallback(async () => {
     // setLoading(true);
-    // try {
-    //   const frogs: NFT[] = await getAssetsByAuthority(page, 12);
-    //   if (!frogs) return;
-    //   setNftData((prev) => (page === 1 ? frogs : [...prev, ...frogs]));
-    // } catch (error) {
-    //   console.error(error);
-    // } finally {
-    //   loadDebounce();
-    // }
+    try {
+      const frogs: NFT[] = await getAssetsByAuthority(page, 12);
+      if (!frogs) return;
+      setNftData((prev) => (page === 1 ? frogs : [...prev, ...frogs]));
+    } catch (error) {
+      console.error(error);
+    } finally {
+      loadDebounce();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
@@ -68,7 +68,7 @@ const ExplorerView: FC<Props> = (props: Props) => {
   }, []);
 
   return (
-    <div className="w-full flex flex-col items-center xl:items-start justify-start px-3 md:px-12   my-10 ">
+    <div className="w-full flex flex-col items-center xl:items-start justify-start px-3 md:px-12  my-10 ">
       {/* heading & image */}
       <div className="w-full flex flex-col lg:flex-row justify-between px-3 md:px-0 2xl:pl-4">
         <Heading />
