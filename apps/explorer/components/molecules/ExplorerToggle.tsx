@@ -7,7 +7,7 @@ interface ExplorerToggleProps {
 }
 
 const ExplorerToggle: FC<ExplorerToggleProps> = ({ toggle, setToggle }) => (
-  <div className="bg-explorerToggleBg z-0 flex items-center justify-center w-[278px] h-[41px] text-base text-cf-white/50 font-rajdhani-bold uppercase pl-[2px] pr-[4px] pb-[1px]">
+  <div className="sticky top-2 bg-explorerToggleBg z-0 flex items-center justify-center w-[278px] h-[41px] text-base text-cf-white/50 font-rajdhani-bold uppercase pl-[2px] pr-[4px] pb-[1px]">
     <ToggleOption
       active={toggle === "solana"}
       onClick={() => setToggle("solana")}
