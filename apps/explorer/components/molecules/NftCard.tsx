@@ -57,7 +57,7 @@ const Explorer: FC<Props> = (props: Props) => {
           alt={metadata?.content?.metadata?.name.slice(5) ?? "Cyber Frog"}
         />{" "}
         <div className="flex flex-col gap-0 uppercase absolute left-3 top-[25%] xs:top-[15%] sm:top-[20%] md:top-[15%] lg:top-[20%]">
-          <p className="text-lg">
+          <p className="text-base">
             Cyber Frog{" "}
             {!isLoadingCard && (
               <span className="ml-1 text-cf-gold-500">
@@ -66,7 +66,7 @@ const Explorer: FC<Props> = (props: Props) => {
             )}
           </p>
 
-          <p className="text-cf-white/50 text-md">
+          <p className="text-cf-white/50 text-sm">
             Rank {!isLoadingCard && rank}
           </p>
         </div>

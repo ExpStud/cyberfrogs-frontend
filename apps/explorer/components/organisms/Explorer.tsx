@@ -64,7 +64,7 @@ const Explorer: FC<Props> = (props: Props) => {
   }, [winWidth]);
 
   return (
-    <div className="relative flex flex-col lg:flex-row md:gap-4 lg:gap-2 w-full h-full bg-cf-green-950 mt-2 pl-3 lg:pl-5 2xl:bg-transpare nt py-3 lg:py-5">
+    <div className="relative flex flex-col lg:flex-row md:gap-4 lg:gap-2 w-full h-full min-h-[80vh] bg-cf-green-950 mt-2 pl-3 lg:pl-5 pt-3 lg:pt-5">
       {/* sort, search, filter */}
       <div className="flex flex-col-reverse sm:flex-row lg:flex-col sm:items-center lg:items-start gap-4 lg:gap-6 w-full lg:w-auto h-[100px] sm:h-[40px] lg:h-auto pr-3 lg:pr-0">
         {/* sticky top-2 sticky top-[54px] sticky top-[104px] */}

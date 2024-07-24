@@ -8,7 +8,7 @@ const Header: FC<Props> = (props: Props) => {
   const {} = props;
 
   return (
-    <header className="z-10 transition-all duration-500 relative w-full overflow-hidden">
+    <header className="z-10 relative w-full self-center flex flex-col items-center">
       <Navigation />
     </header>
   );

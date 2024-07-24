@@ -12,8 +12,8 @@ const LandingView: FC<Props> = (props: Props) => {
   const router = useRouter();
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center">
-      <div className="absolute top-[45vh] -translate-y-1/2 w-[130vw] xl:w-[75vw] h-[45vh] md:h-[55vh] xl:h-[70vh] 3xl:h-[55vh] ">
+    <div className="w-full h-full flex flex-col items-center justify-center max-w-screen">
+      <div className="absolute top-[45vh] -translate-y-1/2 w-full xl:w-[75vw] h-[45vh] md:h-[55vh] xl:h-[70vh] 3xl:h-[55vh] ">
         <Image
           src="/images/general/graphics/landing.png"
           alt="Cyber Frogs"
