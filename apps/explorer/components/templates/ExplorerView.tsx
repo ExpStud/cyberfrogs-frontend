@@ -73,22 +73,18 @@ const ExplorerView: FC<Props> = (props: Props) => {
       {/* heading & image */}
       <div className="w-full flex flex-col lg:flex-row justify-between px-3 md:px-0 2xl:ml-4">
         <Heading />
-        <Image
+        {/* <Image
           src="/images/pages/explorer/intro.png"
           width={994}
           height={218}
           alt="Explorer"
           className="hidden lg:block lg:-mt-8"
           onLoad={() => handleAssetLoad(0, setAssets)}
-        />
+        /> */}
       </div>
 
       {/* toggle & data */}
-      <div className="z-[2] w-full flex flex-col lg:flex-row justify-end mt-10 lg:-mt-10  2xl:ml-0">
-        {/* <TextToggle
-          overviewToggle={overviewToggle}
-          setOverviewToggle={setOverviewToggle}
-        /> */}
+      <div className="w-full flex flex-col lg:flex-row justify-end mt-10 lg:-mt-10  2xl:ml-0">
         <ListingData data={listingData} />
       </div>
 

@@ -7,7 +7,7 @@ const Home: NextPage = () => {
   const [assets, setAssets] = useState<boolean[]>([]);
 
   return (
-    <PageLayout assets={assets}>
+    <PageLayout assets={assets} footer={false}>
       <ExplorerView setAssets={setAssets} />
     </PageLayout>
   );

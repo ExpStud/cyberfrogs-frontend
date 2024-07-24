@@ -19,7 +19,7 @@ const Navigation: FC = () => {
   const mintPage = router.pathname === "/mint";
 
   return (
-    <div className="page-spacing pt-1 md:pt-3 lg:pt-6 w-screen flex items-center justify-between gap-8 z-20">
+    <div className="page-spacing pt-1 md:pt-3 lg:pt-6 w-full flex items-center justify-between gap-8 z-20">
       <Logo />
 
       {/* desktop nav */}

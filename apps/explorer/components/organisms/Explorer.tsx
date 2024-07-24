@@ -64,11 +64,11 @@ const Explorer: FC<Props> = (props: Props) => {
   }, [winWidth]);
 
   return (
-    <div className="flex flex-col lg:flex-row md:gap-4 lg:gap-2 relative w-full 2xl:w-[1554px] h-[1000px] 2xl:h-[1005px] bg-cf-green-950 2xl:bg-transparent mt-2 2xl:-mt-0.5 pl-3 lg:pl-5 2xl:pl-8 py-3 lg:py-5">
+    <div className="flex flex-col lg:flex-row md:gap-4 lg:gap-2 w-full 2xl:w-[1554px] h-full bg-cf-green-950 2xl:bg-transparent mt-2 2xl:-mt-0.5 pl-3 lg:pl-5 2xl:pl-8 py-3 lg:py-5">
       {/* sort, search, filter */}
-      <div className="flex flex-col-reverse  sm:flex-row lg:flex-col sm:items-center lg:items-start gap-4 lg:gap-6 w-full lg:w-auto h-[100px] sm:h-[40px] lg:h-auto pr-3 lg:pr-0">
+      <div className="sticky flex flex-col-reverse  sm:flex-row lg:flex-col sm:items-center lg:items-start gap-4 lg:gap-6 w-full lg:w-auto h-[100px] sm:h-[40px] lg:h-auto pr-3 lg:pr-0">
         <ExplorerToggle toggle={toggle} setToggle={setToggle} />
-        <div className="flex gap-4 items-center justify-start md:justify-between w-full">
+        <div className="sticky top-[54px] flex gap-4 items-center justify-start md:justify-between w-full">
           <NumberInput
             placeholder="search id"
             handleInput={handleSearch}
@@ -80,7 +80,7 @@ const Explorer: FC<Props> = (props: Props) => {
           />
         </div>
 
-        <div className="hidden lg:flex flex-col explorer-scroll overflow-y-auto overflow-x-hidden md:!w-[288px] pr-3">
+        <div className="sticky top-[104px] hidden lg:flex flex-col  overflow-hidden md:!w-[288px] pr-3">
           {filters.map((filter, index) => (
             <ExplorerFilterItem
               key={filter.name}
@@ -93,14 +93,14 @@ const Explorer: FC<Props> = (props: Props) => {
         </div>
       </div>
       {/* tags & grid */}
-      <div className="z-[1] flex flex-col md:mx-4 lg:mx-7 overflow-hidden">
+      <div className="flex flex-col md:mx-4 lg:mx-7  ">
         <FilterTags
           selectedFilters={selectedFilters}
           setSelectedFilters={setSelectedFilters}
           handleFilter={handleFilter}
         />
         <div
-          className={`z-[1] grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4  gap-4 lg:gap-8 pr-2 explorer-scroll ${
+          className={`grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 lg:gap-8 pr-2 ${
             selectedFilters.length > 0
               ? "mt-4 lg:mt-[26px]"
               : "mt-4 lg:mt-[56px]"

@@ -54,7 +54,7 @@ const PageLayout: FC<Props> = (props: Props) => {
   return (
     <ViewContext.Provider value={value}>
       <div
-        className={`flex flex-col min-h-screen justify-between items-center overflow-x-hidden ${
+        className={`flex flex-col min-h-screen justify-between items-center  ${
           fixed ? "fixed inset-0" : absolute ? "absolute inset-0" : "relative"
         }`}
       >
