@@ -64,11 +64,12 @@ const Explorer: FC<Props> = (props: Props) => {
   }, [winWidth]);
 
   return (
-    <div className="flex flex-col lg:flex-row md:gap-4 lg:gap-2 w-full 2xl:w-[1554px] h-full bg-cf-green-950 2xl:bg-transparent mt-2 2xl:-mt-0.5 pl-3 lg:pl-5 2xl:pl-8 py-3 lg:py-5">
+    <div className="relative flex flex-col lg:flex-row md:gap-4 lg:gap-2 w-full   h-full bg-cf-green-950 2xl:bg-transparent mt-2 2xl:-mt-0.5 pl-3 lg:pl-5 2xl:pl-8 py-3 lg:py-5">
       {/* sort, search, filter */}
-      <div className="sticky flex flex-col-reverse  sm:flex-row lg:flex-col sm:items-center lg:items-start gap-4 lg:gap-6 w-full lg:w-auto h-[100px] sm:h-[40px] lg:h-auto pr-3 lg:pr-0">
+      <div className="flex flex-col-reverse sm:flex-row lg:flex-col sm:items-center lg:items-start gap-4 lg:gap-6 w-full lg:w-auto h-[100px] sm:h-[40px] lg:h-auto pr-3 lg:pr-0">
+        {/* sticky top-2 sticky top-[54px] sticky top-[104px] */}
         <ExplorerToggle toggle={toggle} setToggle={setToggle} />
-        <div className="sticky top-[54px] flex gap-4 items-center justify-start md:justify-between w-full">
+        <div className="flex gap-4 items-center justify-start md:justify-between w-full">
           <NumberInput
             placeholder="search id"
             handleInput={handleSearch}
@@ -80,7 +81,7 @@ const Explorer: FC<Props> = (props: Props) => {
           />
         </div>
 
-        <div className="sticky top-[104px] hidden lg:flex flex-col  overflow-hidden md:!w-[288px] pr-3">
+        <div className="sticky top-2 hidden lg:flex flex-col md:!w-[288px] pr-3 overflow-y-auto max-h-screen hide-scroll">
           {filters.map((filter, index) => (
             <ExplorerFilterItem
               key={filter.name}

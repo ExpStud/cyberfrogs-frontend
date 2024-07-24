@@ -11,6 +11,7 @@ const ExplorerBackground: FC = () => {
           width={61}
           height={586}
           alt="Grid L"
+          className="sticky top-0"
         />
       </div>
       {/* body */}
@@ -35,7 +36,7 @@ const ExplorerBackground: FC = () => {
           width={8}
           height={426}
           alt="Grid R2"
-          className="-mt-1"
+          className="-mt-1 overflow-hidden"
         />
       </div>
     </>
