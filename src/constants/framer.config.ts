@@ -8,9 +8,9 @@ export const navParent = (isMobile = false) => ({
     opacity: 1,
     x: 0,
     transition: { 
-      staggerChildren: isMobile ? 0 : 0.1, 
+      staggerChildren: isMobile ? 0.1 : 0.1, 
       ease: "easeInOut" ,
-      delay: 0.25,
+      // delay: 0.25,
       duration: 0.1,
     },
   },
@@ -24,16 +24,16 @@ export const navParent = (isMobile = false) => ({
   },
 });
 
-export const navChild = {
+export const navChild = (isMobile = false) => ({
   hidden: { 
-    opacity: 0,  
+    opacity:  0,  
   },
   visible: {
     opacity: 1, 
-    transition: { duration: 1 },
+    transition: { duration: isMobile ? 0 : 1 },
   },
   exit: { opacity: 0, transition: { duration: 0.08 } },
-};
+});
 
 export const dropdownParent = {
   hidden: { opacity: 0, y: -10 },
