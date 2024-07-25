@@ -9,7 +9,7 @@ const BackgroundGradients: FC<Props> = (props: Props) => {
   return (
     <>
       <div className="-z-[20] bg-cf-green-900 absolute inset-0" />
-      <div className="-z-[20] fixed top-0 h-screen w-screen">
+      <div className="-z-[19] fixed inset-0">
         <Image
           src="/images/general/backgrounds/texture.png"
           fill
