@@ -12,7 +12,7 @@ export const navParent = {
   exit: {
     opacity: 0,
     transition: {
-      duration: 0.3,
+      duration: 0.2,
       staggerChildren: 0.03,
       staggerDirection: -1,
     },
@@ -20,13 +20,12 @@ export const navParent = {
 };
 
 export const navChild = {
-  hidden: { opacity: 0, x: 0 },
+  hidden: { opacity: 0},
   visible: {
     opacity: 1,
-    x: 0,
-    transition: { duration: 0.69 },
+    transition: { duration: 0.5 },
   },
-  exit: { opacity: 0, x: 0, transition: { duration: 0.08 } },
+  exit: { opacity: 0, transition: { duration: 0.08 } },
 };
 
 export const dropdownParent = {
@@ -217,7 +216,7 @@ export const fadeVariants = {
     opacity: 0,
     transition: { duration: 0.2 },
   },
-  open: { opacity: 1, transition: { delay: 0.5, duration: 0.5 } },
+  open: { opacity: 1, transition: { delay: 0.4, duration: 0.5 } },
 };
 
 export const menuAnimation = {

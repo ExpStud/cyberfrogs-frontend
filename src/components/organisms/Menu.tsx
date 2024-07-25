@@ -25,10 +25,10 @@ const Menu: FC<Props> = (props: Props) => {
           animate={{ width: isMobile ? winWidth - 15 : 720, opacity: 1 }}
           exit={{
             width: 0,
-            transition: { duration: 0.5 },
+            transition: { duration: 0.2 },
             opacity: 1,
           }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.4 }}
           className=" bg-cf-green-900 fixed top-0 right-0 z-50 h-full"
         >
           <motion.div

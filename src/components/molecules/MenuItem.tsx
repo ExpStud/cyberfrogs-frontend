@@ -67,7 +67,7 @@ const MenuItem: FC<{ item: NavigationData }> = ({ item }) => {
 
   return (
     <div
-      className={`relative px-4 text-xl flex flex-col gap-3 pt-6 uppercase ${
+      className={`relative px-4 text-xl flex flex-col gap-3 pt-6 items-start uppercase max-w-[290px] sm:max-w-none ${
         active
           ? "cursor-default text-cf-gold-500/70"
           : "text-cf-white/75 transition-300 hover:text-cf-white cursor-pointer "
@@ -116,7 +116,7 @@ const MenuItem: FC<{ item: NavigationData }> = ({ item }) => {
           )}
         </AnimatePresence>
       </motion.div>
-      <div className="relative w-full h-[1px]">
+      <div className="relative w-full h-[1px] hidden sm:block">
         <Image
           src="/images/pages/dashboard/divider.svg"
           fill
@@ -124,6 +124,60 @@ const MenuItem: FC<{ item: NavigationData }> = ({ item }) => {
           className="opacity-75 h-[1px] object-cover"
         />
       </div>
+      <svg
+        width="256"
+        height="1"
+        viewBox="0 0 256 1"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="sm:hidden"
+      >
+        <g filter="url(#filter0_i_494_422)">
+          <line
+            y1="0.5"
+            x2="256"
+            y2="0.5"
+            stroke="white"
+            strokeOpacity="0.15"
+          />
+        </g>
+        <defs>
+          <filter
+            id="filter0_i_494_422"
+            x="0"
+            y="0"
+            width="256"
+            height="1"
+            filterUnits="userSpaceOnUse"
+            colorInterpolationFilters="sRGB"
+          >
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="BackgroundImageFix"
+              result="shape"
+            />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha"
+            />
+            <feOffset dx="10" />
+            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0.882353 0 0 0 0 0.709804 0 0 0 0 0.239216 0 0 0 0.5 0"
+            />
+            <feBlend
+              mode="normal"
+              in2="shape"
+              result="effect1_innerShadow_494_422"
+            />
+          </filter>
+        </defs>
+      </svg>
     </div>
   );
 };
