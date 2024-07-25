@@ -13,7 +13,7 @@ interface Props {
 const RafflesView: FC<Props> = (props: Props) => {
   const { setAssets } = props;
 
-  const showRaffles = raffles.length === 0; //TODO: raffles.length > 0;
+  const showRaffles = raffles.length > 0;
 
   return (
     <div className="w-full flex flex-col px-3 md:px-12 2xl:px-0 mt-10 ">
