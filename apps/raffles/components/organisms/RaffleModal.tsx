@@ -36,11 +36,6 @@ const bidHistory: BidsEntry[] = [
     wallet: "3wP5sQ8E5vkGaWU3FLFX9fXibDjTt56BUGAMP8pe33FX",
   },
   {
-    date: new Date("2024-11-31T23:59:59.999Z"),
-    tickets: 69,
-    wallet: "3wP5sQ8E5vkGaWU3FLFX9fXibDjTt56BUGAMP8pe33FX",
-  },
-  {
     date: new Date("2024-12-28T23:59:59.999Z"),
     tickets: 69,
     wallet: "3wP5sQ8E5vkGaWU3FLFX9fXibDjTt56BUGAMP8pe33FX",
@@ -52,11 +47,6 @@ const bidHistory: BidsEntry[] = [
   },
   {
     date: new Date("2024-12-30T23:59:59.999Z"),
-    tickets: 69,
-    wallet: "3wP5sQ8E5vkGaWU3FLFX9fXibDjTt56BUGAMP8pe33FX",
-  },
-  {
-    date: new Date("2024-11-31T23:59:59.999Z"),
     tickets: 69,
     wallet: "3wP5sQ8E5vkGaWU3FLFX9fXibDjTt56BUGAMP8pe33FX",
   },

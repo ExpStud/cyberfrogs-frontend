@@ -55,14 +55,14 @@ const DashboardHeading: FC<DashboardHeadingProps> = (
           </AnimatePresence>
         </div>
       </div>
-      {/* <Image
+      <Image
         src="/images/pages/dashboard/intro.png"
         width={968}
         height={210}
         alt="Dashboard"
         className="hidden lg:block absolute right-0 -top-4 z-0 opacity-20 xl:opacity-100"
         onLoad={() => handleAssetLoad(0, setAssets)}
-      /> */}
+      />
     </div>
   );
 };

@@ -15,7 +15,7 @@ const RaffleList: FC<Props> = (props: Props) => {
     <motion.div
       key="raffles"
       {...midExitAnimation}
-      className="my-10 2xl:mx-5 flex flex-col md:flex-row md:flex-wrap md:gap-4 lg:gap-8 items-center"
+      className="my-10 2xl:mx-5 flex flex-col md:flex-row md:flex-wrap gap-4 lg:gap-8 items-center"
     >
       {raffles.map((raffle, index) => (
         <RaffleItem key={index} metadata={raffle} />
