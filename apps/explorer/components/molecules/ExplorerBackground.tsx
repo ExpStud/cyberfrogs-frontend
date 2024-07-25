@@ -11,7 +11,6 @@ const ExplorerBackground: FC = () => {
           width={61}
           height={586}
           alt="Grid L"
-          className="sticky top-0"
         />
       </div>
       {/* body */}

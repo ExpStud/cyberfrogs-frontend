@@ -83,16 +83,20 @@ const ExplorerView: FC<Props> = (props: Props) => {
       </div>
 
       {/* toggle & data */}
-      <div className="w-full flex flex-col lg:flex-row justify-end mt-10 lg:-mt-10  2xl:ml-0">
-        <ListingData data={listingData} />
-      </div>
+      {listingData && (
+        <div className="w-full flex flex-col lg:flex-row justify-end mt-10 lg:-mt-10  2xl:ml-0">
+          <ListingData data={listingData} />
+        </div>
+      )}
 
       {/* explorer */}
-      <Explorer
-        data={nftData}
-        paginateData={paginateData}
-        loadingData={loading}
-      />
+      {nftData && (
+        <Explorer
+          data={nftData}
+          paginateData={paginateData}
+          loadingData={loading}
+        />
+      )}
     </div>
   );
 };

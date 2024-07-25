@@ -67,9 +67,8 @@ const Explorer: FC<Props> = (props: Props) => {
     <div className="relative flex flex-col lg:flex-row md:gap-4 lg:gap-2 w-full h-full min-h-[80vh] bg-cf-green-950 mt-2 pl-3 lg:pl-5 pt-3 lg:pt-5">
       {/* sort, search, filter */}
       <div className="flex flex-col-reverse sm:flex-row lg:flex-col sm:items-center lg:items-start gap-4 lg:gap-6 w-full lg:w-auto h-[100px] sm:h-[40px] lg:h-auto pr-3 lg:pr-0">
-        {/* sticky top-2 sticky top-[54px] sticky top-[104px] */}
         <ExplorerToggle toggle={toggle} setToggle={setToggle} />
-        <div className="sticky top-[72px] flex gap-4 items-center justify-start md:justify-between w-full">
+        <div className="lg:sticky lg:top-[72px] flex gap-4 items-center justify-start md:justify-between w-full">
           <NumberInput
             placeholder="search id"
             handleInput={handleSearch}
@@ -81,7 +80,7 @@ const Explorer: FC<Props> = (props: Props) => {
           />
         </div>
 
-        <div className="sticky top-[134px] hidden lg:flex flex-col md:!w-[288px] pr-3 overflow-y-auto max-h-screen hide-scroll">
+        <div className="lg:sticky lg:top-[134px] hidden lg:flex flex-col md:!w-[288px] pr-3 overflow-y-auto max-h-screen hide-scroll">
           {filters.map((filter, index) => (
             <ExplorerFilterItem
               key={filter.name}
