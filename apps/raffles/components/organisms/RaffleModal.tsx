@@ -136,13 +136,9 @@ const RaffleModal: FC<Props> = (props: Props) => {
               {/* bids */}
 
               <div className="flex flex-col gap-2 max-h-[200px] ">
-                <Image
-                  src="/images/pages/explorer/filter-divider.svg"
-                  width={300}
-                  height={1}
-                  alt="Divider"
-                  className="mb-1.5"
-                />
+                <div className="relative w-full h-[1px] shadow-inner bg-cf-white/15 -mt-4 mb-4 ">
+                  <div className="absolute left-0 h-[1px] w-3 bg-cf-gold-500/30"></div>
+                </div>
                 <p className="text-cf-white">My Bids</p>
                 <div className="flex flex-col gap-2 overflow-auto raffle-scroll pr-5">
                   {myBids.map((bid, index) => (
@@ -152,13 +148,9 @@ const RaffleModal: FC<Props> = (props: Props) => {
               </div>
               {/* bids history */}
               <div className="flex flex-col gap-2 max-h-[200px] ">
-                <Image
-                  src="/images/pages/explorer/filter-divider.svg"
-                  width={300}
-                  height={1}
-                  alt="Divider"
-                  className="mb-1.5"
-                />
+                <div className="relative w-full h-[1px] shadow-inner bg-cf-white/15 -mt-4 mb-4 ">
+                  <div className="absolute left-0 h-[1px] w-3 bg-cf-gold-500/30"></div>
+                </div>
                 <p className="text-cf-white">Bid History</p>
                 <div className="flex flex-col gap-2  overflow-auto raffle-scroll pr-5">
                   {bidHistory.map((bid, index) => (
