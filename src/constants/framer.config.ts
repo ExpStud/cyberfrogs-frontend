@@ -1,13 +1,18 @@
-import { Variants } from "framer-motion";
+import { color, Variants } from "framer-motion";
 
 //custom
 
-export const navParent = {
+export const navParent = (isMobile = false) => ({
   hidden: { opacity: 0, x: 0 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { staggerChildren: 0.1, ease: "easeInOut" },
+    transition: { 
+      staggerChildren: isMobile ? 0 : 0.1, 
+      ease: "easeInOut" ,
+      delay: 0.25,
+      duration: 0.1,
+    },
   },
   exit: {
     opacity: 0,
@@ -17,13 +22,15 @@ export const navParent = {
       staggerDirection: -1,
     },
   },
-};
+});
 
 export const navChild = {
-  hidden: { opacity: 0},
+  hidden: { 
+    opacity: 0,  
+  },
   visible: {
-    opacity: 1,
-    transition: { duration: 0.5 },
+    opacity: 1, 
+    transition: { duration: 1 },
   },
   exit: { opacity: 0, transition: { duration: 0.08 } },
 };

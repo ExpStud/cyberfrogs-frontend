@@ -9,6 +9,7 @@ import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { truncatePubKey } from "@utils";
 import { useWalletMultiButton } from "@solana/wallet-adapter-base-ui";
+import { isMobile } from "react-device-detect";
 
 const MenuItem: FC<{ item: NavigationData }> = ({ item }) => {
   const [didHover, setDidHover] = useState<boolean>(false);
@@ -104,7 +105,7 @@ const MenuItem: FC<{ item: NavigationData }> = ({ item }) => {
             <motion.div
               key="dropdown"
               className="flex flex-col gap-3 mb-4 -mt-2 "
-              variants={navParent}
+              variants={navParent(isMobile)}
               initial="hidden"
               animate="visible"
               exit="exit"
