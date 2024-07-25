@@ -35,7 +35,7 @@ const ConnectWalletButton: FC = () => {
             : "Connect",
         }}
         callback={handleClick}
-        arrow={visible}
+        arrow={visible || showDropdown}
       />
       <AnimatePresence>
         {showDropdown && <WalletDropdown setShowDropdown={setShowDropdown} />}

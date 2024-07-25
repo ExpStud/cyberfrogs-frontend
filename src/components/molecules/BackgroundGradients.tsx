@@ -8,6 +8,7 @@ const BackgroundGradients: FC<Props> = (props: Props) => {
   const { blur = false } = props;
   return (
     <>
+      <div className="-z-[20] bg-cf-green-900 absolute inset-0" />
       <div className="-z-[20] fixed top-0 h-screen w-screen">
         <Image
           src="/images/general/backgrounds/texture.png"
