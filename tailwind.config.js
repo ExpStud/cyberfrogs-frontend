@@ -39,6 +39,7 @@ module.exports = {
         "start-upgrade-bg":
           "url('/images/general/backgrounds/start-upgrade.svg')",
         "mint-3": "url('/images/general/backgrounds/upgrade-frogs.svg')",
+        "card-text": "url('/images/pages/explorer/card-bg.svg')",
       },
       fontFamily: {
         rajdhani: ["Rajdhani-Medium"],

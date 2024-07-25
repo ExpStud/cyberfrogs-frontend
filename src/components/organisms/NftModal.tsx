@@ -46,20 +46,10 @@ const NftModal: FC<Props> = (props: Props) => {
               Rank {rank} (og rank {ogRank})
             </p>
             {/* divider */}
-            <Image
-              src="/images/pages/explorer/filter-divider.svg"
-              width={600}
-              height={1}
-              alt="Divider"
-              className="xl:hidden"
-            />
-            <Image
-              src="/images/pages/explorer/divider-long.svg"
-              width={900}
-              height={1}
-              alt="Divider"
-              className="hidden xl:block"
-            />
+            <div className="relative w-full h-[1.5px] shadow-inner bg-cf-white/15 2xl:w-[800px]">
+              <div className="absolute left-0 h-[1.5px] w-3 bg-cf-gold-500/30"></div>
+            </div>
+
             <p className="text-cf-white/50 text-sm lg:text-base my-5">
               Attributes {attrsLength}
             </p>

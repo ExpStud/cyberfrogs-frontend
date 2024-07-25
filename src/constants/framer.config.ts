@@ -242,9 +242,9 @@ export const slideDown = (animate: boolean) => ({
 });
 
 export const slideUp = (animate: boolean) => ({
-  initial: { y: 100, opacity: 0 },
-  animate: { y: animate ? 0 : 100, opacity: animate ? 1 : 0 },
-  exit: { y: 100, opacity: 0, transition: { duration: .15, ease: "easeInOut" } },
+  initial: { y: 400, opacity: 0 },
+  animate: { y: animate ? 0 : 400, opacity: animate ? 1 : 0 },
+  exit: { y: 400, opacity: 0, transition: { duration: .3, ease: "easeInOut" } },
   transition: { duration: .35, ease: "easeInOut" },
 });
 export const slideLeft = (animate: boolean) => ({

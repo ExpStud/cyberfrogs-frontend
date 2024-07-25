@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { FC, ReactNode, HTMLAttributes, useState } from "react";
-import { midExitAnimation } from "@constants";
-import { useLockBodyScroll } from "@hooks";
+import { midExitAnimation, slideUp } from "@constants";
+import { useLockBodyScroll, useWindowSize } from "@hooks";
 import Image from "next/image";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -19,7 +19,7 @@ const Modal: FC<Props> = (props: Props) => {
   } = props;
 
   const [exitHover, setExitHover] = useState<boolean>(false);
-
+  const [winWidth] = useWindowSize();
   //disable body scroll when modal is open
   useLockBodyScroll(show);
 
@@ -49,6 +49,15 @@ const Modal: FC<Props> = (props: Props) => {
       translateY: "-50%",
     },
     transition: { duration: 0.3 },
+  };
+
+  const getAnimationProps = (
+    winWidth: number,
+    modalAnimation: any,
+    slideUp: any,
+    show: boolean
+  ) => {
+    return winWidth >= 1024 ? { ...modalAnimation } : { ...slideUp(show) };
   };
 
   return (
@@ -84,12 +93,12 @@ const Modal: FC<Props> = (props: Props) => {
           <div className="p-10">{children}</div>
         </motion.div>
       )}
-      {!upgradeModal && (
+      {!upgradeModal && winWidth && (
         <motion.div
           onClick={(e) => e.stopPropagation()}
-          {...modalAnimation}
-          className={`z-20 absolute lg:aspect-[12/5] w-[100vw] md:w-[95vw] lg:w-[90vw] lg:max-w-[1520px] h-[100vh] md:h-[95vh]  
-          bg-cf-green-900 lg:bg-transparent  lg:bg-modalBg lg:max-h-[622px] ${
+          {...getAnimationProps(winWidth, modalAnimation, slideUp, show)}
+          className={`z-20 absolute bottom-0 lg:bottom-auto lg:aspect-[12/5] w-[100vw] lg:w-[90vw] lg:max-w-[1520px] h-[calc(90dvh)] lg:h-[95vh]  raffle-scroll  
+          bg-cf-green-900 lg:bg-transparent lg:bg-modalBg lg:max-h-[622px] ${
             className ?? ""
           }`}
         >
