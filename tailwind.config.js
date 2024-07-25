@@ -90,6 +90,7 @@ module.exports = {
         xs: "400px",
         "3xl": "2160px",
         "4xl": "3000px",
+        "1xl": "1300px",
       },
     },
   },

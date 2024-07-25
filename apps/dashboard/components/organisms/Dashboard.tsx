@@ -29,7 +29,7 @@ const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
     : undefined;
 
   return (
-    <div className="z-[5] relative flex flex-col justify-between gap-3  bg-cf-green-950 md:bg-transparent md:bg-dashboardBg min-h-[700px] w-full md:w-full mt-5 md:mt-0 pl-5 pr-0 md:pl-10 xl:pr-10 py-6">
+    <div className="z-[5] relative flex flex-col justify-between gap-3 bg-cf-green-950 md:bg-transparent md:bg-dashboardBg min-h-[700px] w-full md:w-full mt-5 md:mt-0 pl-5 pr-0 md:pl-10 2xl:pr-10 py-6">
       <div>
         <Image
           src="/images/pages/dashboard/dash-text.svg"
@@ -85,7 +85,7 @@ const Dashboard: FC<DashboardProps> = (props: DashboardProps) => {
               <div className="flex flex-col gap-2 w-full uppercase pr-10">
                 <VariableLabel
                   label="Discord ID"
-                  variable={authData?.discordId + "aasasdasdadsds"}
+                  variable={authData?.discordId}
                   emptyMessage="Not Linked"
                   labelWidth="w-[70px] 2xl:w-[80px]"
                 />

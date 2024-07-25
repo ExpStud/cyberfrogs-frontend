@@ -55,7 +55,7 @@ const DashboardView: FC<Props> = (props: Props) => {
   }, [connected]);
 
   return (
-    <div className="w-full flex flex-col items-start justify-start px-3 md:pl-12 md:pr-0 2xl:px-0 mt-10 ">
+    <div className="w-full flex flex-col items-start justify-start px-3 md:pl-12 md:pr-0 2xl:px-0 mt-10 overflow-x-hidden">
       <DashboardHeading
         connected={connected}
         totalFrogs={userFrogs.length}

@@ -20,7 +20,7 @@ const Navigation: FC = () => {
 
   return (
     <div className="page-spacing pt-1 md:pt-3 lg:pt-6 w-full flex items-center justify-between gap-8 z-20">
-      <Logo />
+      <Logo className="xl:hidden 1xl:block" />
 
       {/* desktop nav */}
       {!mintPage && (

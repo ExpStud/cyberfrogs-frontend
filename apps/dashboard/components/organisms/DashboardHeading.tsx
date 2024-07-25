@@ -18,7 +18,7 @@ const DashboardHeading: FC<DashboardHeadingProps> = (
   return (
     <div className="relative w-full flex flex-col lg:flex-row justify-between px-3 md:px-0 2xl:ml-4 mb-4">
       <div className="flex flex-col justify-between">
-        <Heading className="relative w-[504px]" />
+        <Heading className="relative" />
 
         <div className="flex items-center gap-3 uppercase mt-16">
           <div
