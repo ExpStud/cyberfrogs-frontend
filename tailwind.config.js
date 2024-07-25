@@ -89,9 +89,10 @@ module.exports = {
       screens: {
         "2xs": "360px",
         xs: "400px",
+        "1xl": "1300px",
+        "2xl2": "1600px",
         "3xl": "2160px",
         "4xl": "3000px",
-        "1xl": "1300px",
       },
     },
   },
