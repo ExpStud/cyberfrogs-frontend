@@ -16,9 +16,9 @@ const RafflesView: FC<Props> = (props: Props) => {
   const showRaffles = raffles.length > 0;
 
   return (
-    <div className="w-full flex flex-col px-3 md:px-12 2xl:px-0 mt-10 ">
+    <div className="w-full flex flex-col px-3 md:px-12 2xl:px-0 mt-10 overflow-x-hidden">
       {/* heading & image */}
-      <div className="relative w-full flex flex-col xl:flex-row justify-between px-3 md:px-0 2xl:ml-4">
+      <div className="relative w-full flex flex-col xl:flex-row justify-between px-3 md:px-0 2xl:ml-4 ">
         <Heading />
 
         {showRaffles && (
@@ -28,7 +28,6 @@ const RafflesView: FC<Props> = (props: Props) => {
             height={208}
             alt="Raffles"
             className="hidden xl:block xl:opacity-80 2xl:opacity-100 -mt-10 mx-5"
-            // onLoad={() => handleAssetLoad(0, setAssets)}
           />
         )}
       </div>
