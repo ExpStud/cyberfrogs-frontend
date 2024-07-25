@@ -125,7 +125,7 @@ const MintView: FC<Props> = (props: Props) => {
 
   return (
     <div
-      className={`fixed inset-0 w-screen h-screen flex 3xl:items-center justify-center pt-24 ${
+      className={`fixed inset-0 w-screen h-[100svh] flex 3xl:items-center justify-center pt-24 ${
         mintFlow === MintFlow.UpgradeFrogs ? "items-center" : "xl:items-end "
       }`}
     >
