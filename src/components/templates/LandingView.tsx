@@ -13,13 +13,13 @@ const LandingView: FC<Props> = (props: Props) => {
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center max-w-screen">
-      <div className="flex flex-col gap-14 lg:gap-0 items-center z-0">
+      <div className="lg:absolute lg:top-28 flex flex-col gap-14 items-center z-0">
         <Image
           src="/images/general/graphics/landing.png"
           alt="Cyber Frogs"
           width={1000}
           height={600}
-          className="max-h-[70vh] object-contain"
+          className="max-h-[65vh] object-contain"
           onLoad={() => handleAssetLoad(0, setAssets)}
         />
         <div className="relative w-[95vw] md:w-[739px] h-[93px] flex items-center -mt-10">
