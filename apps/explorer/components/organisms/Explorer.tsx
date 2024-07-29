@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { FilterIcon, NumberInput } from "@components";
 import {
   ExplorerBackground,
@@ -25,16 +25,9 @@ const Explorer: FC<Props> = (props: Props) => {
   const [toggle, setToggle] = useState<"solana" | "bitcoin">("solana");
   const [selectedFilters, setSelectedFilters] = useState<SelectedFilter[]>([]);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const [maxHeight, setMaxHeight] = useState("100svh");
 
-  const [winWidth] = useWindowSize();
-
-  useEffect(() => {
-    //TODO: handle toggle change
-    if (toggle === "solana") {
-    }
-    if (toggle === "bitcoin") {
-    }
-  }, [toggle]);
+  const [winWidth, winHeight] = useWindowSize();
 
   const handleSearch = (input: number) => {
     //TODO: filter data based on search
@@ -58,17 +51,52 @@ const Explorer: FC<Props> = (props: Props) => {
     });
   };
 
+  useEffect(() => {
+    //TODO: handle toggle change
+    if (toggle === "solana") {
+    }
+    if (toggle === "bitcoin") {
+    }
+  }, [toggle]);
+
   //close mobile menu on large screens
   useEffect(() => {
     if (winWidth >= 1024) setOpenMenu(false);
   }, [winWidth]);
 
+  const topDivRef = useRef<HTMLDivElement>(null);
+  const middleDivRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const calculateMaxHeight = () => {
+      // const topDivHeight = topDivRef.current
+      //   ? topDivRef.current.offsetHeight
+      //   : 0;
+      // const middleDivHeight = middleDivRef.current
+      //   ? middleDivRef.current.offsetHeight
+      //   : 0;
+      // const screenHeight = winHeight;
+      // const calculatedMaxHeight = screenHeight - topDivHeight - middleDivHeight;
+
+      const calculatedMaxHeigh = winHeight - 134 - 5;
+      console.log("calculatedMaxHeight ", calculatedMaxHeigh);
+      setMaxHeight(`${calculatedMaxHeigh}px`);
+    };
+
+    calculateMaxHeight();
+  }, [winHeight]);
+
   return (
     <div className="relative flex flex-col lg:flex-row md:gap-4 lg:gap-2 w-full h-full min-h-[80vh] bg-cf-green-950 mt-2 pl-3 lg:pl-5 pt-3 lg:pt-5">
       {/* sort, search, filter */}
       <div className="flex flex-col-reverse sm:flex-row lg:flex-col sm:items-center lg:items-start gap-4 lg:gap-6 w-full lg:w-auto h-[100px] sm:h-[40px] lg:h-auto pr-3 lg:pr-0">
-        <ExplorerToggle toggle={toggle} setToggle={setToggle} />
-        <div className="lg:sticky lg:top-[72px] flex gap-4 items-center justify-start md:justify-between w-full">
+        <div ref={topDivRef} className="lg:sticky lg:top-2 ">
+          <ExplorerToggle toggle={toggle} setToggle={setToggle} />
+        </div>
+        <div
+          ref={middleDivRef}
+          className="lg:sticky lg:top-[72px] flex gap-4 items-center  justify-between w-full"
+        >
           <NumberInput
             placeholder="search id"
             handleInput={handleSearch}
@@ -80,7 +108,10 @@ const Explorer: FC<Props> = (props: Props) => {
           />
         </div>
 
-        <div className="lg:sticky lg:top-[134px] hidden lg:flex flex-col md:!w-[288px] pr-3 overflow-y-auto max-h-screen hide-scroll">
+        <div
+          className="lg:sticky lg:top-[134px] hidden lg:flex flex-col md:!w-[288px] pr-3 overflow-y-auto hide-scroll"
+          style={{ maxHeight }}
+        >
           {filters.map((filter, index) => (
             <ExplorerFilterItem
               key={filter.name}
